@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://aoirint.com/aoirint-blog/" rel="alternate"></link><link href="https://aoirint.com/aoirint-blog/atom.xml" rel="self"></link><id>https://aoirint.com/aoirint-blog/</id><updated>2020-09-08T00:00:00+09:00</updated><entry><title>TOC Test</title><link href="https://aoirint.com/aoirint-blog/posts/sample3.html" rel="alternate"></link><published>2020-09-08T00:00:00+09:00</published><updated>2020-09-08T00:00:00+09:00</updated><id>tag:aoirint.com,2020-09-08 00:00:00.000000:/aoirint-blog/posts/sample3.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_sample3_md_Heading2_1"&gt;Heading2&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://aoirint.com/aoirint-blog/" rel="alternate"></link><link href="https://aoirint.com/aoirint-blog/atom.xml" rel="self"></link><id>https://aoirint.com/aoirint-blog/</id><updated>2020-09-09T00:00:00+09:00</updated><entry><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link href="https://aoirint.com/aoirint-blog/posts/miyadaiku_github_actions.html" rel="alternate"></link><published>2020-09-09T00:00:00+09:00</published><updated>2020-09-09T00:00:00+09:00</updated><id>tag:aoirint.com,2020-09-09 00:00:00.000000:/aoirint-blog/posts/miyadaiku_github_actions.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_背景_1"&gt;背景&lt;/h2&gt;
+&lt;p&gt;以前静的サイトジェネレータのJekyllを触って記事を書きましたが、
+結局（Docker化するだけで満足して）実運用には至らず、
+そうこうしているうちに
+ブログを書きたい欲があっても内容がない時におちいるブログシステム作りたい/整備したい病を発症したので
+新しい静的サイトジェネレータで環境を整備しようということに相成りました。
+細かい使い方には触れませんが、構成を書いておきます。&lt;/p&gt;
+&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータとCI_CD_2"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
+&lt;h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータ_3"&gt;静的サイトジェネレータ&lt;/h3&gt;
+&lt;p&gt;静的サイトジェネレータというのはSphinx（Python製）とかJekyll（&lt;/p&gt;</summary></entry><entry><title>TOC Test</title><link href="https://aoirint.com/aoirint-blog/posts/sample3.html" rel="alternate"></link><published>2020-09-08T00:00:00+09:00</published><updated>2020-09-08T00:00:00+09:00</updated><id>tag:aoirint.com,2020-09-08 00:00:00.000000:/aoirint-blog/posts/sample3.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_sample3_md_Heading2_1"&gt;Heading2&lt;/h2&gt;
 &lt;p&gt;test&lt;/p&gt;
 &lt;h3 class="md_header_block" id="h_posts_sample3_md_Heading3_2"&gt;Heading3&lt;/h3&gt;
 &lt;p&gt;hoge&lt;/p&gt;
