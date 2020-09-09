@@ -34,7 +34,7 @@
 
 <script defer src="../static/fontawesome/js/all.min.js"></script>
   <script defer src="../static/fontawesome/js/v4-shims.min.js"></script>
-<link rel="stylesheet" href="../static/pygments/native.css">
+<link rel="stylesheet" href="../static/pygments/monokai.css">
 
 
     
@@ -227,46 +227,46 @@ HTTPサーバを介して（オプションで指定したテーマなどで）�
 <p>この部分は適切に.gitignoreやCI/CDを設定すれば大抵の静的サイトジェネレータで実現可能だろうと思います。
 今回はGitHub Actionsを使って、GitHub上の仮想環境にリポジトリから文書を読み込んでHTMLを自動生成し、文書と履歴を共有しない別ブランチ（gh-pages）に自動でcommitされるように設定します。</p>
 <p>GitHub Actionsを動かすには<code>.github/workflows</code>以下にYAMLファイルを配置します。例えばこのような感じです。GitHub Pagesへのデプロイ（gh-pagesブランチの更新）には<a href="https://github.com/peaceiris/actions-gh-pages">github:peaceiris/actions-gh-pages</a>を使っています。</p>
-<div class="highlight"><pre><span></span><code># deploy.yml
-name: Deploy
+<div class="highlight"><pre><span></span><code><span class="c1"># deploy.yml</span>
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deploy</span>
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+<span class="c1"># Controls when the action will run. Triggers the workflow on push or pull request</span>
+<span class="c1"># events but only for the master branch</span>
+<span class="nt">on</span><span class="p">:</span>
+  <span class="nt">push</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">master</span> <span class="p p-Indicator">]</span>
+  <span class="nt">pull_request</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">master</span> <span class="p p-Indicator">]</span>
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+<span class="c1"># A workflow run is made up of one or more jobs that can run sequentially or in parallel</span>
+<span class="nt">jobs</span><span class="p">:</span>
+  <span class="c1"># This workflow contains a single job called "build"</span>
+  <span class="nt">build</span><span class="p">:</span>
+    <span class="c1"># The type of runner that the job will run on</span>
+    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+    <span class="c1"># Steps represent a sequence of tasks that will be executed as part of the job</span>
+    <span class="nt">steps</span><span class="p">:</span>
+      <span class="c1"># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it</span>
+      <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
 
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: 3.x
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Setup Python</span>
+        <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+        <span class="nt">with</span><span class="p">:</span>
+          <span class="c1"># Version range or exact version of a Python version to use, using SemVer's version range syntax.</span>
+          <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.x</span>
 
-      - name: Install dependencies
-        run: pip3 install -r requirements.txt
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+        <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pip3 install -r requirements.txt</span>
 
-      - name: Run miyadaiku-build
-        run: miyadaiku-build --output public .
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Run miyadaiku-build</span>
+        <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">miyadaiku-build --output public .</span>
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deploy</span>
+        <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v3</span>
+        <span class="nt">with</span><span class="p">:</span>
+          <span class="nt">github_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+          <span class="nt">publish_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./public</span>
 </code></pre></div>
 <p><code>name</code>、<code>run</code>のところをコピーして増やせばコマンドを増やすことができます。</p>
 <h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_テーマと文書の分離_8">テーマと文書の分離</h3>
@@ -346,26 +346,26 @@ branch B:            |--Z
 <p><code>miyadaiku==1.17.0</code>とします。
 Miyadaikuをpipで入れると<code>miyadaiku-start</code>、<code>miyadaiku-build</code>コマンドが使えるようになります。</p>
 <p><code>miyadaiku-start</code>は空のMiyadaikuプロジェクトを作成するコマンドです。といっても空の<code>files</code>、<code>templates</code>ディレクトリ、サンプルのMarkdownファイル<code>index.md</code>の入った<code>contents</code>ディレクトリ、デフォルトのシンプルなコンフィグファイル<code>config.yml</code>が生成されるだけです。</p>
-<div class="highlight"><pre><span></span><code># Miyadaiku config file
+<div class="highlight"><pre><span></span><code><span class="c1"># Miyadaiku config file</span>
 
-# Base URL of the site
-site_url: http://localhost:8888/
+<span class="c1"># Base URL of the site</span>
+<span class="nt">site_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://localhost:8888/</span>
 
-# Title of the site
-site_title: FIXME - site title
+<span class="c1"># Title of the site</span>
+<span class="nt">site_title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FIXME - site title</span>
 
-# Default language code
-lang: en-US
+<span class="c1"># Default language code</span>
+<span class="nt">lang</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">en-US</span>
 
-# Default charset
-charset: utf-8
+<span class="c1"># Default charset</span>
+<span class="nt">charset</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">utf-8</span>
 
-# Default timezone
-timezone: Asia/Tokyo
+<span class="c1"># Default timezone</span>
+<span class="nt">timezone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Asia/Tokyo</span>
 
-# List of site theme
-# themes:
-#   - miyadaiku.themes.sample.blog
+<span class="c1"># List of site theme</span>
+<span class="c1"># themes:</span>
+<span class="c1">#   - miyadaiku.themes.sample.blog</span>
 </code></pre></div>
 <p><code>files</code>ディレクトリは、汎用的な画像やCSS、JSを置くのに使います。このディレクトリの内容はそのまま出力ディレクトリにコピーされます。
 <code>templates</code>ディレクトリには、Jinja2テンプレートを配置します。<code>contents</code>ディレクトリは、中に置いたMarkdownファイルなどがHTMLに変換されたものが出力ディレクトリに吐き出されます。</p>
@@ -377,36 +377,36 @@ timezone: Asia/Tokyo
 /outputs
 </code></pre></div>
 <p><code>config.yml</code>は<code>pip3 install aoirint_miyadaiku_theme_blog</code>したうえで、次のようにしています。</p>
-<div class="highlight"><pre><span></span><code># Miyadaiku config file
+<div class="highlight"><pre><span></span><code><span class="c1"># Miyadaiku config file</span>
 
-# Base URL of the site
-site_url: https://www.example.com
+<span class="c1"># Base URL of the site</span>
+<span class="nt">site_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://www.example.com</span>
 
-# Title of the site
-site_title: SITE TITLE
+<span class="c1"># Title of the site</span>
+<span class="nt">site_title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SITE TITLE</span>
 
-# Default language code
-lang: ja
+<span class="c1"># Default language code</span>
+<span class="nt">lang</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ja</span>
 
-# Default charset
-charset: utf-8
+<span class="c1"># Default charset</span>
+<span class="nt">charset</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">utf-8</span>
 
-# Default timezone
-timezone: Asia/Tokyo
+<span class="c1"># Default timezone</span>
+<span class="nt">timezone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Asia/Tokyo</span>
 
-copyright: Copyright © 20xx HOLDER.
+<span class="nt">copyright</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Copyright © 20xx HOLDER.</span>
 
-favicon: /favicon.ico
+<span class="nt">favicon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/favicon.ico</span>
 
-# ga_tracking_id: UA-*
+<span class="c1"># ga_tracking_id: UA-*</span>
 
-twitter_name: example
-github_name: github
+<span class="nt">twitter_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="nt">github_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">github</span>
 
 
-# List of site theme
-themes:
-  - aoirint_miyadaiku_theme_blog
+<span class="c1"># List of site theme</span>
+<span class="nt">themes</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">aoirint_miyadaiku_theme_blog</span>
 </code></pre></div>
 <p>ディレクトリ構成はこのような感じです。</p>
 <div class="highlight"><pre><span></span><code>blog-repository/
