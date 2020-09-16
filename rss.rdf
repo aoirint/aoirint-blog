@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Wed, 09 Sep 2020 09:48:39 +0900</lastBuildDate><item><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link>https://blog.aoirint.com/posts/miyadaiku_github_actions.html</link><description>&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_背景_1"&gt;背景&lt;/h2&gt;
-&lt;p&gt;以前静的サイトジェネレータのJekyllを触って記事を書きましたが、
-結局（Docker化するだけで満足して）実運用には至らず、
-そうこうしているうちに
-ブログを書きたい欲があっても内容がない時におちいるブログシステム作りたい/整備したい病を発症したので
-新しい静的サイトジェネレータで環境を整備しようということに相成りました。
-細かい使い方には触れませんが、構成を書いておきます。&lt;/p&gt;
-&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータとCI_CD_2"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
-&lt;h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータ_3"&gt;静的サイトジェネレータ&lt;/h3&gt;
-&lt;p&gt;静的サイトジェネレータというのはSphinx（Python製）とかJekyll（&lt;/p&gt;</description><pubDate>Wed, 09 Sep 2020 09:48:39 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/miyadaiku_github_actions.html</guid></item><item><title>Atom + LaTeX in Docker</title><link>https://blog.aoirint.com/posts/atom_latex_docker.html</link><description>&lt;h2 class="md_header_block" id="h_posts_atom_latex_docker_md_概要_1"&gt;概要&lt;/h2&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Thu, 17 Sep 2020 08:35:00 +0900</lastBuildDate><item><title>Atom + LaTeX in Docker</title><link>https://blog.aoirint.com/posts/atom_latex_docker.html</link><description>&lt;h2 class="md_header_block" id="h_posts_atom_latex_docker_md_概要_1"&gt;概要&lt;/h2&gt;
 &lt;p&gt;LaTeXをホストにインストールせず、Docker内で動かしつつ、
 Atomからこれを利用できるようにする。&lt;/p&gt;
 &lt;h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Requirements_2"&gt;Requirements&lt;/h2&gt;
@@ -35,4 +26,13 @@ Atomからこれを利用できるようにする。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;PDFプレビュー&lt;ul&gt;
 &lt;li&gt;&lt;a href=""&gt;pdf-view&lt;/a&gt;（メモリリーク? Atomを一度閉じれば解消する）&lt;/li&gt;
-&lt;li&gt;または &lt;a href=""&gt;pdf-view-plu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Tue, 17 Sep 2019 08:35:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2019-09-17 08:35:00.000000:/posts/atom_latex_docker.html</guid></item></channel></rss>
+&lt;li&gt;または &lt;a href=""&gt;pdf-view-plu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Thu, 17 Sep 2020 08:35:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-17 08:35:00.000000:/posts/atom_latex_docker.html</guid></item><item><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link>https://blog.aoirint.com/posts/miyadaiku_github_actions.html</link><description>&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_背景_1"&gt;背景&lt;/h2&gt;
+&lt;p&gt;以前静的サイトジェネレータのJekyllを触って記事を書きましたが、
+結局（Docker化するだけで満足して）実運用には至らず、
+そうこうしているうちに
+ブログを書きたい欲があっても内容がない時におちいるブログシステム作りたい/整備したい病を発症したので
+新しい静的サイトジェネレータで環境を整備しようということに相成りました。
+細かい使い方には触れませんが、構成を書いておきます。&lt;/p&gt;
+&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータとCI_CD_2"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
+&lt;h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータ_3"&gt;静的サイトジェネレータ&lt;/h3&gt;
+&lt;p&gt;静的サイトジェネレータというのはSphinx（Python製）とかJekyll（&lt;/p&gt;</description><pubDate>Wed, 09 Sep 2020 09:48:39 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/miyadaiku_github_actions.html</guid></item></channel></rss>
