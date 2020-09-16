@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+  
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atom + LaTeX in Docker - えやみぐさ</title>
+  
+
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+
+
+
+<meta property="og:url" content="https://blog.aoirint.com/posts/atom_latex_docker.html" />
+<meta property="og:locale" content="ja-JP" />
+<meta property="og:type" content="article" />
+
+<meta property="og:title" content="Atom + LaTeX in Docker - えやみぐさ" />
+
+<meta name="description" content="概要 LaTeXをホストにインストールせず、Docker内で動かしつつ、 Atomからこれを利用できるようにする。 Requirements Ubuntu 18.04 Docker Atom Atom Packages latex Atom Packages latexを入れれば最"/>
+<meta property="og:description" content="概要 LaTeXをホストにインストールせず、Docker内で動かしつつ、 Atomからこれを利用できるようにする。 Requirements Ubuntu 18.04 Docker Atom Atom Packages latex Atom Packages latexを入れれば最" />
+
+<meta property="article:published_time" content="2019-09-17T08:35:00+09:00" />
+
+<link href="https://blog.aoirint.com/atom.xml" type="application/atom+xml" rel="alternate" title="えやみぐさ Atom Feed" />
+<link href="https://blog.aoirint.com/rss.rdf" type="application/rss+xml" rel="alternate" title="えやみぐさ RSS Feed" />
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../static/aoirint-blog/css/style.css">
+
+<script defer src="../static/fontawesome/js/all.min.js"></script>
+  <script defer src="../static/fontawesome/js/v4-shims.min.js"></script>
+<link rel="stylesheet" href="../static/pygments/monokai.css">
+
+
+    
+  
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157155944-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-157155944-5');
+  </script>
+  
+
+<script src="../static/aoirint-blog/js/main.js"></script>
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+</head>
+
+<body>
+  
+
+<nav class="smartphonebar">
+  <button class="toggle-sitebar" type="button" onclick="toggleSiteBarIfSmartphone();">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <a href="../index.html" class="sitebar-title">
+    えやみぐさ
+  </a>
+
+  <button class="toggle-tocbar" type="button" onclick="toggleTocBarIfSmartphone();">
+    <i class="fas fa-list"></i>
+  </button>
+
+</nav>
+
+<aside class="sitebar-box">
+  <nav class="sitebar fixed-scrollable">
+    <a href="../index.html" class="sitebar-title">
+      えやみぐさ
+    </a>
+
+    <div class="sitebar-content">
+      <ul>
+        <li>
+          <a href="../index.html" class="navbar-menu-link">
+            Index
+          </a>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="../rss.rdf" class="navbar-menu-link">
+            RSS Feed
+          </a>
+        <li>
+          <a href="../atom.xml" class="navbar-menu-link">
+            Atom Feed
+          </a>
+      </ul>
+
+      <ul>
+
+        <li>
+          <a href="https://twitter.com/aoirint" target="_blank" class="navbar-menu-link">
+            Twitter
+          </a>
+
+
+        <li>
+          <a href="https://github.com/aoirint" target="_blank" class="navbar-menu-link">
+            GitHub
+          </a>
+
+      </ul>
+    </div>
+
+    <div class="sitebar-footer">
+      <p class="copyright-text">
+        Copyright © 2020 aoirint.
+      <p class="poweredby-text">
+        Powered by
+        <a href="https://github.com/miyadaiku/miyadaiku">Miyadaiku</a>.
+    </div>
+  </nav>
+</aside>
+
+<main class="main-content">
+
+<div class="container">
+
+<article class="article">
+
+<h1 class="article-title"><a href="atom_latex_docker.html">Atom + LaTeX in Docker</a></h1>
+
+
+
+<div class="article-metadata">
+  <div class="article-date">
+    2019-09-17
+  </div>
+
+  <div class="article-tags">
+
+    <a href="../index_category_category_技術.html" class="article-category">
+      技術
+    </a>
+
+
+
+    <a href="../index_tag_tags_Atom.html" class="article-tag">
+      Atom
+    </a>
+
+    <a href="../index_tag_tags_LaTeX.html" class="article-tag">
+      LaTeX
+    </a>
+
+    <a href="../index_tag_tags_TeXLive.html" class="article-tag">
+      TeXLive
+    </a>
+
+    <a href="../index_tag_tags_Docker.html" class="article-tag">
+      Docker
+    </a>
+
+  </div>
+
+</div>
+
+
+
+<div class="article-body">
+  <h2 class="md_header_block" id="h_posts_atom_latex_docker_md_概要_1">概要</h2>
+<p>LaTeXをホストにインストールせず、Docker内で動かしつつ、
+Atomからこれを利用できるようにする。</p>
+<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Requirements_2">Requirements</h2>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>Docker</li>
+<li>Atom</li>
+<li>Atom Packages<ul>
+<li><a href="https://atom.io/packages/latex">latex</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Atom_Packages_3">Atom Packages</h2>
+<p><a href="https://atom.io/packages/latex">latex</a>を入れれば最低限ビルドはできる。</p>
+<ul>
+<li><a href="https://atom.io/packages/latex">latex</a></li>
+<li>シンタックスハイライト<ul>
+<li><a href="https://atom.io/packages/language-latex">language-latex</a></li>
+</ul>
+</li>
+<li>アウトライン表示<ul>
+<li><a href="https://atom.io/packages/document-outline">document-outline</a></li>
+</ul>
+</li>
+<li>PDFプレビュー<ul>
+<li><a href="">pdf-view</a>（メモリリーク? Atomを一度閉じれば解消する）</li>
+<li>または <a href="">pdf-view-plus</a>（メモリリーク対策版らしい。<code>latex</code>との連携はないので注意）</li>
+</ul>
+</li>
+</ul>
+<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Dockerイメージ_4">Dockerイメージ</h2>
+<p><a href="https://hub.docker.com/r/paperist/alpine-texlive-ja/">paperist/alpine-texlive-ja</a>を使う。</p>
+<p>```shell=
+sudo docker pull paperist/alpine-texlive-ja</p>
+<div class="highlight"><pre><span></span><code>## non-root Docker
+`sudo`なしでDockerを実行できるようにする。AtomからDockerコンテナを作るのに必要。
+
+ユーザをdockerグループに追加したあと再ログインする。新しくdockerグループが作られた直後は`newgrp docker`しなければならないことがあり、シェルごとにこれを実行する必要があるようなのでAtomに反映されず、この場合OSの再起動が必要。
+
+```shell=
+sudo groupadd docker
+sudo adduser $USER docker
+</code></pre></div>
+<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_latexmkスクリプトを作る_5">latexmkスクリプトを作る</h2>
+<p><code>/usr/texbin/latexmk</code>（手動で<code>latex</code>の<code>TeX Path</code>を設定するか、デフォルトでPATHの通っている場所ならどこでもいい）に以下のシェルスクリプトを作成し、<code>chmod +x /usr/texbin/latexmk</code>しておく。</p>
+<p><code>${HOME}/.atom/packages/latex/resources</code>のマウントは<code>latex</code>の<code>Extended Build Mode</code>が有効のときに<code>${HOME}/.atom/packages/latex/resources/latexmkrc</code>が読み出されるため設定している（このパスはホストのAtomから渡されるのでマウント先パスもホストと同じ）。この機能を無効にしていれば不要。</p>
+<p>```shell=</p>
+<h1 class="md_header_block" id="h_posts_atom_latex_docker_md__bin_sh_6">!/bin/sh</h1>
+<p>docker run --rm \
+  -v "${PWD}:/workdir" \
+  -v "${HOME}/.atom/packages/latex/resources:${HOME}/.atom/packages/latex/resources" \
+  paperist/alpine-texlive-ja \
+  latexmk "$@"</p>
+<div class="highlight"><pre><span></span><code>## 注意点
+カレントディレクトリ以下をマウントするため、外部においた`.sty`などは読み込めないので注意（デフォルトでロードされるディレクトリがあれば追加のマウントをすればOKと思われる）。
+
+## おまけ
+### stderrにコマンドを吐き出してエラー終了するスクリプト
+
+```shell=
+#!/bin/sh
+echo $0 $@ &gt;&amp;2
+exit 1;
+</code></pre></div>
+</div>
+
+
+</article>
+
+</div>
+
+</main>
+
+<aside class="tocbar-box">
+  <nav class="tocbar fixed-scrollable">
+
+<script>
+  generateTocBar(
+    document.querySelector('.article-body'),
+    document.querySelector('.tocbar'),
+    document.querySelector('.article-title'),
+  );
+</script>
+
+  </nav>
+</aside>
+
+
+</body>
+</html>
