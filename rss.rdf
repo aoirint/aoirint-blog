@@ -27,12 +27,16 @@ Atomからこれを利用できるようにする。&lt;/p&gt;
 &lt;li&gt;PDFプレビュー&lt;ul&gt;
 &lt;li&gt;&lt;a href=""&gt;pdf-view&lt;/a&gt;（メモリリーク? Atomを一度閉じれば解消する）&lt;/li&gt;
 &lt;li&gt;または &lt;a href=""&gt;pdf-view-plu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Thu, 17 Sep 2020 08:35:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-17 08:35:00.000000:/posts/atom_latex_docker.html</guid></item><item><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link>https://blog.aoirint.com/posts/miyadaiku_github_actions.html</link><description>&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_背景_1"&gt;背景&lt;/h2&gt;
-&lt;p&gt;以前静的サイトジェネレータのJekyllを触って記事を書きましたが、
-結局（Docker化するだけで満足して）実運用には至らず、
-そうこうしているうちに
-ブログを書きたい欲があっても内容がない時におちいるブログシステム作りたい/整備したい病を発症したので
-新しい静的サイトジェネレータで環境を整備しようということに相成りました。
-細かい使い方には触れませんが、構成を書いておきます。&lt;/p&gt;
+&lt;p&gt;新しく静的サイトジェネレータでブログ環境を整備した。
+細かい使い方には触れないが、構成を書いておく。&lt;/p&gt;
 &lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータとCI_CD_2"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
 &lt;h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータ_3"&gt;静的サイトジェネレータ&lt;/h3&gt;
-&lt;p&gt;静的サイトジェネレータというのはSphinx（Python製）とかJekyll（&lt;/p&gt;</description><pubDate>Wed, 09 Sep 2020 09:48:39 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/miyadaiku_github_actions.html</guid></item></channel></rss>
+&lt;p&gt;静的サイトジェネレータというのはSphinx（Python製）とかJekyll（Ruby製、GitHub Pages標準らしい）とかHugo（Go製）みたいなやつで、
+MarkdownだとかreStructuredTextだとかのファイル群からHTMLを生成するツール。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.sphinx-doc.org/"&gt;Sphinx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_Miyadaiku_4"&gt;Miyadaiku&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://miyadaiku.github.io/"&gt;Miyadaiku&lt;/a&gt;はPython製の静&lt;/p&gt;</description><pubDate>Wed, 09 Sep 2020 09:48:39 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/miyadaiku_github_actions.html</guid></item></channel></rss>
