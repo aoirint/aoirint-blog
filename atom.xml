@@ -26,7 +26,7 @@ Atomからこれを利用できるようにする。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;PDFプレビュー&lt;ul&gt;
 &lt;li&gt;&lt;a href=""&gt;pdf-view&lt;/a&gt;（メモリリーク? Atomを一度閉じれば解消する）&lt;/li&gt;
-&lt;li&gt;または &lt;a href=""&gt;pdf-view-plu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary></entry><entry><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link href="https://blog.aoirint.com/posts/miyadaiku_github_actions.html" rel="alternate"></link><published>2020-09-09T09:48:39+09:00</published><updated>2020-09-09T09:48:39+09:00</updated><id>tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/miyadaiku_github_actions.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_背景_1"&gt;背景&lt;/h2&gt;
+&lt;li&gt;または &lt;a href=""&gt;pdf-view-plu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary></entry><entry><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link href="https://blog.aoirint.com/posts/miyadaiku_github_actions.html" rel="alternate"></link><published>2020-09-09T09:48:39+09:00</published><updated>2020-09-09T09:48:39+09:00</updated><id>tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/miyadaiku_github_actions.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_概要_1"&gt;概要&lt;/h2&gt;
 &lt;p&gt;新しく静的サイトジェネレータでブログ環境を整備した。
 細かい使い方には触れないが、構成を書いておく。&lt;/p&gt;
 &lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータとCI_CD_2"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
