@@ -10,12 +10,12 @@
   
 
 
-<link rel="shortcut icon" href="../../favicon.ico">
+<link rel="shortcut icon" href="../../../favicon.ico">
 
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/posts/gpu_pc_setup/index.html" />
+<meta property="og:url" content="https://blog.aoirint.com/posts/2020/gpu_pc_setup/index.html" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
@@ -30,11 +30,11 @@
 <link href="https://blog.aoirint.com/rss.rdf" type="application/rss+xml" rel="alternate" title="えやみぐさ RSS Feed" />
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../static/aoirint-blog/css/style.css">
+<link rel="stylesheet" href="../../../static/aoirint-blog/css/style.css">
 
-<script defer src="../../static/fontawesome/js/all.min.js"></script>
-  <script defer src="../../static/fontawesome/js/v4-shims.min.js"></script>
-<link rel="stylesheet" href="../../static/pygments/monokai.css">
+<script defer src="../../../static/fontawesome/js/all.min.js"></script>
+  <script defer src="../../../static/fontawesome/js/v4-shims.min.js"></script>
+<link rel="stylesheet" href="../../../static/pygments/monokai.css">
 
 
     
@@ -51,7 +51,7 @@
   </script>
   
 
-<script src="../../static/aoirint-blog/js/main.js"></script>
+<script src="../../../static/aoirint-blog/js/main.js"></script>
 
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -68,7 +68,7 @@
     <i class="fas fa-bars"></i>
   </button>
 
-  <a href="../../index.html" class="sitebar-title">
+  <a href="../../../index.html" class="sitebar-title">
     えやみぐさ
   </a>
 
@@ -80,25 +80,25 @@
 
 <aside class="sitebar-box">
   <nav class="sitebar fixed-scrollable">
-    <a href="../../index.html" class="sitebar-title">
+    <a href="../../../index.html" class="sitebar-title">
       えやみぐさ
     </a>
 
     <div class="sitebar-content">
       <ul>
         <li>
-          <a href="../../index.html" class="navbar-menu-link">
+          <a href="../../../index.html" class="navbar-menu-link">
             Index
           </a>
       </ul>
 
       <ul>
         <li>
-          <a href="../../rss.rdf" class="navbar-menu-link">
+          <a href="../../../rss.rdf" class="navbar-menu-link">
             RSS Feed
           </a>
         <li>
-          <a href="../../atom.xml" class="navbar-menu-link">
+          <a href="../../../atom.xml" class="navbar-menu-link">
             Atom Feed
           </a>
       </ul>
@@ -146,13 +146,13 @@
 
   <div class="article-tags">
 
-    <a href="../../index_category_category_技術.html" class="article-category">
+    <a href="../../../index_category_category_技術.html" class="article-category">
       技術
     </a>
 
 
 
-    <a href="../../index_tag_tags_PC Setup.html" class="article-tag">
+    <a href="../../../index_tag_tags_PC Setup.html" class="article-tag">
       PC Setup
     </a>
 
@@ -166,13 +166,13 @@
   <p><a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)">Ubuntu 18.04.5 LTS (Bionic Beaver)</a></p>
 <p>Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。</p>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_時刻ずれの解消_1">時刻ずれの解消</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_時刻ずれの解消_1">時刻ずれの解消</h2>
 <p><a href="https://linux.just4fun.biz/?Linux%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E3%81%AEWindows%E6%99%82%E5%88%BB%E3%82%92UTC%E3%81%AB%E3%81%99%E3%82%8B" title="Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす">Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす</a></p>
 <p>デュアルブート環境では、BIOSの時刻を介してWindows側の時刻管理（ローカル時間）とUbuntu側の時刻管理（UTC時間）が衝突して、タイムゾーンの時差分、時計がずれてしまう。ここでは、Windows側の時刻管理をUTC時間にするようにレジストリを変更して対処する。</p>
 <p>Windows上で管理者権限でコマンドプロンプトを起動し、以下のコマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_NTPサーバの設定_プロキシ環境__2">NTPサーバの設定（プロキシ環境）</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_NTPサーバの設定_プロキシ環境__2">NTPサーバの設定（プロキシ環境）</h2>
 <ul>
 <li><a href="https://sicklylife.hatenablog.com/entry/2016/02/03/201557" title="Ubuntu 18.04 / 16.04 で時刻合わせの設定を変更する - Sickly Life Blog">Ubuntu 18.04 / 16.04 で時刻合わせの設定を変更する - Sickly Life Blog</a></li>
 <li><a href="https://yyatsuo.com/post-1297/" title="systemdのSNTPクライアント機能を使ってみる | Keep the Light Alive">systemdのSNTPクライアント機能を使ってみる | Keep the Light Alive</a></li>
@@ -187,17 +187,17 @@ NTP=YOUR_NTP_SERVER
 <div class="highlight"><pre><span></span><code>sudo systemctl restart systemd-timesyncd
 </code></pre></div>
 <p>これで時刻が同期される。</p>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_プロキシの設定_1_Environment_Variable_apt_3">プロキシの設定 (1) Environment Variable, apt</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_プロキシの設定_1_Environment_Variable_apt_3">プロキシの設定 (1) Environment Variable, apt</h2>
 <p>Settings &gt; Networkからプロキシを設定する。設定した内容は<code>HTTP_PROXY</code>などの環境変数に出力される。スキーム部分は不要（OS側で付けるので二重プロトコルになってしまう）。</p>
 <p>また/etc/apt/apt.confを作成し、プロキシ設定を追記する</p>
 <div class="highlight"><pre><span></span><code>Acquire::http::proxy "http://YOUR_HTTP_PROXY";
 Acquire::https::proxy "http://YOUR_HTTP_PROXY";
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_Package_Indexの更新とPackageの更新_4">Package Indexの更新とPackageの更新</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_Package_Indexの更新とPackageの更新_4">Package Indexの更新とPackageの更新</h2>
 <div class="highlight"><pre><span></span><code>sudo apt update
 sudo apt upgrade -y
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_git_ビルドツールほかのインストール_5">git、ビルドツールほかのインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_git_ビルドツールほかのインストール_5">git、ビルドツールほかのインストール</h2>
 <div class="highlight"><pre><span></span><code>sudo apt install -y <span class="se">\</span>
   git <span class="se">\</span>
   build-essential <span class="se">\</span>
@@ -223,7 +223,7 @@ syntax enable
 set hlsearch
 nmap &lt;Esc&gt;&lt;Esc&gt; :nohlsearch&lt;CR&gt;&lt;Esc&gt;
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_日本語IME_ibus_mozc_言語サポートのインストール_6">日本語IME（ibus-mozc）、言語サポートのインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_日本語IME_ibus_mozc_言語サポートのインストール_6">日本語IME（ibus-mozc）、言語サポートのインストール</h2>
 <div class="highlight"><pre><span></span><code>sudo apt install -y ibus-mozc
 
 ibus restart
@@ -231,11 +231,11 @@ gsettings <span class="nb">set</span> org.gnome.desktop.input-sources sources <s
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>sudo apt install -y <span class="k">$(</span>check-language-support<span class="k">)</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_プロキシの設定_2_git_7">プロキシの設定 (2) git</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_プロキシの設定_2_git_7">プロキシの設定 (2) git</h2>
 <div class="highlight"><pre><span></span><code>git config --global http.proxy <span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span>
 git config --global https.proxy <span class="si">${</span><span class="nv">HTTPS_PROXY</span><span class="si">}</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_pyenv_Pythonのインストール_8">pyenv、Pythonのインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_pyenv_Pythonのインストール_8">pyenv、Pythonのインストール</h2>
 <p><a href="https://github.com/pyenv/pyenv#basic-github-checkout">pyenv/pyenv: Simple Python version management</a></p>
 <p>新しいPythonを使うため、それからシステムと開発環境を分離してモジュール管理をaptとpipで分けて衝突事故を起こさないようにするため、pyenvを使うのが安定。</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -270,7 +270,7 @@ git config --global https.proxy <span class="si">${</span><span class="nv">HTTPS
 pyenv install <span class="m">3</span>.8.5
 pyenv global <span class="m">3</span>.8.5
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_Docker_Docker_Composeのインストール_9">Docker &amp; Docker Composeのインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_Docker_Docker_Composeのインストール_9">Docker &amp; Docker Composeのインストール</h2>
 <p><a href="https://docs.docker.com/engine/install/ubuntu/" title="Install Docker Engine on Ubuntu | Docker Documentation">Install Docker Engine on Ubuntu | Docker Documentation</a></p>
 <div class="highlight"><pre><span></span><code>sudo apt remove docker docker-engine docker.io containerd runc
 sudo apt update
@@ -304,7 +304,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 <div class="highlight"><pre><span></span><code>sudo groupadd docker
 sudo adduser <span class="nv">$USER</span> docker
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_プロキシの設定_3_Docker_10">プロキシの設定 (3) Docker</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_プロキシの設定_3_Docker_10">プロキシの設定 (3) Docker</h2>
 <div class="highlight"><pre><span></span><code>sudo systemctl edit docker
 </code></pre></div>
 <p>このコマンドで開いたファイルに以下を追記する。</p>
@@ -318,7 +318,7 @@ docker pull hello-world
 docker run --rm hello-world
 </code></pre></div>
 <p>正常に実行されればOK。</p>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_CUDA_NVIDIA_Driverのインストール_11">CUDA &amp; NVIDIA Driverのインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_CUDA_NVIDIA_Driverのインストール_11">CUDA &amp; NVIDIA Driverのインストール</h2>
 <p><a href="https://pytorch.org/get-started/locally/" title="Start Locally | PyTorch">Start Locally | PyTorch</a></p>
 <p>PyTorchの対応バージョンを見ながらCUDA Toolkitをインストールする。</p>
 <p><a href="https://developer.nvidia.com/cuda-10.2-download-archive" title="CUDA Toolkit 10.2 Download | NVIDIA Developer">CUDA Toolkit 10.2 Download | NVIDIA Developer</a></p>
@@ -341,7 +341,7 @@ sudo sh cuda_10.2.89_440.33.01_linux.run
 <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
 </code></pre></div>
 <p>でTrueが返ってくればOK。</p>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_OpenCV_Python_Numpy_PyTorchほかのインストール_12">OpenCV-Python, Numpy, PyTorchほかのインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_OpenCV_Python_Numpy_PyTorchほかのインストール_12">OpenCV-Python, Numpy, PyTorchほかのインストール</h2>
 <div class="highlight"><pre><span></span><code>pip3 install -U pip
 pip3 install -U <span class="se">\</span>
   opencv-python <span class="se">\</span>
@@ -364,7 +364,7 @@ pip3 install -U <span class="se">\</span>
   tensorboardX <span class="se">\</span>
   --proxy <span class="s2">"</span><span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_SSH_Serverほかのインストール_13">SSH Serverほかのインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_SSH_Serverほかのインストール_13">SSH Serverほかのインストール</h2>
 <div class="highlight"><pre><span></span><code>sudo apt install -y openssh-server net-tools
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>ifconfig
@@ -374,20 +374,20 @@ pip3 install -U <span class="se">\</span>
 <p>必要に応じてパスワード認証を無効にする。</p>
 <div class="highlight"><pre><span></span><code>PasswordAuthentication no
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_ownCloudのインストール_14">ownCloudのインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_ownCloudのインストール_14">ownCloudのインストール</h2>
 <p><a href="https://software.opensuse.org/download/package?project=isv:ownCloud:desktop&amp;package=owncloud-client" title="Install package isv:ownCloud:desktop / owncloud-client">Install package isv:ownCloud:desktop / owncloud-client</a></p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_18.04/ /'</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/isv:ownCloud:desktop.list
 curl -fsSL https://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_18.04/Release.key <span class="p">|</span> gpg --dearmor <span class="p">|</span> sudo tee /etc/apt/trusted.gpg.d/isv:ownCloud:desktop.gpg &gt; /dev/null
 sudo apt update
 sudo apt install owncloud-client
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_その他のインストール_15">その他のインストール</h2>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_その他のインストール_15">その他のインストール</h2>
 <div class="highlight"><pre><span></span><code>ssh-keygen -f KEYNAME
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>sudo apt install tmux autossh
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_おまけ_16">おまけ</h2>
-<h3 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_sshのプロキシ設定_17">sshのプロキシ設定</h3>
+<h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_おまけ_16">おまけ</h2>
+<h3 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_sshのプロキシ設定_17">sshのプロキシ設定</h3>
 <ul>
 <li><a href="https://qiita.com/yuyhiraka/items/30766c69fb605fc5f182" title="Mac OSXでHTTP Proxy経由でSSH - Qiita">Mac OSXでHTTP Proxy経由でSSH - Qiita</a></li>
 <li><a href="https://qiita.com/_N4H4/items/d48ba7c728f2e1ebd159" title="【GitHub】Windows10+プロキシ環境でSSH接続を試みた話 - Qiita">【GitHub】Windows10+プロキシ環境でSSH接続を試みた話 - Qiita</a></li>

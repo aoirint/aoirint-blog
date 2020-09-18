@@ -10,12 +10,12 @@
   
 
 
-<link rel="shortcut icon" href="../favicon.ico">
+<link rel="shortcut icon" href="../../../favicon.ico">
 
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/posts/atom_latex_docker.html" />
+<meta property="og:url" content="https://blog.aoirint.com/posts/2020/atom_latex_docker/index.html" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
@@ -30,11 +30,11 @@
 <link href="https://blog.aoirint.com/rss.rdf" type="application/rss+xml" rel="alternate" title="えやみぐさ RSS Feed" />
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../static/aoirint-blog/css/style.css">
+<link rel="stylesheet" href="../../../static/aoirint-blog/css/style.css">
 
-<script defer src="../static/fontawesome/js/all.min.js"></script>
-  <script defer src="../static/fontawesome/js/v4-shims.min.js"></script>
-<link rel="stylesheet" href="../static/pygments/monokai.css">
+<script defer src="../../../static/fontawesome/js/all.min.js"></script>
+  <script defer src="../../../static/fontawesome/js/v4-shims.min.js"></script>
+<link rel="stylesheet" href="../../../static/pygments/monokai.css">
 
 
     
@@ -51,7 +51,7 @@
   </script>
   
 
-<script src="../static/aoirint-blog/js/main.js"></script>
+<script src="../../../static/aoirint-blog/js/main.js"></script>
 
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -68,7 +68,7 @@
     <i class="fas fa-bars"></i>
   </button>
 
-  <a href="../index.html" class="sitebar-title">
+  <a href="../../../index.html" class="sitebar-title">
     えやみぐさ
   </a>
 
@@ -80,25 +80,25 @@
 
 <aside class="sitebar-box">
   <nav class="sitebar fixed-scrollable">
-    <a href="../index.html" class="sitebar-title">
+    <a href="../../../index.html" class="sitebar-title">
       えやみぐさ
     </a>
 
     <div class="sitebar-content">
       <ul>
         <li>
-          <a href="../index.html" class="navbar-menu-link">
+          <a href="../../../index.html" class="navbar-menu-link">
             Index
           </a>
       </ul>
 
       <ul>
         <li>
-          <a href="../rss.rdf" class="navbar-menu-link">
+          <a href="../../../rss.rdf" class="navbar-menu-link">
             RSS Feed
           </a>
         <li>
-          <a href="../atom.xml" class="navbar-menu-link">
+          <a href="../../../atom.xml" class="navbar-menu-link">
             Atom Feed
           </a>
       </ul>
@@ -135,7 +135,7 @@
 
 <article class="article">
 
-<h1 class="article-title"><a href="atom_latex_docker.html">Atom + LaTeX in Docker</a></h1>
+<h1 class="article-title"><a href="index.html">Atom + LaTeX in Docker</a></h1>
 
 
 
@@ -146,25 +146,25 @@
 
   <div class="article-tags">
 
-    <a href="../index_category_category_技術.html" class="article-category">
+    <a href="../../../index_category_category_技術.html" class="article-category">
       技術
     </a>
 
 
 
-    <a href="../index_tag_tags_Atom.html" class="article-tag">
+    <a href="../../../index_tag_tags_Atom.html" class="article-tag">
       Atom
     </a>
 
-    <a href="../index_tag_tags_LaTeX.html" class="article-tag">
+    <a href="../../../index_tag_tags_LaTeX.html" class="article-tag">
       LaTeX
     </a>
 
-    <a href="../index_tag_tags_TeXLive.html" class="article-tag">
+    <a href="../../../index_tag_tags_TeXLive.html" class="article-tag">
       TeXLive
     </a>
 
-    <a href="../index_tag_tags_Docker.html" class="article-tag">
+    <a href="../../../index_tag_tags_Docker.html" class="article-tag">
       Docker
     </a>
 
@@ -175,10 +175,10 @@
 
 
 <div class="article-body">
-  <h2 class="md_header_block" id="h_posts_atom_latex_docker_md_概要_1">概要</h2>
+  <h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_概要_1">概要</h2>
 <p>LaTeXをホストにインストールせず、Docker内で動かしつつ、
 Atomからこれを利用できるようにする。</p>
-<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Requirements_2">Requirements</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Requirements_2">Requirements</h2>
 <ul>
 <li>Ubuntu 18.04</li>
 <li>Docker</li>
@@ -188,7 +188,7 @@ Atomからこれを利用できるようにする。</p>
 </ul>
 </li>
 </ul>
-<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Atom_Packages_3">Atom Packages</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Atom_Packages_3">Atom Packages</h2>
 <p><a href="https://atom.io/packages/latex">latex</a>を入れれば最低限ビルドコマンドは叩けるようになる。</p>
 <ul>
 <li><a href="https://atom.io/packages/latex">latex</a></li>
@@ -206,17 +206,17 @@ Atomからこれを利用できるようにする。</p>
 </ul>
 </li>
 </ul>
-<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Dockerイメージ_4">Dockerイメージ</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Dockerイメージ_4">Dockerイメージ</h2>
 <p><a href="https://hub.docker.com/r/paperist/alpine-texlive-ja/">paperist/alpine-texlive-ja</a>を使う。</p>
 <div class="highlight"><pre><span></span><code>sudo docker pull paperist/alpine-texlive-ja
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_non_root_Docker_5">non-root Docker</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_non_root_Docker_5">non-root Docker</h2>
 <p><code>sudo</code>なしでDockerを実行できるようにする。AtomからDockerコンテナを作るのに必要。</p>
 <p>ユーザをdockerグループに追加したあと再ログインする。新しくdockerグループが作られた直後は<code>newgrp docker</code>しなければならないことがあり、シェルごとにこれを実行する必要があるようなのでAtomに反映されず、この場合OSの再起動が必要。</p>
 <div class="highlight"><pre><span></span><code>sudo groupadd docker
 sudo adduser <span class="nv">$USER</span> docker
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_latexmkスクリプトを作る_6">latexmkスクリプトを作る</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_latexmkスクリプトを作る_6">latexmkスクリプトを作る</h2>
 <p><code>/usr/texbin/latexmk</code>（手動で<code>latex</code>の<code>TeX Path</code>を設定するか、デフォルトでPATHの通っている場所ならどこでもいい）に以下のシェルスクリプトを作成し、<code>chmod +x /usr/texbin/latexmk</code>しておく。</p>
 <p><code>${HOME}/.atom/packages/latex/resources</code>のマウントは<code>latex</code>の<code>Extended Build Mode</code>が有効のときに<code>${HOME}/.atom/packages/latex/resources/latexmkrc</code>が読み出されるため設定している（このパスはホストのAtomから渡されるのでマウント先パスもホストと同じ）。この機能を無効にしていれば不要。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
@@ -226,7 +226,7 @@ docker run --rm <span class="se">\</span>
   paperist/alpine-texlive-ja <span class="se">\</span>
   latexmk <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_サンプルTeXファイル_7">サンプルTeXファイル</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_サンプルTeXファイル_7">サンプルTeXファイル</h2>
 <div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[10pt,a4paper]</span><span class="nb">{</span>jsarticle<span class="nb">}</span>
 
 <span class="k">\title</span><span class="nb">{</span>My Title<span class="nb">}</span>
@@ -240,10 +240,10 @@ docker run --rm <span class="se">\</span>
 
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_注意点_8">注意点</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_注意点_8">注意点</h2>
 <p>カレントディレクトリ以下をマウントするため、外部においた<code>.sty</code>などは読み込めないので注意（デフォルトでロードされるディレクトリがあれば追加のマウントをすればOKと思われる）。</p>
-<h2 class="md_header_block" id="h_posts_atom_latex_docker_md_おまけ_9">おまけ</h2>
-<h3 class="md_header_block" id="h_posts_atom_latex_docker_md_stderrにコマンドを吐き出してエラー終了するスクリプト_10">stderrにコマンドを吐き出してエラー終了するスクリプト</h3>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_おまけ_9">おまけ</h2>
+<h3 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_stderrにコマンドを吐き出してエラー終了するスクリプト_10">stderrにコマンドを吐き出してエラー終了するスクリプト</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="nb">echo</span> <span class="nv">$0</span> <span class="nv">$@</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
 <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>

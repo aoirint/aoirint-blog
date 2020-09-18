@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2020-09-18T20:00:00+09:00</updated><entry><title>GPU PC (Desktop) のセットアップメモ</title><link href="https://blog.aoirint.com/posts/gpu_pc_setup/index.html" rel="alternate"></link><published>2020-09-18T20:00:00+09:00</published><updated>2020-09-18T20:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-18 20:00:00.000000:/posts/gpu_pc_setup/index.html</id><summary type="html">&lt;p&gt;&lt;a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)"&gt;Ubuntu 18.04.5 LTS (Bionic Beaver)&lt;/a&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2020-09-18T20:00:00+09:00</updated><entry><title>GPU PC (Desktop) のセットアップメモ</title><link href="https://blog.aoirint.com/posts/2020/gpu_pc_setup/index.html" rel="alternate"></link><published>2020-09-18T20:00:00+09:00</published><updated>2020-09-18T20:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-18 20:00:00.000000:/posts/2020/gpu_pc_setup/index.html</id><summary type="html">&lt;p&gt;&lt;a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)"&gt;Ubuntu 18.04.5 LTS (Bionic Beaver)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。&lt;/p&gt;
-&lt;h2 class="md_header_block" id="h_posts_gpu_pc_setup_index_md_時刻ずれの解消_1"&gt;時刻ずれの解消&lt;/h2&gt;
+&lt;h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_時刻ずれの解消_1"&gt;時刻ずれの解消&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://linux.just4fun.biz/?Linux%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E3%81%AEWindows%E6%99%82%E5%88%BB%E3%82%92UTC%E3%81%AB%E3%81%99%E3%82%8B" title="Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす"&gt;Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;デュアルブート環境では、BIOSの時刻を介してWindows側の時刻管理（ローカル時間）とUbuntu側の時刻管理（UTC時間）が衝突して、タイムゾーンの時差分、時計がずれてしまう。ここでは、Windows側の時刻管理をUT&lt;/p&gt;</summary></entry><entry><title>Atom + LaTeX in Docker</title><link href="https://blog.aoirint.com/posts/atom_latex_docker.html" rel="alternate"></link><published>2020-09-17T08:35:00+09:00</published><updated>2020-09-17T08:35:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-17 08:35:00.000000:/posts/atom_latex_docker.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_atom_latex_docker_md_概要_1"&gt;概要&lt;/h2&gt;
+&lt;p&gt;デュアルブート環境では、BIOSの時刻を介してWindows側の時刻管理（ローカル時間）とUbuntu側の時刻管理（UTC時間）が衝突して、タイムゾーンの時差分、時計がずれてしまう。ここでは、Windows側の時刻管理をUT&lt;/p&gt;</summary></entry><entry><title>Atom + LaTeX in Docker</title><link href="https://blog.aoirint.com/posts/2020/atom_latex_docker/index.html" rel="alternate"></link><published>2020-09-17T08:35:00+09:00</published><updated>2020-09-17T08:35:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-17 08:35:00.000000:/posts/2020/atom_latex_docker/index.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_概要_1"&gt;概要&lt;/h2&gt;
 &lt;p&gt;LaTeXをホストにインストールせず、Docker内で動かしつつ、
 Atomからこれを利用できるようにする。&lt;/p&gt;
-&lt;h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Requirements_2"&gt;Requirements&lt;/h2&gt;
+&lt;h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Requirements_2"&gt;Requirements&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Ubuntu 18.04&lt;/li&gt;
 &lt;li&gt;Docker&lt;/li&gt;
@@ -17,7 +17,7 @@ Atomからこれを利用できるようにする。&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 class="md_header_block" id="h_posts_atom_latex_docker_md_Atom_Packages_3"&gt;Atom Packages&lt;/h2&gt;
+&lt;h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Atom_Packages_3"&gt;Atom Packages&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://atom.io/packages/latex"&gt;latex&lt;/a&gt;を入れれば最低限ビルドコマンドは叩けるようになる。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://atom.io/packages/latex"&gt;latex&lt;/a&gt;&lt;/li&gt;
@@ -31,11 +31,11 @@ Atomからこれを利用できるようにする。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;PDFプレビュー&lt;ul&gt;
 &lt;li&gt;&lt;a href=""&gt;pdf-view&lt;/a&gt;（メモリリーク? Atomを一度閉じれば解消する）&lt;/li&gt;
-&lt;li&gt;または &lt;a href=""&gt;pdf-view-plu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary></entry><entry><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link href="https://blog.aoirint.com/posts/miyadaiku_github_actions.html" rel="alternate"></link><published>2020-09-09T09:48:39+09:00</published><updated>2020-09-09T09:48:39+09:00</updated><id>tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/miyadaiku_github_actions.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_概要_1"&gt;概要&lt;/h2&gt;
+&lt;li&gt;または &lt;a href=""&gt;pdf-view-plu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary></entry><entry><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link href="https://blog.aoirint.com/posts/2020/miyadaiku_github_actions/index.html" rel="alternate"></link><published>2020-09-09T09:48:39+09:00</published><updated>2020-09-09T09:48:39+09:00</updated><id>tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/2020/miyadaiku_github_actions/index.html</id><summary type="html">&lt;h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_概要_1"&gt;概要&lt;/h2&gt;
 &lt;p&gt;新しく静的サイトジェネレータでブログ環境を整備した。
 細かい使い方には触れないが、構成を書いておく。&lt;/p&gt;
-&lt;h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータとCI_CD_2"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
-&lt;h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータ_3"&gt;静的サイトジェネレータ&lt;/h3&gt;
+&lt;h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータとCI_CD_2"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
+&lt;h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータ_3"&gt;静的サイトジェネレータ&lt;/h3&gt;
 &lt;p&gt;静的サイトジェネレータというのはSphinx（Python製）とかJekyll（Ruby製、GitHub Pages標準らしい）とかHugo（Go製）みたいなやつで、
 MarkdownだとかreStructuredTextだとかのファイル群からHTMLを生成するツール。&lt;/p&gt;
 &lt;ul&gt;
@@ -43,5 +43,5 @@ MarkdownだとかreStructuredTextだとかのファイル群からHTMLを生成�
 &lt;li&gt;&lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_Miyadaiku_4"&gt;Miyadaiku&lt;/h3&gt;
+&lt;h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_Miyadaiku_4"&gt;Miyadaiku&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://miyadaiku.github.io/"&gt;Miyadaiku&lt;/a&gt;はPython製の静&lt;/p&gt;</summary></entry></feed>

@@ -10,12 +10,12 @@
   
 
 
-<link rel="shortcut icon" href="../favicon.ico">
+<link rel="shortcut icon" href="../../../favicon.ico">
 
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/posts/miyadaiku_github_actions.html" />
+<meta property="og:url" content="https://blog.aoirint.com/posts/2020/miyadaiku_github_actions/index.html" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
@@ -30,11 +30,11 @@
 <link href="https://blog.aoirint.com/rss.rdf" type="application/rss+xml" rel="alternate" title="えやみぐさ RSS Feed" />
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../static/aoirint-blog/css/style.css">
+<link rel="stylesheet" href="../../../static/aoirint-blog/css/style.css">
 
-<script defer src="../static/fontawesome/js/all.min.js"></script>
-  <script defer src="../static/fontawesome/js/v4-shims.min.js"></script>
-<link rel="stylesheet" href="../static/pygments/monokai.css">
+<script defer src="../../../static/fontawesome/js/all.min.js"></script>
+  <script defer src="../../../static/fontawesome/js/v4-shims.min.js"></script>
+<link rel="stylesheet" href="../../../static/pygments/monokai.css">
 
 
     
@@ -51,7 +51,7 @@
   </script>
   
 
-<script src="../static/aoirint-blog/js/main.js"></script>
+<script src="../../../static/aoirint-blog/js/main.js"></script>
 
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -68,7 +68,7 @@
     <i class="fas fa-bars"></i>
   </button>
 
-  <a href="../index.html" class="sitebar-title">
+  <a href="../../../index.html" class="sitebar-title">
     えやみぐさ
   </a>
 
@@ -80,25 +80,25 @@
 
 <aside class="sitebar-box">
   <nav class="sitebar fixed-scrollable">
-    <a href="../index.html" class="sitebar-title">
+    <a href="../../../index.html" class="sitebar-title">
       えやみぐさ
     </a>
 
     <div class="sitebar-content">
       <ul>
         <li>
-          <a href="../index.html" class="navbar-menu-link">
+          <a href="../../../index.html" class="navbar-menu-link">
             Index
           </a>
       </ul>
 
       <ul>
         <li>
-          <a href="../rss.rdf" class="navbar-menu-link">
+          <a href="../../../rss.rdf" class="navbar-menu-link">
             RSS Feed
           </a>
         <li>
-          <a href="../atom.xml" class="navbar-menu-link">
+          <a href="../../../atom.xml" class="navbar-menu-link">
             Atom Feed
           </a>
       </ul>
@@ -135,7 +135,7 @@
 
 <article class="article">
 
-<h1 class="article-title"><a href="miyadaiku_github_actions.html">静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</a></h1>
+<h1 class="article-title"><a href="index.html">静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</a></h1>
 
 
 
@@ -146,29 +146,29 @@
 
   <div class="article-tags">
 
-    <a href="../index_category_category_技術.html" class="article-category">
+    <a href="../../../index_category_category_技術.html" class="article-category">
       技術
     </a>
 
 
 
-    <a href="../index_tag_tags_Miyadaiku.html" class="article-tag">
+    <a href="../../../index_tag_tags_Miyadaiku.html" class="article-tag">
       Miyadaiku
     </a>
 
-    <a href="../index_tag_tags_Static Website.html" class="article-tag">
+    <a href="../../../index_tag_tags_Static Website.html" class="article-tag">
       Static Website
     </a>
 
-    <a href="../index_tag_tags_GitHub.html" class="article-tag">
+    <a href="../../../index_tag_tags_GitHub.html" class="article-tag">
       GitHub
     </a>
 
-    <a href="../index_tag_tags_GitHub Actions.html" class="article-tag">
+    <a href="../../../index_tag_tags_GitHub Actions.html" class="article-tag">
       GitHub Actions
     </a>
 
-    <a href="../index_tag_tags_CI/CD.html" class="article-tag">
+    <a href="../../../index_tag_tags_CI/CD.html" class="article-tag">
       CI/CD
     </a>
 
@@ -179,11 +179,11 @@
 
 
 <div class="article-body">
-  <h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_概要_1">概要</h2>
+  <h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_概要_1">概要</h2>
 <p>新しく静的サイトジェネレータでブログ環境を整備した。
 細かい使い方には触れないが、構成を書いておく。</p>
-<h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータとCI_CD_2">静的サイトジェネレータとCI/CD</h2>
-<h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_静的サイトジェネレータ_3">静的サイトジェネレータ</h3>
+<h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータとCI_CD_2">静的サイトジェネレータとCI/CD</h2>
+<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータ_3">静的サイトジェネレータ</h3>
 <p>静的サイトジェネレータというのはSphinx（Python製）とかJekyll（Ruby製、GitHub Pages標準らしい）とかHugo（Go製）みたいなやつで、
 MarkdownだとかreStructuredTextだとかのファイル群からHTMLを生成するツール。</p>
 <ul>
@@ -191,7 +191,7 @@ MarkdownだとかreStructuredTextだとかのファイル群からHTMLを生成�
 <li><a href="https://jekyllrb.com/">Jekyll</a></li>
 <li><a href="https://gohugo.io/">Hugo</a></li>
 </ul>
-<h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_Miyadaiku_4">Miyadaiku</h3>
+<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_Miyadaiku_4">Miyadaiku</h3>
 <p><a href="https://miyadaiku.github.io/">Miyadaiku</a>はPython製の静的サイトジェネレータ。
 Flaskで使うテンプレートエンジンのJinja2が使えることが特徴みたい。Jinja2はDjangoのテンプレートエンジンに似ている。
 テンプレート上でどんな変数が使えるかはMiyadaikuの領域なので、ドキュメント（とサンプルテンプレート、ソースコード）を見ていくしかないかも。</p>
@@ -199,7 +199,7 @@ Flaskで使うテンプレートエンジンのJinja2が使えることが特徴
 <li><a href="https://github.com/miyadaiku/miyadaiku">github:miyadaiku/miyadaiku</a></li>
 <li><a href="https://pypi.org/project/miyadaiku/">pypi:miyadaiku</a></li>
 </ul>
-<h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_GitHub_Actions_5">GitHub Actions</h3>
+<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_GitHub_Actions_5">GitHub Actions</h3>
 <p>GitHub上のリポジトリに対してpushやPull Requestがなされた時に事前に指定した処理を実行することのできるGitHubの機能。
 Jenkinsなどに近そう。また、GitLabにも同様の機能があったはず。
 GitHubのサーバで動く仮想環境上でDockerのような使い方でテストケースの実行やリリースファイルのビルド、サーバへのデプロイ、
@@ -211,8 +211,8 @@ GitHubが落ちたら解消するまで（手元にリポジトリがあって�
 <ul>
 <li><a href="https://www.githubstatus.com/">GitHub Status</a></li>
 </ul>
-<h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_考えていること_6">考えていること</h2>
-<h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_レンダリング後のHTMLファイルの分離_7">レンダリング後のHTMLファイルの分離</h3>
+<h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_考えていること_6">考えていること</h2>
+<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_レンダリング後のHTMLファイルの分離_7">レンダリング後のHTMLファイルの分離</h3>
 <p>Markdownを書いている時に見えるところに（レンダリング後の）HTMLファイルを置きたくない。
 できれば何も考えずに（Markdownで書いた）メモファイルを置くのに使っていた適当なディレクトリの上でコマンドを実行したら
 HTTPサーバを介して（オプションで指定したテーマなどで）いい感じにレンダリングしてくれるようなものがいい
@@ -263,7 +263,7 @@ HTTPサーバを介して（オプションで指定したテーマなどで）�
           <span class="nt">publish_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./public</span>
 </code></pre></div>
 <p><code>name</code>、<code>run</code>のところをコピーして増やせばコマンドを増やすことができる。</p>
-<h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_テーマと文書の分離_8">テーマと文書の分離</h3>
+<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_テーマと文書の分離_8">テーマと文書の分離</h3>
 <p>テーマのリポジトリと文書のリポジトリを分離したい。
 これをすることで、
 文書のリポジトリでは本来の目的であるメモやブログの文章に関するcommitだけ（レンダリングの設定ファイルは残ってしまうかもだが）、
@@ -274,7 +274,7 @@ HTTPサーバを介して（オプションで指定したテーマなどで）�
 <ul>
 <li><a href="https://pypi.org/project/aoirint-miyadaiku-theme-blog/">pypi:aoirint-miyadaiku-theme-blog</a></li>
 </ul>
-<h3 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_文書の書きやすさ_9">文書の書きやすさ</h3>
+<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_文書の書きやすさ_9">文書の書きやすさ</h3>
 <p>日付の表示やタグ検索などレンダリング時の質を上げたければ、どうしても文書側にメタデータを付加しなければならないところがネックではある気はするが、
 GitHub上でJekyll的なYAMLヘッダ（Miyadaikuも同様）のついたMarkdownを表示してみたところ、メタデータを整形表示してくれた。
 この様子ならある程度互換性が期待できるし、そういう習慣をつけるのもいいのではないかなと思う。</p>
@@ -287,7 +287,7 @@ GitHub上でJekyll的なYAMLヘッダ（Miyadaikuも同様）のついたMarkdow
 </ul>
 <p>またUbuntu、Mac、WindowsのPCを時と場所と気分と目的によって切り替えて使っていて、タイミングによっては特定のPCにアクセスできないようなこともあるので、基本的に文書がリモートにないと面倒なのだが、（あんまり分散管理という感じがしないが）GitHubを経由して同期すればいいというのがGitを使う利点の一つであるように思う。</p>
 <p>それから、複数の書きかけの文書/記事があるとき、何度も変更して大量に履歴ができたり、複数の記事の履歴が入り乱れるとつらそう。これは記事ごとにブランチを切る（あとでmergeする）とか、squash/rebaseを使うとか、Pull Requestを使うとかしてうまく対処できないか考えている。</p>
-<h4 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_複数のコミットを1つにまとめる例_10">複数のコミットを1つにまとめる例</h4>
+<h4 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_複数のコミットを1つにまとめる例_10">複数のコミットを1つにまとめる例</h4>
 <p>このような4つのコミット履歴のあるブランチがあるとする。</p>
 <div class="highlight"><pre><span></span><code>branch A: W--X--Y--Z
 </code></pre></div>
@@ -313,7 +313,7 @@ s    ZZZZZZ COMMIT Z
 <ul>
 <li><a href="https://qiita.com/tsuuuuu_san/items/f708a9f7ea8ab8eb6945">【git rebase -i】gitのcommitをまとめる - Qiita</a></li>
 </ul>
-<h4 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_複数の記事を同時に書く際の例_11">複数の記事を同時に書く際の例</h4>
+<h4 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_複数の記事を同時に書く際の例_11">複数の記事を同時に書く際の例</h4>
 <p>まず、masterブランチ、記事Aを書いているブランチA、記事Bを書いているブランチBがあるとする。ブランチAとブランチBはmasterブランチの最終commit Xから分岐している。</p>
 <div class="highlight"><pre><span></span><code>master  : X
            \
@@ -334,7 +334,7 @@ branch B:            |--Z
 <ul>
 <li><a href="https://qiita.com/vsanna/items/451b42f886c599a16a55">fast-forwardマージから理解するgit rebase - Qiita</a></li>
 </ul>
-<h2 class="md_header_block" id="h_posts_miyadaiku_github_actions_md_Miyadaikuを使う_12">Miyadaikuを使う</h2>
+<h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_Miyadaikuを使う_12">Miyadaikuを使う</h2>
 <div class="highlight"><pre><span></span><code>pip3 install miyadaiku
 </code></pre></div>
 <p><code>miyadaiku==1.17.0</code>とする。
