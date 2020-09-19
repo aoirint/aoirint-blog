@@ -21,8 +21,8 @@
 
 <meta property="og:title" content="Atom + LaTeX in Docker - えやみぐさ" />
 
-<meta name="description" content="概要 LaTeXをホストにインストールせず、Docker内で動かしつつ、 Atomからこれを利用できるようにする。 Requirements Ubuntu 18.04 Docker Atom Atom Packages latex Atom Packages latexを入れれば最"/>
-<meta property="og:description" content="概要 LaTeXをホストにインストールせず、Docker内で動かしつつ、 Atomからこれを利用できるようにする。 Requirements Ubuntu 18.04 Docker Atom Atom Packages latex Atom Packages latexを入れれば最" />
+<meta name="description" content="Atom + LaTeX in Docker 概要 LaTeXをホストにインストールせず、Docker内で動かしつつ、 Atomからこれを利用できるようにする。 Requirements Ubuntu 18.04 Docker Atom Atom Packages latex Atom P"/>
+<meta property="og:description" content="Atom + LaTeX in Docker 概要 LaTeXをホストにインストールせず、Docker内で動かしつつ、 Atomからこれを利用できるようにする。 Requirements Ubuntu 18.04 Docker Atom Atom Packages latex Atom P" />
 
 <meta property="article:published_time" content="2020-09-17T08:35:00+09:00" />
 
@@ -172,10 +172,11 @@
 
 
 <div class="article-body">
-  <h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_概要_1">概要</h2>
+  <h1 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Atom_LaTeX_in_Docker_1">Atom + LaTeX in Docker</h1>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_概要_2">概要</h2>
 <p>LaTeXをホストにインストールせず、Docker内で動かしつつ、
 Atomからこれを利用できるようにする。</p>
-<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Requirements_2">Requirements</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Requirements_3">Requirements</h2>
 <ul>
 <li>Ubuntu 18.04</li>
 <li>Docker</li>
@@ -185,7 +186,7 @@ Atomからこれを利用できるようにする。</p>
 </ul>
 </li>
 </ul>
-<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Atom_Packages_3">Atom Packages</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Atom_Packages_4">Atom Packages</h2>
 <p><a href="https://atom.io/packages/latex">latex</a>を入れれば最低限ビルドコマンドは叩けるようになる。</p>
 <ul>
 <li><a href="https://atom.io/packages/latex">latex</a></li>
@@ -203,17 +204,17 @@ Atomからこれを利用できるようにする。</p>
 </ul>
 </li>
 </ul>
-<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Dockerイメージ_4">Dockerイメージ</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_Dockerイメージ_5">Dockerイメージ</h2>
 <p><a href="https://hub.docker.com/r/paperist/alpine-texlive-ja/">paperist/alpine-texlive-ja</a>を使う。</p>
 <div class="highlight"><pre><span></span><code>sudo docker pull paperist/alpine-texlive-ja
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_non_root_Docker_5">non-root Docker</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_non_root_Docker_6">non-root Docker</h2>
 <p><code>sudo</code>なしでDockerを実行できるようにする。AtomからDockerコンテナを作るのに必要。</p>
 <p>ユーザをdockerグループに追加したあと再ログインする。新しくdockerグループが作られた直後は<code>newgrp docker</code>しなければならないことがあり、シェルごとにこれを実行する必要があるようなのでAtomに反映されず、この場合OSの再起動が必要。</p>
 <div class="highlight"><pre><span></span><code>sudo groupadd docker
 sudo adduser <span class="nv">$USER</span> docker
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_latexmkスクリプトを作る_6">latexmkスクリプトを作る</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_latexmkスクリプトを作る_7">latexmkスクリプトを作る</h2>
 <p><code>/usr/texbin/latexmk</code>（手動で<code>latex</code>の<code>TeX Path</code>を設定するか、デフォルトでPATHの通っている場所ならどこでもいい）に以下のシェルスクリプトを作成し、<code>chmod +x /usr/texbin/latexmk</code>しておく。</p>
 <p><code>${HOME}/.atom/packages/latex/resources</code>のマウントは<code>latex</code>の<code>Extended Build Mode</code>が有効のときに<code>${HOME}/.atom/packages/latex/resources/latexmkrc</code>が読み出されるため設定している（このパスはホストのAtomから渡されるのでマウント先パスもホストと同じ）。この機能を無効にしていれば不要。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
@@ -223,7 +224,7 @@ docker run --rm <span class="se">\</span>
   paperist/alpine-texlive-ja <span class="se">\</span>
   latexmk <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_サンプルTeXファイル_7">サンプルTeXファイル</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_サンプルTeXファイル_8">サンプルTeXファイル</h2>
 <div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="na">[10pt,a4paper]</span><span class="nb">{</span>jsarticle<span class="nb">}</span>
 
 <span class="k">\title</span><span class="nb">{</span>My Title<span class="nb">}</span>
@@ -237,10 +238,10 @@ docker run --rm <span class="se">\</span>
 
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_注意点_8">注意点</h2>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_注意点_9">注意点</h2>
 <p>カレントディレクトリ以下をマウントするため、外部においた<code>.sty</code>などは読み込めないので注意（デフォルトでロードされるディレクトリがあれば追加のマウントをすればOKと思われる）。</p>
-<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_おまけ_9">おまけ</h2>
-<h3 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_stderrにコマンドを吐き出してエラー終了するスクリプト_10">stderrにコマンドを吐き出してエラー終了するスクリプト</h3>
+<h2 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_おまけ_10">おまけ</h2>
+<h3 class="md_header_block" id="h_posts_2020_atom_latex_docker_index_md_stderrにコマンドを吐き出してエラー終了するスクリプト_11">stderrにコマンドを吐き出してエラー終了するスクリプト</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="nb">echo</span> <span class="nv">$0</span> <span class="nv">$@</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
 <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
