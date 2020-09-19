@@ -170,8 +170,9 @@
 <p><a href="https://linux.just4fun.biz/?Linux%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E3%81%AEWindows%E6%99%82%E5%88%BB%E3%82%92UTC%E3%81%AB%E3%81%99%E3%82%8B" title="Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす">Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす</a></p>
 <p>デュアルブート環境では、BIOSの時刻を介してWindows側の時刻管理（ローカル時間）とUbuntu側の時刻管理（UTC時間）が衝突して、タイムゾーンの時差分、時計がずれてしまう。ここでは、Windows側の時刻管理をUTC時間にするようにレジストリを変更して対処する。</p>
 <p>Windows上で管理者権限でコマンドプロンプトを起動し、以下のコマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_NTPサーバの設定_プロキシ環境__2">NTPサーバの設定（プロキシ環境）</h2>
 <ul>
 <li><a href="https://sicklylife.hatenablog.com/entry/2016/02/03/201557" title="Ubuntu 18.04 / 16.04 で時刻合わせの設定を変更する - Sickly Life Blog">Ubuntu 18.04 / 16.04 で時刻合わせの設定を変更する - Sickly Life Blog</a></li>
@@ -181,64 +182,106 @@
 <p>時刻同期のためプロキシ内のNTPサーバを設定する。</p>
 <p>Settings &gt; Details &gt; Date &amp; Timeで使われるNTPサービスは<code>systemd-timesyncd</code>。</p>
 <p>設定ファイルの<code>/etc/systemd/timesyncd.conf</code>を開いて編集する。</p>
-<div class="highlight"><pre><span></span><code>[Time]
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[Time]
 NTP=YOUR_NTP_SERVER
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo systemctl restart systemd-timesyncd
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo systemctl restart systemd-timesyncd
 </code></pre></div>
+</td></tr></table>
 <p>これで時刻が同期される。</p>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_プロキシの設定_1_Environment_Variable_apt_3">プロキシの設定 (1) Environment Variable, apt</h2>
 <p>Settings &gt; Networkからプロキシを設定する。設定した内容は<code>HTTP_PROXY</code>などの環境変数に出力される。スキーム部分は不要（OS側で付けるので二重プロトコルになってしまう）。</p>
 <p>また/etc/apt/apt.confを作成し、プロキシ設定を追記する</p>
-<div class="highlight"><pre><span></span><code>Acquire::http::proxy "http://YOUR_HTTP_PROXY";
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Acquire::http::proxy "http://YOUR_HTTP_PROXY";
 Acquire::https::proxy "http://YOUR_HTTP_PROXY";
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_Package_Indexの更新とPackageの更新_4">Package Indexの更新とPackageの更新</h2>
-<div class="highlight"><pre><span></span><code>sudo apt update
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt update
 sudo apt upgrade -y
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_git_ビルドツールほかのインストール_5">git、ビルドツールほかのインストール</h2>
-<div class="highlight"><pre><span></span><code>sudo apt install -y <span class="se">\</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install -y <span class="se">\</span>
   git <span class="se">\</span>
   build-essential <span class="se">\</span>
   make <span class="se">\</span>
   cmake <span class="se">\</span>
   vim
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>git config --global core.editor vim
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git config --global core.editor vim
 git config --global credential.helper cache
 git config --global user.name YOUR_NAME
 git config --global user.email YOUR_EMAIL
 </code></pre></div>
+</td></tr></table>
 <p>~/.vimrc</p>
-<div class="highlight"><pre><span></span><code>set shiftwidth=4
-set tabstop=4
-set expandtab
-"set number
-set cursorline
-set smartindent
-set laststatus=2
-syntax enable
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">set</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span>
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>
+<span class="k">set</span> <span class="nb">expandtab</span>
+<span class="c">"set number</span>
+<span class="k">set</span> <span class="nb">cursorline</span>
+<span class="k">set</span> <span class="nb">smartindent</span>
+<span class="k">set</span> <span class="nb">laststatus</span><span class="p">=</span><span class="m">2</span>
+<span class="nb">syntax</span> enable
 
-set hlsearch
-nmap &lt;Esc&gt;&lt;Esc&gt; :nohlsearch&lt;CR&gt;&lt;Esc&gt;
+<span class="k">set</span> <span class="nb">hlsearch</span>
+nmap <span class="p">&lt;</span>Esc<span class="p">&gt;&lt;</span>Esc<span class="p">&gt;</span> :<span class="k">nohlsearch</span><span class="p">&lt;</span>CR<span class="p">&gt;&lt;</span>Esc<span class="p">&gt;</span>
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_日本語IME_ibus_mozc_言語サポートのインストール_6">日本語IME（ibus-mozc）、言語サポートのインストール</h2>
-<div class="highlight"><pre><span></span><code>sudo apt install -y ibus-mozc
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install -y ibus-mozc
 
 ibus restart
 gsettings <span class="nb">set</span> org.gnome.desktop.input-sources sources <span class="s2">"[('ibus', 'mozc-jp'), ('xkb', 'jp')]"</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo apt install -y <span class="k">$(</span>check-language-support<span class="k">)</span>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install -y <span class="k">$(</span>check-language-support<span class="k">)</span>
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_プロキシの設定_2_git_7">プロキシの設定 (2) git</h2>
-<div class="highlight"><pre><span></span><code>git config --global http.proxy <span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git config --global http.proxy <span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span>
 git config --global https.proxy <span class="si">${</span><span class="nv">HTTPS_PROXY</span><span class="si">}</span>
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_pyenv_Pythonのインストール_8">pyenv、Pythonのインストール</h2>
 <p><a href="https://github.com/pyenv/pyenv#basic-github-checkout">pyenv/pyenv: Simple Python version management</a></p>
 <p>新しいPythonを使うため、それからシステムと開発環境を分離してモジュール管理をaptとpipで分けて衝突事故を起こさないようにするため、pyenvを使うのが安定。</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 <span class="nb">echo</span> <span class="s1">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc
 <span class="nb">echo</span> <span class="s1">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc
@@ -247,10 +290,29 @@ git config --global https.proxy <span class="si">${</span><span class="nv">HTTPS
 
 <span class="nb">source</span> ~/.bashrc
 </code></pre></div>
+</td></tr></table>
 <ul>
 <li><a href="https://github.com/pyenv/pyenv/wiki/common-build-problems" title="Common build problems · pyenv/pyenv Wiki">Common build problems · pyenv/pyenv Wiki</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>sudo apt install -y <span class="se">\</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install -y <span class="se">\</span>
   libssl-dev <span class="se">\</span>
   zlib1g-dev <span class="se">\</span>
   libbz2-dev <span class="se">\</span>
@@ -270,9 +332,30 @@ git config --global https.proxy <span class="si">${</span><span class="nv">HTTPS
 pyenv install <span class="m">3</span>.8.5
 pyenv global <span class="m">3</span>.8.5
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_Docker_Docker_Composeのインストール_9">Docker &amp; Docker Composeのインストール</h2>
 <p><a href="https://docs.docker.com/engine/install/ubuntu/" title="Install Docker Engine on Ubuntu | Docker Documentation">Install Docker Engine on Ubuntu | Docker Documentation</a></p>
-<div class="highlight"><pre><span></span><code>sudo apt remove docker docker-engine docker.io containerd runc
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt remove docker docker-engine docker.io containerd runc
 sudo apt update
 sudo apt install -y <span class="se">\</span>
     apt-transport-https <span class="se">\</span>
@@ -294,29 +377,44 @@ sudo apt update
 
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 </code></pre></div>
+</td></tr></table>
 <p><a href="https://docs.docker.com/compose/install/" title="Install Docker Compose | Docker Documentation">Install Docker Compose | Docker Documentation</a></p>
-<div class="highlight"><pre><span></span><code>sudo curl -L <span class="s2">"https://github.com/docker/compose/releases/download/1.27.3/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">"</span> <span class="se">\</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo curl -L <span class="s2">"https://github.com/docker/compose/releases/download/1.27.3/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">"</span> <span class="se">\</span>
   -o /usr/local/bin/docker-compose <span class="se">\</span>
   -x <span class="s2">"</span><span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span><span class="s2">"</span>
 sudo chmod +x /usr/local/bin/docker-compose
 </code></pre></div>
+</td></tr></table>
 <p>一応、sudoせずにdockerを実行できるようにしておく。</p>
-<div class="highlight"><pre><span></span><code>sudo groupadd docker
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo groupadd docker
 sudo adduser <span class="nv">$USER</span> docker
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_プロキシの設定_3_Docker_10">プロキシの設定 (3) Docker</h2>
-<div class="highlight"><pre><span></span><code>sudo systemctl edit docker
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo systemctl edit docker
 </code></pre></div>
+</td></tr></table>
 <p>このコマンドで開いたファイルに以下を追記する。</p>
-<div class="highlight"><pre><span></span><code>[Service]
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[Service]
 Environment="HTTP_PROXY=YOUR_HTTP_PROXY"
 Environment="HTTPS_PROXY=YOUR_HTTP_PROXY"
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo systemctl restart docker
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo systemctl restart docker
 
 docker pull hello-world
 docker run --rm hello-world
 </code></pre></div>
+</td></tr></table>
 <p>正常に実行されればOK。</p>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_CUDA_NVIDIA_Driverのインストール_11">CUDA &amp; NVIDIA Driverのインストール</h2>
 <p><a href="https://pytorch.org/get-started/locally/" title="Start Locally | PyTorch">Start Locally | PyTorch</a></p>
@@ -325,38 +423,64 @@ docker run --rm hello-world
 <p>CUDA Installerのrunfileを使って、runfileに同梱されているNVIDIA Driverを同時に入れるのが安定（2.5GBくらいで結構重いが）。</p>
 <p><a href="https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=1804&amp;target_type=runfilelocal">Download runfile installer for Ubuntu 18.04</a></p>
 <p>CUIモードでないとインストールに失敗するので、ダウンロードが終わったら一度デスクトップからログアウトし、Ctrl+Alt+F2などでCUIモードにする。</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl stop gdm
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo systemctl stop gdm
 <span class="c1"># sudo systemctl stop lightdm # for Ubuntu 16.04</span>
 </code></pre></div>
+</td></tr></table>
 <p>これでデスクトップマネージャを止めてからインストールを始める（再起動してGUIモードでログインせずにCUIモードにして実行でもいけるかも）。</p>
-<div class="highlight"><pre><span></span><code>wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
 sudo sh cuda_10.2.89_440.33.01_linux.run
 </code></pre></div>
+</td></tr></table>
 <p>~/.bashrcに以下を追記する。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
 <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
 </code></pre></div>
+</td></tr></table>
 <p>PyTorchが入ったあと（どちらを先にいれてもいい）、</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>でTrueが返ってくればOK。</p>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_OpenCV_Python_Numpy_PyTorchほかのインストール_12">OpenCV-Python, Numpy, PyTorchほかのインストール</h2>
-<div class="highlight"><pre><span></span><code>pip3 install -U pip
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install -U pip
 pip3 install -U <span class="se">\</span>
   opencv-python <span class="se">\</span>
   numpy <span class="se">\</span>
   Pillow <span class="se">\</span>
   --proxy <span class="s2">"</span><span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>pip3 install -U <span class="se">\</span>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install -U <span class="se">\</span>
   torch <span class="se">\</span>
   torchvision <span class="se">\</span>
   torchtext <span class="se">\</span>
   torchaudio <span class="se">\</span>
   --proxy <span class="s2">"</span><span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>pip3 install -U <span class="se">\</span>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install -U <span class="se">\</span>
   matplotlib <span class="se">\</span>
   tqdm <span class="se">\</span>
   jupyter <span class="se">\</span>
@@ -364,28 +488,39 @@ pip3 install -U <span class="se">\</span>
   tensorboardX <span class="se">\</span>
   --proxy <span class="s2">"</span><span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_SSH_Serverほかのインストール_13">SSH Serverほかのインストール</h2>
-<div class="highlight"><pre><span></span><code>sudo apt install -y openssh-server net-tools
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install -y openssh-server net-tools
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>ifconfig
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ifconfig
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo vim /etc/ssh/sshd_config
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo vim /etc/ssh/sshd_config
 </code></pre></div>
+</td></tr></table>
 <p>必要に応じてパスワード認証を無効にする。</p>
-<div class="highlight"><pre><span></span><code>PasswordAuthentication no
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PasswordAuthentication no
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_ownCloudのインストール_14">ownCloudのインストール</h2>
 <p><a href="https://software.opensuse.org/download/package?project=isv:ownCloud:desktop&amp;package=owncloud-client" title="Install package isv:ownCloud:desktop / owncloud-client">Install package isv:ownCloud:desktop / owncloud-client</a></p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_18.04/ /'</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/isv:ownCloud:desktop.list
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_18.04/ /'</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/isv:ownCloud:desktop.list
 curl -fsSL https://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_18.04/Release.key <span class="p">|</span> gpg --dearmor <span class="p">|</span> sudo tee /etc/apt/trusted.gpg.d/isv:ownCloud:desktop.gpg &gt; /dev/null
 sudo apt update
 sudo apt install owncloud-client
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_その他のインストール_15">その他のインストール</h2>
-<div class="highlight"><pre><span></span><code>ssh-keygen -f KEYNAME
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh-keygen -f KEYNAME
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo apt install tmux autossh
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install tmux autossh
 </code></pre></div>
+</td></tr></table>
 <h2 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_おまけ_16">おまけ</h2>
 <h3 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_sshのプロキシ設定_17">sshのプロキシ設定</h3>
 <ul>
@@ -397,7 +532,14 @@ sudo apt install owncloud-client
 </li>
 </ul>
 <p>~/.ssh/configの<code>Host</code>の下に書く。Windowsの場合は<code>connect</code>をビルドする必要がある。</p>
-<div class="highlight"><pre><span></span><code>    # Linux
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    # Linux
     ProxyCommand nc -X connect -x YOUR_HTTP_PROXY %h %p
 
     # Windows
@@ -406,9 +548,12 @@ sudo apt install owncloud-client
     # Mac
     ProxyCommand ncat --proxy-type http --proxy YOUR_HTTP_PROXY %h %p
 </code></pre></div>
-<div class="highlight"><pre><span></span><code># for build `connect.c` on Windows
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># for build `connect.c` on Windows
 gcc -o connect -lwsock32 connect.c -lws2_32
 </code></pre></div>
+</td></tr></table>
 </div>
 
 
