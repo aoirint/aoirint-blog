@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Fri, 18 Sep 2020 20:00:00 +0900</lastBuildDate><item><title>GPU PC (Desktop) のセットアップメモ</title><link>https://blog.aoirint.com/posts/2020/gpu_pc_setup/</link><description>&lt;h1 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ_1"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Fri, 18 Sep 2020 20:00:00 +0900</lastBuildDate><item><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link>https://blog.aoirint.com/posts/2020/miyadaiku_github_actions/</link><description>&lt;h1 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータMiyadaiku_GitHub_Actions_GitHub_Pagesでブログを作る_1"&gt;静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る&lt;/h1&gt;
+&lt;h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_概要_2"&gt;概要&lt;/h2&gt;
+&lt;p&gt;新しく静的サイトジェネレータでブログ環境を整備した。
+細かい使い方には触れないが、構成を書いておく。&lt;/p&gt;
+&lt;h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータとCI_CD_3"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
+&lt;h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータ_4"&gt;静的サイトジェネレータ&lt;/h3&gt;
+&lt;p&gt;静的サイトジェネレータというのはSphinx（Python製）とかJekyll（Ruby製、GitHub Pages標準らしい）とかHugo（Go製）みたいなやつで、
+MarkdownだとかreStructuredTextだとかのファイル群からHTML&lt;/p&gt;</description><pubDate>Wed, 09 Sep 2020 09:48:39 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/2020/miyadaiku_github_actions/</guid></item><item><title>GPU PC (Desktop) のセットアップメモ</title><link>https://blog.aoirint.com/posts/2020/gpu_pc_setup/</link><description>&lt;h1 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ_1"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)"&gt;Ubuntu 18.04.5 LTS (Bionic Beaver)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。&lt;/p&gt;
@@ -32,11 +39,4 @@ Atomからこれを利用できるようにする。&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;PDFプレビュー&lt;ul&gt;
-&lt;li&gt;&lt;a href=""&gt;pdf-view&lt;/a&gt;（メモリリーク? Atomを一度閉じれば解消&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Thu, 17 Sep 2020 08:35:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-17 08:35:00.000000:/posts/2020/atom_latex_docker/</guid></item><item><title>静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</title><link>https://blog.aoirint.com/posts/2020/miyadaiku_github_actions/</link><description>&lt;h1 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータMiyadaiku_GitHub_Actions_GitHub_Pagesでブログを作る_1"&gt;静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る&lt;/h1&gt;
-&lt;h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_概要_2"&gt;概要&lt;/h2&gt;
-&lt;p&gt;新しく静的サイトジェネレータでブログ環境を整備した。
-細かい使い方には触れないが、構成を書いておく。&lt;/p&gt;
-&lt;h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータとCI_CD_3"&gt;静的サイトジェネレータとCI/CD&lt;/h2&gt;
-&lt;h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータ_4"&gt;静的サイトジェネレータ&lt;/h3&gt;
-&lt;p&gt;静的サイトジェネレータというのはSphinx（Python製）とかJekyll（Ruby製、GitHub Pages標準らしい）とかHugo（Go製）みたいなやつで、
-MarkdownだとかreStructuredTextだとかのファイル群からHTML&lt;/p&gt;</description><pubDate>Wed, 09 Sep 2020 09:48:39 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-09 09:48:39.000000:/posts/2020/miyadaiku_github_actions/</guid></item></channel></rss>
+&lt;li&gt;&lt;a href=""&gt;pdf-view&lt;/a&gt;（メモリリーク? Atomを一度閉じれば解消&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Thu, 17 Sep 2020 08:35:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-17 08:35:00.000000:/posts/2020/atom_latex_docker/</guid></item></channel></rss>
