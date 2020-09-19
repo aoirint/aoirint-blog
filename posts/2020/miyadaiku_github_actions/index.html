@@ -221,7 +221,44 @@ HTTPサーバを介して（オプションで指定したテーマなどで）�
 <p>この部分は適切に.gitignoreやCI/CDを設定すれば大抵の静的サイトジェネレータで実現可能だろうと思う。
 今回はGitHub Actionsを使って、GitHub上の仮想環境にリポジトリから文書を読み込んでHTMLを自動生成し、文書と履歴を共有しない別ブランチ（gh-pages）に自動でcommitされるように設定する。</p>
 <p>GitHub Actionsを動かすには<code>.github/workflows</code>以下にYAMLファイルを配置する。例えばこのような感じ。GitHub Pagesへのデプロイ（gh-pagesブランチの更新）には<a href="https://github.com/peaceiris/actions-gh-pages">github:peaceiris/actions-gh-pages</a>を使っている。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># deploy.yml</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># deploy.yml</span>
 <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deploy</span>
 
 <span class="c1"># Controls when the action will run. Triggers the workflow on push or pull request</span>
@@ -260,6 +297,7 @@ HTTPサーバを介して（オプションで指定したテーマなどで）�
           <span class="nt">github_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
           <span class="nt">publish_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./public</span>
 </code></pre></div>
+</td></tr></table>
 <p><code>name</code>、<code>run</code>のところをコピーして増やせばコマンドを増やすことができる。</p>
 <h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_テーマと文書の分離_9">テーマと文書の分離</h3>
 <p>テーマのリポジトリと文書のリポジトリを分離したい。
@@ -333,12 +371,32 @@ branch B:            |--Z
 <li><a href="https://qiita.com/vsanna/items/451b42f886c599a16a55">fast-forwardマージから理解するgit rebase - Qiita</a></li>
 </ul>
 <h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_Miyadaikuを使う_13">Miyadaikuを使う</h2>
-<div class="highlight"><pre><span></span><code>pip3 install miyadaiku
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install miyadaiku
 </code></pre></div>
+</td></tr></table>
 <p><code>miyadaiku==1.17.0</code>とする。
 Miyadaikuをpipで入れると<code>miyadaiku-start</code>、<code>miyadaiku-build</code>コマンドが使えるようになる。</p>
 <p><code>miyadaiku-start</code>は空のMiyadaikuプロジェクトを作成するコマンド。といっても空の<code>files</code>、<code>templates</code>ディレクトリ、サンプルのMarkdownファイル<code>index.md</code>の入った<code>contents</code>ディレクトリ、デフォルトのシンプルなコンフィグファイル<code>config.yml</code>が生成されるだけ。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Miyadaiku config file</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Miyadaiku config file</span>
 
 <span class="c1"># Base URL of the site</span>
 <span class="nt">site_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://localhost:8888/</span>
@@ -359,6 +417,7 @@ Miyadaikuをpipで入れると<code>miyadaiku-start</code>、<code>miyadaiku-bui
 <span class="c1"># themes:</span>
 <span class="c1">#   - miyadaiku.themes.sample.blog</span>
 </code></pre></div>
+</td></tr></table>
 <p><code>files</code>ディレクトリは、汎用的な画像やCSS、JSを置くのに使う。このディレクトリの内容はそのまま出力ディレクトリにコピーされる。
 <code>templates</code>ディレクトリには、Jinja2テンプレートを配置する。<code>contents</code>ディレクトリは、中に置いたMarkdownファイルなどがHTMLに変換されたものが出力ディレクトリに吐き出される。</p>
 <p><code>config.yml</code>の<code>themes</code>にpipで入れたテーマのモジュール名を書くことで、そのモジュール内の<code>contents</code>、<code>files</code>、<code>templates</code>が使えるようになる。<code>templates</code>内のHTMLテンプレート（<code>page_index.html</code>など）だけでなく、<code>contents</code>内の記事一覧を表示する<code>index.yml</code>などがテーマで用意されていれば、自分で作る必要はないみたい。</p>
@@ -369,7 +428,36 @@ Miyadaikuをpipで入れると<code>miyadaiku-start</code>、<code>miyadaiku-bui
 /outputs
 </code></pre></div>
 <p><code>config.yml</code>は<code>pip3 install aoirint_miyadaiku_theme_blog</code>したうえで、次のようにしている。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Miyadaiku config file</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Miyadaiku config file</span>
 
 <span class="c1"># Base URL of the site</span>
 <span class="nt">site_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://www.example.com</span>
@@ -400,6 +488,7 @@ Miyadaikuをpipで入れると<code>miyadaiku-start</code>、<code>miyadaiku-bui
 <span class="nt">themes</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">aoirint_miyadaiku_theme_blog</span>
 </code></pre></div>
+</td></tr></table>
 <p>ディレクトリ構成はこのような感じ。</p>
 <div class="highlight"><pre><span></span><code>blog-repository/
 |- .git/            # git管理
