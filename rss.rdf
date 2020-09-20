@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Fri, 18 Sep 2020 20:00:00 +0900</lastBuildDate><item><title>GPU PC (Desktop) のセットアップメモ</title><link>https://blog.aoirint.com/posts/2020/gpu_pc_setup/</link><description>&lt;h1 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ_1"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 20 Sep 2020 20:00:00 +0900</lastBuildDate><item><title>Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定</title><link>https://blog.aoirint.com/posts/2020/ubuntu_kernel_update/</link><description>&lt;h1 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1"&gt;Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定&lt;/h1&gt;
+&lt;p&gt;環境の整理を兼ねて、UbuntuのKernelのアップデートをしたので、そのときのメモ。&lt;/p&gt;
+&lt;h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__2"&gt;Ubuntu 18.04のKernelをアップデートした（HWE Kernel）&lt;/h2&gt;
+&lt;h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて_3"&gt;カーネルバージョンについて&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;/lib/modules&lt;/code&gt;を見る限りインストール時のバージョンは&lt;code&gt;4.10.0-28&lt;/code&gt;で、
+&lt;code&gt;/usr/src&lt;/code&gt;を見る限り&lt;code&gt;4.15.0-115&lt;/code&gt;をしばらく使ったあと、
+&lt;code&gt;4.16.18&lt;/code&gt;に更新していた。&lt;/p&gt;
+&lt;p&gt;バージョン&lt;code&gt;4.10.x&lt;/code&gt;はおそらくUb&lt;/p&gt;</description><pubDate>Sun, 20 Sep 2020 20:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-20 20:00:00.000000:/posts/2020/ubuntu_kernel_update/</guid></item><item><title>GPU PC (Desktop) のセットアップメモ</title><link>https://blog.aoirint.com/posts/2020/gpu_pc_setup/</link><description>&lt;h1 class="md_header_block" id="h_posts_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ_1"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)"&gt;Ubuntu 18.04.5 LTS (Bionic Beaver)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。&lt;/p&gt;
