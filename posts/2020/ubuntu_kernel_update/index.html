@@ -215,6 +215,15 @@
         AFStatus: TP-
     Kernel modules: e1000e  &lt;-- これが動かない
 </code></pre></div>
+<p>エラーログ</p>
+<div class="highlight"><pre><span></span><code>$ zegrep e1000e /var/log/kern.log*
+kernel: <span class="o">[</span>    <span class="m">1</span>.296005<span class="o">]</span> e1000e: Intel<span class="o">(</span>R<span class="o">)</span> PRO/1000 Network Driver - <span class="m">3</span>.2.6-k
+kernel: <span class="o">[</span>    <span class="m">1</span>.296006<span class="o">]</span> e1000e: Copyright<span class="o">(</span>c<span class="o">)</span> <span class="m">1999</span> - <span class="m">2015</span> Intel Corporation.
+kernel: <span class="o">[</span>    <span class="m">1</span>.296023<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: enabling device <span class="o">(</span><span class="m">0000</span> -&gt; <span class="m">0002</span><span class="o">)</span>
+kernel: <span class="o">[</span>    <span class="m">1</span>.296199<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: Interrupt Throttling Rate <span class="o">(</span>ints/sec<span class="o">)</span> <span class="nb">set</span> to dynamic conservative mode
+kernel: <span class="o">[</span>    <span class="m">1</span>.546779<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: The NVM Checksum Is Not Valid
+kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="o">]</span> e1000e: probe of <span class="m">0000</span>:00:1f.6 failed with error -5
+</code></pre></div>
 <h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンとe1000eのビルドについて_4">カーネルバージョンとe1000eのビルドについて</h2>
 <p>4.15.xから4.16.xにアップデートするときにはUKUU（Ubuntu Kernel Update Utility）を使ってアップデートしていた。
 このとき参考にしたサイト： <a href="https://linuxhint.com/upgrade-kernel-ubuntu-1804/" title="Upgrade Kernel on Ubuntu 18.04 – Linux Hint">Upgrade Kernel on Ubuntu 18.04 – Linux Hint</a></p>
@@ -394,21 +403,19 @@ depmod...
 
 DKMS: install completed.
 </code></pre></div>
-<p><code>nouveau</code>の無効化にならってデフォルトの<code>e1000e</code>を無効化する。</p>
+<p><a href="https://blog.spiralray.net/archives/474" title="オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note">オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note</a></p>
+<p>デフォルトの<code>e1000e</code>を無効化する。</p>
 <div class="highlight"><pre><span></span><code>sudo modprobe -r e1000e
-<span class="nb">printf</span> <span class="s2">"# disable default e1000e driver; use self-built version instead.\nblacklist e1000e\n"</span> <span class="p">|</span> sudo tee /etc/modprobe.d/blacklist-e1000e.conf
+
+<span class="c1"># 再起動時にロードされないようにnouveauにならって設定しようとしたが、うまくいかなかった</span>
+<span class="c1"># printf "# disable default e1000e driver; use self-built version instead.\nblacklist e1000e\n" | sudo tee /etc/modprobe.d/blacklist-e1000e.conf</span>
 </code></pre></div>
 <p>自動でモジュールが読み込まれないと思われるので、<code>dkms</code>の方の<code>e1000e</code>を<code>modprobe</code>を使って手動で読み込む。</p>
 <div class="highlight"><pre><span></span><code>sudo modprobe e1000e-dkms
+modinfo e1000e-dkms
 </code></pre></div>
-<p>e1000e関係のログをみる：</p>
-<div class="highlight"><pre><span></span><code>$ zegrep e1000e /var/log/kern.log*
-kernel: <span class="o">[</span>    <span class="m">1</span>.296005<span class="o">]</span> e1000e: Intel<span class="o">(</span>R<span class="o">)</span> PRO/1000 Network Driver - <span class="m">3</span>.2.6-k
-kernel: <span class="o">[</span>    <span class="m">1</span>.296006<span class="o">]</span> e1000e: Copyright<span class="o">(</span>c<span class="o">)</span> <span class="m">1999</span> - <span class="m">2015</span> Intel Corporation.
-kernel: <span class="o">[</span>    <span class="m">1</span>.296023<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: enabling device <span class="o">(</span><span class="m">0000</span> -&gt; <span class="m">0002</span><span class="o">)</span>
-kernel: <span class="o">[</span>    <span class="m">1</span>.296199<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: Interrupt Throttling Rate <span class="o">(</span>ints/sec<span class="o">)</span> <span class="nb">set</span> to dynamic conservative mode
-kernel: <span class="o">[</span>    <span class="m">1</span>.546779<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: The NVM Checksum Is Not Valid
-kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="o">]</span> e1000e: probe of <span class="m">0000</span>:00:1f.6 failed with error -5
+<p>以下のコマンドで以降の起動時に現在読み込まれているモジュールが自動で読み込まれるようになる。</p>
+<div class="highlight"><pre><span></span><code>sudo update-initramfs -u
 </code></pre></div>
 <h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_6">セキュリティアップデートについて</h2>
 <ul>
