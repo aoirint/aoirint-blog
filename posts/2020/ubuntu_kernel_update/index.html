@@ -403,9 +403,164 @@ e1000eの自動ビルドはおそらく無駄で（4.10から4.15では意味が
 </ul>
 <p>Ubuntu 18.04の場合、<code>linux-generic-hwe-18.04</code>が安定版、<code>linux-generic-hwe-18.04-edge</code>が開発版ということだろうか。
 今回は安定性を重視するので安定版を選んでアップデートする。</p>
-<p>``
-sudo apt install linux-generic-hwe-18.04
-```</p>
+<div class="highlight"><pre><span></span><code>sudo apt install linux-generic-hwe-18.04
+</code></pre></div>
+<p>以下のようになったので、このシステムでaptが管理していたカーネルバージョンは<code>4.15.0-115</code>だったことがわかる。
+UKUUがgrubの設定を書き換えてデフォルトで使用するカーネルを変更していたと思われる。</p>
+<div class="highlight"><pre><span></span><code>The following packages were automatically installed and are no longer required:
+  linux-headers-4.15.0-115 linux-headers-4.15.0-115-generic
+  linux-image-4.15.0-115-generic linux-modules-4.15.0-115-generic
+  linux-modules-extra-4.15.0-115-generic
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ sudo update-grub2
+Sourcing file <span class="sb">`</span>/etc/default/grub<span class="err">'</span>
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-5.4.42-050442-generic
+Found initrd image: /boot/initrd.img-5.4.42-050442-generic
+Found linux image: /boot/vmlinuz-5.4.0-47-generic
+Found initrd image: /boot/initrd.img-5.4.0-47-generic
+Found linux image: /boot/vmlinuz-4.16.18-041618-generic
+Found initrd image: /boot/initrd.img-4.16.18-041618-generic
+Found linux image: /boot/vmlinuz-4.15.0-117-generic
+Found initrd image: /boot/initrd.img-4.15.0-117-generic
+Found linux image: /boot/vmlinuz-4.15.0-115-generic
+Found initrd image: /boot/initrd.img-4.15.0-115-generic
+Found Windows Boot Manager on /dev/sdc1@/EFI/Microsoft/Boot/bootmgfw.efi
+Adding boot menu entry <span class="k">for</span> EFI firmware configuration
+<span class="k">done</span>
+</code></pre></div>
+<p><code>/boot/grub/grub.cfg</code>をみると、</p>
+<div class="highlight"><pre><span></span><code>menuentry 'Ubuntu' --class ubuntu --class gnu-linux --class gnu --class os $menu
+entry_id_option 'gnulinux-simple-ed8cbed5-714e-4201-b606-c41d570f834d' {
+        recordfail
+        load_video
+        gfxmode $linux_gfx_mode
+        insmod gzio
+        if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+        insmod part_gpt
+        insmod ext2
+        set root='hd0,gpt1'
+        if [ x$feature_platform_search_hint = xy ]; then
+          search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt1 --hint-ef
+i=hd0,gpt1 --hint-baremetal=ahci0,gpt1  ed8cbed5-714e-4201-b606-c41d570f834d
+        else
+          search --no-floppy --fs-uuid --set=root ed8cbed5-714e-4201-b606-c41d570f834d
+        fi
+        linux   /boot/vmlinuz-5.4.42-050442-generic root=UUID=ed8cbed5-714e-4201-b606-c41d570f834d ro  quiet splash $vt_handoff
+        initrd  /boot/initrd.img-5.4.42-050442-generic
+}
+</code></pre></div>
+<p>このような記述があったので、grubメニューの0番目に表示される<code>Ubuntu</code>という項目は<code>5.4.42-050442</code>のカーネルを起動するようになっていることがわかる。
+この設定は<code>apt install linux-generic-hwe-18.04</code>のあと<code>update-grub2</code>しても変わらなかった。
+おそらくUKUUが自動で設定したと思われるが、これをaptの管理するカーネルになるようにしたい。</p>
+<div class="highlight"><pre><span></span><code>### BEGIN /etc/grub.d/10_linux ###
+</code></pre></div>
+<p>とあるので、この部分は<code>/etc/grub.d/10_linux</code>からインクルードされている。</p>
+<p>grub.d以下は標準出力をgrub.cfgに書き出し、エラー出力を<code>update-grub</code>したときに表示するような
+シェルスクリプトになっているようで、自動的にカーネルイメージを見つける作りになっているようだ。</p>
+<p>grubのメニューには<code>Ubuntu</code>（menuentry）、<code>Advanced options for Ubuntu</code>（submenu./men）のように並ぶ。</p>
+<p><a href="https://www.atmarkit.co.jp/ait/articles/1901/31/news048.html" title="【 grub2-set-default／grub-set-default 】コマンド――GRUB 2のデフォルト起動メニューを設定する：Linux基本コマンドTips（277） - ＠IT">【 grub2-set-default／grub-set-default 】コマンド――GRUB 2のデフォルト起動メニューを設定する：Linux基本コマンドTips（277） - ＠IT</a></p>
+<p>一番上のmenuentryを生成している<code>/etc/grub.d/10_linux</code>の一部：</p>
+<div class="highlight"><pre><span></span><code>    linux_entry <span class="s2">"</span><span class="si">${</span><span class="nv">OS</span><span class="si">}</span><span class="s2">"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">version</span><span class="si">}</span><span class="s2">"</span> simple <span class="se">\</span>
+    <span class="s2">"</span><span class="si">${</span><span class="nv">GRUB_CMDLINE_LINUX</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<p>関数linux_entryでは、第3引数に<code>simple</code>が指定されている場合、以下のようなコード（一部）でmenuentryを生成する。</p>
+<div class="highlight"><pre><span></span><code>linux_entry <span class="o">()</span>
+<span class="o">{</span>
+  <span class="nv">os</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+  <span class="nv">version</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+  <span class="nv">type</span><span class="o">=</span><span class="s2">"</span><span class="nv">$3</span><span class="s2">"</span>
+  <span class="nv">args</span><span class="o">=</span><span class="s2">"</span><span class="nv">$4</span><span class="s2">"</span>
+
+（略）
+
+      <span class="nb">echo</span> <span class="s2">"menuentry '</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$os</span><span class="s2">"</span> <span class="p">|</span> grub_quote<span class="k">)</span><span class="s2">' </span><span class="si">${</span><span class="nv">CLASS</span><span class="si">}</span><span class="s2"> \$menuentry_id_option 'gnulinux-simple-</span><span class="nv">$boot_device_id</span><span class="s2">' {"</span> <span class="p">|</span> sed <span class="s2">"s/^/</span><span class="nv">$submenu_indentation</span><span class="s2">/"</span>
+
+（略）
+
+        sed <span class="s2">"s/^/</span><span class="nv">$submenu_indentation</span><span class="s2">/"</span> <span class="s">&lt;&lt; EOF</span>
+<span class="s">        linux   ${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>${rel_dirname}や${basename}は関数<code>version_find_latest $list</code>から生成しているようだ。
+menuentryのループを回している部分では、以下のように<code>version_find_latest $list</code>を呼び出していて、
+<code>is_top_level</code>は初回のループで<code>true</code>になり、このとき一番上のメニューを生成する。
+関数<code>linux_entry</code>を呼び出しているところは上に書いたものと同じ部分である。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">is_top_level</span><span class="o">=</span><span class="nb">true</span>
+<span class="k">while</span> <span class="o">[</span> <span class="s2">"x</span><span class="nv">$list</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"x"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">do</span>
+  <span class="nv">linux</span><span class="o">=</span><span class="sb">`</span>version_find_latest <span class="nv">$list</span><span class="sb">`</span>
+
+（略）
+
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"x</span><span class="nv">$is_top_level</span><span class="s2">"</span> <span class="o">=</span> xtrue <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="s2">"x</span><span class="si">${</span><span class="nv">GRUB_DISABLE_SUBMENU</span><span class="si">}</span><span class="s2">"</span> !<span class="o">=</span> xy <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    linux_entry <span class="s2">"</span><span class="si">${</span><span class="nv">OS</span><span class="si">}</span><span class="s2">"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">version</span><span class="si">}</span><span class="s2">"</span> simple <span class="se">\</span>
+    <span class="s2">"</span><span class="si">${</span><span class="nv">GRUB_CMDLINE_LINUX</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="si">}</span><span class="s2">"</span>
+
+    <span class="nv">submenu_indentation</span><span class="o">=</span><span class="s2">"</span><span class="nv">$grub_tab</span><span class="s2">"</span>
+
+    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$boot_device_id</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">boot_device_id</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>grub_get_device_id <span class="s2">"</span><span class="si">${</span><span class="nv">GRUB_DEVICE</span><span class="si">}</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+    <span class="k">fi</span>
+    <span class="c1"># TRANSLATORS: %s is replaced with an OS name</span>
+    <span class="nb">echo</span> <span class="s2">"submenu '</span><span class="k">$(</span>gettext_printf <span class="s2">"Advanced options for %s"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">OS</span><span class="si">}</span><span class="s2">"</span> <span class="p">|</span> grub_quote<span class="k">)</span><span class="s2">' \$menuentry_id_option 'gnulinux-advanced-</span><span class="nv">$boot_device_id</span><span class="s2">' {"</span>
+    <span class="nv">is_top_level</span><span class="o">=</span><span class="nb">false</span>
+  <span class="k">fi</span>
+</code></pre></div>
+<p><code>$list</code>は以下のように生成される。</p>
+<div class="highlight"><pre><span></span><code>        list=
+        for i in /boot/vmlinuz-* /vmlinuz-* /boot/kernel-* ; do
+            if grub_file_is_not_garbage "$i" ; then list="$list $i" ; fi
+        done ;;
+</code></pre></div>
+<p>これで問題は関数<code>version_find_latest</code>のアルゴリズムということがわかった。</p>
+<p>関数<code>version_find_latest</code>は<code>/etc/grub.d/10_linux</code>にはないので、
+おそらくファイル先頭近くにある<code>. "$pkgdatadir/grub-mkconfig_lib"</code>の部分で読み出されていると思われる。</p>
+<p><code>$pkgdatadir</code>というのがどこかわからなかったので、<code>find</code>で雑に検索を掛けたところ、<code>/usr/lib/grub/grub-mkconfig_lib</code>を読み出していそうなことがわかった。
+以下は<code>/usr/lib/grub/grub-mkconfig_lib</code>の一部である。確かに<code>version_find_latest</code>があった。</p>
+<div class="highlight"><pre><span></span><code>version_test_gt <span class="o">()</span>
+<span class="o">{</span>
+  <span class="nv">version_test_gt_sedexp</span><span class="o">=</span><span class="s2">"s/[^-]*-//;s/[._-]\(pre\|rc\|test\|git\|old\|trunk\)/~\1/g"</span>
+  <span class="nv">version_test_gt_a</span><span class="o">=</span><span class="s2">"`echo "</span><span class="nv">$1</span><span class="s2">" | sed -e "</span><span class="nv">$version_test_gt_sedexp</span><span class="s2">"`"</span>
+  <span class="nv">version_test_gt_b</span><span class="o">=</span><span class="s2">"`echo "</span><span class="nv">$2</span><span class="s2">" | sed -e "</span><span class="nv">$version_test_gt_sedexp</span><span class="s2">"`"</span>
+  <span class="nv">version_test_gt_cmp</span><span class="o">=</span>gt
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"x</span><span class="nv">$version_test_gt_b</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"x"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="k">return</span> <span class="m">0</span>
+  <span class="k">fi</span>
+
+  <span class="c1"># GRUB_FLAVOUR_ORDER is an ordered list of kernels, in decreasing</span>
+  <span class="c1"># priority. Any items in the list take precedence over other kernels,</span>
+  <span class="c1"># and earlier flavours are preferred over later ones.</span>
+  <span class="k">for</span> flavour in <span class="si">${</span><span class="nv">GRUB_FLAVOUR_ORDER</span><span class="k">:-</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nv">version_test_gt_a_preferred</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$version_test_gt_a</span><span class="s2">"</span> <span class="p">|</span> grep --  <span class="s2">"-[0-9]*-</span><span class="nv">$flavour</span><span class="s2">\$"</span><span class="k">)</span>
+    <span class="nv">version_test_gt_b_preferred</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$version_test_gt_b</span><span class="s2">"</span> <span class="p">|</span> grep --  <span class="s2">"-[0-9]*-</span><span class="nv">$flavour</span><span class="s2">\$"</span><span class="k">)</span>
+
+    <span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$version_test_gt_a_preferred</span><span class="s2">"</span> -a -z <span class="s2">"</span><span class="nv">$version_test_gt_b_preferred</span><span class="s2">"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+      <span class="k">return</span> <span class="m">0</span>
+    <span class="k">elif</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$version_test_gt_a_preferred</span><span class="s2">"</span> -a -n <span class="s2">"</span><span class="nv">$version_test_gt_b_preferred</span><span class="s2">"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+      <span class="k">return</span> <span class="m">1</span>
+    <span class="k">fi</span>
+  <span class="k">done</span>
+
+  <span class="k">case</span> <span class="s2">"</span><span class="nv">$version_test_gt_a</span><span class="s2">:</span><span class="nv">$version_test_gt_b</span><span class="s2">"</span> in
+    *.old:*.old<span class="o">)</span> <span class="p">;;</span>
+    *.old:*<span class="o">)</span> <span class="nv">version_test_gt_a</span><span class="o">=</span><span class="s2">"`echo "</span><span class="nv">$version_test_gt_a</span><span class="s2">" | sed -e 's/\.old</span>$<span class="s2">//'`"</span> <span class="p">;</span> <span class="nv">version_test_gt_cmp</span><span class="o">=</span>gt <span class="p">;;</span>
+    *:*.old<span class="o">)</span> <span class="nv">version_test_gt_b</span><span class="o">=</span><span class="s2">"`echo "</span><span class="nv">$version_test_gt_b</span><span class="s2">" | sed -e 's/\.old</span>$<span class="s2">//'`"</span> <span class="p">;</span> <span class="nv">version_test_gt_cmp</span><span class="o">=</span>ge <span class="p">;;</span>
+  <span class="k">esac</span>
+  dpkg --compare-versions <span class="s2">"</span><span class="nv">$version_test_gt_a</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$version_test_gt_cmp</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$version_test_gt_b</span><span class="s2">"</span>
+  <span class="k">return</span> <span class="s2">"</span><span class="nv">$?</span><span class="s2">"</span>
+<span class="o">}</span>
+
+version_find_latest <span class="o">()</span>
+<span class="o">{</span>
+  <span class="nv">version_find_latest_a</span><span class="o">=</span><span class="s2">""</span>
+  <span class="k">for</span> i in <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> <span class="p">;</span> <span class="k">do</span>
+    <span class="k">if</span> version_test_gt <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$version_find_latest_a</span><span class="s2">"</span> <span class="p">;</span> <span class="k">then</span>
+      <span class="nv">version_find_latest_a</span><span class="o">=</span><span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span>
+    <span class="k">fi</span>
+  <span class="k">done</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$version_find_latest_a</span><span class="s2">"</span>
+<span class="o">}</span>
+</code></pre></div>
 </div>
 
 </article>
