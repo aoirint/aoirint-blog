@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UbuntuのKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定 - えやみぐさ</title>
+    <title>Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定 - えやみぐさ</title>
   
 
 
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
-<meta property="og:title" content="UbuntuのKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定 - えやみぐさ" />
+<meta property="og:title" content="Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定 - えやみぐさ" />
 
 <meta name="description" content="UbuntuのKernelをアップデートしたメモ"/>
 <meta property="og:description" content="UbuntuのKernelをアップデートしたメモ" />
@@ -181,9 +181,9 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1">UbuntuのKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定</h1>
+  <h1 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1">Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定</h1>
 <p>環境の整理を兼ねて、UbuntuのKernelのアップデートをしたので、そのときのメモ。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_HWE_Kernel__2">UbuntuのKernelをアップデートした（HWE Kernel）</h2>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__2">Ubuntu 18.04のKernelをアップデートした（HWE Kernel）</h2>
 <h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて_3">カーネルバージョンについて</h3>
 <p><code>/lib/modules</code>を見る限りインストール時のバージョンは<code>4.10.0-28</code>で、
 <code>/usr/src</code>を見る限り<code>4.15.0-115</code>をしばらく使ったあと、
@@ -197,7 +197,7 @@
 UKUUを使ってカーネルをインストールするとこの部分がバージョン番号（ハイフンの前）を6ケタの数字に直したようなものになるので、
 これはABIとは違いそうだ（ABIは0から255までの範囲のように思われる）。
 ABIのドキュメントらしきものがあったので、機会があれば読みたい：<a href="https://wiki.ubuntu.com/KernelTeam/BuildSystem/ABI" title="KernelTeam/BuildSystem/ABI - Ubuntu Wiki">KernelTeam/BuildSystem/ABI - Ubuntu Wiki</a></p>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_4">セキュリティアップデートについて</h3>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UKUUとセキュリティアップデートについて_4">UKUUとセキュリティアップデートについて</h3>
 <ul>
 <li><a href="https://kledgeb.blogspot.com/2020/09/ubuntu-2004-164-linux-kerneldos.html" title="Ubuntu 20.04 その164 - Linux kernelにDoSや任意コード実行の脆弱性・アップデートを - kledgeb">Ubuntu 20.04 その164 - Linux kernelにDoSや任意コード実行の脆弱性・アップデートを - kledgeb</a></li>
 <li><a href="https://ubuntu.com/security/notices/USN-4489-1" title="USN-4489-1: Linux kernel vulnerability | Ubuntu security notices | Ubuntu">USN-4489-1: Linux kernel vulnerability | Ubuntu security notices | Ubuntu</a></li>
@@ -646,13 +646,13 @@ modinfo e1000e-dkms
   <ul class="toc">
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1" class="toc-item toc-item-h1">
-        UbuntuのKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1" class="toc-item toc-item-h1">
+        Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_HWE_Kernel__2" class="toc-item toc-item-h2">
-        UbuntuのKernelをアップデートした（HWE Kernel）
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__2" class="toc-item toc-item-h2">
+        Ubuntu 18.04のKernelをアップデートした（HWE Kernel）
       </a>
   
     <li>
@@ -661,8 +661,8 @@ modinfo e1000e-dkms
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_4" class="toc-item toc-item-h3">
-        セキュリティアップデートについて
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UKUUとセキュリティアップデートについて_4" class="toc-item toc-item-h3">
+        UKUUとセキュリティアップデートについて
       </a>
   
     <li>
