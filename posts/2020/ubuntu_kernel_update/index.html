@@ -183,240 +183,21 @@
 <div class="article-body">
   <h1 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1">UbuntuのKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定</h1>
 <p>環境の整理を兼ねて、UbuntuのKernelのアップデートをしたので、そのときのメモ。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_バージョンの履歴について_2">バージョンの履歴について</h2>
-<p><code>/lib/modules</code>を見る限りインストール時のバージョンは<code>4.10.0-28-generic</code>で、
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_HWE_Kernel__2">UbuntuのKernelをアップデートした（HWE Kernel）</h2>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて_3">カーネルバージョンについて</h3>
+<p><code>/lib/modules</code>を見る限りインストール時のバージョンは<code>4.10.0-28</code>で、
 <code>/usr/src</code>を見る限り<code>4.15.0-115</code>をしばらく使ったあと、
-<code>4.16.18-041618</code>に更新していた。</p>
+<code>4.16.18</code>に更新していた。</p>
 <p>バージョン<code>4.10.x</code>はおそらくUbuntu 16.04をクリーンインストールしたときのもので、
 バージョン<code>4.15.x</code>は<code>dist-upgrade</code>でUbuntu 18.04にアップデートしたときに変更されたと思われる。
 その後ソフトウェア導入のためのバージョン合わせかなにかで<code>4.16.x</code>にして、そのまま使っていた。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_3">Intel NICのドライバe1000eについて</h2>
-<div class="highlight"><pre><span></span><code>$ find /lib/modules/5.4.0-47-generic -name e1000e*
-/lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e
-/lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko
-</code></pre></div>
-<p>このようにデフォルトでe1000eのドライバがカーネルに付属しているようなのだが、
-（デバイスによっては?）チェックサム検証に失敗（<code>The NVM Checksum Is Not Valid</code> by <code>netdev.c</code>）する問題がある。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># lspci -vvv</span>
-<span class="m">00</span>:1f.6 Ethernet controller: Intel Corporation Ethernet Connection <span class="o">(</span><span class="m">2</span><span class="o">)</span> I219-V
-    Subsystem: Intel Corporation Ethernet Connection <span class="o">(</span><span class="m">2</span><span class="o">)</span> I219-V
-    Control: I/O- Mem+ BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-
-    Status: Cap+ 66MHz- UDF- FastB2B- ParErr- <span class="nv">DEVSEL</span><span class="o">=</span>fast &gt;TAbort- &lt;TAbort- &lt;MAbort- &gt;SERR- &lt;PERR- INTx-
-    Interrupt: pin A routed to IRQ <span class="m">16</span>
-    Region <span class="m">0</span>: Memory at df100000 <span class="o">(</span><span class="m">32</span>-bit, non-prefetchable<span class="o">)</span> <span class="o">[</span><span class="nv">size</span><span class="o">=</span>128K<span class="o">]</span>
-    Capabilities: <span class="o">[</span>c8<span class="o">]</span> Power Management version <span class="m">3</span>
-        Flags: PMEClk- DSI+ D1- D2- <span class="nv">AuxCurrent</span><span class="o">=</span>0mA PME<span class="o">(</span>D0+,D1-,D2-,D3hot+,D3cold+<span class="o">)</span>
-        Status: D0 NoSoftRst+ PME-Enable- <span class="nv">DSel</span><span class="o">=</span><span class="m">0</span> <span class="nv">DScale</span><span class="o">=</span><span class="m">1</span> PME-
-    Capabilities: <span class="o">[</span>d0<span class="o">]</span> MSI: Enable- <span class="nv">Count</span><span class="o">=</span><span class="m">1</span>/1 Maskable- 64bit+
-        Address: 00000000fee00338  Data: <span class="m">0000</span>
-    Capabilities: <span class="o">[</span>e0<span class="o">]</span> PCI Advanced Features
-        AFCap: TP+ FLR+
-        AFCtrl: FLR-
-        AFStatus: TP-
-    Kernel modules: e1000e  &lt;-- これが動かない
-</code></pre></div>
-<p>エラーログ</p>
-<div class="highlight"><pre><span></span><code>$ zegrep e1000e /var/log/kern.log*
-kernel: <span class="o">[</span>    <span class="m">1</span>.296005<span class="o">]</span> e1000e: Intel<span class="o">(</span>R<span class="o">)</span> PRO/1000 Network Driver - <span class="m">3</span>.2.6-k
-kernel: <span class="o">[</span>    <span class="m">1</span>.296006<span class="o">]</span> e1000e: Copyright<span class="o">(</span>c<span class="o">)</span> <span class="m">1999</span> - <span class="m">2015</span> Intel Corporation.
-kernel: <span class="o">[</span>    <span class="m">1</span>.296023<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: enabling device <span class="o">(</span><span class="m">0000</span> -&gt; <span class="m">0002</span><span class="o">)</span>
-kernel: <span class="o">[</span>    <span class="m">1</span>.296199<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: Interrupt Throttling Rate <span class="o">(</span>ints/sec<span class="o">)</span> <span class="nb">set</span> to dynamic conservative mode
-kernel: <span class="o">[</span>    <span class="m">1</span>.546779<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: The NVM Checksum Is Not Valid
-kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="o">]</span> e1000e: probe of <span class="m">0000</span>:00:1f.6 failed with error -5
-</code></pre></div>
-<p>そのため結局は無効にして自分でビルドする必要がある。</p>
-<p><a href="https://downloadcenter.intel.com/ja/download/15817" title="ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー">ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー</a></p>
-<p>解凍したあと、<code>src/nvm.c</code>の<code>e1000e_validate_nvm_checksum_generic</code>が0を返すように編集する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># チェックサム検証のスキップ</span>
-sed -i <span class="s2">"/s32 e1000e_validate_nvm_checksum_generic(struct e1000_hw \*hw)/N;s/\n{/\n{return 0;/"</span> nvm.c
-</code></pre></div>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンとe1000eのビルドについて_4">カーネルバージョンとe1000eのビルドについて</h2>
-<p>4.15.xから4.16.xにアップデートするときにはUKUU（Ubuntu Kernel Update Utility）を使ってアップデートしていた。
+<p>4.15.xから4.16.xにアップデートするときにはUKUU（Ubuntu Kernel Update Utility）を使っていた。
 このとき参考にしたサイト： <a href="https://linuxhint.com/upgrade-kernel-ubuntu-1804/" title="Upgrade Kernel on Ubuntu 18.04 – Linux Hint">Upgrade Kernel on Ubuntu 18.04 – Linux Hint</a></p>
-<p>ところで、
-カーネルバージョンの後ろに付いているハイフン以降の数字はUbuntu Release ABIというらしいのだが、
+<p>ところで、カーネルバージョンの後ろに付いているハイフン以降の数字はUbuntu Release ABIというらしいのだが、
 UKUUを使ってカーネルをインストールするとこの部分がバージョン番号（ハイフンの前）を6ケタの数字に直したようなものになるので、
 これはABIとは違いそうだ（ABIは0から255までの範囲のように思われる）。
 ABIのドキュメントらしきものがあったので、機会があれば読みたい：<a href="https://wiki.ubuntu.com/KernelTeam/BuildSystem/ABI" title="KernelTeam/BuildSystem/ABI - Ubuntu Wiki">KernelTeam/BuildSystem/ABI - Ubuntu Wiki</a></p>
-<p>e1000eのビルドでは、チェックサム検証の問題に加えてABIに関連した問題が起こる。
-ここにe1000eのソースコード（<code>kcompat.h</code>）の一部を引用するが、以下のようにe1000eのプログラム内でABIのチェックが行われていて、
-4.16.xのカーネルをUKUUで導入した際はこのバージョンチェックをコメントアウトする必要があった。</p>
-<div class="highlight"><pre><span></span><code><span class="cm">/* Ubuntu Release ABI is the 4th digit of their kernel version. You can find</span>
-<span class="cm"> * it in /usr/src/linux/$(uname -r)/include/generated/utsrelease.h for new</span>
-<span class="cm"> * enough versions of Ubuntu. Otherwise you can simply see it in the output of</span>
-<span class="cm"> * uname as the 4th digit of the kernel. The UTS_UBUNTU_RELEASE_ABI is not in</span>
-<span class="cm"> * the linux-source package, but in the linux-headers package. It begins to</span>
-<span class="cm"> * appear in later releases of 14.04 and 14.10.</span>
-<span class="cm"> *</span>
-<span class="cm"> * Ex:</span>
-<span class="cm"> * &lt;Ubuntu 14.04.1&gt;</span>
-<span class="cm"> *  $uname -r</span>
-<span class="cm"> *  3.13.0-45-generic</span>
-<span class="cm"> * ABI is 45</span>
-<span class="cm"> *</span>
-<span class="cm"> * &lt;Ubuntu 14.10&gt;</span>
-<span class="cm"> *  $uname -r</span>
-<span class="cm"> *  3.16.0-23-generic</span>
-<span class="cm"> * ABI is 23</span>
-<span class="cm"> */</span>
-
-<span class="p">(</span><span class="err">略</span><span class="p">)</span>
-
-<span class="cp">#if UTS_UBUNTU_RELEASE_ABI &gt; 255</span>
-<span class="cp">#error UTS_UBUNTU_RELEASE_ABI is too large...</span>
-<span class="cp">#endif </span><span class="cm">/* UTS_UBUNTU_RELEASE_ABI &gt; 255 */</span><span class="cp"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># ABIチェックのスキップ</span>
-sed -i <span class="s2">"s/#error UTS_UBUNTU_RELEASE_ABI is too large.../\/\/#error UTS_UBUNTU_RELEASE_ABI is too large.../"</span> kcompat.h
-</code></pre></div>
-<p>他にe1000e以外で注意が必要かもしれない点として、
-おそらくメジャーバージョンが1ケタであるせいで、この数字の始まりが0からになっているため、
-これを直接Cコードに埋め込んだりすると8進数扱いされて（さらに数字に8以上が含まれていて）ビルドが通らないということがあった（どのソフトウェアか覚えていないが）。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_5">これまでのe1000e自動ビルドについて</h2>
-<p>Linuxにはカーネルバージョンをアップデートしたときにドライバなどのモジュールを再ビルドするための
-DKMS（Dynamic Kernel Module Support）というソフトウェアがあるのだが、
-導入当時はこれを使うキャパシティがなかったので、当時でもなんとなく使い方のわかっていたsystemdを使って
-起動時に毎回e1000eを自動ビルド・再インストールするという荒い方法で継続的に動作させていた。</p>
-<p>/etc/systemd/system/uscript-e1000e.service</p>
-<div class="highlight"><pre><span></span><code>[Unit]
-Description=Make Install e1000e
-
-[Service]
-Type=oneshot
-ExecStart=/etc/uscript/e1000e
-
-TimeoutSec=0
-StandardOutput=tty
-RemainAfterExit=yes
-SysVStartPriority=99
-
-[Install]
-WantedBy=multi-user.target
-</code></pre></div>
-<p>/etc/uscript/e1000e</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-modprobe -r e1000e
-make clean -C /etc/uscript/e1000e-latest/src
-make install -C /etc/uscript/e1000e-latest/src
-modprobe e1000e
-</code></pre></div>
-</td></tr></table>
-<p>カーネルバージョンを更新するにあたって、DKMSに移行することとし、これは不要になったので削除した。</p>
-<div class="highlight"><pre><span></span><code>$ sudo systemctl stop uscript-e1000e.service
-$ sudo systemctl disable uscript-e1000e.service
-Removed /etc/systemd/system/multi-user.target.wants/uscript-e1000e.service.
-$ sudo rm /etc/systemd/system/uscript-e1000e.service
-$ sudo rm /etc/uscript/e1000e
-
-$ sudo modprobe -r e1000e
-$ sudo make uninstall -C /etc/uscript/e1000e-latest/src
-$ sudo rm -r /etc/uscript/e1000e-latest
-<span class="sb">````</span>
-
-<span class="c1">## DKMSを使ったe1000e自動ビルドについて</span>
-<span class="o">[</span>Ubuntu <span class="m">16</span>.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 <span class="o">(</span>r271-635<span class="o">)](</span>https://netlog.jpn.org/r271-635/2019/06/ubuntu_rtl8189ftv_dkms.html <span class="s2">"Ubuntu 16.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 (r271-635)"</span><span class="o">)</span>
-
-これを参考にカーネルアップデート時に自動でリビルドするDKMSに対応させる作業をした。
-
-まず、あらかじめ<span class="sb">`</span>dkms<span class="sb">`</span>をインストールしておく。
-もし先にカーネルを更新してしまって<span class="sb">`</span>dkms<span class="sb">`</span>を取得できないときは、一度手動で<span class="sb">`</span>e1000e<span class="sb">`</span>をビルドすればOK（<span class="sb">`</span>make uninstall<span class="sb">`</span>を忘れずに）。
-
-<span class="sb">```</span>sh
-sudo apt install dkms
-</code></pre></div>
-<p>まずは<code>/usr/src</code>以下にソースディレクトリをコピーする。
-今回の場合、<code>e1000e-3.8.4.tar.gz</code>を解凍した<code>e1000e-3.8.4</code>ディレクトリを<code>/usr/src/e1000e-3.8.4</code>としてコピーする。
-そして<code>/usr/src/e1000e-3.8.4/dkms.conf</code>を作成する。</p>
-<p>dkms.confの細かい説明：<a href="https://manpages.ubuntu.com/manpages/bionic/man8/dkms.8.html#dkms.conf" title="Ubuntu Manpage: dkms - Dynamic Kernel Module Support">Ubuntu Manpage: dkms - Dynamic Kernel Module Support</a></p>
-<p>ディレクトリ構造</p>
-<div class="highlight"><pre><span></span><code>| /usr/src/e1000e-3.8.4/
-|-- README
-|-- dkms.conf  &lt;-- New!
-|-- ...
-|-- src/
-|----- Makefile
-|----- e1000.h
-|----- ...
-</code></pre></div>
-<p>dkms.conf</p>
-<div class="highlight"><pre><span></span><code>PACKAGE_NAME="e1000e"
-PACKAGE_VERSION="3.8.4"
-CLEAN="cd src; make clean"
-BUILD_MODULE_NAME[0]="e1000e"
-BUILT_MODULE_LOCATION[0]="src/"
-DEST_MODULE_NAME[0]="e1000e-dkms"
-MAKE[0]="cd src; make -j$(nproc)"
-DEST_MODULE_LOCATION[0]="/updates/dkms"
-AUTOINSTALL="yes"
-</code></pre></div>
-<p>これだけでDKMSに登録する準備が完了した。次はDKMSにこのソースディレクトリを登録する。
-DKMSはデフォルトで<code>/usr/src</code>以下のディレクトリを見に行くように思われる。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dkms add e1000e/3.8.4
-
-Creating symlink /var/lib/dkms/e1000e/3.8.4/source -&gt;
-                 /usr/src/e1000e-3.8.4
-
-DKMS: add completed.
-</code></pre></div>
-<p><code>/var/lib/dkms/e1000e/3.8.4/source</code>からのシンボリックリンクが張られ、DKMSに登録された。DKMSから削除するには：</p>
-<div class="highlight"><pre><span></span><code>$ sudo dkms remove e1000e/3.8.4 --all
-
-------------------------------
-Deleting module version: <span class="m">3</span>.8.4
-completely from the DKMS tree.
-------------------------------
-Done.
-</code></pre></div>
-<p>次はビルドしてみる。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dkms build e1000e/3.8.4
-
-Kernel preparation unnecessary <span class="k">for</span> this kernel.  Skipping...
-
-Building module:
-cleaning build area...
-<span class="nb">cd</span> src<span class="p">;</span> make -j8....
-Signing module:
- - /var/lib/dkms/e1000e/3.8.4/5.4.0-47-generic/x86_64/module/e1000e-dkms.ko
-Secure Boot not enabled on this system.
-cleaning build area...
-
-DKMS: build completed.
-</code></pre></div>
-<p>そしてインストール。</p>
-<div class="highlight"><pre><span></span><code>$ sudo dkms install e1000e/3.8.4
-
-e1000e-dkms:
-Running module version sanity check.
- - Original module
-   - No original module exists within this kernel
- - Installation
-   - Installing to /lib/modules/5.4.0-47-generic/updates/dkms/
-
-depmod...
-
-DKMS: install completed.
-</code></pre></div>
-<p><a href="https://blog.spiralray.net/archives/474" title="オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note">オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note</a></p>
-<p>デフォルトの<code>e1000e</code>を無効化する。</p>
-<div class="highlight"><pre><span></span><code>sudo modprobe -r e1000e
-
-<span class="c1"># 再起動時にロードされないようにnouveauにならって設定しようとしたが、うまくいかなかった</span>
-<span class="c1"># printf "# disable default e1000e driver; use self-built version instead.\nblacklist e1000e\n" | sudo tee /etc/modprobe.d/blacklist-e1000e.conf</span>
-</code></pre></div>
-<p>自動でモジュールが読み込まれないと思われるので、<code>dkms</code>の方の<code>e1000e</code>を<code>modprobe</code>を使って手動で読み込む。</p>
-<div class="highlight"><pre><span></span><code>sudo modprobe e1000e-dkms
-modinfo e1000e-dkms
-</code></pre></div>
-<p>以下のコマンドで、次回起動時以降に現在読み込まれているモジュールが自動で読み込まれるようになる。</p>
-<div class="highlight"><pre><span></span><code>sudo update-initramfs -u
-</code></pre></div>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_6">セキュリティアップデートについて</h2>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_4">セキュリティアップデートについて</h3>
 <ul>
 <li><a href="https://kledgeb.blogspot.com/2020/09/ubuntu-2004-164-linux-kerneldos.html" title="Ubuntu 20.04 その164 - Linux kernelにDoSや任意コード実行の脆弱性・アップデートを - kledgeb">Ubuntu 20.04 その164 - Linux kernelにDoSや任意コード実行の脆弱性・アップデートを - kledgeb</a></li>
 <li><a href="https://ubuntu.com/security/notices/USN-4489-1" title="USN-4489-1: Linux kernel vulnerability | Ubuntu security notices | Ubuntu">USN-4489-1: Linux kernel vulnerability | Ubuntu security notices | Ubuntu</a></li>
@@ -429,8 +210,9 @@ Linux Kernelに脆弱性が発見されてもこのようにUbuntu側からセ�
 実際カーネルバージョンは4.16.xインストール時から固定されていたので、
 e1000eの自動ビルドはおそらく無駄で（4.10から4.15では意味があったが）、
 4.16.xカーネルのセキュリティアップデートも行われていなかったのではないかと思っている。</p>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_HWEカーネルのインストール_5">HWEカーネルのインストール</h3>
 <p>はじめはUKUUを使って5.4.xにアップデートしたものの、
-この懸念からUbuntuが公式に提供しているHWEカーネルというものを使うことにした。
+前項の懸念からUbuntuが公式に提供しているHWEカーネルというものを使うことにした。
 これならばaptでカーネルが管理され、自動でパッチが適用されるものと思われる。</p>
 <ul>
 <li><a href="https://iberianpig.github.io/posts/2017-02-06_how_to_upgrade_kernel/" title="Ubuntuのベースバージョンを変えずにLinuxカーネルをアップグレードする方法 - iberianpigsty">Ubuntuのベースバージョンを変えずにLinuxカーネルをアップグレードする方法 - iberianpigsty</a></li>
@@ -440,25 +222,30 @@ e1000eの自動ビルドはおそらく無駄で（4.10から4.15では意味が
 今回は安定性を重視するので安定版を選んでアップデートする。</p>
 <div class="highlight"><pre><span></span><code>sudo apt install linux-generic-hwe-18.04
 </code></pre></div>
-<p>以下のようになったので、このシステムでaptが管理していたカーネルバージョンは<code>4.15.0-115</code>だったことがわかる。
-UKUUがgrubの設定を書き換えてデフォルトで使用するカーネルを変更していたと思われる。</p>
+<p>このあとから以下のようになったので、このシステムでaptが管理していたカーネルバージョンは<code>4.15.0-115</code>だったことがわかる。</p>
 <div class="highlight"><pre><span></span><code>The following packages were automatically installed and are no longer required:
   linux-headers-4.15.0-115 linux-headers-4.15.0-115-generic
   linux-image-4.15.0-115-generic linux-modules-4.15.0-115-generic
   linux-modules-extra-4.15.0-115-generic
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$ sudo update-grub2
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_余談_UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定_6">余談：UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定</h3>
+<p>ここで、grubのデフォルトエントリがUKUUで入れた5.4.xカーネルのままで、
+新たにインストールしたUbuntu HWEカーネルではなかった。
+この項ではこの理由を検討するが、実際にはgrub（またはUbuntuに同梱されているgrub）のデフォルトの挙動であったので、
+余談である。</p>
+<p>（カーネルインストール時に自動で呼ばれるが）<code>update-grub</code>実行時には以下のように表示される。</p>
+<div class="highlight"><pre><span></span><code>$ sudo update-grub
 Sourcing file <span class="sb">`</span>/etc/default/grub<span class="err">'</span>
 Generating grub configuration file ...
-Found linux image: /boot/vmlinuz-5.4.42-050442-generic
+Found linux image: /boot/vmlinuz-5.4.42-050442-generic      &lt;-- UKUUで入れたカーネル（デフォルト）
 Found initrd image: /boot/initrd.img-5.4.42-050442-generic
-Found linux image: /boot/vmlinuz-5.4.0-47-generic
+Found linux image: /boot/vmlinuz-5.4.0-47-generic           &lt;-- 新しいカーネル（HWE）
 Found initrd image: /boot/initrd.img-5.4.0-47-generic
-Found linux image: /boot/vmlinuz-4.16.18-041618-generic
+Found linux image: /boot/vmlinuz-4.16.18-041618-generic     &lt;-- 現在のカーネル（UKUU）
 Found initrd image: /boot/initrd.img-4.16.18-041618-generic
-Found linux image: /boot/vmlinuz-4.15.0-117-generic
+Found linux image: /boot/vmlinuz-4.15.0-117-generic         &lt;-- 未使用?
 Found initrd image: /boot/initrd.img-4.15.0-117-generic
-Found linux image: /boot/vmlinuz-4.15.0-115-generic
+Found linux image: /boot/vmlinuz-4.15.0-115-generic         &lt;-- aptが管理しているカーネル
 Found initrd image: /boot/initrd.img-4.15.0-115-generic
 Found Windows Boot Manager on /dev/sdc1@/EFI/Microsoft/Boot/bootmgfw.efi
 Adding boot menu entry <span class="k">for</span> EFI firmware configuration
@@ -619,10 +406,229 @@ Older versions are still open-source. Somebody can develop that version further 
 <p>grubの設定をいじっているソースコードを探したところ、<code>update-grub</code>を呼び出すくらいで特に優先度を設定するようなことはしていなさそうだったので、
 <code>dpkg --compare-versions</code>を使ったソートの結果、単純に最初に来たカーネルがデフォルト（一番上のmenuentry）に使われていそうとわかった（なにも特殊なことはない普通の動作だ..）。</p>
 <p><a href="https://github.com/teejee2008/ukuu/blob/master/src/Common/LinuxKernel.vala#L1298" title="ukuu/LinuxKernel.vala at master · teejee2008/ukuu">ukuu/LinuxKernel.vala#L1298 at master · teejee2008/ukuu</a></p>
-<p>問題はdpkgがUKUUで入れた5.4.xカーネルがUbuntu HWEカーネルより新しいと判断していることが原因で、
+<p>問題はdpkgがUbuntu HWEカーネルよりUKUUで入れた5.4.xカーネルの方が新しいと判断していることが原因で、
 UKUUは特殊なことをしていないとわかったので、
 単純にUKUUから入れたカーネルを削除して<code>update-grub</code>すればデフォルトが（もっとも新しい）HWEカーネルになりそうだとわかった。
 一度別のカーネル（HWEでOK）で起動して、UKUUのGUIを使ってUKUU側の5.4.xを削除（ふつうに選択してRemove）すればデフォルトでもっとも新しいHWEカーネルが起動するようになる。</p>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_7">Intel NICのドライバe1000eについて</h2>
+<div class="highlight"><pre><span></span><code>$ find /lib/modules/5.4.0-47-generic -name e1000e*
+/lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e
+/lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko
+</code></pre></div>
+<p>このようにデフォルトでe1000eのドライバがカーネルに付属しているようなのだが、
+（デバイスによっては?）チェックサム検証に失敗（<code>The NVM Checksum Is Not Valid</code> by <code>netdev.c</code>）する問題がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># lspci -vvv</span>
+<span class="m">00</span>:1f.6 Ethernet controller: Intel Corporation Ethernet Connection <span class="o">(</span><span class="m">2</span><span class="o">)</span> I219-V
+    Subsystem: Intel Corporation Ethernet Connection <span class="o">(</span><span class="m">2</span><span class="o">)</span> I219-V
+    Control: I/O- Mem+ BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-
+    Status: Cap+ 66MHz- UDF- FastB2B- ParErr- <span class="nv">DEVSEL</span><span class="o">=</span>fast &gt;TAbort- &lt;TAbort- &lt;MAbort- &gt;SERR- &lt;PERR- INTx-
+    Interrupt: pin A routed to IRQ <span class="m">16</span>
+    Region <span class="m">0</span>: Memory at df100000 <span class="o">(</span><span class="m">32</span>-bit, non-prefetchable<span class="o">)</span> <span class="o">[</span><span class="nv">size</span><span class="o">=</span>128K<span class="o">]</span>
+    Capabilities: <span class="o">[</span>c8<span class="o">]</span> Power Management version <span class="m">3</span>
+        Flags: PMEClk- DSI+ D1- D2- <span class="nv">AuxCurrent</span><span class="o">=</span>0mA PME<span class="o">(</span>D0+,D1-,D2-,D3hot+,D3cold+<span class="o">)</span>
+        Status: D0 NoSoftRst+ PME-Enable- <span class="nv">DSel</span><span class="o">=</span><span class="m">0</span> <span class="nv">DScale</span><span class="o">=</span><span class="m">1</span> PME-
+    Capabilities: <span class="o">[</span>d0<span class="o">]</span> MSI: Enable- <span class="nv">Count</span><span class="o">=</span><span class="m">1</span>/1 Maskable- 64bit+
+        Address: 00000000fee00338  Data: <span class="m">0000</span>
+    Capabilities: <span class="o">[</span>e0<span class="o">]</span> PCI Advanced Features
+        AFCap: TP+ FLR+
+        AFCtrl: FLR-
+        AFStatus: TP-
+    Kernel modules: e1000e  &lt;-- これが動かない
+</code></pre></div>
+<p>エラーログ</p>
+<div class="highlight"><pre><span></span><code>$ zegrep e1000e /var/log/kern.log*
+kernel: <span class="o">[</span>    <span class="m">1</span>.296005<span class="o">]</span> e1000e: Intel<span class="o">(</span>R<span class="o">)</span> PRO/1000 Network Driver - <span class="m">3</span>.2.6-k
+kernel: <span class="o">[</span>    <span class="m">1</span>.296006<span class="o">]</span> e1000e: Copyright<span class="o">(</span>c<span class="o">)</span> <span class="m">1999</span> - <span class="m">2015</span> Intel Corporation.
+kernel: <span class="o">[</span>    <span class="m">1</span>.296023<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: enabling device <span class="o">(</span><span class="m">0000</span> -&gt; <span class="m">0002</span><span class="o">)</span>
+kernel: <span class="o">[</span>    <span class="m">1</span>.296199<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: Interrupt Throttling Rate <span class="o">(</span>ints/sec<span class="o">)</span> <span class="nb">set</span> to dynamic conservative mode
+kernel: <span class="o">[</span>    <span class="m">1</span>.546779<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: The NVM Checksum Is Not Valid
+kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="o">]</span> e1000e: probe of <span class="m">0000</span>:00:1f.6 failed with error -5
+</code></pre></div>
+<p>そのため結局は無効にして自分でビルドする必要がある。</p>
+<p><a href="https://downloadcenter.intel.com/ja/download/15817" title="ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー">ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー</a></p>
+<p>解凍したあと、<code>src/nvm.c</code>の<code>e1000e_validate_nvm_checksum_generic</code>が0を返すように編集する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># チェックサム検証のスキップ</span>
+sed -i <span class="s2">"/s32 e1000e_validate_nvm_checksum_generic(struct e1000_hw \*hw)/N;s/\n{/\n{return 0;/"</span> nvm.c
+</code></pre></div>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_8">UKUUとe1000eのビルドについて</h2>
+<p>今回はUKUUを使わないためこれは余談なのだが、UKUUで導入したカーネルでe1000eをビルドするときには、チェックサム検証の問題に加えてABIに関連した問題が起こる。
+ここにe1000eのソースコード（<code>kcompat.h</code>）の一部を引用するが、以下のようにe1000eのプログラム内でABIのチェックが行われていて、
+4.16.xのカーネルをUKUUで導入した際はこのバージョンチェックをコメントアウトする必要があった。</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* Ubuntu Release ABI is the 4th digit of their kernel version. You can find</span>
+<span class="cm"> * it in /usr/src/linux/$(uname -r)/include/generated/utsrelease.h for new</span>
+<span class="cm"> * enough versions of Ubuntu. Otherwise you can simply see it in the output of</span>
+<span class="cm"> * uname as the 4th digit of the kernel. The UTS_UBUNTU_RELEASE_ABI is not in</span>
+<span class="cm"> * the linux-source package, but in the linux-headers package. It begins to</span>
+<span class="cm"> * appear in later releases of 14.04 and 14.10.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Ex:</span>
+<span class="cm"> * &lt;Ubuntu 14.04.1&gt;</span>
+<span class="cm"> *  $uname -r</span>
+<span class="cm"> *  3.13.0-45-generic</span>
+<span class="cm"> * ABI is 45</span>
+<span class="cm"> *</span>
+<span class="cm"> * &lt;Ubuntu 14.10&gt;</span>
+<span class="cm"> *  $uname -r</span>
+<span class="cm"> *  3.16.0-23-generic</span>
+<span class="cm"> * ABI is 23</span>
+<span class="cm"> */</span>
+
+<span class="p">(</span><span class="err">略</span><span class="p">)</span>
+
+<span class="cp">#if UTS_UBUNTU_RELEASE_ABI &gt; 255</span>
+<span class="cp">#error UTS_UBUNTU_RELEASE_ABI is too large...</span>
+<span class="cp">#endif </span><span class="cm">/* UTS_UBUNTU_RELEASE_ABI &gt; 255 */</span><span class="cp"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ABIチェックのスキップ</span>
+sed -i <span class="s2">"s/#error UTS_UBUNTU_RELEASE_ABI is too large.../\/\/#error UTS_UBUNTU_RELEASE_ABI is too large.../"</span> kcompat.h
+</code></pre></div>
+<p>他にe1000e以外で注意が必要かもしれない点として、
+おそらくメジャーバージョンが1ケタであるせいで、この数字の始まりが0からになっているため、
+これを直接Cコードに埋め込んだりすると8進数扱いされて（さらに数字に8以上が含まれていて）ビルドが通らないということがあった（どのソフトウェアか覚えていないが）。</p>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_9">これまでのe1000e自動ビルドについて</h2>
+<p>Linuxにはカーネルバージョンをアップデートしたときにドライバなどのモジュールを再ビルドするための
+DKMS（Dynamic Kernel Module Support）というソフトウェアがあるのだが、
+導入当時はこれを使うキャパシティがなかったので、当時でもなんとなく使い方のわかっていたsystemdを使って
+起動時に毎回e1000eを自動ビルド・再インストールするという荒い方法で継続的に動作させていた。</p>
+<p>/etc/systemd/system/uscript-e1000e.service</p>
+<div class="highlight"><pre><span></span><code>[Unit]
+Description=Make Install e1000e
+
+[Service]
+Type=oneshot
+ExecStart=/etc/uscript/e1000e
+
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div>
+<p>/etc/uscript/e1000e</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+modprobe -r e1000e
+make clean -C /etc/uscript/e1000e-latest/src
+make install -C /etc/uscript/e1000e-latest/src
+modprobe e1000e
+</code></pre></div>
+</td></tr></table>
+<p>カーネルバージョンを更新するにあたって、DKMSに移行することとし、これは不要になったので削除した。</p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl stop uscript-e1000e.service
+$ sudo systemctl disable uscript-e1000e.service
+Removed /etc/systemd/system/multi-user.target.wants/uscript-e1000e.service.
+$ sudo rm /etc/systemd/system/uscript-e1000e.service
+$ sudo rm /etc/uscript/e1000e
+
+$ sudo modprobe -r e1000e
+$ sudo make uninstall -C /etc/uscript/e1000e-latest/src
+$ sudo rm -r /etc/uscript/e1000e-latest
+<span class="sb">````</span>
+
+<span class="c1">## DKMSを使ったe1000e自動ビルドについて</span>
+<span class="o">[</span>Ubuntu <span class="m">16</span>.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 <span class="o">(</span>r271-635<span class="o">)](</span>https://netlog.jpn.org/r271-635/2019/06/ubuntu_rtl8189ftv_dkms.html <span class="s2">"Ubuntu 16.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 (r271-635)"</span><span class="o">)</span>
+
+これを参考にカーネルアップデート時に自動でリビルドするDKMSに対応させる作業をした。
+
+まず、あらかじめ<span class="sb">`</span>dkms<span class="sb">`</span>をインストールしておく。
+もし先にカーネルを更新してしまって<span class="sb">`</span>dkms<span class="sb">`</span>を取得できないときは、一度手動で<span class="sb">`</span>e1000e<span class="sb">`</span>をビルドすればOK（<span class="sb">`</span>make uninstall<span class="sb">`</span>を忘れずに）。
+
+<span class="sb">```</span>sh
+sudo apt install dkms
+</code></pre></div>
+<p>まずは<code>/usr/src</code>以下にソースディレクトリをコピーする。
+今回の場合、<code>e1000e-3.8.4.tar.gz</code>を解凍した<code>e1000e-3.8.4</code>ディレクトリを<code>/usr/src/e1000e-3.8.4</code>としてコピーする。
+そして<code>/usr/src/e1000e-3.8.4/dkms.conf</code>を作成する。</p>
+<p>dkms.confの細かい説明：<a href="https://manpages.ubuntu.com/manpages/bionic/man8/dkms.8.html#dkms.conf" title="Ubuntu Manpage: dkms - Dynamic Kernel Module Support">Ubuntu Manpage: dkms - Dynamic Kernel Module Support</a></p>
+<p>ディレクトリ構造</p>
+<div class="highlight"><pre><span></span><code>| /usr/src/e1000e-3.8.4/
+|-- README
+|-- dkms.conf  &lt;-- New!
+|-- ...
+|-- src/
+|----- Makefile
+|----- e1000.h
+|----- ...
+</code></pre></div>
+<p>dkms.conf</p>
+<div class="highlight"><pre><span></span><code>PACKAGE_NAME="e1000e"
+PACKAGE_VERSION="3.8.4"
+CLEAN="cd src; make clean"
+BUILD_MODULE_NAME[0]="e1000e"
+BUILT_MODULE_LOCATION[0]="src/"
+DEST_MODULE_NAME[0]="e1000e-dkms"
+MAKE[0]="cd src; make -j$(nproc)"
+DEST_MODULE_LOCATION[0]="/updates/dkms"
+AUTOINSTALL="yes"
+</code></pre></div>
+<p>これだけでDKMSに登録する準備が完了した。次はDKMSにこのソースディレクトリを登録する。
+DKMSはデフォルトで<code>/usr/src</code>以下のディレクトリを見に行くように思われる。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dkms add e1000e/3.8.4
+
+Creating symlink /var/lib/dkms/e1000e/3.8.4/source -&gt;
+                 /usr/src/e1000e-3.8.4
+
+DKMS: add completed.
+</code></pre></div>
+<p><code>/var/lib/dkms/e1000e/3.8.4/source</code>からのシンボリックリンクが張られ、DKMSに登録された。DKMSから削除するには：</p>
+<div class="highlight"><pre><span></span><code>$ sudo dkms remove e1000e/3.8.4 --all
+
+------------------------------
+Deleting module version: <span class="m">3</span>.8.4
+completely from the DKMS tree.
+------------------------------
+Done.
+</code></pre></div>
+<p>次はビルドしてみる。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dkms build e1000e/3.8.4
+
+Kernel preparation unnecessary <span class="k">for</span> this kernel.  Skipping...
+
+Building module:
+cleaning build area...
+<span class="nb">cd</span> src<span class="p">;</span> make -j8....
+Signing module:
+ - /var/lib/dkms/e1000e/3.8.4/5.4.0-47-generic/x86_64/module/e1000e-dkms.ko
+Secure Boot not enabled on this system.
+cleaning build area...
+
+DKMS: build completed.
+</code></pre></div>
+<p>そしてインストール。</p>
+<div class="highlight"><pre><span></span><code>$ sudo dkms install e1000e/3.8.4
+
+e1000e-dkms:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/5.4.0-47-generic/updates/dkms/
+
+depmod...
+
+DKMS: install completed.
+</code></pre></div>
+<p><a href="https://blog.spiralray.net/archives/474" title="オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note">オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note</a></p>
+<p>デフォルトの<code>e1000e</code>を無効化する。</p>
+<div class="highlight"><pre><span></span><code>sudo modprobe -r e1000e
+
+<span class="c1"># 再起動時にロードされないようにnouveauにならって設定しようとしたが、うまくいかなかった</span>
+<span class="c1"># printf "# disable default e1000e driver; use self-built version instead.\nblacklist e1000e\n" | sudo tee /etc/modprobe.d/blacklist-e1000e.conf</span>
+</code></pre></div>
+<p>自動でモジュールが読み込まれないと思われるので、<code>dkms</code>の方の<code>e1000e</code>を<code>modprobe</code>を使って手動で読み込む。</p>
+<div class="highlight"><pre><span></span><code>sudo modprobe e1000e-dkms
+modinfo e1000e-dkms
+</code></pre></div>
+<p>以下のコマンドで、次回起動時以降に現在読み込まれているモジュールが自動で読み込まれるようになる。</p>
+<div class="highlight"><pre><span></span><code>sudo update-initramfs -u
+</code></pre></div>
 </div>
 
 </article>
@@ -645,28 +651,43 @@ UKUUは特殊なことをしていないとわかったので、
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_バージョンの履歴について_2" class="toc-item toc-item-h2">
-        バージョンの履歴について
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_HWE_Kernel__2" class="toc-item toc-item-h2">
+        UbuntuのKernelをアップデートした（HWE Kernel）
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_3" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて_3" class="toc-item toc-item-h3">
+        カーネルバージョンについて
+      </a>
+  
+    <li>
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_4" class="toc-item toc-item-h3">
+        セキュリティアップデートについて
+      </a>
+  
+    <li>
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_HWEカーネルのインストール_5" class="toc-item toc-item-h3">
+        HWEカーネルのインストール
+      </a>
+  
+    <li>
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_余談_UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定_6" class="toc-item toc-item-h3">
+        余談：UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定
+      </a>
+  
+    <li>
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_7" class="toc-item toc-item-h2">
         Intel NICのドライバe1000eについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンとe1000eのビルドについて_4" class="toc-item toc-item-h2">
-        カーネルバージョンとe1000eのビルドについて
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_8" class="toc-item toc-item-h2">
+        UKUUとe1000eのビルドについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_5" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_9" class="toc-item toc-item-h2">
         これまでのe1000e自動ビルドについて
-      </a>
-  
-    <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_6" class="toc-item toc-item-h2">
-        セキュリティアップデートについて
       </a>
   
   </ul>
