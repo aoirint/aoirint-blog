@@ -10,12 +10,12 @@
   
 
 
-<link rel="shortcut icon" href="../../favicon.ico">
+<link rel="shortcut icon" href="../../../favicon.ico">
 
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/posts/2020/" />
+<meta property="og:url" content="https://blog.aoirint.com/posts/2020/ubuntu_kernel_update/" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
@@ -36,11 +36,11 @@
 <link href="https://blog.aoirint.com/rss.rdf" type="application/rss+xml" rel="alternate" title="えやみぐさ RSS Feed" />
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../static/aoirint-blog/css/style.css">
+<link rel="stylesheet" href="../../../static/aoirint-blog/css/style.css">
 
-<script defer src="../../static/fontawesome/js/all.min.js"></script>
-  <script defer src="../../static/fontawesome/js/v4-shims.min.js"></script>
-<link rel="stylesheet" href="../../static/pygments/native.css">
+<script defer src="../../../static/fontawesome/js/all.min.js"></script>
+  <script defer src="../../../static/fontawesome/js/v4-shims.min.js"></script>
+<link rel="stylesheet" href="../../../static/pygments/native.css">
 
 
     
@@ -57,7 +57,7 @@
   </script>
   
 
-<script src="../../static/aoirint-blog/js/main.js"></script>
+<script src="../../../static/aoirint-blog/js/main.js"></script>
 
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -74,7 +74,7 @@
     <i class="fas fa-bars"></i>
   </button>
 
-  <a href="../../" class="sitebar-title">
+  <a href="../../../" class="sitebar-title">
     えやみぐさ
   </a>
 
@@ -86,25 +86,25 @@
 
 <aside class="sitebar-box">
   <nav class="sitebar fixed-scrollable">
-    <a href="../../" class="sitebar-title">
+    <a href="../../../" class="sitebar-title">
       えやみぐさ
     </a>
 
     <div class="sitebar-content">
       <ul>
         <li>
-          <a href="../../" class="navbar-menu-link">
+          <a href="../../../" class="navbar-menu-link">
             Index
           </a>
       </ul>
 
       <ul>
         <li>
-          <a href="../../rss.rdf" class="navbar-menu-link">
+          <a href="../../../rss.rdf" class="navbar-menu-link">
             RSS Feed
           </a>
         <li>
-          <a href="../../atom.xml" class="navbar-menu-link">
+          <a href="../../../atom.xml" class="navbar-menu-link">
             Atom Feed
           </a>
       </ul>
@@ -152,21 +152,21 @@
 
   <div class="article-tags">
 
-    <a href="../../category/技術/" class="article-category">
+    <a href="../../../category/技術/" class="article-category">
       技術
     </a>
 
 
 
-    <a href="../../tags/Ubuntu/" class="article-tag">
+    <a href="../../../tags/Ubuntu/" class="article-tag">
       Ubuntu
     </a>
 
-    <a href="../../tags/Linux Kernel/" class="article-tag">
+    <a href="../../../tags/Linux Kernel/" class="article-tag">
       Linux Kernel
     </a>
 
-    <a href="../../tags/e1000e/" class="article-tag">
+    <a href="../../../tags/e1000e/" class="article-tag">
       e1000e
     </a>
 
@@ -177,16 +177,16 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_md_UbuntuのKernelをアップデートした_1">UbuntuのKernelをアップデートした</h1>
+  <h1 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_1">UbuntuのKernelをアップデートした</h1>
 <p>環境の整理を兼ねて、UbuntuのKernelのアップデートをしたので、そのときのメモ。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_md_バージョンの履歴について_2">バージョンの履歴について</h2>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_バージョンの履歴について_2">バージョンの履歴について</h2>
 <p><code>/lib/modules</code>を見る限りインストール時のバージョンは<code>4.10.0-28-generic</code>で、
 <code>/usr/src</code>を見る限り<code>4.15.0-115</code>をしばらく使ったあと、
 <code>4.16.18-041618</code>に更新していた。</p>
 <p>バージョン<code>4.10.x</code>はおそらくUbuntu 16.04をクリーンインストールしたときのもので、
 バージョン<code>4.15.x</code>は<code>dist-upgrade</code>でUbuntu 18.04にアップデートしたときに変更されたと思われる。
 その後ソフトウェア導入のためのバージョン合わせかなにかで<code>4.16.x</code>にして、そのまま使っていた。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_md_e1000eについて_3">e1000eについて</h2>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_e1000eについて_3">e1000eについて</h2>
 <p>4.15.x, 4.16.xではIntel NICのドライバe1000eが入っていないので、
 少し荒っぽい方法で自動ビルドするようにしていたのだが、
 現在のUbuntu 18.04のメインストリームらしい5.4.xでは
@@ -194,12 +194,12 @@
 （<code>/lib/modules/5.4.*-generic/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko</code>）。</p>
 <p>今回は4.15から4.16にアップデートするときに使ったUKUU（Ubuntu Kernel Update Utility）で5.4にアップデートした。
 そのとき参考にしたサイト： <a href="https://linuxhint.com/upgrade-kernel-ubuntu-1804/" title="Upgrade Kernel on Ubuntu 18.04 – Linux Hint">Upgrade Kernel on Ubuntu 18.04 – Linux Hint</a></p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_md_e1000eのビルドについて_4">e1000eのビルドについて</h2>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_e1000eのビルドについて_4">e1000eのビルドについて</h2>
 <p>4.15, 4.16ではe1000eを手動でビルドしていたので、
 今回もそうかと思って新しいe1000eのソースコードをダウンロードしたのだが、
 結局不要だった。</p>
 <p><a href="https://downloadcenter.intel.com/ja/download/15817" title="ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー">ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー</a></p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_md_カーネルバージョンとe1000eのビルドについて_5">カーネルバージョンとe1000eのビルドについて</h2>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンとe1000eのビルドについて_5">カーネルバージョンとe1000eのビルドについて</h2>
 <p>e1000eのソースコードを読む限り、
 カーネルバージョンの後ろに付いているハイフン以降の数字はUbuntu Release ABIというらしいのだが、
 UKUUを使ってカーネルをインストールするとバージョン番号（ハイフンの前）を6ケタの数字に直したようなものになるので、
@@ -244,7 +244,7 @@ sed -i <span class="s2">"/s32 e1000e_validate_nvm_checksum_generic(struct e1000_
 <p>他にe1000e以外で注意が必要かもしれない点として、
 おそらくメジャーバージョンが1ケタであるせいで、この数字の始まりが0からになっているため、
 これを直接Cコードに埋め込んだりすると8進数扱いされて（さらに数字に8以上が含まれていて）ビルドが通らないということがあった（どのソフトウェアか覚えていないが）。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_md_これまでのe1000e自動ビルドについて_6">これまでのe1000e自動ビルドについて</h2>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_6">これまでのe1000e自動ビルドについて</h2>
 <p>Linuxにはカーネルバージョンをアップデートしたときにドライバなどのモジュールを再ビルドするための
 DKMS（Dynamic Kernel Module Support）というソフトウェアがあるのだが、
 導入当時はこれを使うキャパシティがなかったので、当時でもなんとなく使い方のわかっていたsystemdを使って
@@ -380,7 +380,7 @@ DKMS: install completed.
 <p>自動でモジュールが読み込まれないと思われるので、modprobeを使って手動で読み込む。</p>
 <div class="highlight"><pre><span></span><code>sudo modprobe e1000e-dkms
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_md_セキュリティアップデートについて_7">セキュリティアップデートについて</h2>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_7">セキュリティアップデートについて</h2>
 </div>
 
 </article>
@@ -398,37 +398,37 @@ DKMS: install completed.
   <ul class="toc">
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_md_UbuntuのKernelをアップデートした_1" class="toc-item toc-item-h1">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UbuntuのKernelをアップデートした_1" class="toc-item toc-item-h1">
         UbuntuのKernelをアップデートした
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_md_バージョンの履歴について_2" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_バージョンの履歴について_2" class="toc-item toc-item-h2">
         バージョンの履歴について
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_md_e1000eについて_3" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_e1000eについて_3" class="toc-item toc-item-h2">
         e1000eについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_md_e1000eのビルドについて_4" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_e1000eのビルドについて_4" class="toc-item toc-item-h2">
         e1000eのビルドについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_md_カーネルバージョンとe1000eのビルドについて_5" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンとe1000eのビルドについて_5" class="toc-item toc-item-h2">
         カーネルバージョンとe1000eのビルドについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_md_これまでのe1000e自動ビルドについて_6" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_6" class="toc-item toc-item-h2">
         これまでのe1000e自動ビルドについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_md_セキュリティアップデートについて_7" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_7" class="toc-item toc-item-h2">
         セキュリティアップデートについて
       </a>
   
