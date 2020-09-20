@@ -581,9 +581,12 @@ Older versions are still open-source. Somebody can develop that version further 
 <ul>
 <li><a href="https://github.com/teejee2008/ukuu" title="teejee2008/ukuu: A paid version of Ukuu is now available with more features. https://teejeetech.in/2019/01/20/ukuu-v19-01/ Kernel Update Utility for Ubuntu-based distributions. Provides desktop notifications when new mainline kernel is available. Lists kernels from http://kernel.ubuntu.com/~kernel-ppa/mainline/ with options to install and remove.">teejee2008/ukuu: A paid version of Ukuu is now available with more features. https://teejeetech.in/2019/01/20/ukuu-v19-01/ Kernel Update Utility for Ubuntu-based distributions. Provides desktop notifications when new mainline kernel is available. Lists kernels from http://kernel.ubuntu.com/~kernel-ppa/mainline/ with options to install and remove.</a></li>
 </ul>
-<p>grubの設定をいじっているソースコードを探したところ、特に優先度を設定するようなことはしていなさそうだったので、
+<p>grubの設定をいじっているソースコードを探したところ、<code>update-grub</code>を呼び出すくらいで特に優先度を設定するようなことはしていなさそうだったので、
 <code>dpkg --compare-versions</code>を使ったソートの結果、単純に最初に来たカーネルがデフォルト（一番上のmenuentry）に使われていそうとわかった（なにも特殊なことはない普通の動作だ..）。</p>
 <p><a href="https://github.com/teejee2008/ukuu/blob/master/src/Common/LinuxKernel.vala#L1298" title="ukuu/LinuxKernel.vala at master · teejee2008/ukuu">ukuu/LinuxKernel.vala#L1298 at master · teejee2008/ukuu</a></p>
+<p>問題はdpkgがUKUUで入れた5.4.xカーネルがUbuntu HWEカーネルより新しいと判断していることが原因で、
+UKUUは特殊なことをしていないとわかったので、
+単純にUKUUから入れたカーネルを削除して<code>update-grub</code>すればデフォルトがHWEカーネルになりそうだとわかった。</p>
 </div>
 
 </article>
