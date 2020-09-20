@@ -410,7 +410,8 @@ Older versions are still open-source. Somebody can develop that version further 
 UKUUは特殊なことをしていないとわかったので、
 単純にUKUUから入れたカーネルを削除して<code>update-grub</code>すればデフォルトが（もっとも新しい）HWEカーネルになりそうだとわかった。
 一度別のカーネル（HWEでOK）で起動して、UKUUのGUIを使ってUKUU側の5.4.xを削除（ふつうに選択してRemove）すればデフォルトでもっとも新しいHWEカーネルが起動するようになる。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_7">Intel NICのドライバe1000eについて</h2>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_e1000eのDKMS設定_7">e1000eのDKMS設定</h2>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_8">Intel NICのドライバe1000eについて</h3>
 <div class="highlight"><pre><span></span><code>$ find /lib/modules/5.4.0-47-generic -name e1000e*
 /lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e
 /lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko
@@ -450,7 +451,7 @@ kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="
 <div class="highlight"><pre><span></span><code><span class="c1"># チェックサム検証のスキップ</span>
 sed -i <span class="s2">"/s32 e1000e_validate_nvm_checksum_generic(struct e1000_hw \*hw)/N;s/\n{/\n{return 0;/"</span> nvm.c
 </code></pre></div>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_8">UKUUとe1000eのビルドについて</h3>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_9">UKUUとe1000eのビルドについて</h3>
 <p>今回はUKUUを使わないためこれは余談なのだが、UKUUで導入したカーネルでe1000eをビルドするときには、チェックサム検証の問題に加えてABIに関連した問題が起こる。
 ここにe1000eのソースコード（<code>kcompat.h</code>）の一部を引用するが、以下のようにe1000eのプログラム内でABIのチェックが行われていて、
 4.16.xのカーネルをUKUUで導入した際はこのバージョンチェックをコメントアウトする必要があった。</p>
@@ -485,7 +486,7 @@ sed -i <span class="s2">"s/#error UTS_UBUNTU_RELEASE_ABI is too large.../\/\/#er
 <p>他にe1000e以外で注意が必要かもしれない点として、
 おそらくメジャーバージョンが1ケタであるせいで、この数字の始まりが0からになっているため、
 これを直接Cコードに埋め込んだりすると8進数扱いされて（さらに数字に8以上が含まれていて）ビルドが通らないということがあった（どのソフトウェアか覚えていないが）。</p>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_9">これまでのe1000e自動ビルドについて</h3>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_10">これまでのe1000e自動ビルドについて</h3>
 <p>Linuxにはカーネルバージョンをアップデートしたときにドライバなどのモジュールを再ビルドするための
 DKMS（Dynamic Kernel Module Support）というソフトウェアがあるのだが、
 導入当時はこれを使うキャパシティがなかったので、当時でもなんとなく使い方のわかっていたsystemdを使って
@@ -676,17 +677,22 @@ modinfo e1000e-dkms
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_7" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_e1000eのDKMS設定_7" class="toc-item toc-item-h2">
+        e1000eのDKMS設定
+      </a>
+  
+    <li>
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_8" class="toc-item toc-item-h3">
         Intel NICのドライバe1000eについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_8" class="toc-item toc-item-h3">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_9" class="toc-item toc-item-h3">
         UKUUとe1000eのビルドについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_9" class="toc-item toc-item-h3">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_10" class="toc-item toc-item-h3">
         これまでのe1000e自動ビルドについて
       </a>
   
