@@ -617,7 +617,7 @@ Older versions are still open-source. Somebody can develop that version further 
 <p>問題はdpkgがUKUUで入れた5.4.xカーネルがUbuntu HWEカーネルより新しいと判断していることが原因で、
 UKUUは特殊なことをしていないとわかったので、
 単純にUKUUから入れたカーネルを削除して<code>update-grub</code>すればデフォルトが（もっとも新しい）HWEカーネルになりそうだとわかった。
-UKUUのGUIを使ってUKUU側の5.4.xを削除すればOK（ふつうに選択してRemove）。</p>
+一度別のカーネル（HWEでOK）で起動して、UKUUのGUIを使ってUKUU側の5.4.xを削除（ふつうに選択してRemove）すればデフォルトでもっとも新しいHWEカーネルが起動するようになる。</p>
 </div>
 
 </article>
