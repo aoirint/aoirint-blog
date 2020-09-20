@@ -378,7 +378,14 @@ depmod...
 DKMS: install completed.
 </code></pre></div>
 <p>自動でモジュールが読み込まれないと思われるので、modprobeを使って手動で読み込む。</p>
-<div class="highlight"><pre><span></span><code>sudo modprobe e1000e-dkms
+<div class="highlight"><pre><span></span><code>sudo modprobe -r e1000e
+sudo modprobe e1000e-dkms
+</code></pre></div>
+<p>nouveauの無効化にならってデフォルトのe1000eを無効化する。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">printf</span> <span class="s2">"# disable default e1000e driver; use self-built version instead.\nblacklist e1000e\n"</span> <span class="p">|</span> sudo tee /etc/modprobe.d/blacklist-e1000e.conf
+</code></pre></div>
+<p>e1000e関係のログをみる：</p>
+<div class="highlight"><pre><span></span><code>zegrep e1000e /var/log/kern.log*
 </code></pre></div>
 <h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_7">セキュリティアップデートについて</h2>
 <ul>
