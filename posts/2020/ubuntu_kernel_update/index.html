@@ -450,7 +450,7 @@ kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="
 <div class="highlight"><pre><span></span><code><span class="c1"># チェックサム検証のスキップ</span>
 sed -i <span class="s2">"/s32 e1000e_validate_nvm_checksum_generic(struct e1000_hw \*hw)/N;s/\n{/\n{return 0;/"</span> nvm.c
 </code></pre></div>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_8">UKUUとe1000eのビルドについて</h2>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_8">UKUUとe1000eのビルドについて</h3>
 <p>今回はUKUUを使わないためこれは余談なのだが、UKUUで導入したカーネルでe1000eをビルドするときには、チェックサム検証の問題に加えてABIに関連した問題が起こる。
 ここにe1000eのソースコード（<code>kcompat.h</code>）の一部を引用するが、以下のようにe1000eのプログラム内でABIのチェックが行われていて、
 4.16.xのカーネルをUKUUで導入した際はこのバージョンチェックをコメントアウトする必要があった。</p>
@@ -485,7 +485,7 @@ sed -i <span class="s2">"s/#error UTS_UBUNTU_RELEASE_ABI is too large.../\/\/#er
 <p>他にe1000e以外で注意が必要かもしれない点として、
 おそらくメジャーバージョンが1ケタであるせいで、この数字の始まりが0からになっているため、
 これを直接Cコードに埋め込んだりすると8進数扱いされて（さらに数字に8以上が含まれていて）ビルドが通らないということがあった（どのソフトウェアか覚えていないが）。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_9">これまでのe1000e自動ビルドについて</h2>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_9">これまでのe1000e自動ビルドについて</h3>
 <p>Linuxにはカーネルバージョンをアップデートしたときにドライバなどのモジュールを再ビルドするための
 DKMS（Dynamic Kernel Module Support）というソフトウェアがあるのだが、
 導入当時はこれを使うキャパシティがなかったので、当時でもなんとなく使い方のわかっていたsystemdを使って
@@ -532,7 +532,7 @@ $ sudo make uninstall -C /etc/uscript/e1000e-latest/src
 $ sudo rm -r /etc/uscript/e1000e-latest
 <span class="sb">````</span>
 
-<span class="c1">## DKMSを使ったe1000e自動ビルドについて</span>
+<span class="c1">### DKMSを使ったe1000e自動ビルドについて</span>
 <span class="o">[</span>Ubuntu <span class="m">16</span>.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 <span class="o">(</span>r271-635<span class="o">)](</span>https://netlog.jpn.org/r271-635/2019/06/ubuntu_rtl8189ftv_dkms.html <span class="s2">"Ubuntu 16.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 (r271-635)"</span><span class="o">)</span>
 
 これを参考にカーネルアップデート時に自動でリビルドするDKMSに対応させる作業をした。
@@ -681,12 +681,12 @@ modinfo e1000e-dkms
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_8" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_8" class="toc-item toc-item-h3">
         UKUUとe1000eのビルドについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_9" class="toc-item toc-item-h2">
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_9" class="toc-item toc-item-h3">
         これまでのe1000e自動ビルドについて
       </a>
   
