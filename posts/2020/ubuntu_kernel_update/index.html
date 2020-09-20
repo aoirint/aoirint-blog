@@ -186,17 +186,13 @@
 <p>バージョン<code>4.10.x</code>はおそらくUbuntu 16.04をクリーンインストールしたときのもので、
 バージョン<code>4.15.x</code>は<code>dist-upgrade</code>でUbuntu 18.04にアップデートしたときに変更されたと思われる。
 その後ソフトウェア導入のためのバージョン合わせかなにかで<code>4.16.x</code>にして、そのまま使っていた。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_e1000eについて_3">e1000eについて</h2>
-<p>4.15.x, 4.16.xではIntel NICのドライバe1000eが入っていないので、
-少し荒っぽい方法で自動ビルドするようにしていたのだが、
-現在のUbuntu 18.04のメインストリームらしい5.4.xでは
-今回の作業中に気づいたのだがe1000eがデフォルトで入っているようだ。</p>
+<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_3">Intel NICのドライバe1000eについて</h2>
 <div class="highlight"><pre><span></span><code>$ find /lib/modules/5.4.0-47-generic -name e1000e*
 /lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e
 /lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko
 </code></pre></div>
-<p>しかし（デバイスによっては?）チェックサム検証に失敗する問題があるので、
-結局はこれを無効にして4.15, 4.16と同様に自分でビルドする必要がある。</p>
+<p>このようにデフォルトでe1000eのドライバがカーネルに付属しているようなのだが、
+（デバイスによっては?）チェックサム検証に失敗（<code>The NVM Checksum Is Not Valid</code> by <code>netdev.c</code>）する問題がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># lspci -vvv</span>
 <span class="m">00</span>:1f.6 Ethernet controller: Intel Corporation Ethernet Connection <span class="o">(</span><span class="m">2</span><span class="o">)</span> I219-V
     Subsystem: Intel Corporation Ethernet Connection <span class="o">(</span><span class="m">2</span><span class="o">)</span> I219-V
@@ -224,6 +220,12 @@ kernel: <span class="o">[</span>    <span class="m">1</span>.296199<span class="
 kernel: <span class="o">[</span>    <span class="m">1</span>.546779<span class="o">]</span> e1000e <span class="m">0000</span>:00:1f.6: The NVM Checksum Is Not Valid
 kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="o">]</span> e1000e: probe of <span class="m">0000</span>:00:1f.6 failed with error -5
 </code></pre></div>
+<p>そのため結局は無効にして自分でビルドする必要がある。</p>
+<p><a href="https://downloadcenter.intel.com/ja/download/15817" title="ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー">ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー</a></p>
+<p>解凍したあと、<code>src/nvm.c</code>の<code>e1000e_validate_nvm_checksum_generic</code>が0を返すように編集する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># チェックサム検証のスキップ</span>
+sed -i <span class="s2">"/s32 e1000e_validate_nvm_checksum_generic(struct e1000_hw \*hw)/N;s/\n{/\n{return 0;/"</span> nvm.c
+</code></pre></div>
 <h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンとe1000eのビルドについて_4">カーネルバージョンとe1000eのビルドについて</h2>
 <p>4.15.xから4.16.xにアップデートするときにはUKUU（Ubuntu Kernel Update Utility）を使ってアップデートしていた。
 このとき参考にしたサイト： <a href="https://linuxhint.com/upgrade-kernel-ubuntu-1804/" title="Upgrade Kernel on Ubuntu 18.04 – Linux Hint">Upgrade Kernel on Ubuntu 18.04 – Linux Hint</a></p>
@@ -232,8 +234,8 @@ kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="
 UKUUを使ってカーネルをインストールするとこの部分がバージョン番号（ハイフンの前）を6ケタの数字に直したようなものになるので、
 これはABIとは違いそうだ（ABIは0から255までの範囲のように思われる）。
 ABIのドキュメントらしきものがあったので、機会があれば読みたい：<a href="https://wiki.ubuntu.com/KernelTeam/BuildSystem/ABI" title="KernelTeam/BuildSystem/ABI - Ubuntu Wiki">KernelTeam/BuildSystem/ABI - Ubuntu Wiki</a></p>
-<p>e1000eのビルドでは、
-ここにe1000eのソースコード（<code>kcompat.h</code>）の一部を引用するが、以下のようにABIのチェックが行われていて、
+<p>e1000eのビルドでは、チェックサム検証の問題に加えてABIに関連した問題が起こる。
+ここにe1000eのソースコード（<code>kcompat.h</code>）の一部を引用するが、以下のようにe1000eのプログラム内でABIのチェックが行われていて、
 4.16.xのカーネルをUKUUで導入した際はこのバージョンチェックをコメントアウトする必要があった。</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* Ubuntu Release ABI is the 4th digit of their kernel version. You can find</span>
 <span class="cm"> * it in /usr/src/linux/$(uname -r)/include/generated/utsrelease.h for new</span>
@@ -262,13 +264,6 @@ ABIのドキュメントらしきものがあったので、機会があれば�
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ABIチェックのスキップ</span>
 sed -i <span class="s2">"s/#error UTS_UBUNTU_RELEASE_ABI is too large.../\/\/#error UTS_UBUNTU_RELEASE_ABI is too large.../"</span> kcompat.h
-</code></pre></div>
-<p>また、e1000eがチェックサム検証に失敗して（<code>The NVM Checksum Is Not Valid</code> by <code>netdev.c</code>）
-モジュールを起動できないので、これもスキップする必要があった。
-この問題ははじめに書いたように5.4.xに含まれるe1000eでも起こるので、ソースコードを入手した上で
-同様の変更を加えて、自分でビルドする必要があるらしい。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># チェックサム検証のスキップ</span>
-sed -i <span class="s2">"/s32 e1000e_validate_nvm_checksum_generic(struct e1000_hw \*hw)/N;s/\n{/\n{return 0;/"</span> nvm.c
 </code></pre></div>
 <p>他にe1000e以外で注意が必要かもしれない点として、
 おそらくメジャーバージョンが1ケタであるせいで、この数字の始まりが0からになっているため、
@@ -414,7 +409,7 @@ DKMS: install completed.
 <div class="highlight"><pre><span></span><code>sudo modprobe e1000e-dkms
 modinfo e1000e-dkms
 </code></pre></div>
-<p>以下のコマンドで以降の起動時に現在読み込まれているモジュールが自動で読み込まれるようになる。</p>
+<p>以下のコマンドで、次回起動時以降に現在読み込まれているモジュールが自動で読み込まれるようになる。</p>
 <div class="highlight"><pre><span></span><code>sudo update-initramfs -u
 </code></pre></div>
 <h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_6">セキュリティアップデートについて</h2>
@@ -430,8 +425,7 @@ Linux Kernelに脆弱性が発見されてもこのようにUbuntu側からセ�
 実際カーネルバージョンは4.16.xインストール時から固定されていたので、
 e1000eの自動ビルドはおそらく無駄で（4.10から4.15では意味があったが）、
 4.16.xカーネルのセキュリティアップデートも行われていなかったのではないかと思っている。</p>
-<p>ここまでに出てきたログを見れば分かると思うが、
-とりあえずUKUUを使って5.4.xにアップデートしたはいいものの、
+<p>はじめはUKUUを使って5.4.xにアップデートしたものの、
 この懸念からUbuntuが公式に提供しているHWEカーネルというものを使うことにした。
 これならばaptでカーネルが管理され、自動でパッチが適用されるものと思われる。</p>
 <ul>
@@ -489,7 +483,7 @@ i=hd0,gpt1 --hint-baremetal=ahci0,gpt1  ed8cbed5-714e-4201-b606-c41d570f834d
 </code></pre></div>
 <p>このような記述があったので、grubメニューの0番目に表示される<code>Ubuntu</code>という項目は<code>5.4.42-050442</code>のカーネルを起動するようになっていることがわかる。
 この設定は<code>apt install linux-generic-hwe-18.04</code>のあと<code>update-grub2</code>しても変わらなかった。
-おそらくUKUUが自動で設定したと思われるが、これをaptの管理するカーネルになるようにしたい。</p>
+おそらくUKUUが自動で設定したと思われる（以下で調べるが、実際には違った）が、これをaptの管理するカーネルになるようにしたい。</p>
 <div class="highlight"><pre><span></span><code>### BEGIN /etc/grub.d/10_linux ###
 </code></pre></div>
 <p>とあるので、この部分は<code>/etc/grub.d/10_linux</code>からインクルードされている。</p>
@@ -652,8 +646,8 @@ UKUUは特殊なことをしていないとわかったので、
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_e1000eについて_3" class="toc-item toc-item-h2">
-        e1000eについて
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_3" class="toc-item toc-item-h2">
+        Intel NICのドライバe1000eについて
       </a>
   
     <li>
