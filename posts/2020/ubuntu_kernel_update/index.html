@@ -192,15 +192,15 @@
 現在のUbuntu 18.04のメインストリームらしい5.4.xでは
 今回の作業中に気づいたのだがe1000eがデフォルトで入っているようだ
 （<code>/lib/modules/5.4.*-generic/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko</code>）。</p>
-<p>今回は4.15から4.16にアップデートするときに使ったUKUU（Ubuntu Kernel Update Utility）で5.4にアップデートした。
-そのとき参考にしたサイト： <a href="https://linuxhint.com/upgrade-kernel-ubuntu-1804/" title="Upgrade Kernel on Ubuntu 18.04 – Linux Hint">Upgrade Kernel on Ubuntu 18.04 – Linux Hint</a></p>
 <h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_e1000eのビルドについて_4">e1000eのビルドについて</h2>
 <p>4.15, 4.16ではe1000eを手動でビルドしていたので、
 今回もそうかと思って新しいe1000eのソースコードをダウンロードしたのだが、
 結局不要だった。</p>
 <p><a href="https://downloadcenter.intel.com/ja/download/15817" title="ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー">ダウンロード Linux * での PCIe * Intel®ギガビット・イーサネット・ネットワーク接続向けインテル®ネットワーク・アダプター・ドライバー</a></p>
 <h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンとe1000eのビルドについて_5">カーネルバージョンとe1000eのビルドについて</h2>
-<p>e1000eのソースコードを読む限り、
+<p>今回は4.15から4.16にアップデートするときにはUKUU（Ubuntu Kernel Update Utility）を使ってアップデートしていた。
+このとき参考にしたサイト： <a href="https://linuxhint.com/upgrade-kernel-ubuntu-1804/" title="Upgrade Kernel on Ubuntu 18.04 – Linux Hint">Upgrade Kernel on Ubuntu 18.04 – Linux Hint</a></p>
+<p>ところで、e1000eのソースコードを読む限り、
 カーネルバージョンの後ろに付いているハイフン以降の数字はUbuntu Release ABIというらしいのだが、
 UKUUを使ってカーネルをインストールするとバージョン番号（ハイフンの前）を6ケタの数字に直したようなものになるので、
 これはABIとは違いそうだ（ABIは0から255までの範囲のように思われる）。
@@ -381,6 +381,31 @@ DKMS: install completed.
 <div class="highlight"><pre><span></span><code>sudo modprobe e1000e-dkms
 </code></pre></div>
 <h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_セキュリティアップデートについて_7">セキュリティアップデートについて</h2>
+<ul>
+<li><a href="https://kledgeb.blogspot.com/2020/09/ubuntu-2004-164-linux-kerneldos.html" title="Ubuntu 20.04 その164 - Linux kernelにDoSや任意コード実行の脆弱性・アップデートを - kledgeb">Ubuntu 20.04 その164 - Linux kernelにDoSや任意コード実行の脆弱性・アップデートを - kledgeb</a></li>
+<li><a href="https://ubuntu.com/security/notices/USN-4489-1" title="USN-4489-1: Linux kernel vulnerability | Ubuntu security notices | Ubuntu">USN-4489-1: Linux kernel vulnerability | Ubuntu security notices | Ubuntu</a></li>
+</ul>
+<p>通常の方法でインストールされるカーネルを使っている場合、
+Linux Kernelに脆弱性が発見されてもこのようにUbuntu側からセキュリティアップデートが提供される。</p>
+<p>しかしUKUUを使って（起動時にデフォルトで使用する）カーネルのバージョンを変更した場合、
+これは（デバッグ目的などで）カーネルのバージョンを固定しているのに近いと思われるので、
+セキュリティアップデートを手動で行う必要があるのではないかという懸念があった。
+実際カーネルバージョンは4.16.xインストール時から固定されていたので、
+e1000eの自動ビルドはおそらく無駄で（4.10から4.15では意味があったが）、
+4.16.xカーネルのセキュリティアップデートも行われていなかったのではないかと思っている。</p>
+<p>ここまでに出てきたログを見れば分かると思うが、
+とりあえずUKUUを使って5.4.xにアップデートしたはいいものの、
+この懸念からUbuntuが公式に提供しているHWEカーネルというものを使うことにした。
+これならばaptでカーネルが管理され、自動でパッチが適用されるものと思われる。</p>
+<ul>
+<li><a href="https://iberianpig.github.io/posts/2017-02-06_how_to_upgrade_kernel/" title="Ubuntuのベースバージョンを変えずにLinuxカーネルをアップグレードする方法 - iberianpigsty">Ubuntuのベースバージョンを変えずにLinuxカーネルをアップグレードする方法 - iberianpigsty</a></li>
+<li><a href="https://gihyo.jp/admin/serial/01/ubuntu-recipe/0278" title="第278回 Ubuntuカーネルとの付き合い方：Ubuntu Weekly Recipe｜gihyo.jp … 技術評論社">第278回　Ubuntuカーネルとの付き合い方：Ubuntu Weekly Recipe｜gihyo.jp … 技術評論社</a></li>
+</ul>
+<p>Ubuntu 18.04の場合、<code>linux-generic-hwe-18.04</code>が安定版、<code>linux-generic-hwe-18.04-edge</code>が開発版ということだろうか。
+今回は安定性を重視するので安定版を選んでアップデートする。</p>
+<p>``
+sudo apt install linux-generic-hwe-18.04
+```</p>
 </div>
 
 </article>
