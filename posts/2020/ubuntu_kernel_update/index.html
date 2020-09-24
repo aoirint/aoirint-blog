@@ -531,18 +531,13 @@ $ sudo rm /etc/uscript/e1000e
 $ sudo modprobe -r e1000e
 $ sudo make uninstall -C /etc/uscript/e1000e-latest/src
 $ sudo rm -r /etc/uscript/e1000e-latest
-<span class="sb">````</span>
-
-<span class="c1">### DKMSを使ったe1000e自動ビルドについて</span>
-<span class="o">[</span>Ubuntu <span class="m">16</span>.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 <span class="o">(</span>r271-635<span class="o">)](</span>https://netlog.jpn.org/r271-635/2019/06/ubuntu_rtl8189ftv_dkms.html <span class="s2">"Ubuntu 16.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 (r271-635)"</span><span class="o">)</span>
-
-これを参考にカーネルアップデート時に自動でリビルドするDKMSに対応させる作業をした。
-
-まず、あらかじめ<span class="sb">`</span>dkms<span class="sb">`</span>をインストールしておく。
-もし先にカーネルを更新してしまって<span class="sb">`</span>dkms<span class="sb">`</span>を取得できないときは、一度手動で<span class="sb">`</span>e1000e<span class="sb">`</span>をビルドすればOK（<span class="sb">`</span>make uninstall<span class="sb">`</span>を忘れずに）。
-
-<span class="sb">```</span>sh
-sudo apt install dkms
+</code></pre></div>
+<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_DKMSを使ったe1000e自動ビルドについて_11">DKMSを使ったe1000e自動ビルドについて</h3>
+<p><a href="https://netlog.jpn.org/r271-635/2019/06/ubuntu_rtl8189ftv_dkms.html" title="Ubuntu 16.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 (r271-635)">Ubuntu 16.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 (r271-635)</a></p>
+<p>これを参考にカーネルアップデート時に自動でリビルドするDKMSに対応させる作業をした。</p>
+<p>まず、あらかじめ<code>dkms</code>をインストールしておく。
+もし先にカーネルを更新してしまって<code>dkms</code>を取得できないときは、一度手動で<code>e1000e</code>をビルドすればOK（<code>make uninstall</code>を忘れずに）。</p>
+<div class="highlight"><pre><span></span><code>sudo apt install dkms
 </code></pre></div>
 <p>まずは<code>/usr/src</code>以下にソースディレクトリをコピーする。
 今回の場合、<code>e1000e-3.8.4.tar.gz</code>を解凍した<code>e1000e-3.8.4</code>ディレクトリを<code>/usr/src/e1000e-3.8.4</code>としてコピーする。
@@ -692,6 +687,11 @@ modinfo e1000e-dkms
     <li>
       <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_10" class="toc-item toc-item-h3">
         これまでのe1000e自動ビルドについて
+      </a>
+  
+    <li>
+      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_DKMSを使ったe1000e自動ビルドについて_11" class="toc-item toc-item-h3">
+        DKMSを使ったe1000e自動ビルドについて
       </a>
   
   </ul>
