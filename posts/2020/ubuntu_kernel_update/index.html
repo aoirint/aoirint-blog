@@ -568,6 +568,7 @@ DEST_MODULE_NAME[0]="e1000e-dkms"
 MAKE[0]="cd src; make -j$(nproc)"
 DEST_MODULE_LOCATION[0]="/updates/dkms"
 AUTOINSTALL="yes"
+REMAKE_INITRD="yes"
 </code></pre></div>
 <p>これだけでDKMSに登録する準備が完了した。次はDKMSにこのソースディレクトリを登録する。
 DKMSはデフォルトで<code>/usr/src</code>以下のディレクトリを見に行くように思われる。</p>
@@ -616,7 +617,6 @@ depmod...
 
 DKMS: install completed.
 </code></pre></div>
-<p><a href="https://blog.spiralray.net/archives/474" title="オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note">オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note</a></p>
 <p>デフォルトの<code>e1000e</code>を無効化する。</p>
 <div class="highlight"><pre><span></span><code>sudo modprobe -r e1000e
 
@@ -627,9 +627,7 @@ DKMS: install completed.
 <div class="highlight"><pre><span></span><code>sudo modprobe e1000e-dkms
 modinfo e1000e-dkms
 </code></pre></div>
-<p>以下のコマンドで、次回起動時以降に現在読み込まれているモジュールが自動で読み込まれるようになる。</p>
-<div class="highlight"><pre><span></span><code>sudo update-initramfs -u
-</code></pre></div>
+<p><a href="https://blog.spiralray.net/archives/474" title="オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note">オンボードのEthernetコントローラ(I219-V)がUbuntuで動かない時の対処 | Ray's Note</a></p>
 </div>
 
 </article>
