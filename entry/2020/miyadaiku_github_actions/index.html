@@ -15,7 +15,7 @@
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/posts/2020/miyadaiku_github_actions/" />
+<meta property="og:url" content="https://blog.aoirint.com/entry/2020/miyadaiku_github_actions/" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
@@ -194,12 +194,12 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータMiyadaiku_GitHub_Actions_GitHub_Pagesでブログを作る_1">静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</h1>
-<h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_概要_2">概要</h2>
+  <h1 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータMiyadaiku_GitHub_Actions_GitHub_Pagesでブログを作る_1">静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る</h1>
+<h2 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_概要_2">概要</h2>
 <p>新しく静的サイトジェネレータでブログ環境を整備した。
 細かい使い方には触れないが、構成を書いておく。</p>
-<h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータとCI_CD_3">静的サイトジェネレータとCI/CD</h2>
-<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータ_4">静的サイトジェネレータ</h3>
+<h2 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータとCI_CD_3">静的サイトジェネレータとCI/CD</h2>
+<h3 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータ_4">静的サイトジェネレータ</h3>
 <p>静的サイトジェネレータというのはSphinx（Python製）とかJekyll（Ruby製、GitHub Pages標準らしい）とかHugo（Go製）みたいなやつで、
 MarkdownだとかreStructuredTextだとかのファイル群からHTMLを生成するツール。</p>
 <ul>
@@ -207,7 +207,7 @@ MarkdownだとかreStructuredTextだとかのファイル群からHTMLを生成�
 <li><a href="https://jekyllrb.com/">Jekyll</a></li>
 <li><a href="https://gohugo.io/">Hugo</a></li>
 </ul>
-<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_Miyadaiku_5">Miyadaiku</h3>
+<h3 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_Miyadaiku_5">Miyadaiku</h3>
 <p><a href="https://miyadaiku.github.io/">Miyadaiku</a>はPython製の静的サイトジェネレータ。
 Flaskで使うテンプレートエンジンのJinja2が使えることが特徴みたい。Jinja2はDjangoのテンプレートエンジンに似ている。
 テンプレート上でどんな変数が使えるかはMiyadaikuの領域なので、ドキュメント（とサンプルテンプレート、ソースコード）を見ていくしかないかも。</p>
@@ -215,7 +215,7 @@ Flaskで使うテンプレートエンジンのJinja2が使えることが特徴
 <li><a href="https://github.com/miyadaiku/miyadaiku">github:miyadaiku/miyadaiku</a></li>
 <li><a href="https://pypi.org/project/miyadaiku/">pypi:miyadaiku</a></li>
 </ul>
-<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_GitHub_Actions_6">GitHub Actions</h3>
+<h3 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_GitHub_Actions_6">GitHub Actions</h3>
 <p>GitHub上のリポジトリに対してpushやPull Requestがなされた時に事前に指定した処理を実行することのできるGitHubの機能。
 Jenkinsなどに近そう。また、GitLabにも同様の機能があったはず。
 GitHubのサーバで動く仮想環境上でDockerのような使い方でテストケースの実行やリリースファイルのビルド、サーバへのデプロイ、
@@ -227,8 +227,8 @@ GitHubが落ちたら解消するまで（手元にリポジトリがあって�
 <ul>
 <li><a href="https://www.githubstatus.com/">GitHub Status</a></li>
 </ul>
-<h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_考えていること_7">考えていること</h2>
-<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_レンダリング後のHTMLファイルの分離_8">レンダリング後のHTMLファイルの分離</h3>
+<h2 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_考えていること_7">考えていること</h2>
+<h3 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_レンダリング後のHTMLファイルの分離_8">レンダリング後のHTMLファイルの分離</h3>
 <p>Markdownを書いている時に見えるところに（レンダリング後の）HTMLファイルを置きたくない。
 できれば何も考えずに（Markdownで書いた）メモファイルを置くのに使っていた適当なディレクトリの上でコマンドを実行したら
 HTTPサーバを介して（オプションで指定したテーマなどで）いい感じにレンダリングしてくれるようなものがいい
@@ -317,7 +317,7 @@ HTTPサーバを介して（オプションで指定したテーマなどで）�
 </code></pre></div>
 </td></tr></table>
 <p><code>name</code>、<code>run</code>のところをコピーして増やせばコマンドを増やすことができる。</p>
-<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_テーマと文書の分離_9">テーマと文書の分離</h3>
+<h3 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_テーマと文書の分離_9">テーマと文書の分離</h3>
 <p>テーマのリポジトリと文書のリポジトリを分離したい。
 これをすることで、
 文書のリポジトリでは本来の目的であるメモやブログの文章に関するcommitだけ（レンダリングの設定ファイルは残ってしまうかもだが）、
@@ -328,7 +328,7 @@ HTTPサーバを介して（オプションで指定したテーマなどで）�
 <ul>
 <li><a href="https://pypi.org/project/aoirint-miyadaiku-theme-blog/">pypi:aoirint-miyadaiku-theme-blog</a></li>
 </ul>
-<h3 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_文書の書きやすさ_10">文書の書きやすさ</h3>
+<h3 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_文書の書きやすさ_10">文書の書きやすさ</h3>
 <p>日付の表示やタグ検索などレンダリング時の質を上げたければ、どうしても文書側にメタデータを付加しなければならないところがネックではある気はするが、
 GitHub上でJekyll的なYAMLヘッダ（Miyadaikuも同様）のついたMarkdownを表示してみたところ、メタデータを整形表示してくれた。
 この様子ならある程度互換性が期待できるし、そういう習慣をつけるのもいいのではないかなと思う。</p>
@@ -341,7 +341,7 @@ GitHub上でJekyll的なYAMLヘッダ（Miyadaikuも同様）のついたMarkdow
 </ul>
 <p>またUbuntu、Mac、WindowsのPCを時と場所と気分と目的によって切り替えて使っていて、タイミングによっては特定のPCにアクセスできないようなこともあるので、基本的に文書がリモートにないと面倒なのだが、（あんまり分散管理という感じがしないが）GitHubを経由して同期すればいいというのがGitを使う利点の一つであるように思う。</p>
 <p>それから、複数の書きかけの文書/記事があるとき、何度も変更して大量に履歴ができたり、複数の記事の履歴が入り乱れるとつらそう。これは記事ごとにブランチを切る（あとでmergeする）とか、squash/rebaseを使うとか、Pull Requestを使うとかしてうまく対処できないか考えている。</p>
-<h4 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_複数のコミットを1つにまとめる例_11">複数のコミットを1つにまとめる例</h4>
+<h4 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_複数のコミットを1つにまとめる例_11">複数のコミットを1つにまとめる例</h4>
 <p>このような4つのコミット履歴のあるブランチがあるとする。</p>
 <div class="highlight"><pre><span></span><code>branch A: W--X--Y--Z
 </code></pre></div>
@@ -367,7 +367,7 @@ s    ZZZZZZ COMMIT Z
 <ul>
 <li><a href="https://qiita.com/tsuuuuu_san/items/f708a9f7ea8ab8eb6945">【git rebase -i】gitのcommitをまとめる - Qiita</a></li>
 </ul>
-<h4 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_複数の記事を同時に書く際の例_12">複数の記事を同時に書く際の例</h4>
+<h4 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_複数の記事を同時に書く際の例_12">複数の記事を同時に書く際の例</h4>
 <p>まず、masterブランチ、記事Aを書いているブランチA、記事Bを書いているブランチBがあるとする。ブランチAとブランチBはmasterブランチの最終commit Xから分岐している。</p>
 <div class="highlight"><pre><span></span><code>master  : X
            \
@@ -388,7 +388,7 @@ branch B:            |--Z
 <ul>
 <li><a href="https://qiita.com/vsanna/items/451b42f886c599a16a55">fast-forwardマージから理解するgit rebase - Qiita</a></li>
 </ul>
-<h2 class="md_header_block" id="h_posts_2020_miyadaiku_github_actions_index_md_Miyadaikuを使う_13">Miyadaikuを使う</h2>
+<h2 class="md_header_block" id="h_entry_2020_miyadaiku_github_actions_index_md_Miyadaikuを使う_13">Miyadaikuを使う</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip3 install miyadaiku
 </code></pre></div>
 </td></tr></table>
@@ -537,67 +537,67 @@ Miyadaikuをpipで入れると<code>miyadaiku-start</code>、<code>miyadaiku-bui
   <ul class="toc">
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータMiyadaiku_GitHub_Actions_GitHub_Pagesでブログを作る_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータMiyadaiku_GitHub_Actions_GitHub_Pagesでブログを作る_1" class="toc-item toc-item-h1">
         静的サイトジェネレータMiyadaiku + GitHub Actions + GitHub Pagesでブログを作る
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_概要_2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_概要_2" class="toc-item toc-item-h2">
         概要
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータとCI_CD_3" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータとCI_CD_3" class="toc-item toc-item-h2">
         静的サイトジェネレータとCI/CD
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータ_4" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_静的サイトジェネレータ_4" class="toc-item toc-item-h3">
         静的サイトジェネレータ
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_Miyadaiku_5" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_Miyadaiku_5" class="toc-item toc-item-h3">
         Miyadaiku
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_GitHub_Actions_6" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_GitHub_Actions_6" class="toc-item toc-item-h3">
         GitHub Actions
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_考えていること_7" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_考えていること_7" class="toc-item toc-item-h2">
         考えていること
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_レンダリング後のHTMLファイルの分離_8" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_レンダリング後のHTMLファイルの分離_8" class="toc-item toc-item-h3">
         レンダリング後のHTMLファイルの分離
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_テーマと文書の分離_9" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_テーマと文書の分離_9" class="toc-item toc-item-h3">
         テーマと文書の分離
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_文書の書きやすさ_10" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_文書の書きやすさ_10" class="toc-item toc-item-h3">
         文書の書きやすさ
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_複数のコミットを1つにまとめる例_11" class="toc-item toc-item-h4">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_複数のコミットを1つにまとめる例_11" class="toc-item toc-item-h4">
         複数のコミットを1つにまとめる例
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_複数の記事を同時に書く際の例_12" class="toc-item toc-item-h4">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_複数の記事を同時に書く際の例_12" class="toc-item toc-item-h4">
         複数の記事を同時に書く際の例
       </a>
   
     <li>
-      <a href="#h_posts_2020_miyadaiku_github_actions_index_md_Miyadaikuを使う_13" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_miyadaiku_github_actions_index_md_Miyadaikuを使う_13" class="toc-item toc-item-h2">
         Miyadaikuを使う
       </a>
   

@@ -15,7 +15,7 @@
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/posts/2020/ubuntu_kernel_update/" />
+<meta property="og:url" content="https://blog.aoirint.com/entry/2020/ubuntu_kernel_update/" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
@@ -190,10 +190,10 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1">Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定</h1>
+  <h1 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1">Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定</h1>
 <p>環境の整理を兼ねて、UbuntuのKernelのアップデートをしたので、そのときのメモ。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__2">Ubuntu 18.04のKernelをアップデートした（HWE Kernel）</h2>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて_3">カーネルバージョンについて</h3>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__2">Ubuntu 18.04のKernelをアップデートした（HWE Kernel）</h2>
+<h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて_3">カーネルバージョンについて</h3>
 <p><code>/lib/modules</code>を見る限りインストール時のバージョンは<code>4.10.0-28</code>で、
 <code>/usr/src</code>を見る限り<code>4.15.0-115</code>をしばらく使ったあと、
 <code>4.16.18</code>に更新していた。</p>
@@ -206,7 +206,7 @@
 UKUUを使ってカーネルをインストールするとこの部分がバージョン番号（ハイフンの前）を6ケタの数字に直したようなものになるので、
 これはABIとは違いそうだ（ABIは0から255までの範囲のように思われる）。
 ABIのドキュメントらしきものがあったので、機会があれば読みたい：<a href="https://wiki.ubuntu.com/KernelTeam/BuildSystem/ABI" title="KernelTeam/BuildSystem/ABI - Ubuntu Wiki">KernelTeam/BuildSystem/ABI - Ubuntu Wiki</a></p>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UKUUとセキュリティアップデートについて_4">UKUUとセキュリティアップデートについて</h3>
+<h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_UKUUとセキュリティアップデートについて_4">UKUUとセキュリティアップデートについて</h3>
 <ul>
 <li><a href="https://kledgeb.blogspot.com/2020/09/ubuntu-2004-164-linux-kerneldos.html" title="Ubuntu 20.04 その164 - Linux kernelにDoSや任意コード実行の脆弱性・アップデートを - kledgeb">Ubuntu 20.04 その164 - Linux kernelにDoSや任意コード実行の脆弱性・アップデートを - kledgeb</a></li>
 <li><a href="https://ubuntu.com/security/notices/USN-4489-1" title="USN-4489-1: Linux kernel vulnerability | Ubuntu security notices | Ubuntu">USN-4489-1: Linux kernel vulnerability | Ubuntu security notices | Ubuntu</a></li>
@@ -219,7 +219,7 @@ Linux Kernelに脆弱性が発見されてもこのようにUbuntu側からセ�
 実際カーネルバージョンは4.16.xインストール時から固定されていたので、
 e1000eの自動ビルドはおそらく無駄で（4.10から4.15では意味があったが）、
 4.16.xカーネルのセキュリティアップデートも行われていなかったのではないかと思っている。</p>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_HWEカーネルのインストール_5">HWEカーネルのインストール</h3>
+<h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_HWEカーネルのインストール_5">HWEカーネルのインストール</h3>
 <p>はじめはUKUUを使って5.4.xにアップデートしたものの、
 前項の懸念からUbuntuが公式に提供しているHWEカーネルというものを使うことにした。
 これならばaptでカーネルが管理され、自動でパッチが適用されるものと思われる。</p>
@@ -237,7 +237,7 @@ e1000eの自動ビルドはおそらく無駄で（4.10から4.15では意味が
   linux-image-4.15.0-115-generic linux-modules-4.15.0-115-generic
   linux-modules-extra-4.15.0-115-generic
 </code></pre></div>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_余談_UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定_6">余談：UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定</h3>
+<h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_余談_UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定_6">余談：UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定</h3>
 <p>ここで、grubのデフォルトエントリがUKUUで入れた5.4.xカーネルのままで、
 新たにインストールしたUbuntu HWEカーネルではなかった。
 この項ではこの理由を検討するが、実際にはgrub（またはUbuntuに同梱されているgrub）のデフォルトの挙動であったので、
@@ -419,8 +419,8 @@ Older versions are still open-source. Somebody can develop that version further 
 UKUUは特殊なことをしていないとわかったので、
 単純にUKUUから入れたカーネルを削除して<code>update-grub</code>すればデフォルトが（もっとも新しい）HWEカーネルになりそうだとわかった。
 一度別のカーネル（HWEでOK）で起動して、UKUUのGUIを使ってUKUU側の5.4.xを削除（ふつうに選択してRemove）すればデフォルトでもっとも新しいHWEカーネルが起動するようになる。</p>
-<h2 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_e1000eのDKMS設定_7">e1000eのDKMS設定</h2>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_8">Intel NICのドライバe1000eについて</h3>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_e1000eのDKMS設定_7">e1000eのDKMS設定</h2>
+<h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_8">Intel NICのドライバe1000eについて</h3>
 <div class="highlight"><pre><span></span><code>$ find /lib/modules/5.4.0-47-generic -name e1000e*
 /lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e
 /lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko
@@ -460,7 +460,7 @@ kernel: <span class="o">[</span>    <span class="m">1</span>.588850<span class="
 <div class="highlight"><pre><span></span><code><span class="c1"># チェックサム検証のスキップ</span>
 sed -i <span class="s2">"/s32 e1000e_validate_nvm_checksum_generic(struct e1000_hw \*hw)/N;s/\n{/\n{return 0;/"</span> nvm.c
 </code></pre></div>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_9">UKUUとe1000eのビルドについて</h3>
+<h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_9">UKUUとe1000eのビルドについて</h3>
 <p>今回はUKUUを使わないためこれは余談なのだが、UKUUで導入したカーネルでe1000eをビルドするときには、チェックサム検証の問題に加えてABIに関連した問題が起こる。
 ここにe1000eのソースコード（<code>kcompat.h</code>）の一部を引用するが、以下のようにe1000eのプログラム内でABIのチェックが行われていて、
 4.16.xのカーネルをUKUUで導入した際はこのバージョンチェックをコメントアウトする必要があった。</p>
@@ -495,7 +495,7 @@ sed -i <span class="s2">"s/#error UTS_UBUNTU_RELEASE_ABI is too large.../\/\/#er
 <p>他にe1000e以外で注意が必要かもしれない点として、
 おそらくメジャーバージョンが1ケタであるせいで、この数字の始まりが0からになっているため、
 これを直接Cコードに埋め込んだりすると8進数扱いされて（さらに数字に8以上が含まれていて）ビルドが通らないということがあった（どのソフトウェアか覚えていないが）。</p>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_10">これまでのe1000e自動ビルドについて</h3>
+<h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_10">これまでのe1000e自動ビルドについて</h3>
 <p>Linuxにはカーネルバージョンをアップデートしたときにドライバなどのモジュールを再ビルドするための
 DKMS（Dynamic Kernel Module Support）というソフトウェアがあるのだが、
 導入当時はこれを使うキャパシティがなかったので、当時でもなんとなく使い方のわかっていたsystemdを使って
@@ -541,7 +541,7 @@ $ sudo modprobe -r e1000e
 $ sudo make uninstall -C /etc/uscript/e1000e-latest/src
 $ sudo rm -r /etc/uscript/e1000e-latest
 </code></pre></div>
-<h3 class="md_header_block" id="h_posts_2020_ubuntu_kernel_update_index_md_DKMSを使ったe1000e自動ビルドについて_11">DKMSを使ったe1000e自動ビルドについて</h3>
+<h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_DKMSを使ったe1000e自動ビルドについて_11">DKMSを使ったe1000e自動ビルドについて</h3>
 <p><a href="https://netlog.jpn.org/r271-635/2019/06/ubuntu_rtl8189ftv_dkms.html" title="Ubuntu 16.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 (r271-635)">Ubuntu 16.04でRTL8189FTV （RTL8188FU）ドライバのDKMS化 (r271-635)</a></p>
 <p>これを参考にカーネルアップデート時に自動でリビルドするDKMSに対応させる作業をした。</p>
 <p>まず、あらかじめ<code>dkms</code>をインストールしておく。
@@ -649,57 +649,57 @@ modinfo e1000e-dkms
   <ul class="toc">
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定_1" class="toc-item toc-item-h1">
         Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__2" class="toc-item toc-item-h2">
         Ubuntu 18.04のKernelをアップデートした（HWE Kernel）
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて_3" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて_3" class="toc-item toc-item-h3">
         カーネルバージョンについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UKUUとセキュリティアップデートについて_4" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_UKUUとセキュリティアップデートについて_4" class="toc-item toc-item-h3">
         UKUUとセキュリティアップデートについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_HWEカーネルのインストール_5" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_HWEカーネルのインストール_5" class="toc-item toc-item-h3">
         HWEカーネルのインストール
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_余談_UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定_6" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_余談_UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定_6" class="toc-item toc-item-h3">
         余談：UKUUを使ったカーネル導入とデフォルトカーネルとgrubの設定
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_e1000eのDKMS設定_7" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_e1000eのDKMS設定_7" class="toc-item toc-item-h2">
         e1000eのDKMS設定
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_8" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて_8" class="toc-item toc-item-h3">
         Intel NICのドライバe1000eについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_9" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_UKUUとe1000eのビルドについて_9" class="toc-item toc-item-h3">
         UKUUとe1000eのビルドについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_10" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_これまでのe1000e自動ビルドについて_10" class="toc-item toc-item-h3">
         これまでのe1000e自動ビルドについて
       </a>
   
     <li>
-      <a href="#h_posts_2020_ubuntu_kernel_update_index_md_DKMSを使ったe1000e自動ビルドについて_11" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_DKMSを使ったe1000e自動ビルドについて_11" class="toc-item toc-item-h3">
         DKMSを使ったe1000e自動ビルドについて
       </a>
   
