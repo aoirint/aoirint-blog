@@ -195,6 +195,14 @@
     <span class="n">rc</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">create_cookie</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">cookie</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">cookie</span><span class="p">[</span><span class="s1">'name'</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="n">cookie</span><span class="p">[</span><span class="s1">'value'</span><span class="p">])</span>
     <span class="n">ses</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="n">rc</span><span class="p">)</span>
 </code></pre></div>
+<h2 class="md_header_block" id="h_snippet_2020_python_requests_session_index_md_Download_a_file_4">Download a file</h2>
+<div class="highlight"><pre><span></span><code><span class="n">bio</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">ses</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">zip_url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">8192</span><span class="p">):</span>
+        <span class="n">bio</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</code></pre></div>
 </div>
 
 </article>
@@ -224,6 +232,11 @@
     <li>
       <a href="#h_snippet_2020_python_requests_session_index_md_Copy_cookies_from_Selenium_3" class="toc-item toc-item-h2">
         Copy cookies from Selenium
+      </a>
+  
+    <li>
+      <a href="#h_snippet_2020_python_requests_session_index_md_Download_a_file_4" class="toc-item toc-item-h2">
+        Download a file
       </a>
   
   </ul>
