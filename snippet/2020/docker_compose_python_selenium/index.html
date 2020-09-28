@@ -192,7 +192,21 @@
 <div class="article-body">
   <h1 class="md_header_block" id="h_snippet_2020_docker_compose_python_selenium_index_md_スニペット_docker_composeによるPython_Selenium環境_1">スニペット: docker-composeによるPython + Selenium環境</h1>
 <p>docker-compose.yml</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">'3.8'</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">'3.8'</span>
 <span class="nt">services</span><span class="p">:</span>
   <span class="nt">app</span><span class="p">:</span>
     <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./app/</span>
@@ -208,8 +222,19 @@
     <span class="nt">volumes</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/dev/shm:/dev/shm</span>
 </code></pre></div>
+</td></tr></table>
 <p>app/Dockerfile</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">python:3</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">python:3</span>
 
 <span class="k">WORKDIR</span><span class="s"> /work</span>
 
@@ -221,8 +246,21 @@
 
 <span class="k">ADD</span> code/ /code
 </code></pre></div>
+</td></tr></table>
 <p>app/code/main.py</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
 <span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">NoSuchElementException</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.common.desired_capabilities</span> <span class="kn">import</span> <span class="n">DesiredCapabilities</span>
 
@@ -236,6 +274,7 @@
 
 <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">website_url</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 </div>
 
 </article>
