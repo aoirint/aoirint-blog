@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Mon, 28 Sep 2020 10:10:00 +0900</lastBuildDate><item><title>スニペット: docker-composeによるPython + Selenium環境</title><link>https://blog.aoirint.com/snippet/2020/docker_compose_python_selenium/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_docker_compose_python_selenium_index_md_スニペット_docker_composeによるPython_Selenium環境_1"&gt;スニペット: docker-composeによるPython + Selenium環境&lt;/h1&gt;
 &lt;p&gt;docker-compose.yml&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;version: '3.8'
-services:
-  app:
-    build: ./app/
-    entrypoint: [ "wait-for-it", "selenium:4444", "--", "python3", "/code/main.py" ]
-    volumes:
-      - ./work:/work
-    environment:
-      SELENIUM_URL: http://selenium:4444/wd/hub
-    depends_on:
-      - se&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 28 Sep 2020 10:10:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-28 10:10:00.000000:/snippet/2020/docker_compose_python_selenium/</guid></item><item><title>スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト</title><link>https://blog.aoirint.com/snippet/2020/docker_compose_run_rm_linked_containers/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_docker_compose_run_rm_linked_containers_index_md_スニペット_docker_compose_run_rm終了時に他のコンテナも削除するシェルスクリプト_1"&gt;スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;version&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;'3.8'&lt;/span&gt;
+&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;app&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;./app/&lt;/span&gt;
+    &lt;span class="nt"&gt;entrypoint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;[&lt;/span&gt; &lt;span class="s"&gt;"wait-for-it"&lt;/span&gt;&lt;span class="p p-Indicator"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"selenium:4444"&lt;/span&gt;&lt;span class="p p-Indicator"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"--"&lt;/span&gt;&lt;span class="p p-Indicator"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"python3"&lt;/span&gt;&lt;span class="p p-Indicator"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"/code/main.py"&lt;/span&gt; &lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;volumes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;./work:/work&lt;/span&gt;
+    &lt;span class="nt"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="nt"&gt;SELENIUM_URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://selenium:4444/wd/hub&lt;/span&gt;
+    &lt;span class="nt"&gt;depends_on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;se&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 28 Sep 2020 10:10:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-28 10:10:00.000000:/snippet/2020/docker_compose_python_selenium/</guid></item><item><title>スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト</title><link>https://blog.aoirint.com/snippet/2020/docker_compose_run_rm_linked_containers/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_docker_compose_run_rm_linked_containers_index_md_スニペット_docker_compose_run_rm終了時に他のコンテナも削除するシェルスクリプト_1"&gt;スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;docker-compose run --rm app&lt;/code&gt;を実行するとサービスappが起動してコンテナが作られ、実行が終わり次第コンテナは削除される。
 このとき削除されるコンテナはforegroundで実行されたもののみで、
 &lt;code&gt;depends_on&lt;/code&gt;などの設定からリンクを通じて起動した他サービスのdetachedコンテナは削除されず残り続ける。&lt;/p&gt;
