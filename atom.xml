@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2020-09-27T16:30:00+09:00</updated><entry><title>スニペット: GitHub Actions, ビルド結果を別ブランチにpushする</title><link href="https://blog.aoirint.com/snippet/2020/github_actions_push_build_results/" rel="alternate"></link><published>2020-09-27T16:30:00+09:00</published><updated>2020-09-27T16:30:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-27 16:30:00.000000:/snippet/2020/github_actions_push_build_results/</id><summary type="html">&lt;h1 class="md_header_block" id="h_snippet_2020_github_actions_push_build_results_index_md_スニペット_GitHub_Actions_ビルド結果を別ブランチにpushする_1"&gt;スニペット: GitHub Actions, ビルド結果を別ブランチにpushする&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2020-09-28T10:10:00+09:00</updated><entry><title>スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト</title><link href="https://blog.aoirint.com/snippet/2020/docker_compose_run_rm_linked_containers/" rel="alternate"></link><published>2020-09-28T10:10:00+09:00</published><updated>2020-09-28T10:10:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-28 10:10:00.000000:/snippet/2020/docker_compose_run_rm_linked_containers/</id><summary type="html">&lt;h1 class="md_header_block" id="h_snippet_2020_docker_compose_run_rm_linked_containers_index_md_スニペット_docker_compose_run_rm終了時に他のコンテナも削除するシェルスクリプト_1"&gt;スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/docker/compose/issues/2791" title="docker-compose run &amp;lt;container&amp;gt; --rm does not rm links · Issue #2791 · docker/compose"&gt;docker-compose run &lt;container&gt; --rm does not rm links · Issue #2791 · docker/compose&lt;/container&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+docker-compose run --rm &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="nv"&gt;EXIT_CODE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$?&lt;/span&gt;
+docker-compose down
+&lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="nv"&gt;$EXIT_CODE&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary></entry><entry><title>スニペット: GitHub Actions, ビルド結果を別ブランチにpushする</title><link href="https://blog.aoirint.com/snippet/2020/github_actions_push_build_results/" rel="alternate"></link><published>2020-09-27T16:30:00+09:00</published><updated>2020-09-27T16:30:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-27 16:30:00.000000:/snippet/2020/github_actions_push_build_results/</id><summary type="html">&lt;h1 class="md_header_block" id="h_snippet_2020_github_actions_push_build_results_index_md_スニペット_GitHub_Actions_ビルド結果を別ブランチにpushする_1"&gt;スニペット: GitHub Actions, ビルド結果を別ブランチにpushする&lt;/h1&gt;
 &lt;p&gt;GitHub Actions実行中に生成した&lt;code&gt;build&lt;/code&gt;ディレクトリの内容を別ブランチにpushする。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/s0/git-publish-subdir-action"&gt;github:s0/git-publish-subdir-action&lt;/a&gt;&lt;/li&gt;
