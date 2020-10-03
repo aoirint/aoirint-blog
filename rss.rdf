@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Fri, 02 Oct 2020 15:40:00 +0900</lastBuildDate><item><title>スニペット: Ubuntu プロキシ設定</title><link>https://blog.aoirint.com/snippet/2020/ubuntu_proxy/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md_スニペット_Ubuntu_プロキシ設定_1"&gt;スニペット: Ubuntu プロキシ設定&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 04 Oct 2020 03:30:00 +0900</lastBuildDate><item><title>スニペット: Ubuntu, pyenv環境でtkinterを使う</title><link>https://blog.aoirint.com/snippet/2020/setup_python_tkinter_pyenv_ubuntu/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_setup_python_tkinter_pyenv_ubuntu_index_md_スニペット_Ubuntu_pyenv環境でtkinterを使う_1"&gt;スニペット: Ubuntu, pyenv環境でtkinterを使う&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt install tk-dev python-tk python3-tk
+pyenv install &lt;span class="m"&gt;3&lt;/span&gt;.8.6
+pyenv global &lt;span class="m"&gt;3&lt;/span&gt;.8.6
+
+python3 -m tkinter
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sun, 04 Oct 2020 03:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-04 03:30:00.000000:/snippet/2020/setup_python_tkinter_pyenv_ubuntu/</guid></item><item><title>スニペット: Ubuntu プロキシ設定</title><link>https://blog.aoirint.com/snippet/2020/ubuntu_proxy/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md_スニペット_Ubuntu_プロキシ設定_1"&gt;スニペット: Ubuntu プロキシ設定&lt;/h1&gt;
 &lt;h2 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md_User_Desktop__2"&gt;User (Desktop)&lt;/h2&gt;
 &lt;p&gt;Settings &amp;gt; Network &amp;gt; Network Proxy &amp;gt; Manualに設定する。
 自動的に環境変数HTTP_PROXY, HTTPS_PROXYにスキームが追加された状態で設定される。&lt;/p&gt;
