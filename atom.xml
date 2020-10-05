@@ -3,17 +3,17 @@
 &lt;h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_機材_2"&gt;機材&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Arduino UNO（中華）&lt;/li&gt;
-&lt;li&gt;ロータリエンコーダ付きステッピングモータ&lt;/li&gt;
+&lt;li&gt;ロータリエンコーダ付きステッピングモータ&lt;ul&gt;
 &lt;li&gt;PKP214U06A-R2EL&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/products/detail.action?hinmei=PKP214U06A-R2EL-L"&gt;PKP214U06A-R2EL-L｜PKPシリーズ／PKシリーズ｜ステッピングモーター｜オリエンタルモーター株式会社&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/products/detail.action?hinmei=PKP214U06A-R2EL-L"&gt;PKP214U06A-R2EL-L｜PKPシリーズ／PKシリーズ｜ステッピングモーター｜オリエンタルモーター株式会社&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;モータ部説明書（PDF、HM-7433J.pdf）&lt;/li&gt;
 &lt;li&gt;ロータリエンコーダ部説明書（PDF、HM-7439JE.pdf）&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/file_addon/products/st/image/tj_pkp214u06a-r2el-l_d.gif"&gt;特性図（画像）&lt;/a&gt;（DC24V駆動時）&lt;/li&gt;
-&lt;li&gt;モータ部&lt;/li&gt;
+&lt;li&gt;モータ部&lt;ul&gt;
 &lt;li&gt;2相&lt;/li&gt;
 &lt;li&gt;ユニポーラ5本リード線&lt;/li&gt;
 &lt;li&gt;基本ステップ角度1.8°&lt;/li&gt;
-&lt;li&gt;AC 50&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary></entry><entry><title>スニペット: Pulseaudioでマイク入力をスピーカ出力する</title><link href="https://blog.aoirint.com/snippet/2020/pulseaudio_mic_input_to_speaker_output/" rel="alternate"></link><published>2020-10-04T03:40:00+09:00</published><updated>2020-10-04T03:40:00+09:00</updated><id>tag:blog.aoirint.com,2020-10-04 03:40:00.000000:/snippet/2020/pulseaudio_mic_input_to_speaker_output/</id><summary type="html">&lt;h1 class="md_header_block" id="h_snippet_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_Pulseaudioでマイク入力をスピーカ出力する_1"&gt;スニペット: Pulseaudioでマイク入力をスピーカ出力する&lt;/h1&gt;
+&lt;li&gt;AC 50&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary></entry><entry><title>スニペット: Pulseaudioでマイク入力をスピーカ出力する</title><link href="https://blog.aoirint.com/snippet/2020/pulseaudio_mic_input_to_speaker_output/" rel="alternate"></link><published>2020-10-04T03:40:00+09:00</published><updated>2020-10-04T03:40:00+09:00</updated><id>tag:blog.aoirint.com,2020-10-04 03:40:00.000000:/snippet/2020/pulseaudio_mic_input_to_speaker_output/</id><summary type="html">&lt;h1 class="md_header_block" id="h_snippet_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_Pulseaudioでマイク入力をスピーカ出力する_1"&gt;スニペット: Pulseaudioでマイク入力をスピーカ出力する&lt;/h1&gt;
 &lt;p&gt;まずはPCに接続されている音声入力デバイスのIDを確認する。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pactl list short sources
 &lt;span class="c1"&gt;# pactl list sources&lt;/span&gt;
