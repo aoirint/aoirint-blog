@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 04 Oct 2020 03:40:00 +0900</lastBuildDate><item><title>スニペット: Pulseaudioでマイク入力をスピーカ出力する</title><link>https://blog.aoirint.com/snippet/2020/pulseaudio_mic_input_to_speaker_output/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_Pulseaudioでマイク入力をスピーカ出力する_1"&gt;スニペット: Pulseaudioでマイク入力をスピーカ出力する&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Tue, 06 Oct 2020 07:00:00 +0900</lastBuildDate><item><title>ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する</title><link>https://blog.aoirint.com/entry/2020/stepping_motor/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する_1"&gt;ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する&lt;/h1&gt;
+&lt;h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_機材_2"&gt;機材&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Arduino UNO（中華）&lt;/li&gt;
+&lt;li&gt;ロータリエンコーダ付きステッピングモータ&lt;/li&gt;
+&lt;li&gt;PKP214U06A-R2EL&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/products/detail.action?hinmei=PKP214U06A-R2EL-L"&gt;PKP214U06A-R2EL-L｜PKPシリーズ／PKシリーズ｜ステッピングモーター｜オリエンタルモーター株式会社&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;モータ部説明書（PDF、HM-7433J.pdf）&lt;/li&gt;
+&lt;li&gt;ロータリエンコーダ部説明書（PDF、HM-7439JE.pdf）&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/file_addon/products/st/image/tj_pkp214u06a-r2el-l_d.gif"&gt;特性図（画像）&lt;/a&gt;（DC24V駆動時）&lt;/li&gt;
+&lt;li&gt;モータ部&lt;/li&gt;
+&lt;li&gt;2相&lt;/li&gt;
+&lt;li&gt;ユニポーラ5本リード線&lt;/li&gt;
+&lt;li&gt;基本ステップ角度1.8°&lt;/li&gt;
+&lt;li&gt;AC 50&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Tue, 06 Oct 2020 07:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-06 07:00:00.000000:/entry/2020/stepping_motor/</guid></item><item><title>スニペット: Pulseaudioでマイク入力をスピーカ出力する</title><link>https://blog.aoirint.com/snippet/2020/pulseaudio_mic_input_to_speaker_output/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_Pulseaudioでマイク入力をスピーカ出力する_1"&gt;スニペット: Pulseaudioでマイク入力をスピーカ出力する&lt;/h1&gt;
 &lt;p&gt;まずはPCに接続されている音声入力デバイスのIDを確認する。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pactl list short sources
 &lt;span class="c1"&gt;# pactl list sources&lt;/span&gt;
@@ -124,31 +138,4 @@ python3 -m tkinter
 プロキシ下を想定しているので、不要な場合は適宜調整。&lt;/p&gt;
 &lt;h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_時刻ずれの解消_2"&gt;時刻ずれの解消&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://linux.just4fun.biz/?Linux%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E3%81%AEWindows%E6%99%82%E5%88%BB%E3%82%92UTC%E3%81%AB%E3%81%99%E3%82%8B" title="Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす"&gt;Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;デュアルブート環境では、BIOSの時刻を介してWindows側の時刻管理（ローカル時間）とUbuntu側の時刻管理（UTC時間）が衝突して、タイムゾーンの時差分、時計がずれてしま&lt;/p&gt;</description><pubDate>Fri, 18 Sep 2020 20:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-18 20:00:00.000000:/entry/2020/gpu_pc_setup/</guid></item><item><title>Atom + LaTeX in Docker</title><link>https://blog.aoirint.com/entry/2020/atom_latex_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_LaTeX_in_Docker_1"&gt;Atom + LaTeX in Docker&lt;/h1&gt;
-&lt;h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_概要_2"&gt;概要&lt;/h2&gt;
-&lt;p&gt;LaTeXをホストにインストールせず、Docker内で動かしつつ、
-Atomからこれを利用できるようにする。&lt;/p&gt;
-&lt;h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Requirements_3"&gt;Requirements&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Ubuntu 18.04&lt;/li&gt;
-&lt;li&gt;Docker&lt;/li&gt;
-&lt;li&gt;Atom&lt;/li&gt;
-&lt;li&gt;Atom Packages&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://atom.io/packages/latex"&gt;latex&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_Packages_4"&gt;Atom Packages&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://atom.io/packages/latex"&gt;latex&lt;/a&gt;を入れれば最低限ビルドコマンドは叩けるようになる。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://atom.io/packages/latex"&gt;latex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;シンタックスハイライト&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://atom.io/packages/language-latex"&gt;language-latex&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;アウトライン表示&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://atom.io/packages/document-outline"&gt;document-outline&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;PDFプレビュー&lt;ul&gt;
-&lt;li&gt;&lt;a href=""&gt;pdf-view&lt;/a&gt;（メモリリーク? Atomを一度閉じれば解消&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Thu, 17 Sep 2020 08:35:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-17 08:35:00.000000:/entry/2020/atom_latex_docker/</guid></item></channel></rss>
+&lt;p&gt;デュアルブート環境では、BIOSの時刻を介してWindows側の時刻管理（ローカル時間）とUbuntu側の時刻管理（UTC時間）が衝突して、タイムゾーンの時差分、時計がずれてしま&lt;/p&gt;</description><pubDate>Fri, 18 Sep 2020 20:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-18 20:00:00.000000:/entry/2020/gpu_pc_setup/</guid></item></channel></rss>
