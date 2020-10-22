@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Thu, 22 Oct 2020 16:30:00 +0900</lastBuildDate><item><title>スニペット: Vagrant Ubuntu Server + Docker + Docker Compose</title><link>https://blog.aoirint.com/snippet/2020/vagrant_ubuntu_server_docker/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_vagrant_ubuntu_server_docker_index_md_スニペット_Vagrant_Ubuntu_Server_Docker_Docker_Compose_1"&gt;スニペット: Vagrant Ubuntu Server + Docker + Docker Compose&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Thu, 22 Oct 2020 16:30:00 +0900</lastBuildDate><item><title>スニペット: Docker + Docker Compose on Vagrant Ubuntu Server</title><link>https://blog.aoirint.com/snippet/2020/docker_on_vagrant_ubuntu_server/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_docker_on_vagrant_ubuntu_server_index_md_スニペット_Docker_Docker_Compose_on_Vagrant_Ubuntu_Server_1"&gt;スニペット: Docker + Docker Compose on Vagrant Ubuntu Server&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;Downloads – Oracle VM VirtualBox&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.vagrantup.com/downloads.html"&gt;Downloads | Vagrant by HashiCorp&lt;/a&gt;&lt;/li&gt;
@@ -7,7 +7,7 @@
 &lt;li&gt;&lt;a href="https://docs.docker.com/engine/install/ubuntu/"&gt;Install Docker Engine on Ubuntu | Docker Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.docker.com/compose/install/"&gt;Install Docker Compose | Docker Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;kvm (qemu)を使うこともできるらしいが、対応したbo&lt;/p&gt;</description><pubDate>Thu, 22 Oct 2020 16:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-22 16:30:00.000000:/snippet/2020/vagrant_ubuntu_server_docker/</guid></item><item><title>ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する</title><link>https://blog.aoirint.com/entry/2020/stepping_motor/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する_1"&gt;ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する&lt;/h1&gt;
+&lt;p&gt;kvm (qemu)を使うこともできるらしいが、対応したb&lt;/p&gt;</description><pubDate>Thu, 22 Oct 2020 16:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-22 16:30:00.000000:/snippet/2020/docker_on_vagrant_ubuntu_server/</guid></item><item><title>ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する</title><link>https://blog.aoirint.com/entry/2020/stepping_motor/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する_1"&gt;ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する&lt;/h1&gt;
 &lt;h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_機材_2"&gt;機材&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Arduino UNO（中華）&lt;/li&gt;
