@@ -220,52 +220,52 @@ vagrant ssh
 vagrant halt
 </code></pre></div>
 <h2 class="md_header_block" id="h_snippet_2020_vagrant_ubuntu_server_docker_index_md_Vagrantfile_3">Vagrantfile</h2>
-<div class="highlight"><pre><span></span><code># -*- mode: ruby -*-
-# vi: set ft=ruby :
+<div class="highlight"><pre><span></span><code><span class="c1"># -*- mode: ruby -*-</span>
+<span class="c1"># vi: set ft=ruby :</span>
 
-Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/bionic64"
-  config.vm.hostname = "ubuntu-docker"
+<span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">"ubuntu/bionic64"</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">hostname</span> <span class="o">=</span> <span class="s2">"ubuntu-docker"</span>
 
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
-  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+  <span class="c1"># config.vm.network "forwarded_port", guest: 80, host: 8080</span>
+  <span class="c1"># config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"</span>
 
-  config.vm.provider "virtualbox" do |vb|
-    vb.name = "ubuntu-docker"
-    vb.memory = "1024"
-    # vb.gui = true
-  end
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="s2">"virtualbox"</span> <span class="k">do</span> <span class="o">|</span><span class="n">vb</span><span class="o">|</span>
+    <span class="n">vb</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"ubuntu-docker"</span>
+    <span class="n">vb</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="s2">"1024"</span>
+    <span class="c1"># vb.gui = true</span>
+  <span class="k">end</span>
 
-  config.vm.provision "shell", inline: &lt;&lt;-SHELL
-    apt-get update
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span> <span class="s2">"shell"</span><span class="p">,</span> <span class="ss">inline</span><span class="p">:</span> <span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+<span class="sh">    apt-get update</span>
 
-    apt-get install -y \
-      apt-transport-https \
-      ca-certificates \
-      curl \
-      gnupg-agent \
-      software-properties-common
+<span class="sh">    apt-get install -y \</span>
+<span class="sh">      apt-transport-https \</span>
+<span class="sh">      ca-certificates \</span>
+<span class="sh">      curl \</span>
+<span class="sh">      gnupg-agent \</span>
+<span class="sh">      software-properties-common</span>
 
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+<span class="sh">    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -</span>
 
-    add-apt-repository -y \
-      "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-      $(lsb_release -cs) \
-      stable"
+<span class="sh">    add-apt-repository -y \</span>
+<span class="sh">      "deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span>
+<span class="sh">      $(lsb_release -cs) \</span>
+<span class="sh">      stable"</span>
 
-    apt-get update
+<span class="sh">    apt-get update</span>
 
-    apt-get install -y \
-      docker-ce \
-      docker-ce-cli \
-      containerd.io
+<span class="sh">    apt-get install -y \</span>
+<span class="sh">      docker-ce \</span>
+<span class="sh">      docker-ce-cli \</span>
+<span class="sh">      containerd.io</span>
 
-    curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    chmod +x /usr/local/bin/docker-compose
+<span class="sh">    curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</span>
+<span class="sh">    chmod +x /usr/local/bin/docker-compose</span>
 
-    adduser vagrant docker
-  SHELL
-end
+<span class="sh">    adduser vagrant docker</span>
+<span class="dl">  SHELL</span>
+<span class="k">end</span>
 </code></pre></div>
 </div>
 
