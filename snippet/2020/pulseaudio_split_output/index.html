@@ -191,7 +191,7 @@ pacmd load-module module-loopback <span class="nv">source</span><span class="o">
 目的のアプリケーションの出力先を<code>DummyOutput0</code>にする。
 また、<code>Loopback from Monitor of DummyOutput0</code>の出力先を
 希望のスピーカーにすることで音声出力を分離しつつ同時に視聴できる。</p>
-<p>仮想出力デバイス<code>DummyOutput0</code>を削除するには、以下のコマンドを実行する。</p>
+<p>仮想出力デバイス<code>DummyOutput0</code>とループバックを削除するには、以下のコマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>pacmd unload-module module-loopback
 pacmd unload-module module-null-sink
 </code></pre></div>
