@@ -186,8 +186,16 @@ Arduinoプログラム（<code>.ino</code>）にWiFiパスワード・APIキー�
 <h2 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_arduino_cliの使い方_2">arduino-cliの使い方</h2>
 <p><code>arduino-cli</code>でボードを扱うときには、ボード名にあたる<code>FQBN</code>というコロンで区切られた文字列を使う。
 Arduino系のボードならば<code>arduino-cli board list</code>コマンドでPCに接続しているボードのFQBNを調べられる。</p>
+<ul>
+<li>Arduino UNO: <code>arduino:avr:uno</code></li>
+<li>ESP32-DevKitC: <code>esp32:esp32:esp32</code></li>
+</ul>
 <p>コンパイルには別途ボード情報をインストールする必要があり、以下のようにコマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>arduino-cli core install arduino:avr
+<div class="highlight"><pre><span></span><code><span class="c1"># Arduino (AVR)</span>
+arduino-cli core install arduino:avr
+
+<span class="c1"># ESP32</span>
+arduino-cli core install esp32:esp32
 </code></pre></div>
 <p>ライブラリの導入には、<code>arduino-cli lib</code>コマンドを使う。
 例えば、<code>ArduinoJson</code>ライブラリを導入するときは、
