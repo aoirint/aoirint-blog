@@ -7,7 +7,7 @@ Arduinoプログラム（&lt;code&gt;.ino&lt;/code&gt;）にWiFiパスワード�
 &lt;p&gt;arduin&lt;/p&gt;</summary></entry><entry><title>arduino-cliの使い方</title><link href="https://blog.aoirint.com/entry/2020/arduino_cli_usage/" rel="alternate"></link><published>2020-11-09T08:00:00+09:00</published><updated>2020-11-09T08:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-11-09 08:00:00.000000:/entry/2020/arduino_cli_usage/</id><summary type="html">&lt;h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_arduino_cliの使い方_1"&gt;arduino-cliの使い方&lt;/h2&gt;
 &lt;h3 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_FQBNの確認_2"&gt;FQBNの確認&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;arduino-cli&lt;/code&gt;でボードを扱うときには、ボード名にあたる&lt;code&gt;FQBN&lt;/code&gt;というコロンで区切られた文字列を使う。
-Arduino系のボードならば&lt;code&gt;arduino-cli board list&lt;/code&gt;コマンドでPCに接続しているボードのFQBNを調べられる。&lt;/p&gt;
+（対応しているボードならば？）&lt;code&gt;arduino-cli board list&lt;/code&gt;コマンドでPCに接続しているボードのFQBNを調べられる。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Arduino UNO: &lt;code&gt;arduino:avr:uno&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;ESP32-DevKitC: &lt;code&gt;esp32:esp32:esp32&lt;/code&gt;&lt;/li&gt;
