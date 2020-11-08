@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Mon, 09 Nov 2020 06:30:00 +0900</lastBuildDate><item><title>Imagemagickで画像のDPIを変更する</title><link>https://blog.aoirint.com/snippet/2020/change_image_dpi_imagemagick/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_change_image_dpi_imagemagick_index_md_Imagemagickで画像のDPIを変更する_1"&gt;Imagemagickで画像のDPIを変更する&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Mon, 09 Nov 2020 07:00:00 +0900</lastBuildDate><item><title>ソース公開するArduinoプログラムに秘密情報を埋め込む</title><link>https://blog.aoirint.com/snippet/2020/arduino_secret_info/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む_1"&gt;ソース公開するArduinoプログラムに秘密情報を埋め込む&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://github.com/aoirint/RoomSystemSensorESP32"&gt;aoirint/RoomSystemSensorESP32: ESP32とFirebaseを使った部屋センシング・オンライン化 クライアント&lt;/a&gt;の開発中に
+Arduinoプログラム（&lt;code&gt;.ino&lt;/code&gt;）にWiFiパスワード・APIキーなどの秘密情報を埋め込む必要が出てきた。&lt;/p&gt;
+&lt;p&gt;ここでは、Arduino IDEの主要機能を持つCLIソフトウェア&lt;code&gt;arduino-cli&lt;/code&gt;を使う。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/arduino/arduino-cli"&gt;arduino/arduino-cli: Arduino command line interface&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;arduin&lt;/code&gt;&lt;/p&gt;</description><pubDate>Mon, 09 Nov 2020 07:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 07:00:00.000000:/snippet/2020/arduino_secret_info/</guid></item><item><title>Imagemagickで画像のDPIを変更する</title><link>https://blog.aoirint.com/snippet/2020/change_image_dpi_imagemagick/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_change_image_dpi_imagemagick_index_md_Imagemagickで画像のDPIを変更する_1"&gt;Imagemagickで画像のDPIを変更する&lt;/h1&gt;
 &lt;p&gt;画像のDPI（dot per inch）がばらばらの場合、
 TeXで画像を取り込んだときのサイズがばらばらになるため統一する。&lt;/p&gt;
 &lt;p&gt;以下はIN.pngをDPI 72にしてOUT.pngに出力するコマンド。&lt;/p&gt;
@@ -75,28 +80,4 @@ python3 -m tkinter
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;ses&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookies&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;cookie&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_cookies&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;rc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookies&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_cookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;domain&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;cookie&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'domain'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;cookie&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;cookie&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'value'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-    &lt;span class="n"&gt;ses&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookies&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 28 Sep 2020 11:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-28 11:30:00.000000:/snippet/2020/python_requests/</guid></item><item><title>スニペット: docker-composeによるPython + Selenium環境</title><link>https://blog.aoirint.com/snippet/2020/docker_compose_python_selenium/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_docker_compose_python_selenium_index_md_スニペット_docker_composeによるPython_Selenium環境_1"&gt;スニペット: docker-composeによるPython + Selenium環境&lt;/h1&gt;
-&lt;p&gt;docker-compose.yml&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;version&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;'3.8'&lt;/span&gt;
-&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="nt"&gt;app&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;./app/&lt;/span&gt;
-    &lt;span class="nt"&gt;entrypoint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;[&lt;/span&gt; &lt;span class="s"&gt;"wait-for-it"&lt;/span&gt;&lt;span class="p p-Indicator"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"selenium:4444"&lt;/span&gt;&lt;span class="p p-Indicator"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"--"&lt;/span&gt;&lt;span class="p p-Indicator"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"python3"&lt;/span&gt;&lt;span class="p p-Indicator"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"/code/main.py"&lt;/span&gt; &lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
-    &lt;span class="nt"&gt;volumes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;./work:/work&lt;/span&gt;
-    &lt;span class="nt"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-      &lt;span class="nt"&gt;SELENIUM_URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://selenium:4444&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><pubDate>Mon, 28 Sep 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-28 11:00:00.000000:/snippet/2020/docker_compose_python_selenium/</guid></item></channel></rss>
+    &lt;span class="n"&gt;ses&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookies&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 28 Sep 2020 11:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-28 11:30:00.000000:/snippet/2020/python_requests/</guid></item></channel></rss>
