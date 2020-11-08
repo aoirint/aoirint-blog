@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる - えやみぐさ</title>
+    <title>スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト - えやみぐさ</title>
   
 
 
@@ -15,16 +15,16 @@
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/snippet/2020/obs_ubuntu_nvidia_window_capture/" />
+<meta property="og:url" content="https://blog.aoirint.com/entry/2020/docker_compose_run_rm_linked_containers/" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
-<meta property="og:title" content="OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる - えやみぐさ" />
+<meta property="og:title" content="スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト - えやみぐさ" />
 
-<meta name="description" content="OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる"/>
-<meta property="og:description" content="OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる" />
+<meta name="description" content="docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト"/>
+<meta property="og:description" content="docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト" />
 <meta property="og:image" content="https://blog.aoirint.com/ogp.png" />
-<meta property="article:published_time" content="2020-11-09T06:10:00+09:00" />
+<meta property="article:published_time" content="2020-09-28T10:10:00+09:00" />
 
 <meta name="twitter:card" content="summary">
 
@@ -156,7 +156,7 @@
 
 <div class="article-metadata">
   <div class="article-date">
-    2020-11-09
+    2020-09-28
   </div>
 
   <div class="article-tags">
@@ -167,12 +167,12 @@
 
 
 
-    <a href="../../../tags/OBS Studio/" class="article-tag">
-      OBS Studio
+    <a href="../../../tags/Docker/" class="article-tag">
+      Docker
     </a>
 
-    <a href="../../../tags/Ubuntu/" class="article-tag">
-      Ubuntu
+    <a href="../../../tags/Docker Compose/" class="article-tag">
+      Docker Compose
     </a>
 
   </div>
@@ -182,18 +182,33 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_snippet_2020_obs_ubuntu_nvidia_window_capture_index_md_OBS_Studio_on_Ubuntu_NVIDIA_GPUでWindow_Captureを動作させる_1">OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる</h1>
-<p>Ubuntu + NVIDIA GPU環境では、OBS StudioでWindow Captureしようとすると
-一部のアプリケーションで黒画面の表示になり動作しない。
-おそらくOpenGLで描画しているものが対象。</p>
+  <h1 class="md_header_block" id="h_entry_2020_docker_compose_run_rm_linked_containers_index_md_スニペット_docker_compose_run_rm終了時に他のコンテナも削除するシェルスクリプト_1">スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト</h1>
+<p><code>docker-compose run --rm app</code>を実行するとサービスappが起動してコンテナが作られ、実行が終わり次第コンテナは削除される。
+このとき削除されるコンテナはforegroundで実行されたもののみで、
+<code>depends_on</code>などの設定からリンクを通じて起動した他サービスのdetachedコンテナは削除されず残り続ける。</p>
 <ul>
-<li><a href="https://obsproject.com/forum/threads/solved-window-capture-black-screen.47082/">Bug Report - [SOLVED] Window Capture Black Screen | OBS Forums</a></li>
+<li><a href="https://github.com/docker/compose/issues/2791" title="docker-compose run &lt;container&gt; --rm does not rm links · Issue #2791 · docker/compose">docker-compose run <container> --rm does not rm links · Issue #2791 · docker/compose</container></a></li>
 </ul>
-<p>私の環境では
-<code>Window Capture (Xcomposite)</code>の設定欄をスクロールして
-<code>Use alpha-less texture format (Mesa workaround)</code>にチェックを入れることで
-正しく表示されるようになった。</p>
-<p>Ubuntu 18.04, X.Org X Server 1.19.6, GDM 3.28.3, NVIDIA Driver 440.33.01、OBS Studio 26.0.2 (64bit)で動作確認。</p>
+<p>このissueでlinked containersを同時に削除する機能について議論されているが、
+<code>run</code>コマンドにオプションを増やしたくない、ということで却下されている。</p>
+<blockquote>
+<p>As mentioned in this thread, docker-compose rm -f --all and docker-compose down already allow cleaning up a project's containers / resources. We won't overload run with more options at that point.</p>
+</blockquote>
+<p>ひとまず<code>docker-compose run</code>終了後に<code>docker-compose down</code>を実行するシェルスクリプトで対応する。</p>
+<p>compose_run.sh</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+docker-compose run --rm <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+<span class="nv">EXIT_CODE</span><span class="o">=</span><span class="nv">$?</span>
+docker-compose down
+<span class="nb">exit</span> <span class="nv">$EXIT_CODE</span>
+</code></pre></div>
+</td></tr></table>
 </div>
 
 </article>
@@ -211,8 +226,8 @@
   <ul class="toc">
   
     <li>
-      <a href="#h_snippet_2020_obs_ubuntu_nvidia_window_capture_index_md_OBS_Studio_on_Ubuntu_NVIDIA_GPUでWindow_Captureを動作させる_1" class="toc-item toc-item-h1">
-        OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる
+      <a href="#h_entry_2020_docker_compose_run_rm_linked_containers_index_md_スニペット_docker_compose_run_rm終了時に他のコンテナも削除するシェルスクリプト_1" class="toc-item toc-item-h1">
+        スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト
       </a>
   
   </ul>

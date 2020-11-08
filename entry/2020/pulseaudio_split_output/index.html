@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>スニペット: PulseAudioでマイク入力をスピーカから出力する - えやみぐさ</title>
+    <title>PulseAudioで特定のアプリケーションからの音声出力だけを分離する - えやみぐさ</title>
   
 
 
@@ -15,16 +15,16 @@
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/snippet/2020/pulseaudio_mic_input_to_speaker_output/" />
+<meta property="og:url" content="https://blog.aoirint.com/entry/2020/pulseaudio_split_output/" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
-<meta property="og:title" content="スニペット: PulseAudioでマイク入力をスピーカから出力する - えやみぐさ" />
+<meta property="og:title" content="PulseAudioで特定のアプリケーションからの音声出力だけを分離する - えやみぐさ" />
 
-<meta name="description" content="PulseAudioでマイク入力をスピーカから出力する"/>
-<meta property="og:description" content="PulseAudioでマイク入力をスピーカから出力する" />
+<meta name="description" content="PulseAudioで特定のアプリケーションからの音声出力だけを分離する"/>
+<meta property="og:description" content="PulseAudioで特定のアプリケーションからの音声出力だけを分離する" />
 <meta property="og:image" content="https://blog.aoirint.com/ogp.png" />
-<meta property="article:published_time" content="2020-10-04T03:40:00+09:00" />
+<meta property="article:published_time" content="2020-11-09T06:00:00+09:00" />
 
 <meta name="twitter:card" content="summary">
 
@@ -156,7 +156,7 @@
 
 <div class="article-metadata">
   <div class="article-date">
-    2020-10-04
+    2020-11-09
   </div>
 
   <div class="article-tags">
@@ -182,49 +182,18 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_snippet_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_PulseAudioでマイク入力をスピーカから出力する_1">スニペット: PulseAudioでマイク入力をスピーカから出力する</h1>
-<p>まずはPCに接続されている音声入力デバイスのIDを確認する。</p>
-<div class="highlight"><pre><span></span><code>pactl list short sources
-<span class="c1"># pactl list sources</span>
+  <h1 class="md_header_block" id="h_entry_2020_pulseaudio_split_output_index_md_PulseAudioで特定のアプリケーションからの音声出力だけを分離する_1">PulseAudioで特定のアプリケーションからの音声出力だけを分離する</h1>
+<p>以下のコマンドで仮想出力デバイス<code>DummyOutput0</code>と、そのループバック<code>Loopback from Monitor of DummyOutput0</code>が追加される。</p>
+<div class="highlight"><pre><span></span><code>pacmd load-module module-null-sink <span class="nv">sink_name</span><span class="o">=</span>DummyOutput0 <span class="nv">sink_properties</span><span class="o">=</span>device.description<span class="o">=</span>DummyOutput0
+pacmd load-module module-loopback <span class="nv">source</span><span class="o">=</span>DummyOutput0.monitor
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>3   alsa_output.pci-0000_00_1f.3.analog-stereo.monitor  module-alsa-card.c  s16le 2ch 44100Hz   RUNNING
-4   alsa_output.pci-0000_01_00.1.hdmi-stereo.monitor    module-alsa-card.c  s16le 2ch 44100Hz   RUNNING
-5   alsa_output.usb-GeneralPlus_USB_Audio_Device-00.iec958-stereo.monitor   module-alsa-card.c  s16le 2ch 44100Hz   RUNNING
-6   alsa_input.usb-GeneralPlus_USB_Audio_Device-00.analog-mono  module-alsa-card.c  s16le 1ch 44100Hz   RUNNING
-</code></pre></div>
-<p>ここでは、以下のようになっている。</p>
-<table>
-<thead>
-<tr>
-<th align="left">ID</th>
-<th align="left">種類</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">3</td>
-<td align="left">本体のヘッドホン端子</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">HDMI</td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">USBサウンドカードのヘッドホン端子</td>
-</tr>
-<tr>
-<td align="left">6</td>
-<td align="left">USBサウンドカードのマイク端子</td>
-</tr>
-</tbody>
-</table>
-<p>以下のコマンドで、ID=6のUSBサウンドカードのマイク端子に入力されている音声をスピーカにループバックするモジュールがロードされる。</p>
-<div class="highlight"><pre><span></span><code>pacmd load-module module-loopback <span class="nv">source</span><span class="o">=</span><span class="m">6</span>
-</code></pre></div>
-<p>必要に応じて、<code>pavucontrol</code>を開いて出力先デバイスを設定する。</p>
-<p>以下のコマンドで、ループバックモジュールをアンロードする。</p>
+<p><code>pavucontrol</code>または<code>PulseAudio Volume Control</code>の<code>Playback</code>から
+目的のアプリケーションの出力先を<code>DummyOutput0</code>にする。
+また、<code>Loopback from Monitor of DummyOutput0</code>の出力先を
+希望のスピーカーにすることで音声出力を分離しつつ同時に視聴できる。</p>
+<p>仮想出力デバイスとループバックを削除するには、以下のコマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>pacmd unload-module module-loopback
+pacmd unload-module module-null-sink
 </code></pre></div>
 </div>
 
@@ -243,8 +212,8 @@
   <ul class="toc">
   
     <li>
-      <a href="#h_snippet_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_PulseAudioでマイク入力をスピーカから出力する_1" class="toc-item toc-item-h1">
-        スニペット: PulseAudioでマイク入力をスピーカから出力する
+      <a href="#h_entry_2020_pulseaudio_split_output_index_md_PulseAudioで特定のアプリケーションからの音声出力だけを分離する_1" class="toc-item toc-item-h1">
+        PulseAudioで特定のアプリケーションからの音声出力だけを分離する
       </a>
   
   </ul>

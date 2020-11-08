@@ -15,7 +15,7 @@
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/snippet/2020/ubuntu_proxy/" />
+<meta property="og:url" content="https://blog.aoirint.com/entry/2020/ubuntu_proxy/" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
@@ -186,8 +186,8 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md_スニペット_Ubuntu_プロキシ設定_1">スニペット: Ubuntu プロキシ設定</h1>
-<h2 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md_User_Desktop__2">User (Desktop)</h2>
+  <h1 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md_スニペット_Ubuntu_プロキシ設定_1">スニペット: Ubuntu プロキシ設定</h1>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md_User_Desktop__2">User (Desktop)</h2>
 <p>Settings &gt; Network &gt; Network Proxy &gt; Manualに設定する。
 自動的に環境変数HTTP_PROXY, HTTPS_PROXYにスキームが追加された状態で設定される。</p>
 <ul>
@@ -197,7 +197,7 @@
 <p>curlやwget、pipなど主要コマンドは
 注意点として、別ユーザとしてコマンドを実行すると環境変数が引き継がれない。
 例えばsudo curlしたときにプロキシに接続しにいかない。</p>
-<h2 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md_sudoers_environment_keep_3">sudoers environment keep</h2>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md_sudoers_environment_keep_3">sudoers environment keep</h2>
 <p>sudoでコマンドを実行したとき、実行時シェルに設定されている環境変数を引き継ぐようにする。
 sudoersは書き込み禁止になっているためvisudoで編集する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># run as root</span>
@@ -206,19 +206,19 @@ visudo -f /etc/sudoers
 <div class="highlight"><pre><span></span><code>Defaults env_keep+="HTTP_PROXY"
 Defaults env_keep+="HTTPS_PROXY"
 </code></pre></div>
-<h2 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md__etc_environment_4">/etc/environment</h2>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md__etc_environment_4">/etc/environment</h2>
 <p>システム全体の環境変数として設定される。影響範囲が大きいので注意。
 デスクトップユーザではSettings側の設定（Disabledなら設定されない）が優先されるようだった。</p>
 <p>/etc/environment</p>
 <div class="highlight"><pre><span></span><code>HTTP_PROXY=http://proxy:port
 HTTPS_PROXY=http://proxy:port
 </code></pre></div>
-<h2 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md_apt_5">apt</h2>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md_apt_5">apt</h2>
 <p>/etc/apt/apt.conf</p>
 <div class="highlight"><pre><span></span><code>Acquire::http::proxy "http://proxy:port";                             
 Acquire::https::proxy "http://proxy:port";
 </code></pre></div>
-<h2 class="md_header_block" id="h_snippet_2020_ubuntu_proxy_index_md_Snap_6">Snap</h2>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md_Snap_6">Snap</h2>
 <p>/etc/systemd/system/snapd.service.d/override.confにsystemdの設定ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># run as root</span>
 systemctl edit snapd.service <span class="c1"># edit service file here</span>
@@ -254,32 +254,32 @@ Environment=https_proxy=http://proxy:port
   <ul class="toc">
   
     <li>
-      <a href="#h_snippet_2020_ubuntu_proxy_index_md_スニペット_Ubuntu_プロキシ設定_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_ubuntu_proxy_index_md_スニペット_Ubuntu_プロキシ設定_1" class="toc-item toc-item-h1">
         スニペット: Ubuntu プロキシ設定
       </a>
   
     <li>
-      <a href="#h_snippet_2020_ubuntu_proxy_index_md_User_Desktop__2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_ubuntu_proxy_index_md_User_Desktop__2" class="toc-item toc-item-h2">
         User (Desktop)
       </a>
   
     <li>
-      <a href="#h_snippet_2020_ubuntu_proxy_index_md_sudoers_environment_keep_3" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_ubuntu_proxy_index_md_sudoers_environment_keep_3" class="toc-item toc-item-h2">
         sudoers environment keep
       </a>
   
     <li>
-      <a href="#h_snippet_2020_ubuntu_proxy_index_md__etc_environment_4" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_ubuntu_proxy_index_md__etc_environment_4" class="toc-item toc-item-h2">
         /etc/environment
       </a>
   
     <li>
-      <a href="#h_snippet_2020_ubuntu_proxy_index_md_apt_5" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_ubuntu_proxy_index_md_apt_5" class="toc-item toc-item-h2">
         apt
       </a>
   
     <li>
-      <a href="#h_snippet_2020_ubuntu_proxy_index_md_Snap_6" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_ubuntu_proxy_index_md_Snap_6" class="toc-item toc-item-h2">
         Snap
       </a>
   

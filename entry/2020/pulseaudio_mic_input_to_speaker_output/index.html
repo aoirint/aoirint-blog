@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>スニペット: Ubuntu, pyenv環境でtkinterを使う - えやみぐさ</title>
+    <title>スニペット: PulseAudioでマイク入力をスピーカから出力する - えやみぐさ</title>
   
 
 
@@ -15,16 +15,16 @@
 
 
 
-<meta property="og:url" content="https://blog.aoirint.com/snippet/2020/setup_python_tkinter_pyenv_ubuntu/" />
+<meta property="og:url" content="https://blog.aoirint.com/entry/2020/pulseaudio_mic_input_to_speaker_output/" />
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
-<meta property="og:title" content="スニペット: Ubuntu, pyenv環境でtkinterを使う - えやみぐさ" />
+<meta property="og:title" content="スニペット: PulseAudioでマイク入力をスピーカから出力する - えやみぐさ" />
 
-<meta name="description" content="Ubuntu, pyenv環境でtkinterを使う"/>
-<meta property="og:description" content="Ubuntu, pyenv環境でtkinterを使う" />
+<meta name="description" content="PulseAudioでマイク入力をスピーカから出力する"/>
+<meta property="og:description" content="PulseAudioでマイク入力をスピーカから出力する" />
 <meta property="og:image" content="https://blog.aoirint.com/ogp.png" />
-<meta property="article:published_time" content="2020-10-04T03:30:00+09:00" />
+<meta property="article:published_time" content="2020-10-04T03:40:00+09:00" />
 
 <meta name="twitter:card" content="summary">
 
@@ -167,16 +167,12 @@
 
 
 
-    <a href="../../../tags/Ubuntu/" class="article-tag">
-      Ubuntu
+    <a href="../../../tags/PulseAudio/" class="article-tag">
+      PulseAudio
     </a>
 
-    <a href="../../../tags/pyenv/" class="article-tag">
-      pyenv
-    </a>
-
-    <a href="../../../tags/tkinter/" class="article-tag">
-      tkinter
+    <a href="../../../tags/Virtual Audio/" class="article-tag">
+      Virtual Audio
     </a>
 
   </div>
@@ -186,12 +182,49 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_snippet_2020_setup_python_tkinter_pyenv_ubuntu_index_md_スニペット_Ubuntu_pyenv環境でtkinterを使う_1">スニペット: Ubuntu, pyenv環境でtkinterを使う</h1>
-<div class="highlight"><pre><span></span><code>sudo apt install tk-dev python-tk python3-tk
-pyenv install <span class="m">3</span>.8.6
-pyenv global <span class="m">3</span>.8.6
-
-python3 -m tkinter
+  <h1 class="md_header_block" id="h_entry_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_PulseAudioでマイク入力をスピーカから出力する_1">スニペット: PulseAudioでマイク入力をスピーカから出力する</h1>
+<p>まずはPCに接続されている音声入力デバイスのIDを確認する。</p>
+<div class="highlight"><pre><span></span><code>pactl list short sources
+<span class="c1"># pactl list sources</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>3   alsa_output.pci-0000_00_1f.3.analog-stereo.monitor  module-alsa-card.c  s16le 2ch 44100Hz   RUNNING
+4   alsa_output.pci-0000_01_00.1.hdmi-stereo.monitor    module-alsa-card.c  s16le 2ch 44100Hz   RUNNING
+5   alsa_output.usb-GeneralPlus_USB_Audio_Device-00.iec958-stereo.monitor   module-alsa-card.c  s16le 2ch 44100Hz   RUNNING
+6   alsa_input.usb-GeneralPlus_USB_Audio_Device-00.analog-mono  module-alsa-card.c  s16le 1ch 44100Hz   RUNNING
+</code></pre></div>
+<p>ここでは、以下のようになっている。</p>
+<table>
+<thead>
+<tr>
+<th align="left">ID</th>
+<th align="left">種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">3</td>
+<td align="left">本体のヘッドホン端子</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">HDMI</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">USBサウンドカードのヘッドホン端子</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">USBサウンドカードのマイク端子</td>
+</tr>
+</tbody>
+</table>
+<p>以下のコマンドで、ID=6のUSBサウンドカードのマイク端子に入力されている音声をスピーカにループバックするモジュールがロードされる。</p>
+<div class="highlight"><pre><span></span><code>pacmd load-module module-loopback <span class="nv">source</span><span class="o">=</span><span class="m">6</span>
+</code></pre></div>
+<p>必要に応じて、<code>pavucontrol</code>を開いて出力先デバイスを設定する。</p>
+<p>以下のコマンドで、ループバックモジュールをアンロードする。</p>
+<div class="highlight"><pre><span></span><code>pacmd unload-module module-loopback
 </code></pre></div>
 </div>
 
@@ -210,8 +243,8 @@ python3 -m tkinter
   <ul class="toc">
   
     <li>
-      <a href="#h_snippet_2020_setup_python_tkinter_pyenv_ubuntu_index_md_スニペット_Ubuntu_pyenv環境でtkinterを使う_1" class="toc-item toc-item-h1">
-        スニペット: Ubuntu, pyenv環境でtkinterを使う
+      <a href="#h_entry_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_PulseAudioでマイク入力をスピーカから出力する_1" class="toc-item toc-item-h1">
+        スニペット: PulseAudioでマイク入力をスピーカから出力する
       </a>
   
   </ul>
