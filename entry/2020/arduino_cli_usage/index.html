@@ -205,6 +205,7 @@ sudo apt install screen
 <p>特に特殊なファイルを必要としたりはしないので、
 Arduino IDEで作成しても、好きなテキストエディタで作成してもよい。</p>
 <p>一応テンプレート付きのスケッチを作成するには、<code>arduino-cli sketch new SKETCH_NAME</code>を実行する。</p>
+<p>以下、<code>arduino-cli</code>のコマンドはスケッチのディレクトリで実行する。</p>
 <h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_FQBNの確認_4">FQBNの確認</h2>
 <p><code>arduino-cli</code>でボードを扱うときには、ボード名にあたる<code>FQBN</code>というコロンで区切られた文字列を使う。
 （対応しているボードならば？）<code>arduino-cli board list</code>コマンドでPCに接続しているボードのFQBNを調べられる。</p>
@@ -237,6 +238,8 @@ arduino-cli lib install ArduinoJson
 シリアルポートを<code>-p</code>オプションで指定する。</p>
 <div class="highlight"><pre><span></span><code>arduino-cli upload -b arduino:avr:uno -p /dev/ttyACM0
 </code></pre></div>
+<p>コンパイル成果物はデフォルトで<code>./build</code>ディレクトリに書き出されるので、
+<code>.gitignore</code>などに追加しておく。</p>
 <h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_シリアルモニタ_8">シリアルモニタ</h2>
 <p><code>arduino-cli</code>にはシリアルモニタ機能がない（追加される予定もない）ので、
 ほかのツールを使う必要がある。</p>
