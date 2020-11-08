@@ -188,8 +188,7 @@ Arduinoプログラム（<code>.ino</code>）にWiFiパスワード・APIキー�
 <li><a href="https://blog.aoirint.com/entry/2020/arduino_cli_usage/">arduino-cliの使い方 - えやみぐさ</a></li>
 </ul>
 <h2 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_秘密情報の埋め込み_2">秘密情報の埋め込み</h2>
-<p>さて、本題に移る。
-秘密情報の埋め込みには、以下のようなシェルスクリプト<code>compile.sh</code>を作成するのが楽でよい。
+<p>秘密情報の埋め込みには、以下のようなシェルスクリプト<code>compile.sh</code>を作成するのが楽でよい。
 <code>DEFINES=</code>の部分の<code>-D</code>から<code>=</code>までの文字列が定数名、<code>=</code>の右辺が定数値として
 定義された状態でソースコードがコンパイルされる。
 ここでは同ディレクトリの<code>.env</code>ファイルを読み込んで使用する。
