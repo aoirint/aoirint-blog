@@ -210,8 +210,12 @@ Arduino IDEで作成しても、好きなテキストエディタで作成して
 メインのソースコードを作成する。</p>
 <p>以下、<code>arduino-cli</code>のコマンドはスケッチのディレクトリで実行する。</p>
 <h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_FQBNの確認_4">FQBNの確認</h2>
-<p><code>arduino-cli</code>でボードを扱うときには、ボード名にあたる<code>FQBN</code>というコロンで区切られた文字列を使う。
-（対応しているボードならば？）<code>arduino-cli board list</code>コマンドでPCに接続しているボードのFQBNを調べられる。</p>
+<p><code>arduino-cli</code>でボードを扱うときには、ボード名にあたる<code>FQBN</code>というコロンで区切られた文字列を使う。</p>
+<p><code>arduino-cli board listall</code>コマンドで
+<code>arduino-cli</code>が対応しているボードのFQBN一覧が出力される。
+<code>arduino-cli board listall esp32</code>のようにキーワードを追加して、
+絞り込むこともできる。</p>
+<p>また、<code>arduino-cli board list</code>コマンドでPCに接続しているボードのFQBNを調べられる場合がある（Arduino系ボードの場合？）。</p>
 <ul>
 <li>Arduino UNO: <code>arduino:avr:uno</code></li>
 <li>ESP32-DevKitC: <code>esp32:esp32:esp32</code></li>
