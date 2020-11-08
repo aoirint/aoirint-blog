@@ -4,17 +4,17 @@
 Arduinoプログラム（&lt;code&gt;.ino&lt;/code&gt;）にWiFiパスワード・APIキーなどの秘密情報を埋め込む必要が出てきた。&lt;/p&gt;
 &lt;p&gt;ここでは、Arduino IDEの主要機能を持つCLIソフトウェア&lt;code&gt;arduino-cli&lt;/code&gt;を使う。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arduino/arduino-cli"&gt;arduino/arduino-cli: Arduino command line interface&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;arduin&lt;/p&gt;</description><pubDate>Mon, 09 Nov 2020 08:10:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 08:10:00.000000:/entry/2020/arduino_secret_info/</guid></item><item><title>arduino-cliの使い方</title><link>https://blog.aoirint.com/entry/2020/arduino_cli_usage/</link><description>&lt;h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_arduino_cliの使い方_1"&gt;arduino-cliの使い方&lt;/h2&gt;
-&lt;h3 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_FQBNの確認_2"&gt;FQBNの確認&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;arduino-cli&lt;/code&gt;でボードを扱うときには、ボード名にあたる&lt;code&gt;FQBN&lt;/code&gt;というコロンで区切られた文字列を使う。
-（対応しているボードならば？）&lt;code&gt;arduino-cli board list&lt;/code&gt;コマンドでPCに接続しているボードのFQBNを調べられる。&lt;/p&gt;
+&lt;p&gt;arduin&lt;/p&gt;</description><pubDate>Mon, 09 Nov 2020 08:10:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 08:10:00.000000:/entry/2020/arduino_secret_info/</guid></item><item><title>arduino-cliの使い方</title><link>https://blog.aoirint.com/entry/2020/arduino_cli_usage/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_arduino_cliの使い方_1"&gt;arduino-cliの使い方&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;Arduino UNO: &lt;code&gt;arduino:avr:uno&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;ESP32-DevKitC: &lt;code&gt;esp32:esp32:esp32&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://l-w-i.net/t/arduino/cli_001.txt"&gt;[Arduino] arduino-cli初期設定(内蔵LEDでLチカ) - Life with IT&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_ボード情報のインストール_3"&gt;ボード情報のインストール&lt;/h3&gt;
-&lt;p&gt;コンパイルには別途ボード情報をインストールする必要があり、以下のようにコマンドを実行する。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# A&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 09 Nov 2020 08:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 08:00:00.000000:/entry/2020/arduino_cli_usage/</guid></item><item><title>Imagemagickで画像のDPIを変更する</title><link>https://blog.aoirint.com/snippet/2020/change_image_dpi_imagemagick/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_change_image_dpi_imagemagick_index_md_Imagemagickで画像のDPIを変更する_1"&gt;Imagemagickで画像のDPIを変更する&lt;/h1&gt;
+&lt;h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_インストール_2"&gt;インストール&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://arduino.github.io/arduino-cli/latest/installation/"&gt;Installation - Arduino CLI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://arduino.github.io/arduino-cli/latest/"&gt;Arduino CLIの公式ドキュメント&lt;/a&gt;に従ってインストールする。後述する&lt;code&gt;screen&lt;/code&gt;コマンドも合わせてインストールする。
+Dockerイメージも配布されているのでお好みで。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh &lt;span class="p"&gt;|&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 09 Nov 2020 08:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 08:00:00.000000:/entry/2020/arduino_cli_usage/</guid></item><item><title>Imagemagickで画像のDPIを変更する</title><link>https://blog.aoirint.com/snippet/2020/change_image_dpi_imagemagick/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_change_image_dpi_imagemagick_index_md_Imagemagickで画像のDPIを変更する_1"&gt;Imagemagickで画像のDPIを変更する&lt;/h1&gt;
 &lt;p&gt;画像のDPI（dot per inch）がばらばらの場合、
 TeXで画像を取り込んだときのサイズがばらばらになるため統一する。&lt;/p&gt;
 &lt;p&gt;以下はIN.pngをDPI 72にしてOUT.pngに出力するコマンド。&lt;/p&gt;
