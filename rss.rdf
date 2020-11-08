@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Mon, 09 Nov 2020 06:10:00 +0900</lastBuildDate><item><title>OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる</title><link>https://blog.aoirint.com/snippet/2020/obs_ubuntu_nvidia_window_capture/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_obs_ubuntu_nvidia_window_capture_index_md_OBS_Studio_on_Ubuntu_NVIDIA_GPUでWindow_Captureを動作させる_1"&gt;OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Mon, 09 Nov 2020 06:30:00 +0900</lastBuildDate><item><title>Imagemagickで画像のDPIを変更する</title><link>https://blog.aoirint.com/snippet/2020/change_image_dpi_imagemagick/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_change_image_dpi_imagemagick_index_md_Imagemagickで画像のDPIを変更する_1"&gt;Imagemagickで画像のDPIを変更する&lt;/h1&gt;
+&lt;p&gt;画像のDPI（dot per inch）がばらばらの場合、
+TeXで画像を取り込んだときのサイズがばらばらになるため統一する。&lt;/p&gt;
+&lt;p&gt;以下はIN.pngをDPI 72にしてOUT.pngに出力するコマンド。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;convert -density &lt;span class="m"&gt;72&lt;/span&gt; -units PixelsPerInch IN.png OUT.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;もともとのDPIを調べるコマンド。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;identify -format &lt;span class="s1"&gt;'%x,%y\n'&lt;/span&gt; IN.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 09 Nov 2020 06:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 06:30:00.000000:/snippet/2020/change_image_dpi_imagemagick/</guid></item><item><title>OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる</title><link>https://blog.aoirint.com/snippet/2020/obs_ubuntu_nvidia_window_capture/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_obs_ubuntu_nvidia_window_capture_index_md_OBS_Studio_on_Ubuntu_NVIDIA_GPUでWindow_Captureを動作させる_1"&gt;OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる&lt;/h1&gt;
 &lt;p&gt;Ubuntu + NVIDIA GPU環境では、OBS StudioでWindow Captureしようとすると
 一部のアプリケーションで黒画面の表示になり動作しない。
 おそらくOpenGLで描画しているものが対象。&lt;/p&gt;
@@ -93,9 +101,4 @@ python3 -m tkinter
     &lt;span class="nt"&gt;volumes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
       &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;./work:/work&lt;/span&gt;
     &lt;span class="nt"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-      &lt;span class="nt"&gt;SELENIUM_URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://selenium:4444&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><pubDate>Mon, 28 Sep 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-28 11:00:00.000000:/snippet/2020/docker_compose_python_selenium/</guid></item><item><title>スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト</title><link>https://blog.aoirint.com/snippet/2020/docker_compose_run_rm_linked_containers/</link><description>&lt;h1 class="md_header_block" id="h_snippet_2020_docker_compose_run_rm_linked_containers_index_md_スニペット_docker_compose_run_rm終了時に他のコンテナも削除するシェルスクリプト_1"&gt;スニペット: docker-compose run --rm終了時に他のコンテナも削除するシェルスクリプト&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;docker-compose run --rm app&lt;/code&gt;を実行するとサービスappが起動してコンテナが作られ、実行が終わり次第コンテナは削除される。
-このとき削除されるコンテナはforegroundで実行されたもののみで、
-&lt;code&gt;depends_on&lt;/code&gt;などの設定からリンクを通じて起動した他サービスのdetachedコンテナは削除されず残り続ける。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/docker/compose/issues/2791" title="docker-compose run &amp;lt;container&amp;gt; --rm does not rm links · Issue #2791 · docker/compose"&gt;docker-compose run &lt;container&gt; --rm does not rm links · Issue #&lt;/container&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Mon, 28 Sep 2020 10:10:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-28 10:10:00.000000:/snippet/2020/docker_compose_run_rm_linked_containers/</guid></item></channel></rss>
+      &lt;span class="nt"&gt;SELENIUM_URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://selenium:4444&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><pubDate>Mon, 28 Sep 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-09-28 11:00:00.000000:/snippet/2020/docker_compose_python_selenium/</guid></item></channel></rss>
