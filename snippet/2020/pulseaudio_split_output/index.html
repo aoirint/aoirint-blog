@@ -183,6 +183,7 @@
 
 <div class="article-body">
   <h1 class="md_header_block" id="h_snippet_2020_pulseaudio_split_output_index_md_PulseAudioで特定のアプリケーションからの音声出力だけを分離する_1">PulseAudioで特定のアプリケーションからの音声出力だけを分離する</h1>
+<p>以下のコマンドで仮想出力デバイス<code>DummyOutput0</code>と、そのループバック<code>Monitor of DummyOutput0</code>が追加される。</p>
 <div class="highlight"><pre><span></span><code>pacmd load-module module-null-sink <span class="nv">sink_name</span><span class="o">=</span>DummyOutput0 <span class="nv">sink_properties</span><span class="o">=</span>device.description<span class="o">=</span>DummyOutput0
 pacmd load-module module-loopback <span class="nv">source</span><span class="o">=</span>DummyOutput0.monitor
 </code></pre></div>
