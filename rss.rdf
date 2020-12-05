@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Mon, 09 Nov 2020 08:10:00 +0900</lastBuildDate><item><title>ソース公開するArduinoプログラムに秘密情報を埋め込む</title><link>https://blog.aoirint.com/entry/2020/arduino_secret_info/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む_1"&gt;ソース公開するArduinoプログラムに秘密情報を埋め込む&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 06 Dec 2020 08:40:00 +0900</lastBuildDate><item><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link>https://blog.aoirint.com/entry/2020/mastodon-docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04__1"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;内容はコミットID&lt;code&gt;44d5c6bc8ffd92cd201380dabe35748e50b6af68&lt;/code&gt;におけるもの。&lt;code&gt;docker-compose&lt;/code&gt;の設定ファイルバージョンは&lt;code&gt;3&lt;/code&gt;。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ lsb_release -a
+No LSB modules are available.
+Distributor ID&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sun, 06 Dec 2020 08:40:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-06 08:40:00.000000:/entry/2020/mastodon-docker/</guid></item><item><title>ソース公開するArduinoプログラムに秘密情報を埋め込む</title><link>https://blog.aoirint.com/entry/2020/arduino_secret_info/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む_1"&gt;ソース公開するArduinoプログラムに秘密情報を埋め込む&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://github.com/aoirint/RoomSystemSensorESP32"&gt;aoirint/RoomSystemSensorESP32: ESP32とFirebaseを使った部屋センシング・オンライン化 クライアント&lt;/a&gt;の開発中に
 Arduinoプログラム（&lt;code&gt;.ino&lt;/code&gt;）にWiFiパスワード・APIキーなどの秘密情報を埋め込む必要が出てきた。&lt;/p&gt;
 &lt;p&gt;ここでは、Arduino IDEの主要機能を持つCLIソフトウェア&lt;code&gt;arduino-cli&lt;/code&gt;を使う。&lt;/p&gt;
@@ -68,15 +75,4 @@ pyenv install &lt;span class="m"&gt;3&lt;/span&gt;.8.6
 pyenv global &lt;span class="m"&gt;3&lt;/span&gt;.8.6
 
 python3 -m tkinter
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sun, 04 Oct 2020 03:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-04 03:30:00.000000:/entry/2020/setup_python_tkinter_pyenv_ubuntu/</guid></item><item><title>スニペット: Ubuntu プロキシ設定</title><link>https://blog.aoirint.com/entry/2020/ubuntu_proxy/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md_スニペット_Ubuntu_プロキシ設定_1"&gt;スニペット: Ubuntu プロキシ設定&lt;/h1&gt;
-&lt;h2 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md_User_Desktop__2"&gt;User (Desktop)&lt;/h2&gt;
-&lt;p&gt;Settings &amp;gt; Network &amp;gt; Network Proxy &amp;gt; Manualに設定する。
-自動的に環境変数HTTP_PROXY, HTTPS_PROXYにスキームが追加された状態で設定される。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;HTTP Proxy: &lt;code&gt;proxy&lt;/code&gt; &lt;code&gt;port&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;HTTPS Proxy: &lt;code&gt;proxy&lt;/code&gt; &lt;code&gt;port&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;curlやwget、pipなど主要コマンドは
-注意点として、別ユーザとしてコマンドを実行すると環境変数が引き継がれない。
-例えばsudo curlしたときにプロキシに接続しにいかない。&lt;/p&gt;
-&lt;h2 class="md_header_block" id="h_entry_2020_ubuntu_proxy_index_md_sudoers_environment_keep_3"&gt;sudoe&lt;/h2&gt;</description><pubDate>Fri, 02 Oct 2020 15:40:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-02 15:40:00.000000:/entry/2020/ubuntu_proxy/</guid></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sun, 04 Oct 2020 03:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-04 03:30:00.000000:/entry/2020/setup_python_tkinter_pyenv_ubuntu/</guid></item></channel></rss>
