@@ -255,7 +255,7 @@ pwgen <span class="m">32</span>
 # ----------
 # This identifies your server and cannot be changed safely later
 # ----------
-LOCAL_DOMAIN=hogehoge.ngrok.io
+LOCAL_DOMAIN=mstdn.example.com
 </code></pre></div>
 <p>Redisのセクションにいき、<code>REDIS_HOST</code>を編集する。
 docker-composeが作成するネットワークを使用するので、ホスト名<code>redis</code>（サービス名）で接続できる。</p>
@@ -359,7 +359,7 @@ GitHub上にあった設定ファイルを参考にしている。
 <span class="p">}</span>
 
 <span class="k">server</span> <span class="p">{</span>
-  <span class="kn">server_name</span> <span class="s">hogehoge.example.com</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="s">mstdn.example.com</span><span class="p">;</span>
 
   <span class="kn">keepalive_timeout</span> <span class="mi">70</span><span class="p">;</span>
   <span class="kn">client_max_body_size</span> <span class="s">80M</span><span class="p">;</span>
