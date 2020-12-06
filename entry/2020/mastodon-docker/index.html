@@ -340,6 +340,9 @@ sudo rm -rf postgres/ public/ redis/
 </code></pre></div>
 <p><code>docker-compose run --rm web id -u</code>の出力は<code>991</code>だったので、ホスト側で<code>sudo chown -R 991:991 ./public</code>を実行して所有者を書き換えて解決した。</p>
 <p>多人数が利用する OR 長期的に利用する予定で、VPSでホストするような場合、添付ファイルがVPSの容量を喰いつぶしてしまうことが想定されるので、そのような場合オブジェクトストレージを用意したい。</p>
+<p>一人専用サーバの場合、<code>.env.production</code>に以下の設定を追加すると便利。<code>/</code>へのアクセスをユーザページにリダイレクトしてくれるようになり、新規登録を停止する。</p>
+<div class="highlight"><pre><span></span><code>SINGLE_USER_MODE=true
+</code></pre></div>
 <p>HTTPS化のためnginxによるリバースプロキシを設定する。
 GitHub上にあった設定ファイルを参考にしている。
 おそらく<code>X-Forwarded-Proto https</code>を設定しないと<code>https://localhost</code>にリダイレクトされるという事象が起こるので注意。
