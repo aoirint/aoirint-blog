@@ -342,7 +342,8 @@ sudo rm -rf postgres/ public/ redis/
 <p>HTTPS化のためnginxによるリバースプロキシを設定する。
 GitHub上にあった設定ファイルを参考にしている。
 おそらく<code>X-Forwarded-Proto https</code>を設定しないと<code>https://localhost</code>にリダイレクトされるという事象が起こるので注意。
-証明書の設定は書いていないが、<code>certbot</code>（Let's Encrypt）を使用する場合<code>sudo certbot --nginx</code>で自動挿入してくれる。</p>
+証明書の設定は書いていないが、<code>certbot</code>（Let's Encrypt）を使用する場合<code>sudo certbot --nginx</code>で自動挿入してくれる。
+ポート番号はデフォルトのローカルループバックアドレスへのbindをそのまま使うことを想定。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># https://github.com/tootsuite/mastodon/blob/master/nanobox/nginx-local.conf</span>
 <span class="c1"># https://github.com/tootsuite/mastodon/blob/54192a9b6f8ee68114e3bc9ebf241099456e85f6/nanobox/nginx-local.conf</span>
 
