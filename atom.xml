@@ -3,10 +3,9 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;内容はコミットID&lt;code&gt;44d5c6bc8ffd92cd201380dabe35748e50b6af68&lt;/code&gt;におけるもの。&lt;code&gt;docker-compose&lt;/code&gt;の設定ファイルバージョンは&lt;code&gt;3&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;内容はコミットID&lt;code&gt;44d5c6bc8ffd92cd201380dabe35748e50b6af68&lt;/code&gt;、Mastodon Dockerイメージバージョン&lt;code&gt;v3.2.1&lt;/code&gt;（&lt;code&gt;`）におけるもの。&lt;/code&gt;docker-compose&lt;code&gt;の設定ファイルバージョンは&lt;/code&gt;3`。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ lsb_release -a
-No LSB modules are available.
-Distributor ID&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>ソース公開するArduinoプログラムに秘密情報を埋め込む</title><link href="https://blog.aoirint.com/entry/2020/arduino_secret_info/" rel="alternate"></link><published>2020-11-09T08:10:00+09:00</published><updated>2020-11-09T08:10:00+09:00</updated><id>tag:blog.aoirint.com,2020-11-09 08:10:00.000000:/entry/2020/arduino_secret_info/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む_1"&gt;ソース公開するArduinoプログラムに秘密情報を埋め込む&lt;/h1&gt;
+No LS&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>ソース公開するArduinoプログラムに秘密情報を埋め込む</title><link href="https://blog.aoirint.com/entry/2020/arduino_secret_info/" rel="alternate"></link><published>2020-11-09T08:10:00+09:00</published><updated>2020-11-09T08:10:00+09:00</updated><id>tag:blog.aoirint.com,2020-11-09 08:10:00.000000:/entry/2020/arduino_secret_info/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む_1"&gt;ソース公開するArduinoプログラムに秘密情報を埋め込む&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://github.com/aoirint/RoomSystemSensorESP32"&gt;aoirint/RoomSystemSensorESP32: ESP32とFirebaseを使った部屋センシング・オンライン化 クライアント&lt;/a&gt;の開発中に
 Arduinoプログラム（&lt;code&gt;.ino&lt;/code&gt;）にWiFiパスワード・APIキーなどの秘密情報を埋め込む必要が出てきた。&lt;/p&gt;
 &lt;p&gt;ここでは、Arduino IDEの主要機能を持つCLIソフトウェア&lt;code&gt;arduino-cli&lt;/code&gt;を使う。&lt;/p&gt;
