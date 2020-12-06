@@ -239,7 +239,7 @@ pwgen <span class="m">32</span>
     <span class="nt">networks</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">internal_network</span>
     <span class="nt">healthcheck</span><span class="p">:</span>
-      <span class="nt">test</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">"CMD"</span><span class="p p-Indicator">,</span> <span class="s">"pg_isready"</span><span class="p p-Indicator">,</span> <span class="s">"-U"</span><span class="p p-Indicator">,</span> <span class="s">"mastodon"</span><span class="p p-Indicator">]</span>
+      <span class="nt">test</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">"CMD"</span><span class="p p-Indicator">,</span> <span class="s">"pg_isready"</span><span class="p p-Indicator">,</span> <span class="s">"-U"</span><span class="p p-Indicator">,</span> <span class="s">"mastodon"</span><span class="p p-Indicator">,</span> <span class="s">"-D"</span><span class="p p-Indicator">,</span> <span class="s">"mastodon_production"</span><span class="p p-Indicator">]</span>
     <span class="nt">volumes</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./postgres:/var/lib/postgresql/data</span>
     <span class="nt">environment</span><span class="p">:</span>
