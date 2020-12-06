@@ -326,10 +326,18 @@ docker-compose run --rm web rails assets:precompile
 sudo rm -rf postgres/ public/ redis/
 </code></pre></div>
 <p>HTTP 3000番から接続し、ブラウザ上でアカウントを作成する。
-検証メールが届く。</p>
-<p>アカウント<code>MY_USERNAME</code>を管理者に設定する。</p>
+検証メールが届く。
+その後アカウント<code>MY_USERNAME</code>を管理者に設定する。</p>
 <div class="highlight"><pre><span></span><code>docker-compose run --rm web bundle exec bin/tootctl accounts modify MY_USERNAME --role admin
 </code></pre></div>
+<p>またはコマンドで管理者アカウントを作成する。ランダムパスワードが生成され、標準出力に出力される。</p>
+<div class="highlight"><pre><span></span><code>sudo docker-compose run --rm web bundle <span class="nb">exec</span> bin/tootctl accounts create hoge --email hoge@example.com --confirmed --role admin
+</code></pre></div>
+<p>プロフィール画像アップロード時にエラーが出てしまった。
+<code>./public/system</code>をマウント時にdockerが作成しているために<code>root</code>所有になっているのが原因。</p>
+<div class="highlight"><pre><span></span><code>Errno::EACCES (Permission denied @ dir_s_mkdir - /opt/mastodon/public/system/accounts)
+</code></pre></div>
+<p><code>docker-compose run --rm web id -u</code>の出力は<code>991</code>だったので、ホスト側で<code>sudo chown -R 991:991 ./public</code>を実行して所有者を書き換えて解決した。</p>
 <h2 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_参考_2">参考</h2>
 <ul>
 <li><a href="https://github.com/tootsuite/mastodon">tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community</a></li>
