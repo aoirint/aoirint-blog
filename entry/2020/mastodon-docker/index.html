@@ -337,8 +337,85 @@ sudo rm -rf postgres/ public/ redis/
 <code>./public/system</code>をマウント時にdockerが作成しているために<code>root</code>所有になっているのが原因。</p>
 <div class="highlight"><pre><span></span><code>Errno::EACCES (Permission denied @ dir_s_mkdir - /opt/mastodon/public/system/accounts)
 </code></pre></div>
-<p><code>docker-compose run --rm web id -u</code>の出力は<code>991</code>だったので、ホスト側で<code>sudo chown -R 991:991 ./public</code>を実行して所有者を書き換えて解決した。
-多人数が利用する OR 長期的に利用する予定で、VPSでホストするような場合、添付ファイルがVPSの容量を喰いつぶしてしまうことが想定されるので、そのような場合オブジェクトストレージを用意したい。</p>
+<p><code>docker-compose run --rm web id -u</code>の出力は<code>991</code>だったので、ホスト側で<code>sudo chown -R 991:991 ./public</code>を実行して所有者を書き換えて解決した。</p>
+<p>多人数が利用する OR 長期的に利用する予定で、VPSでホストするような場合、添付ファイルがVPSの容量を喰いつぶしてしまうことが想定されるので、そのような場合オブジェクトストレージを用意したい。</p>
+<p>HTTPS化のためnginxによるリバースプロキシを設定する。
+GitHub上にあった設定ファイルを参考にしている。
+おそらく<code>X-Forwarded-Proto https</code>を設定しないと<code>https://localhost</code>にリダイレクトされるという事象が起こるので注意。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># https://github.com/tootsuite/mastodon/blob/master/nanobox/nginx-local.conf</span>
+<span class="c1"># https://github.com/tootsuite/mastodon/blob/54192a9b6f8ee68114e3bc9ebf241099456e85f6/nanobox/nginx-local.conf</span>
+
+<span class="k">upstream</span> <span class="s">rails</span> <span class="p">{</span>
+  <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">3000</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">upstream</span> <span class="s">node</span> <span class="p">{</span>
+  <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">4000</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">map</span> <span class="nv">$http_upgrade</span> <span class="nv">$connection_upgrade</span> <span class="p">{</span>
+  <span class="kn">default</span> <span class="s">upgrade</span><span class="p">;</span>
+  <span class="kn">''</span>      <span class="s">close</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+  <span class="kn">server_name</span> <span class="s">mstdn.aoirint.com</span><span class="p">;</span>
+
+  <span class="kn">keepalive_timeout</span> <span class="mi">70</span><span class="p">;</span>
+  <span class="kn">client_max_body_size</span> <span class="s">80M</span><span class="p">;</span>
+
+  <span class="kn">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">"max-age=31536000"</span><span class="p">;</span>
+
+  <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">@rails</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kn">location</span> <span class="s">@rails</span> <span class="p">{</span>
+    <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Host</span> <span class="nv">$host</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Server</span> <span class="nv">$host</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Proto</span> <span class="s">https</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">Proxy</span> <span class="s">""</span><span class="p">;</span>
+    <span class="kn">proxy_pass_header</span> <span class="s">Server</span><span class="p">;</span>
+
+    <span class="kn">proxy_pass</span> <span class="s">http://rails</span><span class="p">;</span>
+    <span class="kn">proxy_buffering</span> <span class="no">off</span><span class="p">;</span>
+    <span class="kn">proxy_redirect</span> <span class="no">off</span><span class="p">;</span>
+
+    <span class="c1"># WebSocket</span>
+    <span class="kn">proxy_http_version</span> <span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="nv">$http_upgrade</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="nv">$connection_upgrade</span><span class="p">;</span>
+
+    <span class="kn">tcp_nodelay</span> <span class="no">on</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kn">location</span> <span class="s">/api/v1/streaming</span> <span class="p">{</span>
+    <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Host</span> <span class="nv">$host</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Server</span> <span class="nv">$host</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Proto</span> <span class="s">https</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">Proxy</span> <span class="s">""</span><span class="p">;</span>
+    <span class="kn">proxy_pass_header</span> <span class="s">Server</span><span class="p">;</span>
+
+    <span class="kn">proxy_pass</span> <span class="s">http://node</span><span class="p">;</span>
+    <span class="kn">proxy_buffering</span> <span class="no">off</span><span class="p">;</span>
+    <span class="kn">proxy_redirect</span> <span class="no">off</span><span class="p">;</span>
+
+    <span class="c1"># WebSocket</span>
+    <span class="kn">proxy_http_version</span> <span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="nv">$http_upgrade</span><span class="p">;</span>
+    <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="nv">$connection_upgrade</span><span class="p">;</span>
+
+    <span class="kn">tcp_nodelay</span> <span class="no">on</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
 <h2 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_参考_2">参考</h2>
 <ul>
 <li><a href="https://github.com/tootsuite/mastodon">tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community</a></li>
