@@ -337,7 +337,8 @@ sudo rm -rf postgres/ public/ redis/
 <code>./public/system</code>をマウント時にdockerが作成しているために<code>root</code>所有になっているのが原因。</p>
 <div class="highlight"><pre><span></span><code>Errno::EACCES (Permission denied @ dir_s_mkdir - /opt/mastodon/public/system/accounts)
 </code></pre></div>
-<p><code>docker-compose run --rm web id -u</code>の出力は<code>991</code>だったので、ホスト側で<code>sudo chown -R 991:991 ./public</code>を実行して所有者を書き換えて解決した。</p>
+<p><code>docker-compose run --rm web id -u</code>の出力は<code>991</code>だったので、ホスト側で<code>sudo chown -R 991:991 ./public</code>を実行して所有者を書き換えて解決した。
+多人数が利用する OR 長期的に利用する予定で、VPSでホストするような場合、添付ファイルがVPSの容量を喰いつぶしてしまうことが想定されるので、そのような場合オブジェクトストレージを用意したい。</p>
 <h2 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_参考_2">参考</h2>
 <ul>
 <li><a href="https://github.com/tootsuite/mastodon">tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community</a></li>
