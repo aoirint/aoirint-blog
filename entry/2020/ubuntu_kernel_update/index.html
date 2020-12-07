@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定 - えやみぐさ</title>
+    <title>Ubuntu 18.04のKernelをアップデートした（HWE Kernel） - えやみぐさ</title>
   
 
 
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
-<meta property="og:title" content="Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定 - えやみぐさ" />
+<meta property="og:title" content="Ubuntu 18.04のKernelをアップデートした（HWE Kernel） - えやみぐさ" />
 
 <meta name="description" content="UbuntuのKernelをアップデートしたメモ"/>
 <meta property="og:description" content="UbuntuのKernelをアップデートしたメモ" />
@@ -165,9 +165,9 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定">Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定</h1>
+  <h1 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_">Ubuntu 18.04のKernelをアップデートした（HWE Kernel）</h1>
 <p>環境の整理を兼ねて、UbuntuのKernelのアップデートをしたので、そのときのメモ。</p>
-<h2 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_">Ubuntu 18.04のKernelをアップデートした（HWE Kernel）</h2>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__1">Ubuntu 18.04のKernelをアップデートした（HWE Kernel）</h2>
 <h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_カーネルバージョンについて">カーネルバージョンについて</h3>
 <p><code>/lib/modules</code>を見る限りインストール時のバージョンは<code>4.10.0-28</code>で、
 <code>/usr/src</code>を見る限り<code>4.15.0-115</code>をしばらく使ったあと、
@@ -394,7 +394,7 @@ Older versions are still open-source. Somebody can develop that version further 
 UKUUは特殊なことをしていないとわかったので、
 単純にUKUUから入れたカーネルを削除して<code>update-grub</code>すればデフォルトが（もっとも新しい）HWEカーネルになりそうだとわかった。
 一度別のカーネル（HWEでOK）で起動して、UKUUのGUIを使ってUKUU側の5.4.xを削除（ふつうに選択してRemove）すればデフォルトでもっとも新しいHWEカーネルが起動するようになる。</p>
-<h2 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_e1000eのDKMS設定">e1000eのDKMS設定</h2>
+<h2 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md__準備中_e1000eのDKMS設定">（準備中）e1000eのDKMS設定</h2>
 <h3 class="md_header_block" id="h_entry_2020_ubuntu_kernel_update_index_md_Intel_NICのドライバe1000eについて">Intel NICのドライバe1000eについて</h3>
 <div class="highlight"><pre><span></span><code>$ find /lib/modules/5.4.0-47-generic -name e1000e*
 /lib/modules/5.4.0-47-generic/kernel/drivers/net/ethernet/intel/e1000e
@@ -624,12 +624,12 @@ modinfo e1000e-dkms
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_e1000eのDKMS設定" class="toc-item toc-item-h1">
-        Ubuntu 18.04のKernelをアップデートした（HWE Kernel） + e1000eのDKMS設定
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_" class="toc-item toc-item-h1">
+        Ubuntu 18.04のKernelをアップデートした（HWE Kernel）
       </a>
   
     <li>
-      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel_" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_Ubuntu_18_04のKernelをアップデートした_HWE_Kernel__1" class="toc-item toc-item-h2">
         Ubuntu 18.04のKernelをアップデートした（HWE Kernel）
       </a>
   
@@ -654,8 +654,8 @@ modinfo e1000e-dkms
       </a>
   
     <li>
-      <a href="#h_entry_2020_ubuntu_kernel_update_index_md_e1000eのDKMS設定" class="toc-item toc-item-h2">
-        e1000eのDKMS設定
+      <a href="#h_entry_2020_ubuntu_kernel_update_index_md__準備中_e1000eのDKMS設定" class="toc-item toc-item-h2">
+        （準備中）e1000eのDKMS設定
       </a>
   
     <li>
