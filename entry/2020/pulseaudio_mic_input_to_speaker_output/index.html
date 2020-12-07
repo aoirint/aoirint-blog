@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>スニペット: PulseAudioでマイク入力をスピーカから出力する - えやみぐさ</title>
+    <title>PulseAudioでマイク入力をスピーカから出力する - えやみぐさ</title>
   
 
 
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="ja-JP" />
 <meta property="og:type" content="article" />
 
-<meta property="og:title" content="スニペット: PulseAudioでマイク入力をスピーカから出力する - えやみぐさ" />
+<meta property="og:title" content="PulseAudioでマイク入力をスピーカから出力する - えやみぐさ" />
 
 <meta name="description" content="PulseAudioでマイク入力をスピーカから出力する"/>
 <meta property="og:description" content="PulseAudioでマイク入力をスピーカから出力する" />
@@ -69,82 +69,57 @@
 <body>
   
 
-<nav class="smartphonebar">
-  <button class="toggle-sitebar" type="button" onclick="toggleSiteBarIfSmartphone();">
-    <i class="fas fa-bars"></i>
-  </button>
+<nav class="sitebar">
+  <div class="sitebar-left">
+    
+    <a href="https://cse.google.com/cse?cx=4b57e8a4ef2a8c489" target="_blank" class="sitebar-button">
+      <i class="fas fa-search"></i>
+    </a>
+    
 
-  <a href="../../../" class="sitebar-title">
-    えやみぐさ
-  </a>
+    <a href="../../../rss.rdf" title="RSS Feed" class="sitebar-button">
+      <i class="fas fa-rss"></i>
+    </a>
 
-  <button class="toggle-tocbar" type="button" onclick="toggleTocBarIfSmartphone();">
-    <i class="fas fa-list"></i>
-  </button>
+  <!--
+    <a href="../../../atom.xml" title="Atom Feed" class="sitebar-button">
+      <i class="fas fa-rss"></i>
+    </a>
+  -->
 
-</nav>
+    
+    <a href="https://twitter.com/aoirint" target="_blank" title="Twitter @aoirint" class="sitebar-button">
+      <i class="fab fa-twitter"></i>
+    </a>
+    
 
-<aside class="sitebar-box">
-  <nav class="sitebar fixed-scrollable">
+    
+    <a href="https://github.com/aoirint" target="_blank" title="GitHub @aoirint" class="sitebar-button">
+      <i class="fab fa-github"></i>
+    </a>
+    
+  </div>
+
+
+  <div class="sitebar-center">
     <a href="../../../" class="sitebar-title">
       えやみぐさ
     </a>
-
-    <div class="sitebar-content">
-      <ul>
-        <li>
-          <a href="../../../" class="navbar-menu-link">
-            Index
-          </a>
-      </ul>
-
-      
-      <ul>
-        <li>
-          <a href="https://cse.google.com/cse?cx=4b57e8a4ef2a8c489" target="_blank" class="navbar-menu-link">
-            Search in Site
-          </a>
-      </ul>
-      
-
-      <ul>
-        <li>
-          <a href="../../../rss.rdf" class="navbar-menu-link">
-            RSS Feed
-          </a>
-        <li>
-          <a href="../../../atom.xml" class="navbar-menu-link">
-            Atom Feed
-          </a>
-      </ul>
-
-      <ul>
-
-        <li>
-          <a href="https://twitter.com/aoirint" target="_blank" class="navbar-menu-link">
-            Twitter
-          </a>
-
-
-        <li>
-          <a href="https://github.com/aoirint" target="_blank" class="navbar-menu-link">
-            GitHub
-          </a>
-
-      </ul>
+    
+    <div class="sitebar-description">
+      Blog by aoirint
     </div>
+    
+  </div>
 
-    <div class="sitebar-footer">
+  <div class="sitebar-right">
+    <button class="toggle-tocbar sitebar-button" type="button" onclick="toggleTocBarIfSmartphone();">
+      <i class="fas fa-list"></i>
+    </button>
 
-      <p class="copyright-text">
-        Copyright © 2020 aoirint.
+  </div>
 
-      <p class="poweredby-text">
-        Powered by
-        <a href="https://github.com/miyadaiku/miyadaiku">Miyadaiku</a>.
-    </div>
-  </nav>
-</aside>
+</nav>
 
 <main class="main-content">
 
@@ -161,8 +136,8 @@
 
   <div class="article-tags">
 
-    <a href="../../../category/スニペット/" class="article-category">
-      スニペット
+    <a href="../../../category/PulseAudio/" class="article-category">
+      PulseAudio
     </a>
 
 
@@ -182,7 +157,7 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_entry_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_PulseAudioでマイク入力をスピーカから出力する">スニペット: PulseAudioでマイク入力をスピーカから出力する</h1>
+  <h1 class="md_header_block" id="h_entry_2020_pulseaudio_mic_input_to_speaker_output_index_md_PulseAudioでマイク入力をスピーカから出力する">PulseAudioでマイク入力をスピーカから出力する</h1>
 <p>まずはPCに接続されている音声入力デバイスのIDを確認する。</p>
 <div class="highlight"><pre><span></span><code>pactl list short sources
 <span class="c1"># pactl list sources</span>
@@ -243,8 +218,8 @@
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2020_pulseaudio_mic_input_to_speaker_output_index_md_スニペット_PulseAudioでマイク入力をスピーカから出力する" class="toc-item toc-item-h1">
-        スニペット: PulseAudioでマイク入力をスピーカから出力する
+      <a href="#h_entry_2020_pulseaudio_mic_input_to_speaker_output_index_md_PulseAudioでマイク入力をスピーカから出力する" class="toc-item toc-item-h1">
+        PulseAudioでマイク入力をスピーカから出力する
       </a>
   
   </ul>
@@ -254,6 +229,19 @@
 
   </nav>
 </aside>
+
+<footer class="footer">
+
+  <p class="copyright-text">
+    Copyright © 2020 aoirint.
+
+  <p class="theme-text">
+    Theme
+    <a href="https://github.com/aoirint/aoirint-miyadaiku-theme-blog">aoirint-miyadaiku-theme-blog</a>.
+  <p class="poweredby-text">
+    Powered by
+    <a href="https://github.com/miyadaiku/miyadaiku">Miyadaiku</a>.
+</footer>
 
 
 </body>

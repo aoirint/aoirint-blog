@@ -69,82 +69,57 @@
 <body>
   
 
-<nav class="smartphonebar">
-  <button class="toggle-sitebar" type="button" onclick="toggleSiteBarIfSmartphone();">
-    <i class="fas fa-bars"></i>
-  </button>
+<nav class="sitebar">
+  <div class="sitebar-left">
+    
+    <a href="https://cse.google.com/cse?cx=4b57e8a4ef2a8c489" target="_blank" class="sitebar-button">
+      <i class="fas fa-search"></i>
+    </a>
+    
 
-  <a href="../../../" class="sitebar-title">
-    えやみぐさ
-  </a>
+    <a href="../../../rss.rdf" title="RSS Feed" class="sitebar-button">
+      <i class="fas fa-rss"></i>
+    </a>
 
-  <button class="toggle-tocbar" type="button" onclick="toggleTocBarIfSmartphone();">
-    <i class="fas fa-list"></i>
-  </button>
+  <!--
+    <a href="../../../atom.xml" title="Atom Feed" class="sitebar-button">
+      <i class="fas fa-rss"></i>
+    </a>
+  -->
 
-</nav>
+    
+    <a href="https://twitter.com/aoirint" target="_blank" title="Twitter @aoirint" class="sitebar-button">
+      <i class="fab fa-twitter"></i>
+    </a>
+    
 
-<aside class="sitebar-box">
-  <nav class="sitebar fixed-scrollable">
+    
+    <a href="https://github.com/aoirint" target="_blank" title="GitHub @aoirint" class="sitebar-button">
+      <i class="fab fa-github"></i>
+    </a>
+    
+  </div>
+
+
+  <div class="sitebar-center">
     <a href="../../../" class="sitebar-title">
       えやみぐさ
     </a>
-
-    <div class="sitebar-content">
-      <ul>
-        <li>
-          <a href="../../../" class="navbar-menu-link">
-            Index
-          </a>
-      </ul>
-
-      
-      <ul>
-        <li>
-          <a href="https://cse.google.com/cse?cx=4b57e8a4ef2a8c489" target="_blank" class="navbar-menu-link">
-            Search in Site
-          </a>
-      </ul>
-      
-
-      <ul>
-        <li>
-          <a href="../../../rss.rdf" class="navbar-menu-link">
-            RSS Feed
-          </a>
-        <li>
-          <a href="../../../atom.xml" class="navbar-menu-link">
-            Atom Feed
-          </a>
-      </ul>
-
-      <ul>
-
-        <li>
-          <a href="https://twitter.com/aoirint" target="_blank" class="navbar-menu-link">
-            Twitter
-          </a>
-
-
-        <li>
-          <a href="https://github.com/aoirint" target="_blank" class="navbar-menu-link">
-            GitHub
-          </a>
-
-      </ul>
+    
+    <div class="sitebar-description">
+      Blog by aoirint
     </div>
+    
+  </div>
 
-    <div class="sitebar-footer">
+  <div class="sitebar-right">
+    <button class="toggle-tocbar sitebar-button" type="button" onclick="toggleTocBarIfSmartphone();">
+      <i class="fas fa-list"></i>
+    </button>
 
-      <p class="copyright-text">
-        Copyright © 2020 aoirint.
+  </div>
 
-      <p class="poweredby-text">
-        Powered by
-        <a href="https://github.com/miyadaiku/miyadaiku">Miyadaiku</a>.
-    </div>
-  </nav>
-</aside>
+</nav>
 
 <main class="main-content">
 
@@ -161,8 +136,8 @@
 
   <div class="article-tags">
 
-    <a href="../../../category/記事/" class="article-category">
-      記事
+    <a href="../../../category/Arduino/" class="article-category">
+      Arduino
     </a>
 
 
@@ -386,6 +361,19 @@ C言語の定数として取り込まれる<code>build.defines</code>に手動�
 
   </nav>
 </aside>
+
+<footer class="footer">
+
+  <p class="copyright-text">
+    Copyright © 2020 aoirint.
+
+  <p class="theme-text">
+    Theme
+    <a href="https://github.com/aoirint/aoirint-miyadaiku-theme-blog">aoirint-miyadaiku-theme-blog</a>.
+  <p class="poweredby-text">
+    Powered by
+    <a href="https://github.com/miyadaiku/miyadaiku">Miyadaiku</a>.
+</footer>
 
 
 </body>
