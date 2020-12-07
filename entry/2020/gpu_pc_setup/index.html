@@ -178,18 +178,18 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ_1">GPU PC (Desktop) のセットアップメモ</h1>
+  <h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ">GPU PC (Desktop) のセットアップメモ</h1>
 <p><a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)">Ubuntu 18.04.5 LTS (Bionic Beaver)</a></p>
 <p>Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。</p>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_時刻ずれの解消_2">時刻ずれの解消</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_時刻ずれの解消">時刻ずれの解消</h2>
 <p><a href="https://linux.just4fun.biz/?Linux%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E3%81%AEWindows%E6%99%82%E5%88%BB%E3%82%92UTC%E3%81%AB%E3%81%99%E3%82%8B" title="Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす">Linux環境設定/デュアルブートのWindows時刻をUTCにする - Linuxと過ごす</a></p>
 <p>デュアルブート環境では、BIOSの時刻を介してWindows側の時刻管理（ローカル時間）とUbuntu側の時刻管理（UTC時間）が衝突して、タイムゾーンの時差分、時計がずれてしまう。ここでは、Windows側の時刻管理をUTC時間にするようにレジストリを変更して対処する。</p>
 <p>Windows上で管理者権限でコマンドプロンプトを起動し、以下のコマンドを実行する。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_NTPサーバの設定_プロキシ環境__3">NTPサーバの設定（プロキシ環境）</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_NTPサーバの設定_プロキシ環境_">NTPサーバの設定（プロキシ環境）</h2>
 <ul>
 <li><a href="https://sicklylife.hatenablog.com/entry/2016/02/03/201557" title="Ubuntu 18.04 / 16.04 で時刻合わせの設定を変更する - Sickly Life Blog">Ubuntu 18.04 / 16.04 で時刻合わせの設定を変更する - Sickly Life Blog</a></li>
 <li><a href="https://yyatsuo.com/post-1297/" title="systemdのSNTPクライアント機能を使ってみる | Keep the Light Alive">systemdのSNTPクライアント機能を使ってみる | Keep the Light Alive</a></li>
@@ -207,7 +207,7 @@ NTP=YOUR_NTP_SERVER
 </code></pre></div>
 </td></tr></table>
 <p>これで時刻が同期される。</p>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_1_Environment_Variable_apt_4">プロキシの設定 (1) Environment Variable, apt</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_1_Environment_Variable_apt">プロキシの設定 (1) Environment Variable, apt</h2>
 <p>Settings &gt; Networkからプロキシを設定する。設定した内容は<code>HTTP_PROXY</code>などの環境変数に出力される。スキーム部分は不要（OS側で付けるので二重プロトコルになってしまう）。</p>
 <p>また/etc/apt/apt.confを作成し、プロキシ設定を追記する</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -215,13 +215,13 @@ NTP=YOUR_NTP_SERVER
 Acquire::https::proxy "http://YOUR_HTTP_PROXY";
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_Package_Indexの更新とPackageの更新_5">Package Indexの更新とPackageの更新</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_Package_Indexの更新とPackageの更新">Package Indexの更新とPackageの更新</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt update
 sudo apt upgrade -y
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_git_ビルドツールほかのインストール_6">git、ビルドツールほかのインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_git_ビルドツールほかのインストール">git、ビルドツールほかのインストール</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -268,7 +268,7 @@ git config --global user.email YOUR_EMAIL
 nmap <span class="p">&lt;</span>Esc<span class="p">&gt;&lt;</span>Esc<span class="p">&gt;</span> :<span class="k">nohlsearch</span><span class="p">&lt;</span>CR<span class="p">&gt;&lt;</span>Esc<span class="p">&gt;</span>
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_日本語IME_ibus_mozc_言語サポートのインストール_7">日本語IME（ibus-mozc）、言語サポートのインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_日本語IME_ibus_mozc_言語サポートのインストール">日本語IME（ibus-mozc）、言語サポートのインストール</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -281,13 +281,13 @@ gsettings <span class="nb">set</span> org.gnome.desktop.input-sources sources <s
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install -y <span class="k">$(</span>check-language-support<span class="k">)</span>
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_2_git_8">プロキシの設定 (2) git</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_2_git">プロキシの設定 (2) git</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git config --global http.proxy <span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span>
 git config --global https.proxy <span class="si">${</span><span class="nv">HTTPS_PROXY</span><span class="si">}</span>
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_pyenv_Pythonのインストール_9">pyenv、Pythonのインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_pyenv_Pythonのインストール">pyenv、Pythonのインストール</h2>
 <p><a href="https://github.com/pyenv/pyenv#basic-github-checkout">pyenv/pyenv: Simple Python version management</a></p>
 <p>新しいPythonを使うため、それからシステムと開発環境を分離してモジュール管理をaptとpipで分けて衝突事故を起こさないようにするため、pyenvを使うのが安定。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -349,7 +349,7 @@ pyenv install <span class="m">3</span>.8.5
 pyenv global <span class="m">3</span>.8.5
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_Docker_Docker_Composeのインストール_10">Docker &amp; Docker Composeのインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_Docker_Docker_Composeのインストール">Docker &amp; Docker Composeのインストール</h2>
 <p><a href="https://docs.docker.com/engine/install/ubuntu/" title="Install Docker Engine on Ubuntu | Docker Documentation">Install Docker Engine on Ubuntu | Docker Documentation</a></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -410,7 +410,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo adduser <span class="nv">$USER</span> docker
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_3_Docker_11">プロキシの設定 (3) Docker</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_3_Docker">プロキシの設定 (3) Docker</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo systemctl edit docker
 </code></pre></div>
 </td></tr></table>
@@ -432,7 +432,7 @@ docker run --rm hello-world
 </code></pre></div>
 </td></tr></table>
 <p>正常に実行されればOK。</p>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_CUDA_NVIDIA_Driverのインストール_12">CUDA &amp; NVIDIA Driverのインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_CUDA_NVIDIA_Driverのインストール">CUDA &amp; NVIDIA Driverのインストール</h2>
 <p><a href="https://pytorch.org/get-started/locally/" title="Start Locally | PyTorch">Start Locally | PyTorch</a></p>
 <p>PyTorchの対応バージョンを見ながらCUDA Toolkitをインストールする。</p>
 <p><a href="https://developer.nvidia.com/cuda-10.2-download-archive" title="CUDA Toolkit 10.2 Download | NVIDIA Developer">CUDA Toolkit 10.2 Download | NVIDIA Developer</a></p>
@@ -463,7 +463,7 @@ sudo sh cuda_10.2.89_440.33.01_linux.run
 </code></pre></div>
 </td></tr></table>
 <p>でTrueが返ってくればOK。</p>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_OpenCV_Python_Numpy_PyTorchほかのインストール_13">OpenCV-Python, Numpy, PyTorchほかのインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_OpenCV_Python_Numpy_PyTorchほかのインストール">OpenCV-Python, Numpy, PyTorchほかのインストール</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -505,7 +505,7 @@ pip3 install -U <span class="se">\</span>
   --proxy <span class="s2">"</span><span class="si">${</span><span class="nv">HTTP_PROXY</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_SSH_Serverほかのインストール_14">SSH Serverほかのインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_SSH_Serverほかのインストール">SSH Serverほかのインストール</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install -y openssh-server net-tools
 </code></pre></div>
 </td></tr></table>
@@ -519,7 +519,7 @@ pip3 install -U <span class="se">\</span>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PasswordAuthentication no
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_ownCloudのインストール_15">ownCloudのインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_ownCloudのインストール">ownCloudのインストール</h2>
 <p><a href="https://software.opensuse.org/download/package?project=isv:ownCloud:desktop&amp;package=owncloud-client" title="Install package isv:ownCloud:desktop / owncloud-client">Install package isv:ownCloud:desktop / owncloud-client</a></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -530,15 +530,15 @@ sudo apt update
 sudo apt install owncloud-client
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_その他のインストール_16">その他のインストール</h2>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_その他のインストール">その他のインストール</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh-keygen -f KEYNAME
 </code></pre></div>
 </td></tr></table>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install tmux autossh
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_おまけ_17">おまけ</h2>
-<h3 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_sshのプロキシ設定_18">sshのプロキシ設定</h3>
+<h2 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_おまけ">おまけ</h2>
+<h3 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_sshのプロキシ設定">sshのプロキシ設定</h3>
 <ul>
 <li><a href="https://qiita.com/yuyhiraka/items/30766c69fb605fc5f182" title="Mac OSXでHTTP Proxy経由でSSH - Qiita">Mac OSXでHTTP Proxy経由でSSH - Qiita</a></li>
 <li><a href="https://qiita.com/_N4H4/items/d48ba7c728f2e1ebd159" title="【GitHub】Windows10+プロキシ環境でSSH接続を試みた話 - Qiita">【GitHub】Windows10+プロキシ環境でSSH接続を試みた話 - Qiita</a></li>
@@ -587,92 +587,92 @@ gcc -o connect -lwsock32 connect.c -lws2_32
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ" class="toc-item toc-item-h1">
         GPU PC (Desktop) のセットアップメモ
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_時刻ずれの解消_2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_時刻ずれの解消" class="toc-item toc-item-h2">
         時刻ずれの解消
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_NTPサーバの設定_プロキシ環境__3" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_NTPサーバの設定_プロキシ環境_" class="toc-item toc-item-h2">
         NTPサーバの設定（プロキシ環境）
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_1_Environment_Variable_apt_4" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_1_Environment_Variable_apt" class="toc-item toc-item-h2">
         プロキシの設定 (1) Environment Variable, apt
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_Package_Indexの更新とPackageの更新_5" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_Package_Indexの更新とPackageの更新" class="toc-item toc-item-h2">
         Package Indexの更新とPackageの更新
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_git_ビルドツールほかのインストール_6" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_git_ビルドツールほかのインストール" class="toc-item toc-item-h2">
         git、ビルドツールほかのインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_日本語IME_ibus_mozc_言語サポートのインストール_7" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_日本語IME_ibus_mozc_言語サポートのインストール" class="toc-item toc-item-h2">
         日本語IME（ibus-mozc）、言語サポートのインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_2_git_8" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_2_git" class="toc-item toc-item-h2">
         プロキシの設定 (2) git
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_pyenv_Pythonのインストール_9" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_pyenv_Pythonのインストール" class="toc-item toc-item-h2">
         pyenv、Pythonのインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_Docker_Docker_Composeのインストール_10" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_Docker_Docker_Composeのインストール" class="toc-item toc-item-h2">
         Docker &amp; Docker Composeのインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_3_Docker_11" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_プロキシの設定_3_Docker" class="toc-item toc-item-h2">
         プロキシの設定 (3) Docker
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_CUDA_NVIDIA_Driverのインストール_12" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_CUDA_NVIDIA_Driverのインストール" class="toc-item toc-item-h2">
         CUDA &amp; NVIDIA Driverのインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_OpenCV_Python_Numpy_PyTorchほかのインストール_13" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_OpenCV_Python_Numpy_PyTorchほかのインストール" class="toc-item toc-item-h2">
         OpenCV-Python, Numpy, PyTorchほかのインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_SSH_Serverほかのインストール_14" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_SSH_Serverほかのインストール" class="toc-item toc-item-h2">
         SSH Serverほかのインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_ownCloudのインストール_15" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_ownCloudのインストール" class="toc-item toc-item-h2">
         ownCloudのインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_その他のインストール_16" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_その他のインストール" class="toc-item toc-item-h2">
         その他のインストール
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_おまけ_17" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_おまけ" class="toc-item toc-item-h2">
         おまけ
       </a>
   
     <li>
-      <a href="#h_entry_2020_gpu_pc_setup_index_md_sshのプロキシ設定_18" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_gpu_pc_setup_index_md_sshのプロキシ設定" class="toc-item toc-item-h3">
         sshのプロキシ設定
       </a>
   

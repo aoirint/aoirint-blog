@@ -178,7 +178,7 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む_1">ソース公開するArduinoプログラムに秘密情報を埋め込む</h1>
+  <h1 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む">ソース公開するArduinoプログラムに秘密情報を埋め込む</h1>
 <p><a href="https://github.com/aoirint/RoomSystemSensorESP32">aoirint/RoomSystemSensorESP32: ESP32とFirebaseを使った部屋センシング・オンライン化 クライアント</a>の開発中に
 Arduinoプログラム（<code>.ino</code>）にWiFiパスワード・APIキーなどの秘密情報を埋め込む必要が出てきた。</p>
 <p>ここでは、Arduino IDEの主要機能を持つCLIソフトウェア<code>arduino-cli</code>を使う。</p>
@@ -187,7 +187,7 @@ Arduinoプログラム（<code>.ino</code>）にWiFiパスワード・APIキー�
 <ul>
 <li><a href="https://blog.aoirint.com/entry/2020/arduino_cli_usage/">arduino-cliの使い方 - えやみぐさ</a></li>
 </ul>
-<h2 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_秘密情報の埋め込み_2">秘密情報の埋め込み</h2>
+<h2 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_秘密情報の埋め込み">秘密情報の埋め込み</h2>
 <p>秘密情報の埋め込みには、以下のようなシェルスクリプト<code>compile.sh</code>を作成するのが楽でよい。
 <code>DEFINES=</code>の部分の<code>-D</code>から<code>=</code>までの文字列が定数名、<code>=</code>の右辺が定数値として
 定義された状態でソースコードがコンパイルされる。
@@ -196,7 +196,7 @@ Arduinoプログラム（<code>.ino</code>）にWiFiパスワード・APIキー�
 改行で区切られ、<code>#</code>から始まる行を無視する<code>KEY=VALUE</code>形式のテキストファイル。</p>
 <p>ボードへの書き込みには以下の<code>upload.sh</code>のようなスクリプトを使うとよい。</p>
 <p><code>screen</code>コマンドをラップするスクリプト<code>serialmon.sh</code>もおいておく。</p>
-<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_compile_sh_3">compile.sh</h3>
+<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_compile_sh">compile.sh</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">set</span> -eu
@@ -260,7 +260,7 @@ arduino-cli compile <span class="se">\</span>
   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">localIP</span><span class="p">());</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_upload_sh_4">upload.sh</h3>
+<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_upload_sh">upload.sh</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">set</span> -eu
@@ -285,7 +285,7 @@ arduino-cli upload <span class="se">\</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>./upload.sh /dev/ttyACM0
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_serialmon_sh_5">serialmon.sh</h3>
+<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_serialmon_sh">serialmon.sh</h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">set</span> -eu
@@ -298,7 +298,7 @@ screen <span class="s2">"</span><span class="nv">$SERIAL_PORT</span><span class=
 <div class="highlight"><pre><span></span><code>./serialmon.sh /dev/ttyACM0
 </code></pre></div>
 <p>閉じるには<code>Ctrl+A k</code>を押した後に<code>y</code>を押して<code>Enter</code>。</p>
-<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_update_sh_6">update.sh</h3>
+<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_update_sh">update.sh</h3>
 <p>まとめて実行する</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -310,13 +310,13 @@ screen <span class="s2">"</span><span class="nv">$SERIAL_PORT</span><span class=
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>./update.sh
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_compile_shの中身_7">compile.shの中身</h3>
+<h3 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_compile_shの中身">compile.shの中身</h3>
 <p>同ディレクトリ中にある<code>.env</code>ファイルを読み込み、
 C言語の定数として取り込まれる<code>build.defines</code>に手動で変数を列挙している
 （nginx Dockerのtemplate置換のように定義済みの環境変数を自動で入れ込む改良もしたい）。</p>
 <p>またDEFINESの中身をエスケープしたい（変数内に<code>-D</code>を許容したい）が、
 まだやり方がわかっていない。</p>
-<h2 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_関連_8">関連</h2>
+<h2 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_関連">関連</h2>
 <ul>
 <li><a href="https://note.com/o3c9/n/ne14c1817be11">Arduinoスケッチに安全に秘匿値を埋め込む｜o3c9｜note</a><ul>
 <li>Arduino IDEのコマンドライン機能を使ったりMakefile作ったりしている</li>
@@ -340,42 +340,42 @@ C言語の定数として取り込まれる<code>build.defines</code>に手動�
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む" class="toc-item toc-item-h1">
         ソース公開するArduinoプログラムに秘密情報を埋め込む
       </a>
   
     <li>
-      <a href="#h_entry_2020_arduino_secret_info_index_md_秘密情報の埋め込み_2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_arduino_secret_info_index_md_秘密情報の埋め込み" class="toc-item toc-item-h2">
         秘密情報の埋め込み
       </a>
   
     <li>
-      <a href="#h_entry_2020_arduino_secret_info_index_md_compile_sh_3" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_arduino_secret_info_index_md_compile_sh" class="toc-item toc-item-h3">
         compile.sh
       </a>
   
     <li>
-      <a href="#h_entry_2020_arduino_secret_info_index_md_upload_sh_4" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_arduino_secret_info_index_md_upload_sh" class="toc-item toc-item-h3">
         upload.sh
       </a>
   
     <li>
-      <a href="#h_entry_2020_arduino_secret_info_index_md_serialmon_sh_5" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_arduino_secret_info_index_md_serialmon_sh" class="toc-item toc-item-h3">
         serialmon.sh
       </a>
   
     <li>
-      <a href="#h_entry_2020_arduino_secret_info_index_md_update_sh_6" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_arduino_secret_info_index_md_update_sh" class="toc-item toc-item-h3">
         update.sh
       </a>
   
     <li>
-      <a href="#h_entry_2020_arduino_secret_info_index_md_compile_shの中身_7" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_arduino_secret_info_index_md_compile_shの中身" class="toc-item toc-item-h3">
         compile.shの中身
       </a>
   
     <li>
-      <a href="#h_entry_2020_arduino_secret_info_index_md_関連_8" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_arduino_secret_info_index_md_関連" class="toc-item toc-item-h2">
         関連
       </a>
   

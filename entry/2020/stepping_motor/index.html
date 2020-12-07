@@ -186,8 +186,8 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する_1">ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する</h1>
-<h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_機材_2">機材</h2>
+  <h1 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する">ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する</h1>
+<h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_機材">機材</h2>
 <ul>
 <li>Arduino UNO（中華）</li>
 <li>ロータリエンコーダ付きステッピングモータ<ul>
@@ -229,8 +229,8 @@
 </ul>
 </li>
 </ul>
-<h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ステッピングモータの制御_3">ステッピングモータの制御</h2>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_配線_4">配線</h3>
+<h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ステッピングモータの制御">ステッピングモータの制御</h2>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_配線">配線</h3>
 <p>ステッピングモータ本体からは、左から黒・緑・橙・青・赤の5本のケーブルが出ている。
 これは説明書を見ると
 黒・緑がA相（A・<span style="text-decoration: overline;">A</span>）、
@@ -238,7 +238,7 @@
 橙が電源になっている。
 モータドライバ基板の対応する端子にこれらを接続する。</p>
 <p>モータ電源として24V DC電源（<a href="https://akizukidenshi.com/catalog/g/gM-06962/">ATS065-P240</a>）を使用した。</p>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ドライバ設定_5">ドライバ設定</h3>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ドライバ設定">ドライバ設定</h3>
 <p>μステップ機能（角度をより細かく制御できる）を使い、
 励磁方式をW1-2相励磁（4分割）にするため、ドライバのM3端子をHIGHにする。
 今回使ったドライバ基板ではDIPスイッチの4番をONにする。</p>
@@ -249,7 +249,7 @@
 カレントダウン（過熱防止のための電流カット機能）時の電流と
 通常時の電流をできるだけ絞る（反時計回りで絞れる）。
 実際に回すときは、求められるトルクと発熱のトレードオフで調節すると思われる。</p>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_制御コード_6">制御コード</h3>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_制御コード">制御コード</h3>
 <p>以下のような機能を実現する簡単な制御コードを書いた。要<a href="https://github.com/PaulStoffregen/TimerOne">TimerOne</a>。</p>
 <ul>
 <li>パルスの開始・停止</li>
@@ -325,7 +325,7 @@
   <span class="n">digitalWrite</span><span class="p">(</span><span class="n">PIN_MTR_DIR</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_実行コード_7">実行コード</h3>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_実行コード">実行コード</h3>
 <p>以下のようにテスト用の実行コードを作った。
 30rpm、300rpm、1000rpm、300rpm、30rpm、停止、のように回転し、一巡するごとに回転方向を反転する（あまり急激に変化させると脱調してしまい回らない）。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ステッピングモータ 実行コード</span>
@@ -393,8 +393,8 @@
   <span class="n">prevPhase</span> <span class="o">=</span> <span class="n">phase</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダによる角度取得_8">ロータリエンコーダによる角度取得</h2>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_配線_9">配線</h3>
+<h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダによる角度取得">ロータリエンコーダによる角度取得</h2>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_配線_1">配線</h3>
 <p>ロータリエンコーダ本体からは、左から白・橙・黄・青・緑・茶・赤・黒の8本のケーブルが出ている。
 これは説明書を見ると
 赤・茶がA相（A+・A-）、
@@ -410,7 +410,7 @@ Z+は軸が一周するタイミングで正になる端子で、誤差修正に
 A+、B+は2番、3番ピンに接続する。
 Z+は4番ピン（これはどこでもOK）に接続することにする。
 VCCとGNDはArduinoの5V、GNDに接続すればいい。</p>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_計算コード_10">計算コード</h3>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_計算コード">計算コード</h3>
 <ul>
 <li><a href="https://jumbleat.com/2016/12/17/encoder_1/">ロータリーエンコーダを使う part 1 : 外部割込みとチャタリング対策 – jumbleat</a></li>
 </ul>
@@ -489,7 +489,7 @@ A相B相のパターンに基づく計算はそのままで、不要な部分の
   <span class="n">prevPinZ</span> <span class="o">=</span> <span class="n">pinZ</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_実行コード_11">実行コード</h3>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_実行コード_1">実行コード</h3>
 <p>以下のようにテスト用の実行コードを作った。
 感電に注意しつつ、手で軸を回して角度が変化することを確認する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ロータリエンコーダ 実行コード</span>
@@ -505,8 +505,8 @@ A相B相のパターンに基づく計算はそのままで、不要な部分の
   <span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ステッピングモータ_ロータリエンコーダ_12">ステッピングモータ+ロータリエンコーダ</h2>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_シリアル通信で送られてきたJSONをパースする_13">シリアル通信で送られてきたJSONをパースする</h3>
+<h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ステッピングモータ_ロータリエンコーダ">ステッピングモータ+ロータリエンコーダ</h2>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_シリアル通信で送られてきたJSONをパースする">シリアル通信で送られてきたJSONをパースする</h3>
 <p>シリアル通信で改行文字で区切られたJSONをやり取りするため、<code>SerialJsonLineReader.ino</code>を作った。要<a href="https://github.com/bblanchon/ArduinoJson">ArduinoJson</a>。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Requirements:</span>
 <span class="c1">// #include &lt;ArduinoJson.h&gt;</span>
@@ -553,7 +553,7 @@ A相B相のパターンに基づく計算はそのままで、不要な部分の
   <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_シリアル通信からステッピングモータ制御_角度取得_14">シリアル通信からステッピングモータ制御+角度取得</h3>
+<h3 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_シリアル通信からステッピングモータ制御_角度取得">シリアル通信からステッピングモータ制御+角度取得</h3>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"rpm"</span><span class="p">:</span> <span class="mi">300</span><span class="p">}</span>
 </code></pre></div>
 <p>このようなJSONをシリアル通信でArduinoに送ることで、
@@ -629,72 +629,72 @@ A相B相のパターンに基づく計算はそのままで、不要な部分の
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する" class="toc-item toc-item-h1">
         ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_機材_2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_stepping_motor_index_md_機材" class="toc-item toc-item-h2">
         機材
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_ステッピングモータの制御_3" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_stepping_motor_index_md_ステッピングモータの制御" class="toc-item toc-item-h2">
         ステッピングモータの制御
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_配線_4" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_配線" class="toc-item toc-item-h3">
         配線
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_ドライバ設定_5" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_ドライバ設定" class="toc-item toc-item-h3">
         ドライバ設定
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_制御コード_6" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_制御コード" class="toc-item toc-item-h3">
         制御コード
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_実行コード_7" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_実行コード" class="toc-item toc-item-h3">
         実行コード
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_ロータリエンコーダによる角度取得_8" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_stepping_motor_index_md_ロータリエンコーダによる角度取得" class="toc-item toc-item-h2">
         ロータリエンコーダによる角度取得
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_配線_9" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_配線_1" class="toc-item toc-item-h3">
         配線
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_計算コード_10" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_計算コード" class="toc-item toc-item-h3">
         計算コード
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_実行コード_11" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_実行コード_1" class="toc-item toc-item-h3">
         実行コード
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_ステッピングモータ_ロータリエンコーダ_12" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_stepping_motor_index_md_ステッピングモータ_ロータリエンコーダ" class="toc-item toc-item-h2">
         ステッピングモータ+ロータリエンコーダ
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_シリアル通信で送られてきたJSONをパースする_13" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_シリアル通信で送られてきたJSONをパースする" class="toc-item toc-item-h3">
         シリアル通信で送られてきたJSONをパースする
       </a>
   
     <li>
-      <a href="#h_entry_2020_stepping_motor_index_md_シリアル通信からステッピングモータ制御_角度取得_14" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_stepping_motor_index_md_シリアル通信からステッピングモータ制御_角度取得" class="toc-item toc-item-h3">
         シリアル通信からステッピングモータ制御+角度取得
       </a>
   

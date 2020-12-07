@@ -190,11 +190,11 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_LaTeX_in_Docker_1">Atom + LaTeX in Docker</h1>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_概要_2">概要</h2>
+  <h1 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_LaTeX_in_Docker">Atom + LaTeX in Docker</h1>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_概要">概要</h2>
 <p>LaTeXをホストにインストールせず、Docker内で動かしつつ、
 Atomからこれを利用できるようにする。</p>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Requirements_3">Requirements</h2>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Requirements">Requirements</h2>
 <ul>
 <li>Ubuntu 18.04</li>
 <li>Docker</li>
@@ -204,7 +204,7 @@ Atomからこれを利用できるようにする。</p>
 </ul>
 </li>
 </ul>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_Packages_4">Atom Packages</h2>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_Packages">Atom Packages</h2>
 <p><a href="https://atom.io/packages/latex">latex</a>を入れれば最低限ビルドコマンドは叩けるようになる。</p>
 <ul>
 <li><a href="https://atom.io/packages/latex">latex</a></li>
@@ -222,12 +222,12 @@ Atomからこれを利用できるようにする。</p>
 </ul>
 </li>
 </ul>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Dockerイメージ_5">Dockerイメージ</h2>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Dockerイメージ">Dockerイメージ</h2>
 <p><a href="https://hub.docker.com/r/paperist/alpine-texlive-ja/">paperist/alpine-texlive-ja</a>を使う。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo docker pull paperist/alpine-texlive-ja
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_non_root_Docker_6">non-root Docker</h2>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_non_root_Docker">non-root Docker</h2>
 <p><code>sudo</code>なしでDockerを実行できるようにする。AtomからDockerコンテナを作るのに必要。</p>
 <p>ユーザをdockerグループに追加したあと再ログインする。新しくdockerグループが作られた直後は<code>newgrp docker</code>しなければならないことがあり、シェルごとにこれを実行する必要があるようなのでAtomに反映されず、この場合OSの再起動が必要。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -235,7 +235,7 @@ Atomからこれを利用できるようにする。</p>
 sudo adduser <span class="nv">$USER</span> docker
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_latexmkスクリプトを作る_7">latexmkスクリプトを作る</h2>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_latexmkスクリプトを作る">latexmkスクリプトを作る</h2>
 <p><code>/usr/texbin/latexmk</code>（手動で<code>latex</code>の<code>TeX Path</code>を設定するか、デフォルトでPATHの通っている場所ならどこでもいい）に以下のシェルスクリプトを作成し、<code>chmod +x /usr/texbin/latexmk</code>しておく。</p>
 <p><code>${HOME}/.atom/packages/latex/resources</code>のマウントは<code>latex</code>の<code>Extended Build Mode</code>が有効のときに<code>${HOME}/.atom/packages/latex/resources/latexmkrc</code>が読み出されるため設定している（このパスはホストのAtomから渡されるのでマウント先パスもホストと同じ）。この機能を無効にしていれば不要。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -251,7 +251,7 @@ docker run --rm <span class="se">\</span>
   latexmk <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_サンプルTeXファイル_8">サンプルTeXファイル</h2>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_サンプルTeXファイル">サンプルTeXファイル</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -277,10 +277,10 @@ docker run --rm <span class="se">\</span>
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_注意点_9">注意点</h2>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_注意点">注意点</h2>
 <p>カレントディレクトリ以下をマウントするため、外部においた<code>.sty</code>などは読み込めないので注意（デフォルトでロードされるディレクトリがあれば追加のマウントをすればOKと思われる）。</p>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_おまけ_10">おまけ</h2>
-<h3 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_stderrにコマンドを吐き出してエラー終了するスクリプト_11">stderrにコマンドを吐き出してエラー終了するスクリプト</h3>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_おまけ">おまけ</h2>
+<h3 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_stderrにコマンドを吐き出してエラー終了するスクリプト">stderrにコマンドを吐き出してエラー終了するスクリプト</h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
@@ -305,57 +305,57 @@ docker run --rm <span class="se">\</span>
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_Atom_LaTeX_in_Docker_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_Atom_LaTeX_in_Docker" class="toc-item toc-item-h1">
         Atom + LaTeX in Docker
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_概要_2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_概要" class="toc-item toc-item-h2">
         概要
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_Requirements_3" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_Requirements" class="toc-item toc-item-h2">
         Requirements
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_Atom_Packages_4" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_Atom_Packages" class="toc-item toc-item-h2">
         Atom Packages
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_Dockerイメージ_5" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_Dockerイメージ" class="toc-item toc-item-h2">
         Dockerイメージ
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_non_root_Docker_6" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_non_root_Docker" class="toc-item toc-item-h2">
         non-root Docker
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_latexmkスクリプトを作る_7" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_latexmkスクリプトを作る" class="toc-item toc-item-h2">
         latexmkスクリプトを作る
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_サンプルTeXファイル_8" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_サンプルTeXファイル" class="toc-item toc-item-h2">
         サンプルTeXファイル
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_注意点_9" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_注意点" class="toc-item toc-item-h2">
         注意点
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_おまけ_10" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_おまけ" class="toc-item toc-item-h2">
         おまけ
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_stderrにコマンドを吐き出してエラー終了するスクリプト_11" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_atom_latex_docker_index_md_stderrにコマンドを吐き出してエラー終了するスクリプト" class="toc-item toc-item-h3">
         stderrにコマンドを吐き出してエラー終了するスクリプト
       </a>
   

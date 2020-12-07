@@ -182,20 +182,20 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_entry_2020_python_requests_index_md_スニペット_Python_Requests_1">スニペット: Python Requests</h1>
+  <h1 class="md_header_block" id="h_entry_2020_python_requests_index_md_スニペット_Python_Requests">スニペット: Python Requests</h1>
 <div class="highlight"><pre><span></span><code><span class="n">ses</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_entry_2020_python_requests_index_md_Headers_2">Headers</h2>
+<h2 class="md_header_block" id="h_entry_2020_python_requests_index_md_Headers">Headers</h2>
 <div class="highlight"><pre><span></span><code><span class="n">ses</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
 <span class="p">})</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_entry_2020_python_requests_index_md_Copy_cookies_from_Selenium_3">Copy cookies from Selenium</h2>
+<h2 class="md_header_block" id="h_entry_2020_python_requests_index_md_Copy_cookies_from_Selenium">Copy cookies from Selenium</h2>
 <div class="highlight"><pre><span></span><code><span class="n">ses</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">cookie</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">get_cookies</span><span class="p">():</span>
     <span class="n">rc</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">create_cookie</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">cookie</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">cookie</span><span class="p">[</span><span class="s1">'name'</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="n">cookie</span><span class="p">[</span><span class="s1">'value'</span><span class="p">])</span>
     <span class="n">ses</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="n">rc</span><span class="p">)</span>
 </code></pre></div>
-<h2 class="md_header_block" id="h_entry_2020_python_requests_index_md_Download_a_file_4">Download a file</h2>
+<h2 class="md_header_block" id="h_entry_2020_python_requests_index_md_Download_a_file">Download a file</h2>
 <div class="highlight"><pre><span></span><code><span class="n">file_url</span><span class="p">:</span> <span class="nb">str</span>
 <span class="n">dest_path</span><span class="p">:</span> <span class="nb">str</span>
 
@@ -226,22 +226,22 @@
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2020_python_requests_index_md_スニペット_Python_Requests_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_python_requests_index_md_スニペット_Python_Requests" class="toc-item toc-item-h1">
         スニペット: Python Requests
       </a>
   
     <li>
-      <a href="#h_entry_2020_python_requests_index_md_Headers_2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_python_requests_index_md_Headers" class="toc-item toc-item-h2">
         Headers
       </a>
   
     <li>
-      <a href="#h_entry_2020_python_requests_index_md_Copy_cookies_from_Selenium_3" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_python_requests_index_md_Copy_cookies_from_Selenium" class="toc-item toc-item-h2">
         Copy cookies from Selenium
       </a>
   
     <li>
-      <a href="#h_entry_2020_python_requests_index_md_Download_a_file_4" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_python_requests_index_md_Download_a_file" class="toc-item toc-item-h2">
         Download a file
       </a>
   

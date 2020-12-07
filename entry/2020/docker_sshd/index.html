@@ -182,7 +182,7 @@
 
 
 <div class="article-body">
-  <h1 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_Dockerでプロキシ_バーチャルホストに対応したSSH_Serverを立てる_1">Dockerでプロキシ・バーチャルホストに対応したSSH Serverを立てる</h1>
+  <h1 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_Dockerでプロキシ_バーチャルホストに対応したSSH_Serverを立てる">Dockerでプロキシ・バーチャルホストに対応したSSH Serverを立てる</h1>
 <p>本記事は、ホストのSSHサーバと独立した仮想SSHサーバを立てることを目標とする。</p>
 <p>クライアントが、限られたサーバ側ポート（22、80、443）の通信のみが通過できるネットワークに接続しているとき、
 ホストで動かしているサービスと同じサービスを新たに立てようとすると
@@ -198,9 +198,9 @@ SSHサーバの前段階に設けることでHTTPと同様なアクセス振り�
 →HTTPプロキシ internal port
 →SSHサーバ :22
 </code></pre></div>
-<h2 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_SSHサーバを立てる_2">SSHサーバを立てる</h2>
+<h2 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_SSHサーバを立てる">SSHサーバを立てる</h2>
 <p>SSHサーバを立てる。Dockerfileは<a href="https://github.com/maltyxx/docker-sshd">maltyxx/sshd</a>を使う。</p>
-<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_docker_compose_yml_3">docker-compose.yml</h3>
+<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_docker_compose_yml">docker-compose.yml</h3>
 <p>debianのリポジトリとリンクして自動ビルドされるようなことが書いてあるがなんか止まってて
 ちょっと古いので、ローカルでビルドすることにする。
 <code>docker-compose.yml</code>を書いたら<code>docker-compose build</code>を実行してビルドする。</p>
@@ -218,24 +218,24 @@ SSHサーバの前段階に設けることでHTTPと同様なアクセス振り�
     <span class="nt">volumes</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="s">'./YOUR_PUBLIC_KEY.pub:/home/myuser/.ssh/keys/YOUR_PUBLIC_KEY.pub:ro'</span>
 </code></pre></div>
-<h4 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_説明_4">説明</h4>
+<h4 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_説明">説明</h4>
 <p>コマンド部分にユーザ情報を書くと自動でコンテナ内ユーザが作成される（README参照、複数ユーザも可）。
 ここではパスワードなしのユーザ<code>myuser</code>とする。</p>
 <p>コンテナ内ユーザの特定ディレクトリにホストの公開鍵をマウントすれば、
 公開鍵認証ができる。</p>
-<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_テスト_5">テスト</h3>
+<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_テスト">テスト</h3>
 <p>ここではテストのため、ホストの<code>0.0.0.0:2222</code>にSSHサーバのポートを割り当てている。</p>
 <p>ホストから秘密鍵<code>YOUR_PRIVATE_KEY</code>を使ってこのSSHサーバにログインできるか確認する。</p>
 <div class="highlight"><pre><span></span><code>ssh localhost -p <span class="m">2222</span> -l myuser -i ~/.ssh/YOUR_PRIVATE_KEY
 </code></pre></div>
 <p>起動、終了は<code>docker-compose up -d</code>、<code>docker-compose down</code>でよい。
 確認後はポートの割り当ては不要なので削除する。</p>
-<h2 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_HTTPプロキシを立てる_6">HTTPプロキシを立てる</h2>
+<h2 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_HTTPプロキシを立てる">HTTPプロキシを立てる</h2>
 <p>HTTPプロキシを立てる。<a href="https://github.com/squid-cache/squid">Squid</a>を使う。Dockerイメージは<a href="https://github.com/sameersbn/docker-squid">sameersbn/squid</a>を使う。</p>
 <div class="highlight"><pre><span></span><code>Docker Image Tag: 3.5.27-2
 Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_docker_compose_yml_7">docker-compose.yml</h3>
+<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_docker_compose_yml_1">docker-compose.yml</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">'3.8'</span>
 <span class="nt">services</span><span class="p">:</span>
   <span class="nt">sshd</span><span class="p">:</span>
@@ -256,7 +256,7 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
     <span class="nt">depends_on</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="s">'sshd'</span>
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_squid_squid_conf_8">squid/squid.conf</h3>
+<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_squid_squid_conf">squid/squid.conf</h3>
 <div class="highlight"><pre><span></span><code><span class="k">acl</span><span class="w"> </span><span class="no">all</span><span class="w"> </span><span class="k">src</span><span class="w"> </span><span class="no">all</span><span class="w"></span>
 
 <span class="k">acl</span><span class="w"> </span>Safe_ports<span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="m">22</span><span class="w"></span>
@@ -268,7 +268,7 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
 
 <span class="k">http_port</span><span class="w"> </span><span class="m">3128</span><span class="w"></span>
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_テスト_9">テスト</h3>
+<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_テスト_1">テスト</h3>
 <div class="highlight"><pre><span></span><code>ssh sshd -p <span class="m">22</span> -l myuser <span class="se">\</span>
   -i ~/.ssh/YOUR_PRIVATE_KEY <span class="se">\</span>
   -o <span class="nv">ProxyCommand</span><span class="o">=</span><span class="s1">'nc -X connect -x localhost:3128 %h %p'</span>
@@ -276,9 +276,9 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
 <p>ProxyCommand部の設定方法はOSによって変わるので注意（別記事を参照、<a href="https://blog.aoirint.com/entry/2020/gpu_pc_setup/#h_entry_2020_gpu_pc_setup_index_md_ssh%E3%81%AE%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E8%A8%AD%E5%AE%9A_18">GPU PC Setupの最後におまけとして</a>）。</p>
 <p>ここで指定している<code>localhost</code>はsshコマンドを実行しているクライアントのlocalhost。</p>
 <p><code>ssh</code>の直後の<code>sshd</code>の名前解決はSSHサーバ側で行われる（ProxyCommandの<code>%h</code>に入る）。</p>
-<h2 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_リバースプロキシを立てる_10">リバースプロキシを立てる</h2>
+<h2 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_リバースプロキシを立てる">リバースプロキシを立てる</h2>
 <p>リバースプロキシを立てる。nginxを使う。Dockerイメージは<a href="https://hub.docker.com/_/nginx">_/nginx</a>を使う。</p>
-<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_docker_compose_yml_11">docker-compose.yml</h3>
+<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_docker_compose_yml_2">docker-compose.yml</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">'3.8'</span>
 <span class="nt">services</span><span class="p">:</span>
   <span class="nt">sshd</span><span class="p">:</span>
@@ -308,7 +308,7 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
     <span class="nt">depends_on</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="s">'http_proxy'</span>
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_nginx_default_conf_12">nginx/default.conf</h3>
+<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_nginx_default_conf">nginx/default.conf</h3>
 <div class="highlight"><pre><span></span><code><span class="k">upstream</span> <span class="s">@http_proxy</span> <span class="p">{</span>
   <span class="kn">server</span> <span class="s">http_proxy:3128</span><span class="p">;</span>
 <span class="p">}</span>
@@ -329,7 +329,7 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
 
 <span class="p">}</span>
 </code></pre></div>
-<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_おまけ_Stream_Proxy_13">おまけ：Stream Proxy</h3>
+<h3 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_おまけ_Stream_Proxy">おまけ：Stream Proxy</h3>
 <p><code>stream</code>という機能でTCP/UDPプロキシが張れる。
 しかしTCP/UDPの仕様上リバースプロキシはできないと思われるので
 今回は使わなかった。</p>
@@ -337,7 +337,7 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
 <li><a href="https://nginx.org/en/docs/stream/ngx_stream_core_module.html">Module ngx_stream_core_module | nginx.org</a></li>
 <li><a href="https://qiita.com/dseg/items/75bf517738a1d8b2d036#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">NGINX 1.9が汎用TCPサーバとして使えるようになっていた件 - Qiita</a></li>
 </ul>
-<h4 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_nginx_nginx_conf_14">nginx/nginx.conf</h4>
+<h4 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_nginx_nginx_conf">nginx/nginx.conf</h4>
 <div class="highlight"><pre><span></span><code><span class="k">worker_processes</span> <span class="s">auto</span><span class="p">;</span>
 
 <span class="k">error_log</span> <span class="s">/var/log/nginx/error.log</span> <span class="s">info</span><span class="p">;</span>
@@ -358,7 +358,7 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
 
 <span class="p">}</span>
 </code></pre></div>
-<h4 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_docker_compose_yml_15">docker-compose.yml</h4>
+<h4 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_docker_compose_yml_3">docker-compose.yml</h4>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">'3.8'</span>
 <span class="nt">services</span><span class="p">:</span>
   <span class="nt">sshd</span><span class="p">:</span>
@@ -379,7 +379,7 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
     <span class="nt">depends_on</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="s">'sshd'</span>
 </code></pre></div>
-<h4 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_テスト_16">テスト</h4>
+<h4 class="md_header_block" id="h_entry_2020_docker_sshd_index_md_テスト_2">テスト</h4>
 <div class="highlight"><pre><span></span><code>ssh localhost -p <span class="m">8000</span> -l myuser -i ./YOUR_PRIVATE_KEY
 </code></pre></div>
 <ul>
@@ -409,82 +409,82 @@ Commit ID: 924b0855440442a4be330ef4dba7a85681e9a49d
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_Dockerでプロキシ_バーチャルホストに対応したSSH_Serverを立てる_1" class="toc-item toc-item-h1">
+      <a href="#h_entry_2020_docker_sshd_index_md_Dockerでプロキシ_バーチャルホストに対応したSSH_Serverを立てる" class="toc-item toc-item-h1">
         Dockerでプロキシ・バーチャルホストに対応したSSH Serverを立てる
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_SSHサーバを立てる_2" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_docker_sshd_index_md_SSHサーバを立てる" class="toc-item toc-item-h2">
         SSHサーバを立てる
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_docker_compose_yml_3" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_docker_sshd_index_md_docker_compose_yml" class="toc-item toc-item-h3">
         docker-compose.yml
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_説明_4" class="toc-item toc-item-h4">
+      <a href="#h_entry_2020_docker_sshd_index_md_説明" class="toc-item toc-item-h4">
         説明
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_テスト_5" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_docker_sshd_index_md_テスト" class="toc-item toc-item-h3">
         テスト
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_HTTPプロキシを立てる_6" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_docker_sshd_index_md_HTTPプロキシを立てる" class="toc-item toc-item-h2">
         HTTPプロキシを立てる
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_docker_compose_yml_7" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_docker_sshd_index_md_docker_compose_yml_1" class="toc-item toc-item-h3">
         docker-compose.yml
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_squid_squid_conf_8" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_docker_sshd_index_md_squid_squid_conf" class="toc-item toc-item-h3">
         squid/squid.conf
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_テスト_9" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_docker_sshd_index_md_テスト_1" class="toc-item toc-item-h3">
         テスト
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_リバースプロキシを立てる_10" class="toc-item toc-item-h2">
+      <a href="#h_entry_2020_docker_sshd_index_md_リバースプロキシを立てる" class="toc-item toc-item-h2">
         リバースプロキシを立てる
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_docker_compose_yml_11" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_docker_sshd_index_md_docker_compose_yml_2" class="toc-item toc-item-h3">
         docker-compose.yml
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_nginx_default_conf_12" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_docker_sshd_index_md_nginx_default_conf" class="toc-item toc-item-h3">
         nginx/default.conf
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_おまけ_Stream_Proxy_13" class="toc-item toc-item-h3">
+      <a href="#h_entry_2020_docker_sshd_index_md_おまけ_Stream_Proxy" class="toc-item toc-item-h3">
         おまけ：Stream Proxy
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_nginx_nginx_conf_14" class="toc-item toc-item-h4">
+      <a href="#h_entry_2020_docker_sshd_index_md_nginx_nginx_conf" class="toc-item toc-item-h4">
         nginx/nginx.conf
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_docker_compose_yml_15" class="toc-item toc-item-h4">
+      <a href="#h_entry_2020_docker_sshd_index_md_docker_compose_yml_3" class="toc-item toc-item-h4">
         docker-compose.yml
       </a>
   
     <li>
-      <a href="#h_entry_2020_docker_sshd_index_md_テスト_16" class="toc-item toc-item-h4">
+      <a href="#h_entry_2020_docker_sshd_index_md_テスト_2" class="toc-item toc-item-h4">
         テスト
       </a>
   
