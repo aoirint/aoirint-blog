@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Tue, 08 Dec 2020 22:30:00 +0900</lastBuildDate><item><title>Pythonを追加するDockerfile</title><link>https://blog.aoirint.com/entry/2020/dockerfile_python/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_dockerfile_python_index_md_Pythonを追加するDockerfile"&gt;Pythonを追加するDockerfile&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Tue, 08 Dec 2020 22:40:00 +0900</lastBuildDate><item><title>Debianパッケージから内容物を抽出する</title><link>https://blog.aoirint.com/entry/2020/extract_from_deb_file/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_extract_from_deb_file_index_md_Debianパッケージから内容物を抽出する"&gt;Debianパッケージから内容物を抽出する&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://packages.debian.org/buster/bash"&gt;Debian -- buster の bash パッケージに関する詳細&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_5.0-4_amd64.deb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_5.0-4_amd64.deb
+mkdir bash
+tar xvf bash_5.0-4_amd64.deb -C bash/
+&lt;span class="nb"&gt;cd&lt;/span&gt; bash
+mkdir data
+tar xvf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Tue, 08 Dec 2020 22:40:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-08 22:40:00.000000:/entry/2020/extract_from_deb_file/</guid></item><item><title>Pythonを追加するDockerfile</title><link>https://blog.aoirint.com/entry/2020/dockerfile_python/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_dockerfile_python_index_md_Pythonを追加するDockerfile"&gt;Pythonを追加するDockerfile&lt;/h1&gt;
 &lt;p&gt;pyenvは部品を使うだけで最終的には削除します（Pythonは/usr/localに導入）&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="s"&gt;ubuntu:bionic&lt;/span&gt;
 
@@ -72,18 +84,4 @@ pacmd load-module module-loopback &lt;span class="nv"&gt;source&lt;/span&gt;&lt;
 &lt;li&gt;&lt;a href="https://docs.docker.com/engine/install/ubuntu/"&gt;Install Docker Engine on Ubuntu | Docker Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.docker.com/compose/install/"&gt;Install Docker Compose | Docker Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;kvm (qemu)を使うこともできるらしいが、対応したboxを用意す&lt;/p&gt;</description><pubDate>Thu, 22 Oct 2020 16:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-22 16:30:00.000000:/entry/2020/docker_on_vagrant_ubuntu_server/</guid></item><item><title>ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する</title><link>https://blog.aoirint.com/entry/2020/stepping_motor/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する"&gt;ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する&lt;/h1&gt;
-&lt;h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_機材"&gt;機材&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Arduino UNO（中華）&lt;/li&gt;
-&lt;li&gt;ロータリエンコーダ付きステッピングモータ&lt;ul&gt;
-&lt;li&gt;PKP214U06A-R2EL&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/products/detail.action?hinmei=PKP214U06A-R2EL-L"&gt;PKP214U06A-R2EL-L｜PKPシリーズ／PKシリーズ｜ステッピングモーター｜オリエンタルモーター株式会社&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;モータ部説明書（PDF、HM-7433J.pdf）&lt;/li&gt;
-&lt;li&gt;ロータリエンコーダ部説明書（PDF、HM-7439JE.pdf）&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/file_addon/products/st/image/tj_pkp214u06a-r2el-l_d.gif"&gt;特性図（画像）&lt;/a&gt;（DC24V駆動時）&lt;/li&gt;
-&lt;li&gt;モータ部&lt;ul&gt;
-&lt;li&gt;2相&lt;/li&gt;
-&lt;li&gt;ユニポーラ5本リード線&lt;/li&gt;
-&lt;li&gt;基本ステップ角度1.8°&lt;/li&gt;
-&lt;li&gt;AC 50&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Tue, 06 Oct 2020 07:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-06 07:00:00.000000:/entry/2020/stepping_motor/</guid></item></channel></rss>
+&lt;p&gt;kvm (qemu)を使うこともできるらしいが、対応したboxを用意す&lt;/p&gt;</description><pubDate>Thu, 22 Oct 2020 16:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-22 16:30:00.000000:/entry/2020/docker_on_vagrant_ubuntu_server/</guid></item></channel></rss>
