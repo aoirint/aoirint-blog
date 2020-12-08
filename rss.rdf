@@ -21,7 +21,9 @@ mkdir out
 tar xvf out.tar -C out/
 &lt;span class="nb"&gt;cd&lt;/span&gt; out/6709f754bd0ccbbea9a7481e92772a494cca1543b3421978edff62bc5de16662
 tar xvf layer.tar -C layer/
+
 &lt;span class="nb"&gt;cd&lt;/span&gt; layer
+&lt;span class="c1"&gt;# here is root directory&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Tue, 08 Dec 2020 22:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-08 22:30:00.000000:/entry/2020/extract_from_docker_image/</guid></item><item><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link>https://blog.aoirint.com/entry/2020/mastodon_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04_"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
