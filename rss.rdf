@@ -36,7 +36,22 @@ tar xvf layer.tar -C layer/
 
 &lt;span class="nb"&gt;cd&lt;/span&gt; layer
 &lt;span class="c1"&gt;# here is root directory&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Tue, 08 Dec 2020 22:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-08 22:30:00.000000:/entry/2020/extract_from_docker_image/</guid></item><item><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link>https://blog.aoirint.com/entry/2020/mastodon_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04_"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Tue, 08 Dec 2020 22:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-08 22:30:00.000000:/entry/2020/extract_from_docker_image/</guid></item><item><title>テンプレート</title><link>https://blog.aoirint.com/entry/2020/template/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_template_index_md_テンプレート"&gt;テンプレート&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
+canonical_url: ./
+title: テンプレート
+&lt;span class="gh"&gt;# og_image:&lt;/span&gt;
+&lt;span class="gh"&gt;# twitter_card: summary_large_image&lt;/span&gt;
+og_description: テンプレート
+date: '2020-12-08 00:00:00'
+draft: true
+category: 管理用
+tags:
+  &lt;span class="k"&gt;-&lt;/span&gt; 管理用
+&lt;span class="gu"&gt;  - テンプレート&lt;/span&gt;
+&lt;span class="gu"&gt;---&lt;/span&gt;
+&lt;span class="gh"&gt;# テンプレート&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Tue, 08 Dec 2020 00:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-08 00:00:00.000000:/entry/2020/template/</guid></item><item><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link>https://blog.aoirint.com/entry/2020/mastodon_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04_"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.joinmastodon.org/"&gt;Mastodon documentation&lt;/a&gt;&lt;/li&gt;
@@ -76,12 +91,4 @@ TeXで画像を取り込んだときのサイズがばらばらになるため�
 &lt;code&gt;Use alpha-less&lt;/code&gt;&lt;/p&gt;</description><pubDate>Mon, 09 Nov 2020 06:10:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 06:10:00.000000:/entry/2020/obs_ubuntu_nvidia_window_capture/</guid></item><item><title>PulseAudioで特定のアプリケーションからの音声出力だけを分離する</title><link>https://blog.aoirint.com/entry/2020/pulseaudio_split_output/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_pulseaudio_split_output_index_md_PulseAudioで特定のアプリケーションからの音声出力だけを分離する"&gt;PulseAudioで特定のアプリケーションからの音声出力だけを分離する&lt;/h1&gt;
 &lt;p&gt;以下のコマンドで仮想出力デバイス&lt;code&gt;DummyOutput0&lt;/code&gt;と、そのループバック&lt;code&gt;Loopback from Monitor of DummyOutput0&lt;/code&gt;が追加される。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pacmd load-module module-null-sink &lt;span class="nv"&gt;sink_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;DummyOutput0 &lt;span class="nv"&gt;sink_properties&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;device.description&lt;span class="o"&gt;=&lt;/span&gt;DummyOutput0
-pacmd load-module module-loopback &lt;span class="nv"&gt;source&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Dum&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 09 Nov 2020 06:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 06:00:00.000000:/entry/2020/pulseaudio_split_output/</guid></item><item><title>Docker + Docker Compose on Vagrant Ubuntu Server</title><link>https://blog.aoirint.com/entry/2020/docker_on_vagrant_ubuntu_server/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_docker_on_vagrant_ubuntu_server_index_md_Docker_Docker_Compose_on_Vagrant_Ubuntu_Server"&gt;Docker + Docker Compose on Vagrant Ubuntu Server&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;Downloads – Oracle VM VirtualBox&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.vagrantup.com/downloads.html"&gt;Downloads | Vagrant by HashiCorp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://app.vagrantup.com/ubuntu/boxes/bionic64"&gt;Vagrant box ubuntu/bionic64 - Vagrant Cloud&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.docker.com/engine/install/ubuntu/"&gt;Install Docker Engine on Ubuntu | Docker Documentation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.docker.com/compose/install/"&gt;Install Docker Compose | Docker Documentation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;kvm (qemu)を使うこともできるらしいが、対応したboxを用意す&lt;/p&gt;</description><pubDate>Thu, 22 Oct 2020 16:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-22 16:30:00.000000:/entry/2020/docker_on_vagrant_ubuntu_server/</guid></item></channel></rss>
+pacmd load-module module-loopback &lt;span class="nv"&gt;source&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Dum&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 09 Nov 2020 06:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 06:00:00.000000:/entry/2020/pulseaudio_split_output/</guid></item></channel></rss>
