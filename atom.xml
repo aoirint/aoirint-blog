@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2020-12-08T22:30:00+09:00</updated><entry><title>Pythonを追加するDockerfile</title><link href="https://blog.aoirint.com/entry/2020/dockerfile_python/" rel="alternate"></link><published>2020-12-08T22:30:00+09:00</published><updated>2020-12-08T22:30:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-08 22:30:00.000000:/entry/2020/dockerfile_python/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_dockerfile_python_index_md_Pythonを追加するDockerfile"&gt;Pythonを追加するDockerfile&lt;/h1&gt;
 &lt;p&gt;pyenvは部品を使うだけで最終的には削除します（Pythonは/usr/localに導入）&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYTHON_VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.9.0
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="s"&gt;ubuntu:bionic&lt;/span&gt;
+
+
+&lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;DEBIAN_FRONTEND&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;noninteractive
+&lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYTHON_VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.9.0
 &lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYTHON_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local
 &lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYENV_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/.pyenv
 &lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYBUILD_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/python-build
 
-&lt;span class="k"&gt;RUN&lt;/span&gt; apt-get update -qq &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get upgrade -y &lt;span class="se"&gt;\&lt;/span&gt;
-  &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y &lt;span class="se"&gt;\&lt;/span&gt;
-    build-essential &lt;span class="se"&gt;\&lt;/span&gt;
-    libssl-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link href="https://blog.aoirint.com/entry/2020/mastodon_docker/" rel="alternate"></link><published>2020-12-06T11:00:00+09:00</published><updated>2020-12-06T11:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-06 11:00:00.000000:/entry/2020/mastodon_docker/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04_"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
+&lt;span class="k"&gt;RUN&lt;/span&gt; apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install -y &lt;span class="se"&gt;\&lt;/span&gt;
+    build-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link href="https://blog.aoirint.com/entry/2020/mastodon_docker/" rel="alternate"></link><published>2020-12-06T11:00:00+09:00</published><updated>2020-12-06T11:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-06 11:00:00.000000:/entry/2020/mastodon_docker/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04_"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.joinmastodon.org/"&gt;Mastodon documentation&lt;/a&gt;&lt;/li&gt;

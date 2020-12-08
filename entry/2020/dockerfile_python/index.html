@@ -159,13 +159,16 @@
 <div class="article-body">
   <h1 class="md_header_block" id="h_entry_2020_dockerfile_python_index_md_Pythonを追加するDockerfile">Pythonを追加するDockerfile</h1>
 <p>pyenvは部品を使うだけで最終的には削除します（Pythonは/usr/localに導入）</p>
-<div class="highlight"><pre><span></span><code><span class="k">ARG</span> <span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.9.0
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">ubuntu:bionic</span>
+
+
+<span class="k">ARG</span> <span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+<span class="k">ARG</span> <span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.9.0
 <span class="k">ARG</span> <span class="nv">PYTHON_ROOT</span><span class="o">=</span>/usr/local
 <span class="k">ARG</span> <span class="nv">PYENV_ROOT</span><span class="o">=</span>/tmp/.pyenv
 <span class="k">ARG</span> <span class="nv">PYBUILD_ROOT</span><span class="o">=</span>/tmp/python-build
 
-<span class="k">RUN</span> apt-get update -qq <span class="o">&amp;&amp;</span> apt-get upgrade -y <span class="se">\</span>
-  <span class="o">&amp;&amp;</span> apt-get install -y <span class="se">\</span>
+<span class="k">RUN</span> apt update <span class="o">&amp;&amp;</span> apt install -y <span class="se">\</span>
     build-essential <span class="se">\</span>
     libssl-dev <span class="se">\</span>
     zlib1g-dev <span class="se">\</span>
