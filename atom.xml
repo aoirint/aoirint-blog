@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2020-12-08T22:40:00+09:00</updated><entry><title>Debianパッケージから内容物を抽出する</title><link href="https://blog.aoirint.com/entry/2020/extract_from_deb_file/" rel="alternate"></link><published>2020-12-08T22:40:00+09:00</published><updated>2020-12-08T22:40:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-08 22:40:00.000000:/entry/2020/extract_from_deb_file/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_extract_from_deb_file_index_md_Debianパッケージから内容物を抽出する"&gt;Debianパッケージから内容物を抽出する&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2020-12-09T00:00:00+09:00</updated><entry><title>テンプレート</title><link href="https://blog.aoirint.com/entry/2020/template/" rel="alternate"></link><published>2020-12-09T00:00:00+09:00</published><updated>2020-12-09T00:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-09 00:00:00.000000:/entry/2020/template/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_template_index_md_テンプレート"&gt;テンプレート&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
+canonical_url: ./
+title: テンプレート
+&lt;span class="gh"&gt;# og_image:&lt;/span&gt;
+&lt;span class="gh"&gt;# twitter_card: summary_large_image&lt;/span&gt;
+og_description: テンプレート
+date: '2020-12-09 00:00:00'
+draft: true
+category: 管理用
+tags:
+  &lt;span class="k"&gt;-&lt;/span&gt; 管理用
+&lt;span class="gu"&gt;  - テンプレート&lt;/span&gt;
+&lt;span class="gu"&gt;---&lt;/span&gt;
+&lt;span class="gh"&gt;# テンプレート&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Debianパッケージから内容物を抽出する</title><link href="https://blog.aoirint.com/entry/2020/extract_from_deb_file/" rel="alternate"></link><published>2020-12-08T22:40:00+09:00</published><updated>2020-12-08T22:40:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-08 22:40:00.000000:/entry/2020/extract_from_deb_file/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_extract_from_deb_file_index_md_Debianパッケージから内容物を抽出する"&gt;Debianパッケージから内容物を抽出する&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://packages.debian.org/buster/bash"&gt;Debian -- buster の bash パッケージに関する詳細&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_5.0-4_amd64.deb&lt;/li&gt;
@@ -36,21 +51,6 @@ tar xvf layer.tar -C layer/
 
 &lt;span class="nb"&gt;cd&lt;/span&gt; layer
 &lt;span class="c1"&gt;# here is root directory&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>テンプレート</title><link href="https://blog.aoirint.com/entry/2020/template/" rel="alternate"></link><published>2020-12-08T00:00:00+09:00</published><updated>2020-12-08T00:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-08 00:00:00.000000:/entry/2020/template/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_template_index_md_テンプレート"&gt;テンプレート&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
-canonical_url: ./
-title: テンプレート
-&lt;span class="gh"&gt;# og_image:&lt;/span&gt;
-&lt;span class="gh"&gt;# twitter_card: summary_large_image&lt;/span&gt;
-og_description: テンプレート
-date: '2020-12-08 00:00:00'
-draft: true
-category: 管理用
-tags:
-  &lt;span class="k"&gt;-&lt;/span&gt; 管理用
-&lt;span class="gu"&gt;  - テンプレート&lt;/span&gt;
-&lt;span class="gu"&gt;---&lt;/span&gt;
-&lt;span class="gh"&gt;# テンプレート&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link href="https://blog.aoirint.com/entry/2020/mastodon_docker/" rel="alternate"></link><published>2020-12-06T11:00:00+09:00</published><updated>2020-12-06T11:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-06 11:00:00.000000:/entry/2020/mastodon_docker/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04_"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
