@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 20 Dec 2020 00:30:00 +0900</lastBuildDate><item><title>Docker Desktop for Mac＋XQuartz（X Window Server）でX Clientを動かす</title><link>https://blog.aoirint.com/entry/2020/xquartz_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_xquartz_docker_index_md_Docker_Desktop_for_Mac_XQuartz_X_Window_Server_でX_Clientを動かす"&gt;Docker Desktop for Mac＋XQuartz（X Window Server）でX Clientを動かす&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 20 Dec 2020 00:30:00 +0900</lastBuildDate><item><title>Docker Desktop for Mac上のX ClientをホストのXQuartz（X Window Server）上で表示する</title><link>https://blog.aoirint.com/entry/2020/xquartz_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_xquartz_docker_index_md_Docker_Desktop_for_Mac_XQuartz_X_Window_Server_でX_Clientを動かす"&gt;Docker Desktop for Mac＋XQuartz（X Window Server）でX Clientを動かす&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ docker -v
 Docker version 20.10.0, build 7287ab3
 
