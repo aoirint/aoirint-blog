@@ -236,7 +236,7 @@ dial tcp 54.236.131.166:443: i/o timeout
 <li><a href="https://stackoverflow.com/questions/48042184/how-to-solve-i-o-timeout-error-in-docker-pull">dns - How to solve i/o timeout error in docker pull - Stack Overflow</a></li>
 </ul>
 <p>この状態では、以下のhost.docker.internalを使う方法・hostnameを使う方法が動作せず、この設定は削除する必要があった。
-なお最初に起きていた事象は、ネットワークのファイアウォールによってOB53P（DNS）が塞がれていたのが原因と思われるが、
+なお最初に起きていた事象は、ネットワークのファイアウォールによってOP53B（DNSブロック）されていたのが原因と思われるが、
 この設定を削除しても同様のネットワークで事象は復活しなかった（ネットワークの切り替え直後だったために起きていた一時的な問題？）。</p>
 <h2 class="md_header_block" id="h_entry_2020_xquartz_docker_index_md_host_docker_internalを使う方法_旧_docker_for_mac_localhost_docker_for_mac_host_intern">host.docker.internalを使う方法（旧 docker.for.mac.localhost, docker.for.mac.host.internal）</h2>
 <ul>
