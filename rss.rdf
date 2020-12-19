@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Fri, 18 Dec 2020 11:00:00 +0900</lastBuildDate><item><title>GitHubの認証方法をPATにするにあたって</title><link>https://blog.aoirint.com/entry/2020/github_pat_auth/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_github_pat_auth_index_md_GitHubの認証方法をPATにするにあたって"&gt;GitHubの認証方法をPATにするにあたって&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sat, 19 Dec 2020 23:30:00 +0900</lastBuildDate><item><title>Docker Desktop for Mac＋XQuartz（X Window Server）でX Clientを動かす</title><link>https://blog.aoirint.com/entry/2020/xquartz_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_xquartz_docker_index_md_Docker_Desktop_for_Mac_XQuartz_X_Window_Server_でX_Clientを動かす"&gt;Docker Desktop for Mac＋XQuartz（X Window Server）でX Clientを動かす&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ docker -v
+Docker version 20.10.0, build 7287ab3
+
+$ brew -v
+Homebrew 2.6.2
+Homebrew/homebrew-core (git revision ce927; last commit 2020-12-19)
+Homebrew/homebrew-cask (git revision eb977; last commit 2020-12-19)
+
+$ brew info xquartz
+xq&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sat, 19 Dec 2020 23:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-19 23:30:00.000000:/entry/2020/xquartz_docker/</guid></item><item><title>GitHubの認証方法をPATにするにあたって</title><link>https://blog.aoirint.com/entry/2020/github_pat_auth/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_github_pat_auth_index_md_GitHubの認証方法をPATにするにあたって"&gt;GitHubの認証方法をPATにするにあたって&lt;/h1&gt;
 &lt;p&gt;GitHubがパスワードによるGitアクセスを無効化する（正確にはパーソナルアクセストークン認証を必須化する、だが現状SSH認証は残る）旨のアナウンスをした（&lt;a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/"&gt;Token authentication requirements for Git operations - The GitHub Blog&lt;/a&gt;）。&lt;/p&gt;
 &lt;p&gt;これまで、コマンドラインGit操作のためのGitHubの認証にはパスワード認証（HTTPS Basic認証）を使っていた。
 一応、リポジトリを操作するたびにパスワードを入力するのは面倒な&lt;/p&gt;</description><pubDate>Fri, 18 Dec 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-18 11:00:00.000000:/entry/2020/github_pat_auth/</guid></item><item><title>テンプレート</title><link>https://blog.aoirint.com/entry/2020/template/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_template_index_md_テンプレート"&gt;テンプレート&lt;/h1&gt;
@@ -82,13 +92,4 @@ TeXで画像を取り込んだときのサイズがばらばらになるため�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;もともとのDPIを調べるコマンド。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;identify -format &lt;span class="s1"&gt;'%x,%y\n'&lt;/span&gt; IN.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 09 Nov 2020 06:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 06:30:00.000000:/entry/2020/change_image_dpi_imagemagick/</guid></item><item><title>OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる</title><link>https://blog.aoirint.com/entry/2020/obs_ubuntu_nvidia_window_capture/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_obs_ubuntu_nvidia_window_capture_index_md_OBS_Studio_on_Ubuntu_NVIDIA_GPUでWindow_Captureを動作させる"&gt;OBS Studio on Ubuntu + NVIDIA GPUでWindow Captureを動作させる&lt;/h1&gt;
-&lt;p&gt;Ubuntu + NVIDIA GPU環境では、OBS StudioでWindow Captureしようとすると
-一部のアプリケーションで黒画面の表示になり動作しない。
-おそらくOpenGLで描画しているものが対象。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://obsproject.com/forum/threads/solved-window-capture-black-screen.47082/"&gt;Bug Report - [SOLVED] Window Capture Black Screen | OBS Forums&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;私の環境では
-&lt;code&gt;Window Capture (Xcomposite)&lt;/code&gt;の設定欄をスクロールして
-&lt;code&gt;Use alpha-less&lt;/code&gt;&lt;/p&gt;</description><pubDate>Mon, 09 Nov 2020 06:10:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 06:10:00.000000:/entry/2020/obs_ubuntu_nvidia_window_capture/</guid></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 09 Nov 2020 06:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 06:30:00.000000:/entry/2020/change_image_dpi_imagemagick/</guid></item></channel></rss>
