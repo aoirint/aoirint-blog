@@ -220,7 +220,7 @@ Dockerからアクセスするために必要。
 <div class="highlight"><pre><span></span><code>docker build . -t xeyes
 </code></pre></div>
 <h2 class="md_header_block" id="h_entry_2020_xquartz_docker_index_md_確認_Docker_Desktop_for_MacのDNS設定">確認：Docker Desktop for MacのDNS設定</h2>
-<p>以下のようなdocker pullに失敗する事象のため、Docker daemonのDNSを変更していた。
+<p>以下のようなdocker pullに失敗する事象のため、Docker daemonのDNS設定を変更していた。
 具体的には、Docker Desktop for Macのタスクバーアイコン &gt; Preferences &gt; Docker EngineのJSON設定欄に
 <code>"dns": [ "primary dns address", "secondary dns adderss" ]</code>のように設定を書き足して解決していた。</p>
 <div class="highlight"><pre><span></span><code>failed to solve with frontend dockerfile.v0: 
