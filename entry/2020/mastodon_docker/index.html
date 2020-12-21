@@ -197,7 +197,7 @@ Mastodonを改造したい場合など、必要に応じて<code>github:tootsuit
 <p>環境変数設定ファイルである<code>.env.production.sample</code>を<code>.env.production</code>にリネームする。</p>
 <p>ローカルビルドはしないので、web、streaming、sidekiqから<code>build: .</code>の行を削除する。
 また、<code>image: tootsuite/mastodon:v3.2.1</code>のようにバージョンを固定しておく（実運用する場合は定期的に書き換えてバージョンアップ）。</p>
-<p>DB、Redis、Mastodon各サービスの最新のDockerイメージを取得する。</p>
+<p>DB、Redis、Mastodon各サービスのDockerイメージを取得する。</p>
 <div class="highlight"><pre><span></span><code>docker-compose pull
 </code></pre></div>
 <p>DB（PostgreSQL）のパスワードを生成する。</p>
@@ -258,13 +258,13 @@ ES_ENABLED=false
 <p>セッション用と二要素認証用の2つのシークレットをDocker Hub上のMastodonイメージ（<code>docker.io/tootsuite/mastodon</code>）内の<code>Rakefile</code>を使って生成する。
 標準出力にランダム文字列が吐き出されるのでコピーする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># for SECRET_KEY_BASE</span>
-docker run --rm tootsuite/mastodon bundle <span class="nb">exec</span> rake secret
+docker run --rm tootsuite/mastodon:v3.2.1 bundle <span class="nb">exec</span> rake secret
 
 <span class="c1"># for OTP_SECRET</span>
-docker run --rm tootsuite/mastodon bundle <span class="nb">exec</span> rake secret
+docker run --rm tootsuite/mastodon:v3.2.1 bundle <span class="nb">exec</span> rake secret
 </code></pre></div>
 <p>Web Pushの公開鍵・秘密鍵を生成する（環境変数を設定しないとエラー）。標準出力に.envの形式で吐き出されるのでコピーする。</p>
-<div class="highlight"><pre><span></span><code>docker run --rm --env-file ./.env.production tootsuite/mastodon bundle <span class="nb">exec</span> rake mastodon:webpush:generate_vapid_key
+<div class="highlight"><pre><span></span><code>docker run --rm --env-file ./.env.production tootsuite/mastodon:v3.2.1 bundle <span class="nb">exec</span> rake mastodon:webpush:generate_vapid_key
 </code></pre></div>
 <p>メールアドレス検証・通知などに使うメールサーバ（SMTPサーバ）を設定する。
 今回は面倒なので自分のGoogleアカウントを使用する。
