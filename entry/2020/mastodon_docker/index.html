@@ -307,7 +307,7 @@ sudo rm -rf postgres/ public/ redis/
 <div class="highlight"><pre><span></span><code>docker-compose run --rm web bundle exec bin/tootctl accounts modify hoge --role admin
 </code></pre></div>
 <p>またはコマンドで管理者アカウントを作成する。ランダムパスワードが生成され、標準出力に出力される。</p>
-<div class="highlight"><pre><span></span><code>sudo docker-compose run --rm web bundle <span class="nb">exec</span> bin/tootctl accounts create hoge --email hoge@example.com --confirmed --role admin
+<div class="highlight"><pre><span></span><code>docker-compose run --rm web bundle <span class="nb">exec</span> bin/tootctl accounts create hoge --email hoge@example.com --confirmed --role admin
 </code></pre></div>
 <p>プロフィール画像アップロード時にエラーが出てしまった。
 <code>./public/system</code>をマウント時にdockerが作成しているために<code>root</code>所有になっているのが原因。</p>
