@@ -289,6 +289,7 @@ S3_ENABLED=false
 
 docker-compose run --rm web rails assets:precompile
 </code></pre></div>
+<p><code>rails assets/precompile</code>の方は、プロキシ環境下で<code>info There appears to be trouble with your network connection. Retrying...</code>のように表示されて止まってしまうことがある。自分のテスト環境では、<code>docker-compose run --rm -e HTTP_PROXY -e HTTPS_PROXY web bash -c "yarn config set proxy \$HTTP_PROXY -g &amp;&amp; yarn config set https-proxy \$HTTPS_PROXY -g &amp;&amp; yarn config set network-timeout 1000000 -g &amp;&amp; rails assets:precompile --trace"</code>のようにプロキシやタイムアウト時間を設定しても解決しなかった（traceを見る限り、<code>assets:precompile</code>内の<code>yarn install</code>で止まってしまう。<a href="https://github.com/rails/rails/blob/v5.2.4.3/railties/lib/rails/tasks/yarn.rake#L11">Railsの該当部分のソースコード</a>）。<code>yarn</code>の実体は<code>IMAGE_HOME/bin/yarn</code>のようだが、<code>IMAGE_HOME/bin/yarn config</code>のようにしても変わらず、<code>-g</code>を外しても変わらなかった）。結局解決方法はわからなかったが、プロキシ外で実行してもマウントしているディレクトリ（<code>./public</code>）には今のところ何も生成されない（<code>Everything's up-to-date. Nothing to do</code>）ようなのでこの手順は飛ばしても問題ないかもしれない..（DBを変更しているかどうかはわからないが）。</p>
 <p>docker-compose run --rmでweb以外のコンテナが止まらないので一度すべてのコンテナを停止・削除する。
 これにより永続化が正しく動作していることを確認できる。</p>
 <div class="highlight"><pre><span></span><code>docker-compose down
@@ -308,6 +309,10 @@ sudo rm -rf postgres/ public/ redis/
 </code></pre></div>
 <p>またはコマンドで管理者アカウントを作成する。ランダムパスワードが生成され、標準出力に出力される。</p>
 <div class="highlight"><pre><span></span><code>docker-compose run --rm web bundle <span class="nb">exec</span> bin/tootctl accounts create hoge --email hoge@example.com --confirmed --role admin
+</code></pre></div>
+<p><code>http://localhost:3000</code>でうまく接続できないときやリモートマシンで立てたときは、<a href="https://ngrok.com/">ngrok</a>を使うのが便利。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ポート3000番をランダムURLで外部からアクセスできるようにする</span>
+ngrok http <span class="m">3000</span>
 </code></pre></div>
 <p>プロフィール画像アップロード時にエラーが出てしまった。
 <code>./public/system</code>をマウント時にdockerが作成しているために<code>root</code>所有になっているのが原因。</p>
