@@ -411,7 +411,9 @@ docker run --rm hello-world
 <p><a href="https://pytorch.org/get-started/locally/" title="Start Locally | PyTorch">Start Locally | PyTorch</a></p>
 <p>PyTorchの対応バージョンを見ながらCUDA Toolkitをインストールする。</p>
 <p><a href="https://developer.nvidia.com/cuda-10.2-download-archive" title="CUDA Toolkit 10.2 Download | NVIDIA Developer">CUDA Toolkit 10.2 Download | NVIDIA Developer</a></p>
-<p>CUDA Installerのrunfileを使って、runfileに同梱されているNVIDIA Driverを同時に入れるのが安定（2.5GBくらいで結構重いが）。</p>
+<p>~~CUDA Installerのrunfileを使って、runfileに同梱されているNVIDIA Driverを同時に入れるのが安定（2.5GBくらいで結構重いが）。~~</p>
+<p>追記（2021/01/04）：カーネルアップデートのたびに再インストールする必要が出てくるので、ドライバについてはDKMSが使える通常のNVIDIA Driverインストールをした方がいい。
+適切にPATH、LD_LIBRARY_PATHを設定すれば問題ない。</p>
 <p><a href="https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=1804&amp;target_type=runfilelocal">Download runfile installer for Ubuntu 18.04</a></p>
 <p>CUIモードでないとインストールに失敗するので、ダウンロードが終わったら一度デスクトップからログアウトし、Ctrl+Alt+F2などでCUIモードにする。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
