@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2020-12-20T00:30:00+09:00</updated><entry><title>GPU PC (Desktop) のセットアップメモ</title><link href="https://blog.aoirint.com/entry/2020/gpu_pc_setup/" rel="alternate"></link><published>2020-09-18T20:00:00+09:00</published><updated>2020-09-18T20:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-18 20:00:00.000000:/entry/2020/gpu_pc_setup/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2021-01-05T07:40:00+09:00</updated><entry><title>Sphinx</title><link href="https://blog.aoirint.com/entry/2021/sphinx/" rel="alternate"></link><published>2021-01-05T07:40:00+09:00</published><updated>2021-01-05T07:40:00+09:00</updated><id>tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</id><summary type="html">&lt;div class="section" id="id1"&gt;
+&lt;h1 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h1&gt;
+&lt;p&gt;Python製のドキュメント生成ツール。&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Python 3.8.5&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Sphinx 3.4.2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://pypi.org/project/Sphinx/"&gt;Sphinx · PyPI&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip3 install Sphinx
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="rest-restructuredtext"&gt;
+&lt;h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_reST_reStructuredText_"&gt;reST（reStructuredText）&lt;/h2&gt;
+&lt;p&gt;SphinxではデフォルトでreStructuredTextというマークアップ言語を使う。&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html"&gt;https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://atom.io/packages/language-restructuredtext"&gt;https://atom.io/packages/language-restruct&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;</summary></entry><entry><title>GPU PC (Desktop) のセットアップメモ</title><link href="https://blog.aoirint.com/entry/2020/gpu_pc_setup/" rel="alternate"></link><published>2020-09-18T20:00:00+09:00</published><updated>2020-09-18T20:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-18 20:00:00.000000:/entry/2020/gpu_pc_setup/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)"&gt;Ubuntu 18.04.5 LTS (Bionic Beaver)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。&lt;/p&gt;
@@ -79,14 +99,4 @@ tar xvf layer.tar -C layer/
 Arduinoプログラム（&lt;code&gt;.ino&lt;/code&gt;）にWiFiパスワード・APIキーなどの秘密情報を埋め込む必要が出てきた。&lt;/p&gt;
 &lt;p&gt;ここでは、Arduino IDEの主要機能を持つCLIソフトウェア&lt;code&gt;arduino-cli&lt;/code&gt;を使う。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arduino/arduino-cli"&gt;arduino/arduino-cli: Arduino command line interface&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;arduin&lt;/p&gt;</summary></entry><entry><title>arduino-cliの使い方</title><link href="https://blog.aoirint.com/entry/2020/arduino_cli_usage/" rel="alternate"></link><published>2020-11-09T08:00:00+09:00</published><updated>2020-11-09T08:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-11-09 08:00:00.000000:/entry/2020/arduino_cli_usage/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_arduino_cliの使い方"&gt;arduino-cliの使い方&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ arduino-cli version
-arduino-cli Version: 0.13.0 Commit: 693a045
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_インストール"&gt;インストール&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://arduino.github.io/arduino-cli/latest/installation/"&gt;Installation - Arduino CLI&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://arduino.github.io/arduino-cli/latest/"&gt;Arduino CLIの公式ドキュメント&lt;/a&gt;に従ってインストールする。後述する&lt;code&gt;screen&lt;/code&gt;コマンドも合わせてインストールする。
-&lt;code&gt;arduino-cli&lt;/code&gt;はDockerイメージも配布されているのでお好みで。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -fsSL https://raw.githubusercontent.com/arduino/arduin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry></feed>
+&lt;p&gt;arduin&lt;/p&gt;</summary></entry></feed>
