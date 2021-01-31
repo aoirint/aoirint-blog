@@ -336,7 +336,7 @@ menuentryのループを回している部分では、以下のように<code>ve
   <span class="c1"># GRUB_FLAVOUR_ORDER is an ordered list of kernels, in decreasing</span>
   <span class="c1"># priority. Any items in the list take precedence over other kernels,</span>
   <span class="c1"># and earlier flavours are preferred over later ones.</span>
-  <span class="k">for</span> flavour in <span class="si">${</span><span class="nv">GRUB_FLAVOUR_ORDER</span><span class="k">:-</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+  <span class="k">for</span> flavour <span class="k">in</span> <span class="si">${</span><span class="nv">GRUB_FLAVOUR_ORDER</span><span class="k">:-</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
     <span class="nv">version_test_gt_a_preferred</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$version_test_gt_a</span><span class="s2">"</span> <span class="p">|</span> grep --  <span class="s2">"-[0-9]*-</span><span class="nv">$flavour</span><span class="s2">\$"</span><span class="k">)</span>
     <span class="nv">version_test_gt_b_preferred</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$version_test_gt_b</span><span class="s2">"</span> <span class="p">|</span> grep --  <span class="s2">"-[0-9]*-</span><span class="nv">$flavour</span><span class="s2">\$"</span><span class="k">)</span>
 
@@ -347,7 +347,7 @@ menuentryのループを回している部分では、以下のように<code>ve
     <span class="k">fi</span>
   <span class="k">done</span>
 
-  <span class="k">case</span> <span class="s2">"</span><span class="nv">$version_test_gt_a</span><span class="s2">:</span><span class="nv">$version_test_gt_b</span><span class="s2">"</span> in
+  <span class="k">case</span> <span class="s2">"</span><span class="nv">$version_test_gt_a</span><span class="s2">:</span><span class="nv">$version_test_gt_b</span><span class="s2">"</span> <span class="k">in</span>
     *.old:*.old<span class="o">)</span> <span class="p">;;</span>
     *.old:*<span class="o">)</span> <span class="nv">version_test_gt_a</span><span class="o">=</span><span class="s2">"`echo "</span><span class="nv">$version_test_gt_a</span><span class="s2">" | sed -e 's/\.old</span>$<span class="s2">//'`"</span> <span class="p">;</span> <span class="nv">version_test_gt_cmp</span><span class="o">=</span>gt <span class="p">;;</span>
     *:*.old<span class="o">)</span> <span class="nv">version_test_gt_b</span><span class="o">=</span><span class="s2">"`echo "</span><span class="nv">$version_test_gt_b</span><span class="s2">" | sed -e 's/\.old</span>$<span class="s2">//'`"</span> <span class="p">;</span> <span class="nv">version_test_gt_cmp</span><span class="o">=</span>ge <span class="p">;;</span>
@@ -359,7 +359,7 @@ menuentryのループを回している部分では、以下のように<code>ve
 version_find_latest <span class="o">()</span>
 <span class="o">{</span>
   <span class="nv">version_find_latest_a</span><span class="o">=</span><span class="s2">""</span>
-  <span class="k">for</span> i in <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> <span class="p">;</span> <span class="k">do</span>
+  <span class="k">for</span> i <span class="k">in</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> <span class="p">;</span> <span class="k">do</span>
     <span class="k">if</span> version_test_gt <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$version_find_latest_a</span><span class="s2">"</span> <span class="p">;</span> <span class="k">then</span>
       <span class="nv">version_find_latest_a</span><span class="o">=</span><span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span>
     <span class="k">fi</span>
