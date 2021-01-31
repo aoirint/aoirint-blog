@@ -39,11 +39,10 @@ Homebrew 2.6.2
 Homebrew/homebrew-core (git revision ce927; last commit 2020-12-19)
 Homebrew/homebrew-cask (git revision eb977; last commit 2020-12-19)
 
-$ brew info xqu&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sun, 20 Dec 2020 00:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-20 00:30:00.000000:/entry/2020/xquartz_docker/</guid></item><item><title>GitHubの認証方法をPATにした</title><link>https://blog.aoirint.com/entry/2020/github_pat_auth/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_github_pat_auth_index_md_GitHubの認証方法をPATにした"&gt;GitHubの認証方法をPATにした&lt;/h1&gt;
+$ brew info xqu&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sun, 20 Dec 2020 00:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-20 00:30:00.000000:/entry/2020/xquartz_docker/</guid></item><item><title>GitHubのPAT認証手順（Ubuntu）</title><link>https://blog.aoirint.com/entry/2020/github_pat_auth/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_github_pat_auth_index_md_GitHubのPAT認証手順_Ubuntu_"&gt;GitHubのPAT認証手順（Ubuntu）&lt;/h1&gt;
 &lt;p&gt;GitHubがパスワードによるGitアクセスを無効化する（正確にはパーソナルアクセストークン認証を必須化する、だが現状SSH認証は残る）旨のアナウンスをした（&lt;a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/"&gt;Token authentication requirements for Git operations - The GitHub Blog&lt;/a&gt;）。&lt;/p&gt;
 &lt;p&gt;これまで、コマンドラインGit操作のためのGitHubの認証にはパスワード認証（HTTPS Basic認証）を使っていた。
-一応、リポジトリを操作するたびにパスワードを入力するのは面倒なので、
-ca&lt;/p&gt;</description><pubDate>Fri, 18 Dec 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-18 11:00:00.000000:/entry/2020/github_pat_auth/</guid></item><item><title>テンプレート</title><link>https://blog.aoirint.com/entry/2020/template/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_template_index_md_テンプレート"&gt;テンプレート&lt;/h1&gt;
+一応、リポジトリを操作するたびにパスワードを入力するのは面倒なの&lt;/p&gt;</description><pubDate>Fri, 18 Dec 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-18 11:00:00.000000:/entry/2020/github_pat_auth/</guid></item><item><title>テンプレート</title><link>https://blog.aoirint.com/entry/2020/template/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_template_index_md_テンプレート"&gt;テンプレート&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
 canonical_url: ./
 title: テンプレート
