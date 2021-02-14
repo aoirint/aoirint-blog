@@ -14,8 +14,7 @@
 &lt;h2 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_ウインドウに表示させるサンプル"&gt;ウインドウに表示させるサンプル&lt;/h2&gt;
 &lt;div class="code-block"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt; &lt;span class="c1"&gt;# numpy&amp;gt;=1.20.1&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;psychopy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;co&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary></entry><entry><title>Sphinx</title><link href="https://blog.aoirint.com/entry/2021/sphinx/" rel="alternate"></link><published>2021-01-05T07:40:00+09:00</published><updated>2021-01-05T07:40:00+09:00</updated><id>tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</id><summary type="html">&lt;div class="section" id="id1"&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore # opencv-python&amp;gt;=4.5.&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary></entry><entry><title>Sphinx</title><link href="https://blog.aoirint.com/entry/2021/sphinx/" rel="alternate"></link><published>2021-01-05T07:40:00+09:00</published><updated>2021-01-05T07:40:00+09:00</updated><id>tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</id><summary type="html">&lt;div class="section" id="id1"&gt;
 &lt;h1 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h1&gt;
 &lt;p&gt;Python製のドキュメント生成ツール。&lt;/p&gt;
 &lt;ul class="simple"&gt;
