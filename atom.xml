@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2021-01-05T07:40:00+09:00</updated><entry><title>Sphinx</title><link href="https://blog.aoirint.com/entry/2021/sphinx/" rel="alternate"></link><published>2021-01-05T07:40:00+09:00</published><updated>2021-01-05T07:40:00+09:00</updated><id>tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</id><summary type="html">&lt;div class="section" id="id1"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2021-02-14T22:00:00+09:00</updated><entry><title>PsychopyでOpenCV画像をImageStimで表示する</title><link href="https://blog.aoirint.com/entry/2021/psychopy_opencv_image/" rel="alternate"></link><published>2021-02-14T22:00:00+09:00</published><updated>2021-02-14T22:00:00+09:00</updated><id>tag:blog.aoirint.com,2021-02-14 22:00:00.000000:/entry/2021/psychopy_opencv_image/</id><summary type="html">&lt;div class="section" id="id1"&gt;
+&lt;h1 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_PsychopyでOpenCV画像をImageStimで表示する"&gt;PsychopyでOpenCV画像をImageStimで表示する&lt;/h1&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/psychopy/psychopy"&gt;Psychopy - GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;img alt="image.png" src="image.png"/&gt;
+&lt;img alt="screenshot.png" src="screenshot.png"/&gt;
+&lt;div class="code-block"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt; &lt;span class="c1"&gt;# numpy&amp;gt;=1.20.1&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;psychopy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore # psychopy&amp;gt;=2020.2.10&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;psychopy.visual&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Window&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ImageStim&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+
+&lt;span class="c1"&gt;# npimg: np.ndarray = cv2.imread('image.png', 1)&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary></entry><entry><title>Sphinx</title><link href="https://blog.aoirint.com/entry/2021/sphinx/" rel="alternate"></link><published>2021-01-05T07:40:00+09:00</published><updated>2021-01-05T07:40:00+09:00</updated><id>tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</id><summary type="html">&lt;div class="section" id="id1"&gt;
 &lt;h1 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h1&gt;
 &lt;p&gt;Python製のドキュメント生成ツール。&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -94,9 +106,4 @@ tar xvf layer.tar -C layer/
 
 &lt;span class="nb"&gt;cd&lt;/span&gt; layer
 &lt;span class="c1"&gt;# here is root directory&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>ソース公開するArduinoプログラムに秘密情報を埋め込む</title><link href="https://blog.aoirint.com/entry/2020/arduino_secret_info/" rel="alternate"></link><published>2020-11-09T08:10:00+09:00</published><updated>2020-11-09T08:10:00+09:00</updated><id>tag:blog.aoirint.com,2020-11-09 08:10:00.000000:/entry/2020/arduino_secret_info/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む"&gt;ソース公開するArduinoプログラムに秘密情報を埋め込む&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://github.com/aoirint/RoomSystemSensorESP32"&gt;aoirint/RoomSystemSensorESP32: ESP32とFirebaseを使った部屋センシング・オンライン化 クライアント&lt;/a&gt;の開発中に
-Arduinoプログラム（&lt;code&gt;.ino&lt;/code&gt;）にWiFiパスワード・APIキーなどの秘密情報を埋め込む必要が出てきた。&lt;/p&gt;
-&lt;p&gt;ここでは、Arduino IDEの主要機能を持つCLIソフトウェア&lt;code&gt;arduino-cli&lt;/code&gt;を使う。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/arduino/arduino-cli"&gt;arduino/arduino-cli: Arduino command line interface&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;arduin&lt;/p&gt;</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry></feed>
