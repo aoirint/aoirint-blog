@@ -4,6 +4,7 @@
 &lt;p&gt;&lt;a class="reference external" href="https://github.com/psychopy/psychopy"&gt;Psychopy - GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;img alt="image.png" src="image.png"/&gt;
 &lt;img alt="screenshot.png" src="screenshot.png"/&gt;
+&lt;p&gt;y軸反転と&lt;/p&gt;
 &lt;div class="code-block"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt; &lt;span class="c1"&gt;# numpy&amp;gt;=1.20.1&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore&lt;/span&gt;
@@ -11,7 +12,7 @@
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;psychopy.visual&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Window&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ImageStim&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 
-&lt;span class="c1"&gt;# npimg: np.ndarray = cv2.imread('image.png', 1)&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><pubDate>Sun, 14 Feb 2021 22:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-02-14 22:00:00.000000:/entry/2021/psychopy_opencv_image/</guid></item><item><title>Sphinx</title><link>https://blog.aoirint.com/entry/2021/sphinx/</link><description>&lt;div class="section" id="id1"&gt;
+&lt;span class="c1"&gt;# npimg: np.ndarray = cv2.imread('image.pn&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><pubDate>Sun, 14 Feb 2021 22:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-02-14 22:00:00.000000:/entry/2021/psychopy_opencv_image/</guid></item><item><title>Sphinx</title><link>https://blog.aoirint.com/entry/2021/sphinx/</link><description>&lt;div class="section" id="id1"&gt;
 &lt;h1 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h1&gt;
 &lt;p&gt;Python製のドキュメント生成ツール。&lt;/p&gt;
 &lt;ul class="simple"&gt;

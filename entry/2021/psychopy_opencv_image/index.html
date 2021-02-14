@@ -21,8 +21,8 @@
 
 <meta property="og:title" content="PsychopyでOpenCV画像をImageStimで表示する - えやみぐさ" />
 
-<meta name="description" content="PsychopyでOpenCV画像をImageStimで表示する Psychopy - GitHub import numpy as np # numpy&gt;=1.20.1 import cv2 # type: ignore from psychopy import core # type: ign"/>
-<meta property="og:description" content="PsychopyでOpenCV画像をImageStimで表示する Psychopy - GitHub import numpy as np # numpy&gt;=1.20.1 import cv2 # type: ignore from psychopy import core # type: ign" />
+<meta name="description" content="PsychopyでOpenCV画像をImageStimで表示する Psychopy - GitHub y軸反転と import numpy as np # numpy&gt;=1.20.1 import cv2 # type: ignore from psychopy import core # typ"/>
+<meta property="og:description" content="PsychopyでOpenCV画像をImageStimで表示する Psychopy - GitHub y軸反転と import numpy as np # numpy&gt;=1.20.1 import cv2 # type: ignore from psychopy import core # typ" />
 <meta property="og:image" content="https://blog.aoirint.com/ogp.png" />
 <meta property="article:published_time" content="2021-02-14T22:00:00+09:00" />
 
@@ -166,6 +166,7 @@
 <p><a class="reference external" href="https://github.com/psychopy/psychopy">Psychopy - GitHub</a></p>
 <img alt="image.png" src="image.png"/>
 <img alt="screenshot.png" src="screenshot.png"/>
+<p>y軸反転と</p>
 <div class="code-block">
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># numpy&gt;=1.20.1</span>
 <span class="kn">import</span> <span class="nn">cv2</span> <span class="c1"># type: ignore</span>
@@ -175,7 +176,7 @@
 
 <span class="c1"># npimg: np.ndarray = cv2.imread('image.png', 1)</span>
 <span class="n">npimg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-<span class="n">npimg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">npimg</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">npimg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">npimg</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">127</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">127</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">npimg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">npimg</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
 <span class="c1"># cv2.imwrite('image.png', npimg)</span>
 
