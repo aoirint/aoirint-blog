@@ -171,7 +171,7 @@
 
 
       <div class='article-summary'>
-        PsychopyでOpenCV画像をImageStimで表示する Psychopy - GitHub y軸反転と import numpy as np # numpy&gt;=1.20.1 import cv2 # type: ignore from psychopy import core # type: ignore # psychopy&gt;=2020.2.10 from psychopy.visual import Window, ImageStim # type: ignore import sys # npimg: np.ndarray = cv2.imread(&#39;image.pn
+        PsychopyでOpenCV画像をImageStimで表示する Psychopy - GitHub y軸反転と画素値をfloat（0-1）に変換すればOK。 npimg: np.ndarray # (height, width, num_channels) stimimg = np.flip(npimg.astype(np.float32) / 255, axis=0) ウインドウに表示させるサンプル import numpy as np # numpy&gt;=1.20.1 import cv2 # type: ignore from psychopy import co
       </div>
 
     </article>

@@ -4,15 +4,18 @@
 &lt;p&gt;&lt;a class="reference external" href="https://github.com/psychopy/psychopy"&gt;Psychopy - GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;img alt="image.png" src="image.png"/&gt;
 &lt;img alt="screenshot.png" src="screenshot.png"/&gt;
-&lt;p&gt;y軸反転と&lt;/p&gt;
+&lt;p&gt;y軸反転と画素値をfloat（0-1）に変換すればOK。&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;npimg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ndarray&lt;/span&gt; &lt;span class="c1"&gt;# (height, width, num_channels)&lt;/span&gt;
+&lt;span class="n"&gt;stimimg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;npimg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;astype&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float32&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id2"&gt;
+&lt;h2 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_ウインドウに表示させるサンプル"&gt;ウインドウに表示させるサンプル&lt;/h2&gt;
 &lt;div class="code-block"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt; &lt;span class="c1"&gt;# numpy&amp;gt;=1.20.1&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;psychopy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore # psychopy&amp;gt;=2020.2.10&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;psychopy.visual&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Window&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ImageStim&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
-
-&lt;span class="c1"&gt;# npimg: np.ndarray = cv2.imread('image.pn&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary></entry><entry><title>Sphinx</title><link href="https://blog.aoirint.com/entry/2021/sphinx/" rel="alternate"></link><published>2021-01-05T07:40:00+09:00</published><updated>2021-01-05T07:40:00+09:00</updated><id>tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</id><summary type="html">&lt;div class="section" id="id1"&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;psychopy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;co&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</summary></entry><entry><title>Sphinx</title><link href="https://blog.aoirint.com/entry/2021/sphinx/" rel="alternate"></link><published>2021-01-05T07:40:00+09:00</published><updated>2021-01-05T07:40:00+09:00</updated><id>tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</id><summary type="html">&lt;div class="section" id="id1"&gt;
 &lt;h1 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h1&gt;
 &lt;p&gt;Python製のドキュメント生成ツール。&lt;/p&gt;
 &lt;ul class="simple"&gt;
