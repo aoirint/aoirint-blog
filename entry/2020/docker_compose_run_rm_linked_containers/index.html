@@ -171,12 +171,12 @@
 </blockquote>
 <p>ひとまず<code>docker-compose run</code>終了後に<code>docker-compose down</code>を実行するシェルスクリプトで対応する。</p>
 <p>compose_run.sh</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 docker-compose run --rm <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 <span class="nv">EXIT_CODE</span><span class="o">=</span><span class="nv">$?</span>
