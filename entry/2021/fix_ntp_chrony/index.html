@@ -166,9 +166,9 @@ E: Release file <span class="k">for</span> http://raspbian.raspberrypi.org/raspb
 E: Release file <span class="k">for</span> http://archive.raspberrypi.org/debian/dists/buster/InRelease is not valid yet <span class="o">(</span>invalid <span class="k">for</span> another 26d 5h 35min 24s<span class="o">)</span>. Updates <span class="k">for</span> this repository will not be applied.
 </code></pre></div>
 <p>こういうエラーが出ることがある（ログはRaspberry Pi OS）。</p>
-<div class="highlight"><pre><span></span><code>timedatectl set-timezone Asia/Tokyo
-date --set <span class="m">2021</span>-04-04
-date --set <span class="m">06</span>:00
+<div class="highlight"><pre><span></span><code>sudo timedatectl set-timezone Asia/Tokyo
+sudo date --set <span class="m">2021</span>-04-04
+sudo date --set <span class="m">06</span>:00
 </code></pre></div>
 <p>まずは手動でタイムゾーンと時刻を合わせる（だいたいでOK）。</p>
 <p>これでaptが実行できるようになるので、Chronyを導入する。</p>
