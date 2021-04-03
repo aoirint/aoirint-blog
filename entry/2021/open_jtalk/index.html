@@ -198,7 +198,7 @@ cat text.txt <span class="p">|</span> docker run --rm -i -v <span class="s2">"</
 <li><a href="https://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/">MMDAgent - Browse /MMDAgent_Example at SourceForge.net</a></li>
 </ul>
 <p>ここから最新のMMDAgent Exampleをダウンロードする。
-<code>Voice/mei_normal.htsvoice</code>に目的のボイスファイルがある（CC BY 3.0）。
+<code>Voice/mei/mei_normal.htsvoice</code>に目的のボイスファイルがある（CC BY 3.0）。
 これを作業ディレクトリ（<code>$PWD</code>）にコピーしておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 他のhtsvoiceを使う（mei_normal.htsvoice）</span>
 docker run --rm -v <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/data"</span> aoirint/open_jtalk -x /var/lib/mecab/dic/open-jtalk/naist-jdic/ -m /data/mei_normal.htsvoice text.txt -ow output.wav
