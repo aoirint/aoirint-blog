@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2021-04-04T06:00:00+09:00</updated><entry><title>Ubuntu/Raspberry Pi/Debianの時刻ずれを解消する</title><link href="https://blog.aoirint.com/entry/2021/ubuntu_ntp/" rel="alternate"></link><published>2021-04-04T06:00:00+09:00</published><updated>2021-04-04T06:00:00+09:00</updated><id>tag:blog.aoirint.com,2021-04-04 06:00:00.000000:/entry/2021/ubuntu_ntp/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2021_ubuntu_ntp_index_md_Ubuntu_Raspberry_Pi_Debianの時刻ずれを解消する"&gt;Ubuntu/Raspberry Pi/Debianの時刻ずれを解消する&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2021-04-04T08:00:00+09:00</updated><entry><title>Open JTalkを試す</title><link href="https://blog.aoirint.com/entry/2021/open_jtalk/" rel="alternate"></link><published>2021-04-04T08:00:00+09:00</published><updated>2021-04-04T08:00:00+09:00</updated><id>tag:blog.aoirint.com,2021-04-04 08:00:00.000000:/entry/2021/open_jtalk/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2021_open_jtalk_index_md_Open_JTalkを試す"&gt;Open JTalkを試す&lt;/h1&gt;
+&lt;p&gt;以前にもOpen JTalkを触っていたが、時間が経った＆記事が雑だったのでDockerでまとめ直しておく。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://aoirint.hatenablog.com/entry/2019/05/25/080329"&gt;Open JTalk - aoirint's note&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dockerfileを作る。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="s"&gt;ubuntu:bionic&lt;/span&gt;
+
+&lt;span class="k"&gt;RUN&lt;/span&gt; apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    apt-get install -y &lt;span class="se"&gt;\&lt;/span&gt;
+        open-jtalk &lt;span class="se"&gt;\&lt;/span&gt;
+        open-jtalk-mecab-naist-jdic &lt;span class="se"&gt;\&lt;/span&gt;
+        hts-voice-nitech-jp-atr503-m001
+
+&lt;span class="k"&gt;WORKDIR&lt;/span&gt;&lt;span class="s"&gt; /data&lt;/span&gt;
+&lt;span class="k"&gt;ENTRYPOINT&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;"open_jt&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Ubuntu/Raspberry Pi/Debianの時刻ずれを解消する</title><link href="https://blog.aoirint.com/entry/2021/ubuntu_ntp/" rel="alternate"></link><published>2021-04-04T06:00:00+09:00</published><updated>2021-04-04T06:00:00+09:00</updated><id>tag:blog.aoirint.com,2021-04-04 06:00:00.000000:/entry/2021/ubuntu_ntp/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2021_ubuntu_ntp_index_md_Ubuntu_Raspberry_Pi_Debianの時刻ずれを解消する"&gt;Ubuntu/Raspberry Pi/Debianの時刻ずれを解消する&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt update
 Get:1 http://raspbian.raspberrypi.org/raspbian buster InRelease &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;.0 kB&lt;span class="o"&gt;]&lt;/span&gt;
 Get:2 http://archive.raspberrypi.org/debian buster InRelease &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;32&lt;/span&gt;.9 kB&lt;span class="o"&gt;]&lt;/span&gt;
@@ -85,16 +100,4 @@ mkdir bash
 tar xvf bash_5.0-4_amd64.deb -C bash/
 &lt;span class="nb"&gt;cd&lt;/span&gt; bash
 mkdir data
-tar xvf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Pythonを追加するDockerfile</title><link href="https://blog.aoirint.com/entry/2020/dockerfile_python/" rel="alternate"></link><published>2020-12-08T22:30:00+09:00</published><updated>2020-12-08T22:30:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-08 22:30:00.000000:/entry/2020/dockerfile_python/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_dockerfile_python_index_md_Pythonを追加するDockerfile"&gt;Pythonを追加するDockerfile&lt;/h1&gt;
-&lt;p&gt;pyenvは部品を使うだけで最終的には削除します（Pythonは/usr/localに導入）&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="s"&gt;ubuntu:bionic&lt;/span&gt;
-
-
-&lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;DEBIAN_FRONTEND&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;noninteractive
-&lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYTHON_VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.9.0
-&lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYTHON_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local
-&lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYENV_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/.pyenv
-&lt;span class="k"&gt;ARG&lt;/span&gt; &lt;span class="nv"&gt;PYBUILD_ROOT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/tmp/python-build
-
-&lt;span class="k"&gt;RUN&lt;/span&gt; apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install -y &lt;span class="se"&gt;\&lt;/span&gt;
-    build-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry></feed>
+tar xvf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry></feed>
