@@ -178,6 +178,8 @@
 <span class="k">WORKDIR</span><span class="s"> /data</span>
 <span class="k">ENTRYPOINT</span> <span class="p">[</span> <span class="s2">"open_jtalk"</span> <span class="p">]</span>
 </code></pre></div>
+<p>mecab-naist-jdicは形態素解析辞書。
+hts-voiceはボイスファイルだが、別途htsvoiceを用意する場合は不要。</p>
 <p>ビルドする。</p>
 <div class="highlight"><pre><span></span><code>docker build . -t aoirint/open_jtalk
 </code></pre></div>
