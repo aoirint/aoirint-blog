@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 14 Feb 2021 22:00:00 +0900</lastBuildDate><item><title>PsychopyでOpenCV画像をImageStimで表示する</title><link>https://blog.aoirint.com/entry/2021/psychopy_opencv_image/</link><description>&lt;div class="section" id="id1"&gt;
-&lt;h1 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_PsychopyでOpenCV画像をImageStimで表示する"&gt;PsychopyでOpenCV画像をImageStimで表示する&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 04 Apr 2021 06:00:00 +0900</lastBuildDate><item><title>Ubuntu/Raspberry Pi/Debianサーバの時刻ずれを解消する</title><link>https://blog.aoirint.com/entry/2021/fix_ntp_chrony/</link><description>&lt;h1 class="md_header_block" id="h_entry_2021_fix_ntp_chrony_index_md_Ubuntu_Raspberry_Pi_Debianサーバの時刻ずれを解消する"&gt;Ubuntu/Raspberry Pi/Debianサーバの時刻ずれを解消する&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt update
+Get:1 http://raspbian.raspberrypi.org/raspbian buster InRelease &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;.0 kB&lt;span class="o"&gt;]&lt;/span&gt;
+Get:2 http://archive.raspberrypi.org/debian buster InRelease &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;32&lt;/span&gt;.9 kB&lt;span class="o"&gt;]&lt;/span&gt;
+Reading package lists... Done  
+E: Release file &lt;span class="k"&gt;for&lt;/span&gt; http://raspbian.raspberrypi.o&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sun, 04 Apr 2021 06:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-04-04 06:00:00.000000:/entry/2021/fix_ntp_chrony/</guid></item><item><title>PsychopyでOpenCV画像をImageStimで表示する</title><link>https://blog.aoirint.com/entry/2021/psychopy_opencv_image/</link><description>&lt;section id="id1"&gt;
+&lt;h2 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_PsychopyでOpenCV画像をImageStimで表示する"&gt;PsychopyでOpenCV画像をImageStimで表示する&lt;/h2&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://github.com/psychopy/psychopy"&gt;Psychopy - GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;img alt="image.png" src="image.png"/&gt;
 &lt;img alt="screenshot.png" src="screenshot.png"/&gt;
@@ -10,12 +15,12 @@
 &lt;span class="n"&gt;stimimg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;npimg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;astype&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float32&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id2"&gt;
-&lt;h2 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_ウインドウに表示させるサンプル"&gt;ウインドウに表示させるサンプル&lt;/h2&gt;
+&lt;section id="id2"&gt;
+&lt;h3 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_ウインドウに表示させるサンプル"&gt;ウインドウに表示させるサンプル&lt;/h3&gt;
 &lt;div class="code-block"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt; &lt;span class="c1"&gt;# numpy&amp;gt;=1.20.1&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore # opencv-python&amp;gt;=4.5.&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><pubDate>Sun, 14 Feb 2021 22:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-02-14 22:00:00.000000:/entry/2021/psychopy_opencv_image/</guid></item><item><title>Sphinx</title><link>https://blog.aoirint.com/entry/2021/sphinx/</link><description>&lt;div class="section" id="id1"&gt;
-&lt;h1 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h1&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore # opencv-python&amp;gt;=4.5.&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;&lt;/section&gt;</description><pubDate>Sun, 14 Feb 2021 22:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-02-14 22:00:00.000000:/entry/2021/psychopy_opencv_image/</guid></item><item><title>Sphinx</title><link>https://blog.aoirint.com/entry/2021/sphinx/</link><description>&lt;section id="id1"&gt;
+&lt;h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h2&gt;
 &lt;p&gt;Python製のドキュメント生成ツール。&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;Python 3.8.5&lt;/p&gt;&lt;/li&gt;
@@ -29,12 +34,12 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip3 install Sphinx
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="rest-restructuredtext"&gt;
-&lt;h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_reST_reStructuredText_"&gt;reST（reStructuredText）&lt;/h2&gt;
+&lt;section id="rest-restructuredtext"&gt;
+&lt;h3 class="md_header_block" id="h_entry_2021_sphinx_index_rst_reST_reStructuredText_"&gt;reST（reStructuredText）&lt;/h3&gt;
 &lt;p&gt;SphinxではデフォルトでreStructuredTextというマークアップ言語を使う。&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html"&gt;https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://atom.io/packages/language-restructuredtext"&gt;https://atom.io/packages/language-restruct&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;</description><pubDate>Tue, 05 Jan 2021 07:40:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</guid></item><item><title>GPU PC (Desktop) のセットアップメモ</title><link>https://blog.aoirint.com/entry/2020/gpu_pc_setup/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://atom.io/packages/language-restructuredtext"&gt;https://atom.io/packages/language-restruct&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;/section&gt;</description><pubDate>Tue, 05 Jan 2021 07:40:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</guid></item><item><title>GPU PC (Desktop) のセットアップメモ</title><link>https://blog.aoirint.com/entry/2020/gpu_pc_setup/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)"&gt;Ubuntu 18.04.5 LTS (Bionic Beaver)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。&lt;/p&gt;
@@ -94,9 +99,4 @@ tar xvf layer.tar -C layer/
 
 &lt;span class="nb"&gt;cd&lt;/span&gt; layer
 &lt;span class="c1"&gt;# here is root directory&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Tue, 08 Dec 2020 22:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-08 22:30:00.000000:/entry/2020/extract_from_docker_image/</guid></item><item><title>ソース公開するArduinoプログラムに秘密情報を埋め込む</title><link>https://blog.aoirint.com/entry/2020/arduino_secret_info/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_arduino_secret_info_index_md_ソース公開するArduinoプログラムに秘密情報を埋め込む"&gt;ソース公開するArduinoプログラムに秘密情報を埋め込む&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://github.com/aoirint/RoomSystemSensorESP32"&gt;aoirint/RoomSystemSensorESP32: ESP32とFirebaseを使った部屋センシング・オンライン化 クライアント&lt;/a&gt;の開発中に
-Arduinoプログラム（&lt;code&gt;.ino&lt;/code&gt;）にWiFiパスワード・APIキーなどの秘密情報を埋め込む必要が出てきた。&lt;/p&gt;
-&lt;p&gt;ここでは、Arduino IDEの主要機能を持つCLIソフトウェア&lt;code&gt;arduino-cli&lt;/code&gt;を使う。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/arduino/arduino-cli"&gt;arduino/arduino-cli: Arduino command line interface&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;arduin&lt;/p&gt;</description><pubDate>Mon, 09 Nov 2020 08:10:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 08:10:00.000000:/entry/2020/arduino_secret_info/</guid></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Tue, 08 Dec 2020 22:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-08 22:30:00.000000:/entry/2020/extract_from_docker_image/</guid></item></channel></rss>

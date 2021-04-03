@@ -157,8 +157,8 @@
 
 
 <div class="article-body">
-  <div class="section" id="id1">
-<h1 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx">Sphinx</h1>
+  <section id="id1">
+<h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx">Sphinx</h2>
 <p>Python製のドキュメント生成ツール。</p>
 <ul class="simple">
 <li><p>Python 3.8.5</p></li>
@@ -172,16 +172,16 @@
 <div class="highlight"><pre><span></span>pip3 install Sphinx
 </pre></div>
 </div>
-<div class="section" id="rest-restructuredtext">
-<h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_reST_reStructuredText_">reST（reStructuredText）</h2>
+<section id="rest-restructuredtext">
+<h3 class="md_header_block" id="h_entry_2021_sphinx_index_rst_reST_reStructuredText_">reST（reStructuredText）</h3>
 <p>SphinxではデフォルトでreStructuredTextというマークアップ言語を使う。</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html">https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html</a></p></li>
 <li><p><a class="reference external" href="https://atom.io/packages/language-restructuredtext">https://atom.io/packages/language-restructuredtext</a></p></li>
 </ul>
-</div>
-<div class="section" id="python">
-<h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_既存Pythonプロジェクトにドキュメントを追加する">既存Pythonプロジェクトにドキュメントを追加する</h2>
+</section>
+<section id="python">
+<h3 class="md_header_block" id="h_entry_2021_sphinx_index_rst_既存Pythonプロジェクトにドキュメントを追加する">既存Pythonプロジェクトにドキュメントを追加する</h3>
 <p><code>setup.py</code> などが存在するPyPIパッケージプロジェクトを想定する。</p>
 <p>プロジェクトのルートに <code>docs</code> ディレクトリを作成し、
 インタラクティブツール <code>sphinx-quickstart</code> を実行する。</p>
@@ -257,14 +257,14 @@ make html
   api/modules
 </pre></div>
 </div>
-</div>
-<div class="section" id="ci-cd">
-<h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_CI_CDを整備する">CI,CDを整備する</h2>
+</section>
+<section id="ci-cd">
+<h3 class="md_header_block" id="h_entry_2021_sphinx_index_rst_CI_CDを整備する">CI,CDを整備する</h3>
 <p>自動生成されるHTMLをソースコードと同じブランチでGit管理するのはおいしくないので、
 <code>docs/build</code> ディレクトリを <code>.gitignore</code> に追加し、
 GitHub ActionsやGitLab CIを使ってドキュメントの生成、GitHub PagesやGitLab Pagesへの自動デプロイを整備する。</p>
-</div>
-</div>
+</section>
+</section>
 
 </div>
 
@@ -283,22 +283,22 @@ GitHub ActionsやGitLab CIを使ってドキュメントの生成、GitHub Pages
   <ul class="toc">
   
     <li>
-      <a href="#h_entry_2021_sphinx_index_rst_Sphinx" class="toc-item toc-item-h1">
+      <a href="#h_entry_2021_sphinx_index_rst_Sphinx" class="toc-item toc-item-h2">
         Sphinx
       </a>
   
     <li>
-      <a href="#h_entry_2021_sphinx_index_rst_reST_reStructuredText_" class="toc-item toc-item-h2">
+      <a href="#h_entry_2021_sphinx_index_rst_reST_reStructuredText_" class="toc-item toc-item-h3">
         reST（reStructuredText）
       </a>
   
     <li>
-      <a href="#h_entry_2021_sphinx_index_rst_既存Pythonプロジェクトにドキュメントを追加する" class="toc-item toc-item-h2">
+      <a href="#h_entry_2021_sphinx_index_rst_既存Pythonプロジェクトにドキュメントを追加する" class="toc-item toc-item-h3">
         既存Pythonプロジェクトにドキュメントを追加する
       </a>
   
     <li>
-      <a href="#h_entry_2021_sphinx_index_rst_CI_CDを整備する" class="toc-item toc-item-h2">
+      <a href="#h_entry_2021_sphinx_index_rst_CI_CDを整備する" class="toc-item toc-item-h3">
         CI,CDを整備する
       </a>
   
