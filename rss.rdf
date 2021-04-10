@@ -31,7 +31,7 @@ E: Release file &lt;span class="k"&gt;for&lt;/span&gt; http://raspbian.raspberry
 SSHサーバ側から見えるネットワークポートを
 SSHクライアント側に転送することができます。
 例えば、ファイアウォール（NAT）に守られたネットワーク（ネットワークA）&lt;/p&gt;</description><pubDate>Sun, 21 Mar 2021 03:32:29 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-03-21 03:32:29.000000:/entry/2021/ssh_proxy_server_docker/</guid></item><item><title>PsychopyでOpenCV画像をImageStimで表示する</title><link>https://blog.aoirint.com/entry/2021/psychopy_opencv_image/</link><description>&lt;section id="id1"&gt;
-&lt;h2 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_PsychopyでOpenCV画像をImageStimで表示する"&gt;PsychopyでOpenCV画像をImageStimで表示する&lt;/h2&gt;
+&lt;h1 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_PsychopyでOpenCV画像をImageStimで表示する"&gt;PsychopyでOpenCV画像をImageStimで表示する&lt;/h1&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://github.com/psychopy/psychopy"&gt;Psychopy - GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;img alt="image.png" src="image.png"/&gt;
 &lt;img alt="screenshot.png" src="screenshot.png"/&gt;
@@ -42,11 +42,11 @@ SSHクライアント側に転送することができます。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;section id="id2"&gt;
-&lt;h3 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_ウインドウに表示させるサンプル"&gt;ウインドウに表示させるサンプル&lt;/h3&gt;
+&lt;h2 class="md_header_block" id="h_entry_2021_psychopy_opencv_image_index_rst_ウインドウに表示させるサンプル"&gt;ウインドウに表示させるサンプル&lt;/h2&gt;
 &lt;div class="code-block"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt; &lt;span class="c1"&gt;# numpy&amp;gt;=1.20.1&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt; &lt;span class="c1"&gt;# type: ignore # opencv-python&amp;gt;=4.5.&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;&lt;/section&gt;</description><pubDate>Sun, 14 Feb 2021 22:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-02-14 22:00:00.000000:/entry/2021/psychopy_opencv_image/</guid></item><item><title>Sphinx</title><link>https://blog.aoirint.com/entry/2021/sphinx/</link><description>&lt;section id="id1"&gt;
-&lt;h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h2&gt;
+&lt;h1 class="md_header_block" id="h_entry_2021_sphinx_index_rst_Sphinx"&gt;Sphinx&lt;/h1&gt;
 &lt;p&gt;Python製のドキュメント生成ツール。&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;Python 3.8.5&lt;/p&gt;&lt;/li&gt;
@@ -61,7 +61,7 @@ SSHクライアント側に転送することができます。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;section id="rest-restructuredtext"&gt;
-&lt;h3 class="md_header_block" id="h_entry_2021_sphinx_index_rst_reST_reStructuredText_"&gt;reST（reStructuredText）&lt;/h3&gt;
+&lt;h2 class="md_header_block" id="h_entry_2021_sphinx_index_rst_reST_reStructuredText_"&gt;reST（reStructuredText）&lt;/h2&gt;
 &lt;p&gt;SphinxではデフォルトでreStructuredTextというマークアップ言語を使う。&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html"&gt;https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
