@@ -164,6 +164,7 @@ arduino-cli Version: 0.13.0 Commit: 693a045
 <h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_インストール">インストール</h2>
 <ul>
 <li><a href="https://arduino.github.io/arduino-cli/latest/installation/">Installation - Arduino CLI</a></li>
+<li><a href="https://hub.docker.com/r/arduino/arduino-cli">arduino/arduino-cli</a></li>
 </ul>
 <p><a href="https://arduino.github.io/arduino-cli/latest/">Arduino CLIの公式ドキュメント</a>に従ってインストールする。後述する<code>screen</code>コマンドも合わせてインストールする。
 <code>arduino-cli</code>はDockerイメージも配布されているのでお好みで。</p>
@@ -175,6 +176,9 @@ sudo apt install screen
 </code></pre></div>
 <p>プラットフォーム一覧を更新しておく。</p>
 <div class="highlight"><pre><span></span><code>arduino-cli core update-index
+</code></pre></div>
+<p>dialoutにユーザを追加</p>
+<div class="highlight"><pre><span></span><code>sudo adduser <span class="nv">$USER</span> dialout
 </code></pre></div>
 <h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_スケッチの作成">スケッチの作成</h2>
 <p>特に特殊なファイルを必要としたりはしないので、
