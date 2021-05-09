@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 04 Apr 2021 08:00:00 +0900</lastBuildDate><item><title>Open JTalk in Docker</title><link>https://blog.aoirint.com/entry/2021/open_jtalk/</link><description>&lt;h1 class="md_header_block" id="h_entry_2021_open_jtalk_index_md_Open_JTalk_in_Docker"&gt;Open JTalk in Docker&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Sun, 09 May 2021 17:30:00 +0900</lastBuildDate><item><title>arduino-cliの使い方</title><link>https://blog.aoirint.com/entry/2020/arduino_cli_usage/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_arduino_cliの使い方"&gt;arduino-cliの使い方&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ arduino-cli version
+arduino-cli Version: 0.13.0 Commit: 693a045
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_インストール"&gt;インストール&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://arduino.github.io/arduino-cli/latest/installation/"&gt;Installation - Arduino CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://hub.docker.com/r/arduino/arduino-cli"&gt;arduino/arduino-cli&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://arduino.github.io/arduino-cli/latest/"&gt;Arduino CLIの公式ドキュメント&lt;/a&gt;に従ってインストールする。後述する&lt;code&gt;screen&lt;/code&gt;コマンドも合わせてインストールする。
+&lt;code&gt;arduino-cli&lt;/code&gt;はDockerイメージも配布されているのでお好みで。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -fsSL https://raw.githubusercontent&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Mon, 09 Nov 2020 08:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-11-09 08:00:00.000000:/entry/2020/arduino_cli_usage/</guid></item><item><title>Open JTalk in Docker</title><link>https://blog.aoirint.com/entry/2021/open_jtalk/</link><description>&lt;h1 class="md_header_block" id="h_entry_2021_open_jtalk_index_md_Open_JTalk_in_Docker"&gt;Open JTalk in Docker&lt;/h1&gt;
 &lt;p&gt;以前にもOpen JTalkを触っていたが、時間が経った＆記事が雑だったのでDockerでまとめ直しておく。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://aoirint.hatenablog.com/entry/2019/05/25/080329"&gt;Open JTalk - aoirint's note&lt;/a&gt;&lt;/li&gt;
@@ -88,16 +99,4 @@ Homebrew/homebrew-cask (git revision eb977; last commit 2020-12-19)
 $ brew info xqu&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Sun, 20 Dec 2020 00:30:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-20 00:30:00.000000:/entry/2020/xquartz_docker/</guid></item><item><title>GitHubのPAT認証手順（Ubuntu）</title><link>https://blog.aoirint.com/entry/2020/github_pat_auth/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_github_pat_auth_index_md_GitHubのPAT認証手順_Ubuntu_"&gt;GitHubのPAT認証手順（Ubuntu）&lt;/h1&gt;
 &lt;p&gt;GitHubがパスワードによるGitアクセスを無効化する（正確にはパーソナルアクセストークン認証を必須化する、だが現状SSH認証は残る）旨のアナウンスをした（&lt;a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/"&gt;Token authentication requirements for Git operations - The GitHub Blog&lt;/a&gt;）。&lt;/p&gt;
 &lt;p&gt;これまで、コマンドラインGit操作のためのGitHubの認証にはパスワード認証（HTTPS Basic認証）を使っていた。
-一応、リポジトリを操作するたびにパスワードを入力するのは面倒なの&lt;/p&gt;</description><pubDate>Fri, 18 Dec 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-18 11:00:00.000000:/entry/2020/github_pat_auth/</guid></item><item><title>Debianパッケージから内容物を抽出する</title><link>https://blog.aoirint.com/entry/2020/extract_from_deb_file/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_extract_from_deb_file_index_md_Debianパッケージから内容物を抽出する"&gt;Debianパッケージから内容物を抽出する&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://packages.debian.org/buster/bash"&gt;Debian -- buster の bash パッケージに関する詳細&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_5.0-4_amd64.deb&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget http://ftp.jp.debian.org/debian/pool/main/b/bash/bash_5.0-4_amd64.deb
-mkdir bash
-tar xvf bash_5.0-4_amd64.deb -C bash/
-&lt;span class="nb"&gt;cd&lt;/span&gt; bash
-mkdir data
-tar xvf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Tue, 08 Dec 2020 22:40:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-08 22:40:00.000000:/entry/2020/extract_from_deb_file/</guid></item></channel></rss>
+一応、リポジトリを操作するたびにパスワードを入力するのは面倒なの&lt;/p&gt;</description><pubDate>Fri, 18 Dec 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-18 11:00:00.000000:/entry/2020/github_pat_auth/</guid></item></channel></rss>
