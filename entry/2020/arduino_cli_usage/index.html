@@ -197,7 +197,10 @@ Arduino IDEで作成しても、好きなテキストエディタで作成して
 <p>また、<code>arduino-cli board list</code>コマンドでPCに接続しているボードのFQBNを調べられる場合がある（Arduino系ボードの場合？）。</p>
 <ul>
 <li>Arduino UNO: <code>arduino:avr:uno</code></li>
-<li>Arduino Nano: <code>arduino:avr:nano</code></li>
+<li>Arduino Nano: <code>arduino:avr:nano</code><ul>
+<li>ブートローダが古い場合?: https://github.com/arduino/arduino-cli/issues/29</li>
+</ul>
+</li>
 <li>Arduino Nano Every: <code>arduino:megaavr:nona4809</code></li>
 <li>ESP32-DevKitC: <code>esp32:esp32:esp32</code></li>
 </ul>
