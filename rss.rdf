@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Fri, 14 May 2021 01:00:00 +0900</lastBuildDate><item><title>GPU PC (Desktop) のセットアップメモ</title><link>https://blog.aoirint.com/entry/2020/gpu_pc_setup/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
+<rss version="2.0"><channel><title>えやみぐさ</title><link>https://blog.aoirint.com/</link><description></description><lastBuildDate>Fri, 14 May 2021 01:50:00 +0900</lastBuildDate><item><title>ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する</title><link>https://blog.aoirint.com/entry/2020/stepping_motor/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する"&gt;ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する&lt;/h1&gt;
+&lt;h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_機材"&gt;機材&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Arduino UNO（中華）&lt;/li&gt;
+&lt;li&gt;ロータリエンコーダ付きステッピングモータ&lt;ul&gt;
+&lt;li&gt;PKP214U06A-R2EL&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/products/detail.action?hinmei=PKP214U06A-R2EL-L"&gt;PKP214U06A-R2EL-L｜PKPシリーズ／PKシリーズ｜ステッピングモーター｜オリエンタルモーター株式会社&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;モータ部説明書（PDF、HM-7433J.pdf）&lt;/li&gt;
+&lt;li&gt;ロータリエンコーダ部説明書（PDF、HM-7439JE.pdf）&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/file_addon/products/st/image/tj_pkp214u06a-r2el-l_d.gif"&gt;特性図（画像）&lt;/a&gt;（DC24V駆動時）&lt;/li&gt;
+&lt;li&gt;モータ部&lt;ul&gt;
+&lt;li&gt;2相&lt;/li&gt;
+&lt;li&gt;ユニポーラ5本リード線&lt;/li&gt;
+&lt;li&gt;基本ステップ角度1.8°&lt;/li&gt;
+&lt;li&gt;AC 50&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description><pubDate>Tue, 06 Oct 2020 07:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-10-06 07:00:00.000000:/entry/2020/stepping_motor/</guid></item><item><title>GPU PC (Desktop) のセットアップメモ</title><link>https://blog.aoirint.com/entry/2020/gpu_pc_setup/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)"&gt;Ubuntu 18.04.5 LTS (Bionic Beaver)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。&lt;/p&gt;
@@ -120,9 +134,4 @@ SSHクライアント側に転送することができます。
 &lt;p&gt;SphinxではデフォルトでreStructuredTextというマークアップ言語を使う。&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html"&gt;https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://atom.io/packages/language-restructuredtext"&gt;https://atom.io/packages/language-restruct&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;/section&gt;</description><pubDate>Tue, 05 Jan 2021 07:40:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</guid></item><item><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link>https://blog.aoirint.com/entry/2020/mastodon_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04_"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.joinmastodon.org/"&gt;Mastodon documentation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;内容はコミットID&lt;code&gt;44d5c6bc8ffd92cd201380dabe35748e50b6af68&lt;/code&gt;、Mastodon Dockerイメージバージョン&lt;code&gt;v3.2.1&lt;/code&gt;（Digest：&lt;code&gt;sha256:41cd5fb48d8b15ec806f08&lt;/code&gt;&lt;/p&gt;</description><pubDate>Sun, 06 Dec 2020 11:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2020-12-06 11:00:00.000000:/entry/2020/mastodon_docker/</guid></item></channel></rss>
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://atom.io/packages/language-restructuredtext"&gt;https://atom.io/packages/language-restruct&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;/section&gt;</description><pubDate>Tue, 05 Jan 2021 07:40:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-01-05 07:40:00.000000:/entry/2021/sphinx/</guid></item></channel></rss>

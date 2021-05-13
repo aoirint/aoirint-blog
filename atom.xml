@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2021-05-14T01:00:00+09:00</updated><entry><title>GPU PC (Desktop) のセットアップメモ</title><link href="https://blog.aoirint.com/entry/2020/gpu_pc_setup/" rel="alternate"></link><published>2020-09-18T20:00:00+09:00</published><updated>2021-05-14T01:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-18 20:00:00.000000:/entry/2020/gpu_pc_setup/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>えやみぐさ</title><link href="https://blog.aoirint.com/" rel="alternate"></link><link href="https://blog.aoirint.com/atom.xml" rel="self"></link><id>https://blog.aoirint.com/</id><updated>2021-05-14T01:50:00+09:00</updated><entry><title>ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する</title><link href="https://blog.aoirint.com/entry/2020/stepping_motor/" rel="alternate"></link><published>2020-10-06T07:00:00+09:00</published><updated>2021-05-14T01:50:00+09:00</updated><id>tag:blog.aoirint.com,2020-10-06 07:00:00.000000:/entry/2020/stepping_motor/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する"&gt;ロータリエンコーダ付きステッピングモータをArduinoで制御して角度を取得する&lt;/h1&gt;
+&lt;h2 class="md_header_block" id="h_entry_2020_stepping_motor_index_md_機材"&gt;機材&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Arduino UNO（中華）&lt;/li&gt;
+&lt;li&gt;ロータリエンコーダ付きステッピングモータ&lt;ul&gt;
+&lt;li&gt;PKP214U06A-R2EL&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/products/detail.action?hinmei=PKP214U06A-R2EL-L"&gt;PKP214U06A-R2EL-L｜PKPシリーズ／PKシリーズ｜ステッピングモーター｜オリエンタルモーター株式会社&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;モータ部説明書（PDF、HM-7433J.pdf）&lt;/li&gt;
+&lt;li&gt;ロータリエンコーダ部説明書（PDF、HM-7439JE.pdf）&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.orientalmotor.co.jp/file_addon/products/st/image/tj_pkp214u06a-r2el-l_d.gif"&gt;特性図（画像）&lt;/a&gt;（DC24V駆動時）&lt;/li&gt;
+&lt;li&gt;モータ部&lt;ul&gt;
+&lt;li&gt;2相&lt;/li&gt;
+&lt;li&gt;ユニポーラ5本リード線&lt;/li&gt;
+&lt;li&gt;基本ステップ角度1.8°&lt;/li&gt;
+&lt;li&gt;AC 50&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary></entry><entry><title>GPU PC (Desktop) のセットアップメモ</title><link href="https://blog.aoirint.com/entry/2020/gpu_pc_setup/" rel="alternate"></link><published>2020-09-18T20:00:00+09:00</published><updated>2021-05-14T01:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-18 20:00:00.000000:/entry/2020/gpu_pc_setup/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_gpu_pc_setup_index_md_GPU_PC_Desktop_のセットアップメモ"&gt;GPU PC (Desktop) のセットアップメモ&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://releases.ubuntu.com/18.04.5/" title="Ubuntu 18.04.5 LTS (Bionic Beaver)"&gt;Ubuntu 18.04.5 LTS (Bionic Beaver)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu 18.04、Windows 10のデュアルブート環境を構築する。
 プロキシ下を想定しているので、不要な場合は適宜調整。&lt;/p&gt;
@@ -120,9 +134,4 @@ SSHクライアント側に転送することができます。
 &lt;p&gt;SphinxではデフォルトでreStructuredTextというマークアップ言語を使う。&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html"&gt;https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://atom.io/packages/language-restructuredtext"&gt;https://atom.io/packages/language-restruct&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;/section&gt;</summary></entry><entry><title>Mastodonをdocker-composeで立てる（Ubuntu 18.04）</title><link href="https://blog.aoirint.com/entry/2020/mastodon_docker/" rel="alternate"></link><published>2020-12-06T11:00:00+09:00</published><updated>2020-12-22T02:40:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-06 11:00:00.000000:/entry/2020/mastodon_docker/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_mastodon_docker_index_md_Mastodonをdocker_composeで立てる_Ubuntu_18_04_"&gt;Mastodonをdocker-composeで立てる（Ubuntu 18.04）&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.joinmastodon.org/"&gt;Mastodon documentation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;内容はコミットID&lt;code&gt;44d5c6bc8ffd92cd201380dabe35748e50b6af68&lt;/code&gt;、Mastodon Dockerイメージバージョン&lt;code&gt;v3.2.1&lt;/code&gt;（Digest：&lt;code&gt;sha256:41cd5fb48d8b15ec806f08&lt;/code&gt;&lt;/p&gt;</summary></entry></feed>
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://atom.io/packages/language-restructuredtext"&gt;https://atom.io/packages/language-restruct&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;/section&gt;</summary></entry></feed>
