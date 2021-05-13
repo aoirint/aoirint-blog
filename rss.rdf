@@ -10,11 +10,11 @@
 &lt;h2 class="md_header_block" id="h_entry_2021_atom_setup_index_md_Installation"&gt;Installation&lt;/h2&gt;
 &lt;h3 class="md_header_block" id="h_entry_2021_atom_setup_index_md_macOS_Windows"&gt;macOS, Windows&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;https://atom.io/&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://atom.io/"&gt;https://atom.io/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 class="md_header_block" id="h_entry_2021_atom_setup_index_md_Ubuntu"&gt;Ubuntu&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;https://flight-manual.atom.io/getting-started/sections/installing-atom/#platform-linux&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://flight-manual.atom.io/getting-started/sections/installing-atom/#platform-linux"&gt;https://flight-manual.atom.io/getting-started/sections/installing-atom/#platform-linux&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey &lt;span class="p"&gt;|&lt;/span&gt; sudo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><pubDate>Fri, 14 May 2021 01:00:00 +0900</pubDate><guid isPermaLink="false">tag:blog.aoirint.com,2021-05-14 01:00:00.000000:/entry/2021/atom_setup/</guid></item><item><title>Atom + LaTeX in Docker</title><link>https://blog.aoirint.com/entry/2020/atom_latex_docker/</link><description>&lt;h1 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_LaTeX_in_Docker"&gt;Atom + LaTeX in Docker&lt;/h1&gt;
 &lt;h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_概要"&gt;概要&lt;/h2&gt;

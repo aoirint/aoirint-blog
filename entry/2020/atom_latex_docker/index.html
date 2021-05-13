@@ -207,7 +207,7 @@ Atomからこれを利用できるようにする。</p>
 <p>注意として、この方法で一般ユーザがDockerを使えるようにすると特権昇格できてしまうため、
 共有サーバにおいてはDocker 20.10以降のDocker rootlessを設定する。</p>
 <ul>
-<li>https://docs.docker.com/engine/security/rootless/</li>
+<li><a href="https://docs.docker.com/engine/security/rootless/">https://docs.docker.com/engine/security/rootless/</a></li>
 </ul>
 <p>ユーザをdockerグループに追加したあと再ログインする。新しくdockerグループが作られた直後は<code>newgrp docker</code>しなければならないことがあり、シェルごとにこれを実行する必要があるようなのでAtomに反映されず、この場合OSの再起動が必要。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
