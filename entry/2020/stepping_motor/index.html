@@ -568,10 +568,14 @@ A相B相のパターンに基づく計算はそのままで、不要な部分の
   <span class="n">msg</span><span class="p">[</span><span class="s">"rpm"</span><span class="p">]</span> <span class="o">=</span> <span class="n">rpm</span><span class="p">;</span>
 
   <span class="n">serializeJson</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">Serial</span><span class="p">);</span> <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
-<span class="p">}</span>
 
-<span class="kt">void</span> <span class="nf">serialEvent</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">StaticJsonDocument</span><span class="o">&lt;</span><span class="mi">255</span><span class="o">&gt;</span> <span class="n">msg</span><span class="p">;</span>
+<span class="c1">// serialEvent is now deprecated and not working on some Arduino devices (e.g. Arduino Nano Every).</span>
+<span class="c1">// https://github.com/arduino/ArduinoCore-avr/issues/206#issuecomment-532133626</span>
+<span class="c1">//</span>
+<span class="c1">// }</span>
+<span class="c1">//</span>
+<span class="c1">// void serialEvent() {</span>
+<span class="c1">// StaticJsonDocument&lt;255&gt; msg;</span>
   <span class="kt">bool</span> <span class="n">jsonError</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
 
   <span class="k">if</span> <span class="p">(</span><span class="n">nextSerialJson</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">jsonError</span><span class="p">))</span> <span class="p">{</span>
