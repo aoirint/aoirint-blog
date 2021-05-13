@@ -11,7 +11,34 @@
 &lt;li&gt;https://flight-manual.atom.io/getting-started/sections/installing-atom/#platform-linux&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey &lt;span class="p"&gt;|&lt;/span&gt; sudo apt-key add -
-su&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>arduino-cliの使い方</title><link href="https://blog.aoirint.com/entry/2020/arduino_cli_usage/" rel="alternate"></link><published>2020-11-09T08:00:00+09:00</published><updated>2021-05-09T17:30:00+09:00</updated><id>tag:blog.aoirint.com,2020-11-09 08:00:00.000000:/entry/2020/arduino_cli_usage/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_arduino_cliの使い方"&gt;arduino-cliの使い方&lt;/h1&gt;
+su&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Atom + LaTeX in Docker</title><link href="https://blog.aoirint.com/entry/2020/atom_latex_docker/" rel="alternate"></link><published>2020-09-17T08:35:00+09:00</published><updated>2021-05-14T01:00:00+09:00</updated><id>tag:blog.aoirint.com,2020-09-17 08:35:00.000000:/entry/2020/atom_latex_docker/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_LaTeX_in_Docker"&gt;Atom + LaTeX in Docker&lt;/h1&gt;
+&lt;h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_概要"&gt;概要&lt;/h2&gt;
+&lt;p&gt;LaTeXをホストにインストールせず、Docker内で動かしつつ、
+Atomからこれを利用できるようにする。&lt;/p&gt;
+&lt;h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Requirements"&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 18.04&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;li&gt;Atom&lt;/li&gt;
+&lt;li&gt;Atom Packages&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://atom.io/packages/latex"&gt;latex&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Atom_Packages"&gt;Atom Packages&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://atom.io/packages/latex"&gt;latex&lt;/a&gt;を入れれば最低限ビルドコマンドは叩けるようになる。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://atom.io/packages/latex"&gt;latex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;シンタックスハイライト&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://atom.io/packages/language-latex"&gt;language-latex&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;アウトライン表示&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://atom.io/packages/document-outline"&gt;document-outline&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;PDFプレビュー&lt;ul&gt;
+&lt;li&gt;&lt;a href=""&gt;pdf-view&lt;/a&gt;（メモリリーク? Atomを一度閉じれば解消&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary></entry><entry><title>arduino-cliの使い方</title><link href="https://blog.aoirint.com/entry/2020/arduino_cli_usage/" rel="alternate"></link><published>2020-11-09T08:00:00+09:00</published><updated>2021-05-09T17:30:00+09:00</updated><id>tag:blog.aoirint.com,2020-11-09 08:00:00.000000:/entry/2020/arduino_cli_usage/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_arduino_cli_usage_index_md_arduino_cliの使い方"&gt;arduino-cliの使い方&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ arduino-cli version
 arduino-cli Version: 0.13.0 Commit: 693a045
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -99,13 +126,4 @@ SSHクライアント側に転送することができます。
 &lt;li&gt;&lt;a href="https://github.com/tootsuite/mastodon"&gt;tootsuite/mastodon: Your self-hosted, globally interconnected microblogging community&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.joinmastodon.org/"&gt;Mastodon documentation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;内容はコミットID&lt;code&gt;44d5c6bc8ffd92cd201380dabe35748e50b6af68&lt;/code&gt;、Mastodon Dockerイメージバージョン&lt;code&gt;v3.2.1&lt;/code&gt;（Digest：&lt;code&gt;sha256:41cd5fb48d8b15ec806f08&lt;/code&gt;&lt;/p&gt;</summary></entry><entry><title>Docker Desktop for Mac上のX ClientをホストのXQuartz（X Window Server）で表示する</title><link href="https://blog.aoirint.com/entry/2020/xquartz_docker/" rel="alternate"></link><published>2020-12-20T00:30:00+09:00</published><updated>2020-12-20T00:30:00+09:00</updated><id>tag:blog.aoirint.com,2020-12-20 00:30:00.000000:/entry/2020/xquartz_docker/</id><summary type="html">&lt;h1 class="md_header_block" id="h_entry_2020_xquartz_docker_index_md_Docker_Desktop_for_Mac上のX_ClientをホストのXQuartz_X_Window_Server_で表示する"&gt;Docker Desktop for Mac上のX ClientをホストのXQuartz（X Window Server）で表示する&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ docker -v
-Docker version 20.10.0, build 7287ab3
-
-$ brew -v
-Homebrew 2.6.2
-Homebrew/homebrew-core (git revision ce927; last commit 2020-12-19)
-Homebrew/homebrew-cask (git revision eb977; last commit 2020-12-19)
-
-$ brew info xqu&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary></entry></feed>
+&lt;p&gt;内容はコミットID&lt;code&gt;44d5c6bc8ffd92cd201380dabe35748e50b6af68&lt;/code&gt;、Mastodon Dockerイメージバージョン&lt;code&gt;v3.2.1&lt;/code&gt;（Digest：&lt;code&gt;sha256:41cd5fb48d8b15ec806f08&lt;/code&gt;&lt;/p&gt;</summary></entry></feed>

@@ -202,8 +202,13 @@ Atomからこれを利用できるようにする。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo docker pull paperist/alpine-texlive-ja
 </code></pre></div>
 </td></tr></table>
-<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_non_root_Docker">non-root Docker</h2>
+<h2 class="md_header_block" id="h_entry_2020_atom_latex_docker_index_md_Docker">Docker</h2>
 <p><code>sudo</code>なしでDockerを実行できるようにする。AtomからDockerコンテナを作るのに必要。</p>
+<p>注意として、この方法で一般ユーザがDockerを使えるようにすると特権昇格できてしまうため、
+共有サーバにおいてはDocker 20.10以降のDocker rootlessを設定する。</p>
+<ul>
+<li>https://docs.docker.com/engine/security/rootless/</li>
+</ul>
 <p>ユーザをdockerグループに追加したあと再ログインする。新しくdockerグループが作られた直後は<code>newgrp docker</code>しなければならないことがあり、シェルごとにこれを実行する必要があるようなのでAtomに反映されず、この場合OSの再起動が必要。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo groupadd docker
@@ -305,8 +310,8 @@ docker run --rm <span class="se">\</span>
       </a>
   
     <li>
-      <a href="#h_entry_2020_atom_latex_docker_index_md_non_root_Docker" class="toc-item toc-item-h2">
-        non-root Docker
+      <a href="#h_entry_2020_atom_latex_docker_index_md_Docker" class="toc-item toc-item-h2">
+        Docker
       </a>
   
     <li>
